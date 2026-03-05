@@ -11,7 +11,7 @@
     // ═══════════════════════════════════════════════════════════
     const roadmapPhases = [
       {
-        id: 1, emoji: "🌱", title: "Phase 1 – AI Foundations", duration: "4–6 weeks",
+        id: 1, icon: Sprout, title: "Phase 1 – AI Foundations", duration: "4–6 weeks",
         tag: "Understand the landscape", color: "from-green-500 to-emerald-600",
         tagColor: "bg-green-100 text-green-700",
         goal: "Understand how AI/ML works conceptually. No heavy math — just intuition and vocabulary.",
@@ -32,7 +32,7 @@
         milestone: "You can explain what an LLM is and how it works to a non-technical person.",
       },
       {
-        id: 2, emoji: "⚙️", title: "Phase 2 – LLM Setup & Configuration", duration: "2–3 weeks",
+        id: 2, icon: Settings, title: "Phase 2 – LLM Setup & Configuration", duration: "2–3 weeks",
         tag: "Get your environment ready", color: "from-slate-500 to-gray-600",
         tagColor: "bg-slate-100 text-slate-700",
         goal: "Set up your local and cloud AI environment. Know the difference between running, hosting, and calling an LLM.",
@@ -67,7 +67,7 @@
         milestone: "You have a local LLM running and can call multiple LLM APIs from code.",
       },
       {
-        id: 3, emoji: "🔧", title: "Phase 3 – Prompt Engineering & LLM APIs", duration: "3–4 weeks",
+        id: 3, icon: Wrench, title: "Phase 3 – Prompt Engineering & LLM APIs", duration: "3–4 weeks",
         tag: "Start building immediately", color: "from-blue-500 to-indigo-600",
         tagColor: "bg-blue-100 text-blue-700",
         goal: "As a dev, you can start building real AI-powered apps right now using APIs — no training needed.",
@@ -87,7 +87,7 @@
         milestone: "You have a working AI-powered app you built yourself using an LLM API.",
       },
       {
-        id: 4, emoji: "📚", title: "Phase 4 – RAG & Working with Your Own Data", duration: "4–5 weeks",
+        id: 4, icon: BookOpen, title: "Phase 4 – RAG & Working with Your Own Data", duration: "4–5 weeks",
         tag: "Make AI know your domain", color: "from-purple-500 to-violet-600",
         tagColor: "bg-purple-100 text-purple-700",
         goal: "Learn to feed your own documents, data, and knowledge into AI systems — critical for real-world apps.",
@@ -107,7 +107,7 @@
         milestone: "You can build a RAG pipeline from scratch and evaluate its quality.",
       },
       {
-        id: 5, emoji: "🤖", title: "Phase 5 – Agentic AI", duration: "4–5 weeks",
+        id: 5, icon: Bot, title: "Phase 5 – Agentic AI", duration: "4–5 weeks",
         tag: "AI that thinks and acts", color: "from-orange-500 to-amber-600",
         tagColor: "bg-orange-100 text-orange-700",
         goal: "Build AI systems that don't just answer — they plan, use tools, and execute multi-step tasks autonomously.",
@@ -124,12 +124,12 @@
         agentic: {
           title: "How Agentic AI Works — The Core Loop",
           steps: [
-            { icon: "💬", step: "1. User Goal", desc: "User gives a high-level task: 'Research the top 5 AI tools launched this month and write a report.'" },
-            { icon: "🧠", step: "2. LLM Plans", desc: "The LLM breaks the goal into sub-tasks: search web → read pages → extract info → summarize → format report." },
+            { icon: MessageSquare, step: "1. User Goal", desc: "User gives a high-level task: 'Research the top 5 AI tools launched this month and write a report.'" },
+            { icon: Brain, step: "2. LLM Plans", desc: "The LLM breaks the goal into sub-tasks: search web → read pages → extract info → summarize → format report." },
             { icon: "🔧", step: "3. Tool Use", desc: "Agent calls tools: web_search(), fetch_url(), read_file(), write_file(), call_api() — anything it's been given access to." },
-            { icon: "👁️", step: "4. Observe", desc: "Agent receives tool results, evaluates if they're sufficient, and decides the next action." },
-            { icon: "🔁", step: "5. Iterate", desc: "Repeats the Reason → Act → Observe loop until the goal is complete or it hits a stop condition." },
-            { icon: "✅", step: "6. Output", desc: "Returns final result to user. Optionally asks for clarification or approval before continuing." },
+            { icon: Eye, step: "4. Observe", desc: "Agent receives tool results, evaluates if they're sufficient, and decides the next action." },
+            { icon: RotateCcw, step: "5. Iterate", desc: "Repeats the Reason → Act → Observe loop until the goal is complete or it hits a stop condition." },
+            { icon: Check, step: "6. Output", desc: "Returns final result to user. Optionally asks for clarification or approval before continuing." },
           ],
           patterns: [
             ["Prompt Chaining", "Output of one LLM call feeds into the next. Linear pipeline."],
@@ -149,7 +149,7 @@
         milestone: "You understand agentic design patterns and have built a working multi-step agent.",
       },
       {
-        id: 6, emoji: "🏗️", title: "Phase 6 – Building & Training LLMs", duration: "6–8 weeks",
+        id: 6, icon: Building2, title: "Phase 6 – Building & Training LLMs", duration: "6–8 weeks",
         tag: "Go deep under the hood", color: "from-rose-500 to-pink-600",
         tagColor: "bg-rose-100 text-rose-700",
         goal: "Understand how LLMs are actually built and trained. Know when to fine-tune vs prompt vs RAG.",
@@ -194,7 +194,7 @@
         milestone: "You can fine-tune an open-source model, understand what happened under the hood, and evaluate the result.",
       },
       {
-        id: 7, emoji: "🚀", title: "Phase 7 – Build & Ship Real Projects", duration: "Ongoing",
+        id: 7, icon: Rocket, title: "Phase 7 – Build & Ship Real Projects", duration: "Ongoing",
         tag: "Where knowledge becomes mastery", color: "from-teal-500 to-cyan-600",
         tagColor: "bg-teal-100 text-teal-700",
         goal: "Real mastery comes from building. Pick projects that excite you and ship them.",
@@ -230,16 +230,54 @@
       const [tab, setTab] = useState({});
       const setPhaseTab = (id, t, e) => { e.stopPropagation(); setTab(prev => ({ ...prev, [id]: t })); };
 
+      const scrollToPhase1 = () => {
+        setOpen(1);
+        setTimeout(() => {
+          const el = document.getElementById("phase-card-1");
+          if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 50);
+      };
+
       return (
         <div className="min-h-screen text-gray-100 p-4 font-sans">
           <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-8">
-              <h1 className="text-3xl font-bold mb-2">🧠 AI Zero → Hero</h1>
-              <p className="text-gray-400 text-sm">For Software Developers · 4–6 hrs/week · Domain Knowledge + Building</p>
-              <div className="flex flex-wrap justify-center gap-2 mt-3">
-                <span className="bg-gray-800 text-gray-300 text-xs px-3 py-1 rounded-full">~14 months total</span>
-                <span className="bg-gray-800 text-gray-300 text-xs px-3 py-1 rounded-full">Mostly free resources</span>
-                <span className="bg-gray-800 text-gray-300 text-xs px-3 py-1 rounded-full">Project-based</span>
+            {/* Hero Section */}
+            <div className="text-center mb-10 pt-4">
+              <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-3 py-1 mb-4">
+                <BrainCircuit size={12} className="text-blue-400"/>
+                <span className="text-xs text-blue-400 font-medium">Updated March 2025</span>
+              </div>
+              <h1 className="text-4xl md:text-5xl font-bold mb-3 leading-tight">
+                <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">The AI Engineering</span>
+                <br />
+                <span className="text-white">Roadmap</span>
+              </h1>
+              <p className="text-gray-400 text-base max-w-lg mx-auto mb-6">
+                A structured, free path for software developers — from your first LLM call to production-ready AI systems.
+              </p>
+              <div className="flex flex-wrap justify-center gap-3 mb-6">
+                <span className="inline-flex items-center gap-1.5 bg-gray-800/60 border border-white/8 text-gray-300 text-xs px-3 py-1.5 rounded-full">
+                  <Layers size={12} className="text-blue-400"/><strong className="text-white">7</strong> Phases
+                </span>
+                <span className="inline-flex items-center gap-1.5 bg-gray-800/60 border border-white/8 text-gray-300 text-xs px-3 py-1.5 rounded-full">
+                  <Clock size={12} className="text-purple-400"/>~<strong className="text-white">14</strong> months
+                </span>
+                <span className="inline-flex items-center gap-1.5 bg-gray-800/60 border border-white/8 text-gray-300 text-xs px-3 py-1.5 rounded-full">
+                  <BookOpen size={12} className="text-green-400"/><strong className="text-white">50+</strong> Resources
+                </span>
+                <span className="inline-flex items-center gap-1.5 bg-gray-800/60 border border-white/8 text-gray-300 text-xs px-3 py-1.5 rounded-full">
+                  <Tag size={12} className="text-orange-400"/><strong className="text-white">Free</strong>
+                </span>
+              </div>
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <button onClick={scrollToPhase1}
+                  className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors">
+                  Start Phase 1 <ArrowRight size={14}/>
+                </button>
+                <a href="https://github.com/amit352/ailearnings/discussions" target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-gray-800/60 hover:bg-gray-700/60 border border-white/8 hover:border-white/15 text-gray-300 hover:text-white text-sm px-5 py-2.5 rounded-lg transition-all">
+                  <MessageSquare size={14}/> Share feedback
+                </a>
               </div>
             </div>
 
@@ -250,15 +288,15 @@
               {roadmapPhases.map((p, i) => {
                 const activeTab = tab[p.id] || "learn";
                 return (
-                  <div key={p.id} className="relative flex gap-4">
+                  <div key={p.id} id={`phase-card-${p.id}`} className="relative flex gap-4">
                     {/* Timeline node */}
                     <div className="flex flex-col items-center flex-shrink-0 z-10">
-                      <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${p.color} flex items-center justify-center text-xl shadow-lg ring-2 ring-gray-900`}>{p.emoji}</div>
+                      <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${p.color} flex items-center justify-center text-xl shadow-lg ring-2 ring-gray-900`}><p.icon size={20} className="text-white"/></div>
                     </div>
                     {/* Card */}
                     <div className="flex-1 min-w-0">
                     <div
-                      className={`rounded-xl border cursor-pointer transition-all duration-200 ${open === p.id ? "border-gray-500 bg-gray-900" : "border-gray-800 bg-gray-900 hover:border-gray-600"}`}
+                      className={`rounded-xl border cursor-pointer transition-all duration-200 backdrop-blur-sm ${open === p.id ? "border-blue-500/30 bg-gray-900/80 shadow-[0_0_30px_rgba(59,130,246,0.08)]" : "border-white/8 bg-gray-900/60 hover:border-white/15 hover:bg-gray-900/80"}`}
                       onClick={() => setOpen(open === p.id ? null : p.id)}
                     >
                       <div className="flex items-center gap-3 p-4">
@@ -269,7 +307,7 @@
                           </div>
                           <p className="text-gray-400 text-xs mt-0.5">{p.duration}</p>
                         </div>
-                        <div className="text-gray-400 text-lg flex-shrink-0">{open === p.id ? "▲" : "▼"}</div>
+                        <div className="text-gray-400 text-lg flex-shrink-0">{open === p.id ? <ChevronUp size={14}/> : <ChevronDown size={14}/>}</div>
                       </div>
 
                       {open === p.id && (
@@ -299,7 +337,7 @@
                                   <a key={i} href={r.url} target="_blank" rel="noopener noreferrer"
                                     className="flex items-center justify-between bg-gray-800 hover:bg-gray-700 rounded-lg px-3 py-2 transition-colors group"
                                     onClick={e => e.stopPropagation()}>
-                                    <span className="text-sm text-blue-400 group-hover:text-blue-300">{r.label}</span>
+                                    <span className="text-sm text-blue-400 group-hover:text-blue-300 flex items-center gap-1.5"><ExternalLink size={12} className="flex-shrink-0 opacity-60"/>{r.label}</span>
                                     <span className="text-xs text-gray-400 ml-2 flex-shrink-0">{r.time}</span>
                                   </a>
                                 ))}
@@ -337,7 +375,7 @@
                                 <div className="space-y-2">
                                   {p.agentic.steps.map((s, i) => (
                                     <div key={i} className="flex gap-3 bg-gray-800 rounded-lg p-3">
-                                      <span className="text-xl flex-shrink-0">{s.icon}</span>
+                                      <span className="flex-shrink-0">{React.createElement(s.icon, {size:20})}</span>
                                       <div>
                                         <p className="text-sm font-semibold text-white">{s.step}</p>
                                         <p className="text-xs text-gray-400 mt-0.5">{s.desc}</p>
@@ -393,11 +431,11 @@
                             {activeTab === "project" && (
                               <div className="space-y-3">
                                 <div className="bg-gray-800 rounded-lg p-3">
-                                  <p className="text-xs font-semibold text-yellow-400 uppercase tracking-wider mb-1">🛠 Phase Project</p>
+                                  <p className="text-xs font-semibold text-yellow-400 uppercase tracking-wider mb-1"><Wrench size={12} className="inline mr-1.5 align-middle"/>Phase Project</p>
                                   <p className="text-sm text-gray-200">{p.project}</p>
                                 </div>
                                 <div className="bg-gray-800 rounded-lg p-3">
-                                  <p className="text-xs font-semibold text-green-400 uppercase tracking-wider mb-1">✅ Milestone</p>
+                                  <p className="text-xs font-semibold text-green-400 uppercase tracking-wider mb-1"><Check size={11} className="inline mr-1 align-middle"/>Milestone</p>
                                   <p className="text-sm text-gray-200">{p.milestone}</p>
                                 </div>
                               </div>
@@ -414,7 +452,7 @@
             </div>
 
             <div className="mb-8">
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">🛠 Essential Free Tools</p>
+              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3"><Wrench size={12} className="inline mr-1.5 align-middle"/>Essential Free Tools</p>
               <div className="grid grid-cols-2 gap-2">
                 {roadmapTools.map((t, i) => (
                   <a key={i} href={t.url} target="_blank" rel="noopener noreferrer"
@@ -427,7 +465,7 @@
             </div>
 
             <div className="bg-gray-900 border border-gray-800 rounded-xl p-4">
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">💡 Principles for the Journey</p>
+              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3"><Lightbulb size={12} className="inline mr-1.5 align-middle"/>Principles for the Journey</p>
               <div className="space-y-2">
                 {[
                   ["Build early, build often", "Don't wait until you feel 'ready'. Ship something after Phase 3."],
@@ -437,7 +475,7 @@
                   ["Projects are your portfolio", "Even personal projects signal domain expertise better than certificates."],
                 ].map(([title, desc], i) => (
                   <div key={i} className="flex gap-2">
-                    <span className="text-gray-400 flex-shrink-0 mt-0.5">→</span>
+                    <span className="text-gray-400 flex-shrink-0 mt-0.5"><ArrowRight size={13} className="flex-shrink-0"/></span>
                     <div>
                       <span className="text-sm font-medium text-gray-200">{title}: </span>
                       <span className="text-sm text-gray-400">{desc}</span>
@@ -471,10 +509,10 @@
 
     const altPhases = [
       {
-        id: 1, emoji: "🌱", title: "Phase 1 – AI Foundations", color: "from-green-500 to-emerald-600",
+        id: 1, icon: Sprout, title: "Phase 1 – AI Foundations", color: "from-green-500 to-emerald-600",
         books: [
           { title: "Hands-On Large Language Models", authors: "Jay Alammar & Maarten Grootendorst", publisher: "O'Reilly, 2024", type: OREILLY, why: "The #1 beginner book for devs. Visual, intuitive, covers LLM internals without heavy math. Perfect Phase 1 read.", url: "https://www.oreilly.com/library/view/hands-on-large-language/9781098150952/", rating: "⭐ 4.7" },
-          { title: "The Hundred-Page Language Models Book", authors: "Andriy Burkov", publisher: "True Positive Inc., 2025", type: PAID, why: "Dense but accessible. Great conceptual coverage of transformers, training, and inference in under 200 pages.", url: "https://www.amazon.com/Hundred-Page-Language-Models-Book/dp/B0F2BKFQSS", rating: "⭐ 4.8" },
+          { title: "The Hundred-Page Language Models Book", authors: "Andriy Burkov", publisher: "True Positive Inc., 2025", type: PAID, why: "Dense but accessible. Great conceptual coverage of transformers, training, and inference in under 200 pages.", url: "https://www.thelmbook.com", rating: "⭐ 4.8" },
         ],
         videos: [
           { title: "Neural Networks: Zero to Hero", author: "Andrej Karpathy (YouTube)", type: FREE, why: "The gold standard. Builds intuition from scratch. Watch this before anything else.", url: "https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ", duration: "~10 hrs total" },
@@ -483,7 +521,7 @@
         ],
       },
       {
-        id: 2, emoji: "⚙️", title: "Phase 2 – LLM Setup & Configuration", color: "from-slate-500 to-gray-600",
+        id: 2, icon: Settings, title: "Phase 2 – LLM Setup & Configuration", color: "from-slate-500 to-gray-600",
         books: [
           { title: "Designing Large Language Model Applications", authors: "Suhas Pai", publisher: "O'Reilly, 2024", type: OREILLY, why: "Covers loading LLMs, decoding strategies (top-k, top-p, beam search), quantization, Ollama, and HF Accelerate. Exactly what Phase 2 needs.", url: "https://www.oreilly.com/library/view/designing-large-language/9781098150495/", rating: "⭐ 4.5" },
         ],
@@ -493,7 +531,7 @@
         ],
       },
       {
-        id: 3, emoji: "🔧", title: "Phase 3 – Prompt Engineering & LLM APIs", color: "from-blue-500 to-indigo-600",
+        id: 3, icon: Wrench, title: "Phase 3 – Prompt Engineering & LLM APIs", color: "from-blue-500 to-indigo-600",
         books: [
           { title: "Prompt Engineering for Generative AI", authors: "James Phoenix & Mike Taylor", publisher: "O'Reilly, 2024", type: OREILLY, why: "The definitive O'Reilly book on prompting. Covers zero-shot, few-shot, CoT, role prompting, and advanced patterns. Rated 4.5★.", url: "https://www.oreilly.com/library/view/prompt-engineering-for/9781098153427/", rating: "⭐ 4.5" },
           { title: "AI Engineering", authors: "Chip Huyen", publisher: "O'Reilly, 2025", type: OREILLY, why: "The most-read book on O'Reilly since launch. Covers the full AI app stack — evaluation, RAG, agents, fine-tuning. A must-read across Phases 3–6.", url: "https://www.oreilly.com/library/view/ai-engineering/9781098166298/", rating: "⭐ 4.7" },
@@ -504,7 +542,7 @@
         ],
       },
       {
-        id: 4, emoji: "📚", title: "Phase 4 – RAG & Working with Data", color: "from-purple-500 to-violet-600",
+        id: 4, icon: BookOpen, title: "Phase 4 – RAG & Working with Data", color: "from-purple-500 to-violet-600",
         books: [
           { title: "Designing Large Language Model Applications", authors: "Suhas Pai", publisher: "O'Reilly, 2024", type: OREILLY, why: "Has dedicated chapters on RAG pipelines, chunking, embedding strategies, vector DBs, and RAG vs fine-tuning comparisons.", url: "https://www.oreilly.com/library/view/designing-large-language/9781098150495/", rating: "⭐ 4.5" },
           { title: "Building AI Agents with LLMs, RAG, and Knowledge Graphs", authors: "Multiple Authors", publisher: "O'Reilly / Packt, 2024", type: OREILLY, why: "Covers naive RAG, advanced RAG (chunking, embedding strategies, evaluation), and how RAG compares to fine-tuning.", url: "https://www.oreilly.com/library/view/building-ai-agents/9781835087060/", rating: "⭐ 4.4" },
@@ -516,7 +554,7 @@
         ],
       },
       {
-        id: 5, emoji: "🤖", title: "Phase 5 – Agentic AI", color: "from-orange-500 to-amber-600",
+        id: 5, icon: Bot, title: "Phase 5 – Agentic AI", color: "from-orange-500 to-amber-600",
         books: [
           { title: "Building Applications with AI Agents", authors: "Multiple Authors", publisher: "O'Reilly, 2025", type: OREILLY, why: "Most up-to-date O'Reilly agent book. Covers LangGraph, AutoGen, CrewAI, OpenAI Agents SDK, multi-agent coordination, and real-world use cases.", url: "https://www.oreilly.com/library/view/building-applications-with/9781098176495/", rating: "⭐ 4.5" },
           { title: "Building AI Agents with LLMs, RAG, and Knowledge Graphs", authors: "Multiple Authors", publisher: "O'Reilly / Packt, 2024", type: OREILLY, why: "Covers agent frameworks (LangChain, LlamaIndex, AutoGen), tool usage, planning, and multi-agent systems end-to-end.", url: "https://www.oreilly.com/library/view/building-ai-agents/9781835087060/", rating: "⭐ 4.4" },
@@ -528,7 +566,7 @@
         ],
       },
       {
-        id: 6, emoji: "🏗️", title: "Phase 6 – Building & Training LLMs", color: "from-rose-500 to-pink-600",
+        id: 6, icon: Building2, title: "Phase 6 – Building & Training LLMs", color: "from-rose-500 to-pink-600",
         books: [
           { title: "Build a Large Language Model (From Scratch)", authors: "Sebastian Raschka", publisher: "Manning, 2024", type: PAID, why: "THE book for understanding LLM internals by building one from scratch in PyTorch. Covers tokenization, attention, pre-training, SFT, RLHF. Rated 4.6★ — best in class for this topic.", url: "https://www.amazon.com/Build-Large-Language-Model-Scratch/dp/1633437167", rating: "⭐ 4.6" },
           { title: "LLM Engineer's Handbook", authors: "Paul Iusztin & Maxime Labonne", publisher: "Packt, 2024", type: PAID, why: "Covers LLM engineering end-to-end: fine-tuning with LoRA/QLoRA, RAG, evaluation, and production deployment. Highly practical.", url: "https://www.amazon.com/LLM-Engineers-Handbook-engineering-production/dp/1836200072", rating: "⭐ 4.6" },
@@ -541,7 +579,7 @@
         ],
       },
       {
-        id: 7, emoji: "🚀", title: "Phase 7 – Production & Staying Current", color: "from-teal-500 to-cyan-600",
+        id: 7, icon: Rocket, title: "Phase 7 – Production & Staying Current", color: "from-teal-500 to-cyan-600",
         books: [
           { title: "AI Engineering", authors: "Chip Huyen", publisher: "O'Reilly, 2025", type: OREILLY, why: "If you read one book across this entire roadmap, make it this. Covers evaluation, RAG, agents, fine-tuning, and production — all from a systems perspective. Most read book on O'Reilly in 2025.", url: "https://www.oreilly.com/library/view/ai-engineering/9781098166298/", rating: "⭐ 4.7" },
           { title: "Building LLMs for Production", authors: "Louis-François Bouchard & Louie Peters", publisher: "Independent, 2024", type: PAID, why: "Focuses on prompting, fine-tuning, RAG, and reliability in production. Practical and concise.", url: "https://www.amazon.com/Building-LLMs-Production-Reliability-Fine-Tuning/dp/B0D4FFPFW5", rating: "⭐ 4.4" },
@@ -555,7 +593,7 @@
     ];
 
     const oreillyCost = {
-      title: "💡 O'Reilly Subscription – Is It Worth It?",
+      title: "O'Reilly Subscription – Is It Worth It?",
       points: [
         ["Monthly plan", "~$50/month — cancellable anytime. Read 2–3 books in a month, cancel."],
         ["Annual plan", "~$500/year — better value if you're serious across all phases."],
@@ -575,7 +613,7 @@
         <div className="min-h-screen text-gray-100 p-4 font-sans">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-6">
-              <h1 className="text-2xl font-bold mb-1">📖 ByteByteAI Alternative</h1>
+              <h1 className="text-2xl font-bold mb-1"><BookOpen size={20} className="inline mr-2 align-middle"/>Curated Books & Courses</h1>
               <p className="text-gray-400 text-sm">Best Books & Video Courses — Mapped by Phase</p>
               <div className="flex flex-wrap justify-center gap-2 mt-3">
                 <span className="bg-green-900 text-green-300 border border-green-700 text-xs px-3 py-1 rounded-full">Free</span>
@@ -603,12 +641,12 @@
                   <div key={p.id} className={`rounded-xl border cursor-pointer transition-all ${open === p.id ? "border-gray-500 bg-gray-900" : "border-gray-800 bg-gray-900 hover:border-gray-600"}`}
                     onClick={() => toggle(p.id)}>
                     <div className="flex items-center gap-3 p-4">
-                      <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${p.color} flex items-center justify-center text-base flex-shrink-0`}>{p.emoji}</div>
+                      <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${p.color} flex items-center justify-center text-base flex-shrink-0`}><p.icon size={20} className="text-white"/></div>
                       <div className="flex-1">
                         <p className="font-semibold text-sm">{p.title}</p>
                         <p className="text-gray-400 text-xs mt-0.5">{p.books.length} book{p.books.length > 1 ? "s" : ""} · {p.videos.length} video course{p.videos.length > 1 ? "s" : ""}</p>
                       </div>
-                      <span className="text-gray-400">{open === p.id ? "▲" : "▼"}</span>
+                      <span className="text-gray-400">{open === p.id ? <ChevronUp size={14}/> : <ChevronDown size={14}/>}</span>
                     </div>
                     {open === p.id && (
                       <div className="border-t border-gray-800">
@@ -616,7 +654,7 @@
                           {["books", "videos"].map(t => (
                             <button key={t} onClick={e => setV(p.id, t, e)}
                               className={`text-xs px-4 py-1.5 rounded-lg capitalize transition-colors ${v === t ? "bg-gray-700 text-white" : "text-gray-400 hover:text-gray-300"}`}>
-                              {t === "books" ? "📚 Books" : "🎬 Video Courses"}
+                              {t === "books" ? <><BookOpen size={12} className="inline mr-1"/>Books</> : <><Video size={12} className="inline mr-1"/>Video Courses</>}
                             </button>
                           ))}
                         </div>
@@ -658,7 +696,7 @@
             </div>
 
             <div className="bg-gray-900 border border-gray-700 rounded-xl p-4 mb-6">
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">🏆 If You Only Pick 3 Resources Total</p>
+              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3"><Trophy size={12} className="inline mr-1.5 align-middle"/>If You Only Pick 3 Resources Total</p>
               <div className="space-y-3">
                 {[
                   { emoji: "🥇", label: "Best Single Book", rec: "AI Engineering – Chip Huyen (O'Reilly, 2025)", why: "Covers the full AI app stack. Most read on O'Reilly. Timeless principles, not just tools.", url: "https://www.oreilly.com/library/view/ai-engineering/9781098166298/" },
@@ -679,16 +717,16 @@
             </div>
 
             <div className="bg-gray-900 border border-gray-700 rounded-xl p-4">
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">⚖️ This Path vs ByteByteAI</p>
+              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3"><BarChart size={12} className="inline mr-1.5 align-middle"/>Paid Bootcamp vs This Path</p>
               <div className="grid grid-cols-2 gap-3">
                 {[
-                  { label: "ByteByteAI", pros: ["Live cohort + community", "Instructor feedback", "Structured 6 weeks", "Certificate"], cons: ["Expensive", "Fixed schedule", "One-time coverage"] },
+                  { label: "Paid Bootcamp", pros: ["Live cohort + community", "Instructor feedback", "Structured schedule", "Certificate"], cons: ["Expensive", "Fixed schedule", "One-time coverage"] },
                   { label: "This Path", pros: ["Mostly free or ~$100 total", "Self-paced", "Go deeper on any topic", "Referenceable forever"], cons: ["Self-discipline needed", "No live feedback", "No certificate"] },
                 ].map((col, i) => (
                   <div key={i} className="bg-gray-800 rounded-lg p-3">
                     <p className="font-semibold text-sm text-white mb-2">{col.label}</p>
-                    {col.pros.map((p, j) => <p key={j} className="text-xs text-green-400 mb-1">✓ {p}</p>)}
-                    {col.cons.map((c, j) => <p key={j} className="text-xs text-gray-400 mb-1">✗ {c}</p>)}
+                    {col.pros.map((p, j) => <p key={j} className="text-xs text-green-400 mb-1 flex items-center gap-1"><Check size={11}/>{p}</p>)}
+                    {col.cons.map((c, j) => <p key={j} className="text-xs text-gray-400 mb-1"><X size={11} className="inline mr-0.5 align-middle"/>{c}</p>)}
                   </div>
                 ))}
               </div>
@@ -720,7 +758,7 @@
     };
 
     const honest = [
-      { icon: "✅", title: "What you CAN do confidently", color: "text-green-400", items: [
+      { icon: Check, title: "What you CAN do confidently", color: "text-green-400", items: [
         "Build end-to-end AI-powered applications from scratch",
         "Design and evaluate RAG pipelines for real use cases",
         "Build multi-step agents with tool calling and memory",
@@ -731,7 +769,7 @@
         "Discuss AI architecture decisions with engineers and researchers",
         "Contribute meaningfully to AI discussions and design reviews",
       ]},
-      { icon: "⚠️", title: "What you still can't do (yet)", color: "text-yellow-400", items: [
+      { icon: AlertTriangle, title: "What you still can't do (yet)", color: "text-yellow-400", items: [
         "Train a foundation model from scratch (needs massive compute + team)",
         "Write or publish novel AI research",
         "Deeply understand all the math (backprop derivations, probability theory)",
@@ -744,7 +782,7 @@
 
     const nextSteps = [
       {
-        id: 1, emoji: "🏗️", title: "Deepen by Building Publicly", when: "Immediately & ongoing",
+        id: 1, icon: Building2, title: "Deepen by Building Publicly", when: "Immediately & ongoing",
         color: "from-blue-500 to-indigo-600",
         desc: "The fastest way to solidify knowledge is to build something real and share it. This creates feedback loops that no course can give you.",
         actions: [
@@ -756,7 +794,7 @@
         examples: ["A RAG chatbot over a domain you care about (legal, medical, finance)", "An AI agent that automates a tedious personal workflow", "A tool that analyzes documents and generates structured reports"],
       },
       {
-        id: 2, emoji: "📐", title: "Fill the Math Gap (Selectively)", when: "After Phase 4–5, if curious",
+        id: 2, icon: BookMarked, title: "Fill the Math Gap (Selectively)", when: "After Phase 4–5, if curious",
         color: "from-purple-500 to-violet-600",
         desc: "You don't need a PhD, but some targeted math will help you read papers and understand model behavior more deeply.",
         actions: [
@@ -768,7 +806,7 @@
         examples: ["'Mathematics for Machine Learning' (free PDF, Cambridge)", "3Blue1Brown Essence of Linear Algebra (YouTube, free)"],
       },
       {
-        id: 3, emoji: "🔬", title: "Start Reading Papers", when: "After Phase 5",
+        id: 3, icon: FlaskConical, title: "Start Reading Papers", when: "After Phase 5",
         color: "from-rose-500 to-pink-600",
         desc: "AI moves at paper speed. Even skimming 2–3 papers a month will put you ahead of 90% of practitioners.",
         actions: [
@@ -781,20 +819,20 @@
         examples: [],
       },
       {
-        id: 4, emoji: "🎯", title: "Pick a Specialization", when: "After completing the roadmap",
+        id: 4, icon: Target, title: "Pick a Specialization", when: "After completing the roadmap",
         color: "from-orange-500 to-amber-600",
         desc: "At this point you're a generalist AI engineer. Real depth — and real opportunity — comes from going deep in one area.",
         specializations: [
-          { name: "AI Application Builder", icon: "🛠️", desc: "Go deep on LangChain/LangGraph, evals, production, observability. Build AI products.", fit: "Best fit for your goals" },
+          { name: "AI Application Builder", icon: Wrench, desc: "Go deep on LangChain/LangGraph, evals, production, observability. Build AI products.", fit: "Best fit for your goals" },
           { name: "RAG Specialist", icon: "📚", desc: "Advanced chunking, hybrid search, knowledge graphs, multi-hop RAG.", fit: "High demand in enterprises" },
           { name: "Agent Systems", icon: "🤖", desc: "Multi-agent coordination, planning, MCP integrations, autonomous workflows.", fit: "Fastest growing area" },
           { name: "Fine-Tuning / Alignment", icon: "⚙️", desc: "SFT, RLHF, DPO, preference optimization, model behavior.", fit: "More ML depth needed" },
-          { name: "Multimodal AI", icon: "🎨", desc: "Image/video generation, vision-language models, diffusion systems.", fit: "Creative + technical" },
+          { name: "Multimodal AI", icon: Palette, desc: "Image/video generation, vision-language models, diffusion systems.", fit: "Creative + technical" },
           { name: "AI Infra / MLOps", icon: "🏗️", desc: "Serving, inference optimization, monitoring, scaling AI in production.", fit: "Strong eng background helps" },
         ],
       },
       {
-        id: 5, emoji: "🌐", title: "Engage with the AI Community", when: "Throughout the journey",
+        id: 5, icon: Globe, title: "Engage with the AI Community", when: "Throughout the journey",
         color: "from-teal-500 to-cyan-600",
         desc: "AI moves too fast to learn alone. Community keeps you current, connected, and motivated.",
         actions: [
@@ -807,7 +845,7 @@
         examples: [],
       },
       {
-        id: 6, emoji: "🔄", title: "Keep a 'Learning Radar'", when: "Ongoing forever",
+        id: 6, icon: RotateCw, title: "Keep a 'Learning Radar'", when: "Ongoing forever",
         color: "from-green-500 to-emerald-600",
         desc: "AI evolves every 3–6 months. The goal isn't to learn everything — it's to know what's changing and when to dive in.",
         actions: [
@@ -835,7 +873,7 @@
         <div className="min-h-screen text-gray-100 p-4 font-sans">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-8">
-              <h1 className="text-2xl font-bold mb-1">🧠 After the Roadmap</h1>
+              <h1 className="text-2xl font-bold mb-1"><Brain size={20} className="inline mr-2 align-middle"/>After the Roadmap</h1>
               <p className="text-gray-400 text-sm">Honest assessment of where you'll stand — and where to go next</p>
             </div>
 
@@ -892,11 +930,11 @@
             <div className="grid grid-cols-1 gap-4 mb-6">
               {honest.map((h, i) => (
                 <div key={i} className="bg-gray-900 border border-gray-700 rounded-xl p-4">
-                  <p className={`text-xs font-semibold uppercase tracking-wider mb-3 ${h.color}`}>{h.icon} {h.title}</p>
+                  <p className={`text-xs font-semibold uppercase tracking-wider mb-3 ${h.color}`}>{React.createElement(h.icon, {size:13, className:"inline mr-1.5 align-middle"})}{h.title}</p>
                   <div className="space-y-1.5">
                     {h.items.map((item, j) => (
                       <div key={j} className="flex gap-2 text-sm">
-                        <span className={`flex-shrink-0 ${h.color}`}>{h.icon === "✅" ? "✓" : "✗"}</span>
+                        <span className={`flex-shrink-0 ${h.color}`}>{h.icon === Check ? <Check size={13}/> : <X size={13}/>}</span>
                         <span className="text-gray-300 text-xs">{item}</span>
                       </div>
                     ))}
@@ -905,19 +943,19 @@
               ))}
             </div>
 
-            <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">🚀 What's Next</p>
+            <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3"><Rocket size={12} className="inline mr-1.5 align-middle"/>What's Next</p>
             <div className="space-y-3 mb-8">
               {nextSteps.map((s) => (
                 <div key={s.id}
                   className={`rounded-xl border cursor-pointer transition-all ${openStep === s.id ? "border-gray-500 bg-gray-900" : "border-gray-800 bg-gray-900 hover:border-gray-600"}`}
                   onClick={() => setOpenStep(openStep === s.id ? null : s.id)}>
                   <div className="flex items-center gap-3 p-4">
-                    <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${s.color} flex items-center justify-center text-base flex-shrink-0`}>{s.emoji}</div>
+                    <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${s.color} flex items-center justify-center text-base flex-shrink-0`}>{React.createElement(s.icon, {size:20, className:"text-white"})}</div>
                     <div className="flex-1">
                       <p className="font-semibold text-sm">{s.title}</p>
                       <p className="text-gray-400 text-xs mt-0.5">{s.when}</p>
                     </div>
-                    <span className="text-gray-400">{openStep === s.id ? "▲" : "▼"}</span>
+                    <span className="text-gray-400">{openStep === s.id ? <ChevronUp size={14}/> : <ChevronDown size={14}/>}</span>
                   </div>
                   {openStep === s.id && (
                     <div className="border-t border-gray-800 p-4 space-y-3">
@@ -928,7 +966,7 @@
                           <div className="space-y-1.5">
                             {s.actions.map((a, i) => (
                               <div key={i} className="flex gap-2">
-                                <span className="text-gray-400 flex-shrink-0">→</span>
+                                <span className="text-gray-400 flex-shrink-0"><ArrowRight size={13} className="flex-shrink-0"/></span>
                                 <span className="text-xs text-gray-300">{a}</span>
                               </div>
                             ))}
@@ -977,9 +1015,9 @@
             </div>
 
             <div className="bg-gray-900 border border-yellow-800 rounded-xl p-4">
-              <p className="text-yellow-400 font-semibold text-sm mb-3">💬 The Honest Reality</p>
+              <p className="text-yellow-400 font-semibold text-sm mb-3"><MessageSquare size={14} className="inline mr-1.5 align-middle"/>The Honest Reality</p>
               <div className="space-y-2 text-sm text-gray-300">
-                <p>After this roadmap, you'll know more about AI than <span className="text-white font-semibold">95% of software developers</span> and more than the majority of people who call themselves "AI engineers" today.</p>
+                <p>After this roadmap, you'll have hands-on experience with every major layer of the AI stack — from <span className="text-white font-semibold">prompting to production</span>.</p>
                 <p className="text-gray-400">But AI is a <span className="text-white">field</span>, not a course. The best practitioners treat it as a continuous practice — building things, reading papers, and re-learning as the landscape shifts every 6 months.</p>
                 <p className="text-gray-400">The gap between a <span className="text-white">65% AI Engineer</span> and a <span className="text-white">90% Researcher</span> isn't really about courses. It's about <span className="text-white">years of building real systems</span> and going deep on one specific problem that matters to you.</p>
                 <p className="mt-2 text-gray-400 text-xs">Your developer instincts are your biggest asset. Most AI courses are taught to people who can't code. You can. That alone puts you 2 years ahead.</p>
@@ -999,7 +1037,7 @@
 
     const techniques = [
       {
-        id: 1, tier: "Foundation", emoji: "🧱", color: "from-blue-600 to-blue-800", border: "border-blue-700",
+        id: 1, tier: "Foundation", icon: Layers, color: "from-blue-600 to-blue-800", border: "border-blue-700",
         title: "Core Prompting Techniques",
         desc: "These are non-negotiable. Master these before anything else. Most people stop here — experts start here.",
         techniques: [
@@ -1011,7 +1049,7 @@
         ]
       },
       {
-        id: 2, tier: "Intermediate", emoji: "⚙️", color: "from-purple-600 to-purple-800", border: "border-purple-700",
+        id: 2, tier: "Intermediate", icon: Settings, color: "from-purple-600 to-purple-800", border: "border-purple-700",
         title: "Power Techniques",
         desc: "Where good prompt engineers separate from great ones. These unlock reliability, depth, and consistency.",
         techniques: [
@@ -1023,7 +1061,7 @@
         ]
       },
       {
-        id: 3, tier: "Advanced", emoji: "🔬", color: "from-orange-600 to-red-700", border: "border-orange-700",
+        id: 3, tier: "Advanced", icon: FlaskConical, color: "from-orange-600 to-red-700", border: "border-orange-700",
         title: "Expert Techniques",
         desc: "What separates prompt engineers who build reliable systems from those who get lucky sometimes.",
         techniques: [
@@ -1038,7 +1076,7 @@
 
     const useCases = [
       {
-        id: "coding", emoji: "💻", title: "Coding & Debugging", color: "from-blue-600 to-cyan-700",
+        id: "coding", icon: Code2, title: "Coding & Debugging", color: "from-blue-600 to-cyan-700",
         tips: [
           { title: "The Debug Template", prompt: "You are a senior [language] engineer debugging a production issue.\n\nCode:\n```\n[paste code]\n```\n\nError:\n```\n[paste error]\n```\n\nContext: [what you expected vs what happened]\n\nThink step by step:\n1. What is this code trying to do?\n2. What does the error indicate?\n3. What are the 3 most likely root causes?\n4. What is the fix for each?\n5. Which fix do you recommend and why?" },
           { title: "Code Review Template", prompt: "Review this [language] code as a senior engineer. Grade each dimension 1–5 and explain:\n- Correctness: Does it do what it intends?\n- Performance: Any O(n²) issues or unnecessary operations?\n- Security: Any vulnerabilities?\n- Readability: Is it self-documenting?\n- Edge cases: What inputs would break this?\n\nThen provide a corrected version with comments explaining each change.\n\n```\n[paste code]\n```" },
@@ -1046,7 +1084,7 @@
         ]
       },
       {
-        id: "writing", emoji: "✍️", title: "Writing & Content", color: "from-purple-600 to-violet-700",
+        id: "writing", icon: PenLine, title: "Writing & Content", color: "from-purple-600 to-violet-700",
         tips: [
           { title: "Tone Calibration", prompt: "Rewrite the following in my voice. My writing style:\n- Direct and confident, never hedging\n- Short sentences. No fluff.\n- Technical but accessible\n- I use dry humor occasionally\n- I never use: 'leverage', 'synergy', 'delve', 'it's worth noting'\n\nOriginal:\n[paste text]\n\nRewrite it maintaining my style. Don't change the meaning." },
           { title: "Content Reviewer", prompt: "Review this [blog post/email/doc] as a critical editor.\n\nEvaluate:\n1. Opening — does it hook immediately or does it warm up too slowly?\n2. Clarity — any sentences that require re-reading?\n3. Flow — where does the reader's momentum break?\n4. Fluff — which sentences add no value?\n5. Ending — does it close strongly or fade out?\n\nProvide: (a) your overall verdict, (b) 3 specific changes that would most improve it, (c) a rewritten opening if the current one is weak." },
@@ -1054,7 +1092,7 @@
         ]
       },
       {
-        id: "research", emoji: "🔍", title: "Research & Summarizing", color: "from-green-600 to-teal-700",
+        id: "research", icon: Search, title: "Research & Summarizing", color: "from-green-600 to-teal-700",
         tips: [
           { title: "The Socratic Researcher", prompt: "I want to deeply understand [topic]. Don't give me an overview.\n\nInstead:\n1. What is the single most important thing to understand about this topic?\n2. What is the most common misconception?\n3. What do experts disagree about?\n4. What question should I be asking that I'm not asking?\n5. What would change my mind about the conventional view?\n\nThen ask me 3 questions to understand my specific context before going deeper." },
           { title: "Second-Order Thinking", prompt: "I'm considering [decision/action].\n\nMap out:\n1. First-order effects (immediate, obvious consequences)\n2. Second-order effects (what happens as a result of the first-order effects?)\n3. Third-order effects (longer term ripple effects)\n4. What assumptions am I making that could be wrong?\n5. What would make this decision clearly wrong in hindsight?" },
@@ -1062,7 +1100,7 @@
         ]
       },
       {
-        id: "automation", emoji: "⚙️", title: "Work Automation", color: "from-orange-600 to-amber-700",
+        id: "automation", icon: Settings, title: "Work Automation", color: "from-orange-600 to-amber-700",
         tips: [
           { title: "The Reusable System Prompt", prompt: "Build me a reusable system prompt for an AI assistant that helps with [specific task].\n\nThe assistant should:\n- [behavior 1]\n- [behavior 2]\n- [behavior 3]\n\nAlways output: [format]\nNever: [anti-behaviors]\n\nThe prompt should be robust enough that I can use it every day without modification." },
           { title: "Document Processor", prompt: 'Process the following document and extract structured information.\n\nDocument type: [invoice/contract/email/report]\n\nExtract and return as JSON:\n{\n  "summary": "2-sentence summary",\n  "key_entities": [...],\n  "action_items": [...],\n  "deadlines": [...],\n  "flags": ["anything unusual or requiring attention"]\n}\n\nDocument:\n[paste document]' },
@@ -1126,12 +1164,12 @@ Length: [word count or structure]
         <div className="min-h-screen text-gray-100 p-4 font-sans">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-6">
-              <h1 className="text-2xl font-bold mb-1">⚡ Prompt Engineering Mastery</h1>
+              <h1 className="text-2xl font-bold mb-1"><Zap size={20} className="inline mr-2 align-middle"/>Prompt Engineering Mastery</h1>
               <p className="text-gray-400 text-sm">For Claude + ChatGPT · All use cases · Power user → Expert</p>
             </div>
 
             <div className="flex gap-1 bg-gray-900 rounded-xl p-1 mb-6 border border-gray-800">
-              {[["learn", "🎓 Techniques"], ["templates", "📋 Templates"], ["milestones", "🗓️ Plan"], ["resources", "📚 Resources"]].map(([k, v]) => (
+              {[["learn", "Techniques"], ["templates", "Templates"], ["milestones", "Plan"], ["resources", "📚 Resources"]].map(([k, v]) => (
                 <button key={k} onClick={() => setTab(k)}
                   className={`flex-1 text-xs py-2 rounded-lg transition-colors ${tab === k ? "bg-gray-700 text-white font-semibold" : "text-gray-400 hover:text-gray-300"}`}>
                   {v}
@@ -1142,13 +1180,13 @@ Length: [word count or structure]
             {tab === "learn" && (
               <div className="space-y-4">
                 <div className="bg-gray-900 border border-yellow-800 rounded-xl p-4 mb-4">
-                  <p className="text-yellow-400 font-semibold text-sm mb-1">💡 The Expert's Mental Model</p>
+                  <p className="text-yellow-400 font-semibold text-sm mb-1"><Lightbulb size={14} className="inline mr-1.5 align-middle"/>The Expert's Mental Model</p>
                   <p className="text-gray-300 text-sm">A prompt is a <span className="text-white font-semibold">specification</span>, not a question. The more precisely you specify Role + Context + Task + Format + Constraints, the more reliably you get expert-level output. Every technique below is just a way to add one of these dimensions.</p>
                 </div>
                 {techniques.map(tier => (
                   <div key={tier.id} className="rounded-xl border border-gray-800 bg-gray-900 overflow-hidden">
                     <div className="flex items-center gap-3 p-4 cursor-pointer" onClick={() => setOpenTier(openTier === tier.id ? null : tier.id)}>
-                      <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${tier.color} flex items-center justify-center text-base flex-shrink-0`}>{tier.emoji}</div>
+                      <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${tier.color} flex items-center justify-center text-base flex-shrink-0`}>{React.createElement(tier.icon, {size:20, className:"text-white"})}</div>
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
                           <p className="font-semibold text-sm">{tier.title}</p>
@@ -1156,7 +1194,7 @@ Length: [word count or structure]
                         </div>
                         <p className="text-gray-400 text-xs mt-0.5">{tier.techniques.length} techniques</p>
                       </div>
-                      <span className="text-gray-400">{openTier === tier.id ? "▲" : "▼"}</span>
+                      <span className="text-gray-400">{openTier === tier.id ? <ChevronUp size={14}/> : <ChevronDown size={14}/>}</span>
                     </div>
                     {openTier === tier.id && (
                       <div className="border-t border-gray-800 p-4 space-y-3">
@@ -1178,16 +1216,16 @@ Length: [word count or structure]
                               <div className="p-3 space-y-3 bg-gray-900">
                                 <div className="grid grid-cols-2 gap-2">
                                   <div className="bg-red-950 border border-red-900 rounded-lg p-3">
-                                    <p className="text-xs text-red-400 font-semibold mb-1">❌ Weak Prompt</p>
+                                    <p className="text-xs text-red-400 font-semibold mb-1"><X size={11} className="inline mr-1 align-middle text-red-400"/>Weak Prompt</p>
                                     <p className="text-xs text-gray-300 font-mono whitespace-pre-wrap">{t.bad}</p>
                                   </div>
                                   <div className="bg-green-950 border border-green-900 rounded-lg p-3">
-                                    <p className="text-xs text-green-400 font-semibold mb-1">✅ Strong Prompt</p>
+                                    <p className="text-xs text-green-400 font-semibold mb-1"><Check size={11} className="inline mr-1 align-middle"/>Strong Prompt</p>
                                     <p className="text-xs text-gray-300 font-mono whitespace-pre-wrap">{t.good}</p>
                                   </div>
                                 </div>
                                 <div className="bg-yellow-950 border border-yellow-900 rounded-lg p-3">
-                                  <p className="text-xs text-yellow-400 font-semibold mb-1">💡 Key Insight</p>
+                                  <p className="text-xs text-yellow-400 font-semibold mb-1"><Lightbulb size={11} className="inline mr-1 align-middle"/>Key Insight</p>
                                   <p className="text-xs text-gray-300">{t.insight}</p>
                                 </div>
                               </div>
@@ -1207,9 +1245,9 @@ Length: [word count or structure]
                 {useCases.map(uc => (
                   <div key={uc.id} className="rounded-xl border border-gray-800 bg-gray-900 overflow-hidden">
                     <div className="flex items-center gap-3 p-4 cursor-pointer" onClick={() => setOpenUC(openUC === uc.id ? null : uc.id)}>
-                      <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${uc.color} flex items-center justify-center text-base flex-shrink-0`}>{uc.emoji}</div>
+                      <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${uc.color} flex items-center justify-center text-base flex-shrink-0`}>{React.createElement(uc.icon, {size:20, className:"text-white"})}</div>
                       <p className="font-semibold text-sm flex-1">{uc.title}</p>
-                      <span className="text-gray-400">{openUC === uc.id ? "▲" : "▼"}</span>
+                      <span className="text-gray-400">{openUC === uc.id ? <ChevronUp size={14}/> : <ChevronDown size={14}/>}</span>
                     </div>
                     {openUC === uc.id && (
                       <div className="border-t border-gray-800 p-4 space-y-3">
@@ -1225,7 +1263,7 @@ Length: [word count or structure]
                                 <div className="bg-gray-800 rounded-lg p-3 font-mono text-xs text-gray-300 whitespace-pre-wrap mb-2">{tip.prompt}</div>
                                 <button onClick={() => copy(tip.prompt, `${uc.id}-${i}`)}
                                   className="text-xs bg-blue-700 hover:bg-blue-600 text-white px-3 py-1.5 rounded-lg transition-colors">
-                                  {copied === `${uc.id}-${i}` ? "✓ Copied!" : "Copy Template"}
+                                  {copied === `${uc.id}-${i}` ? "Copied!" : "Copy Template"}
                                 </button>
                               </div>
                             )}
@@ -1236,11 +1274,11 @@ Length: [word count or structure]
                   </div>
                 ))}
                 <div className="bg-gray-900 border border-gray-700 rounded-xl p-4">
-                  <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">🔑 The Universal Prompt Formula</p>
+                  <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2"><Sparkles size={12} className="inline mr-1.5 align-middle"/>The Universal Prompt Formula</p>
                   <div className="bg-gray-800 rounded-lg p-3 font-mono text-xs text-gray-200 whitespace-pre-wrap mb-2">{universalTemplate}</div>
                   <button onClick={() => copy(universalTemplate, "universal")}
                     className="text-xs bg-blue-700 hover:bg-blue-600 text-white px-3 py-1.5 rounded-lg transition-colors">
-                    {copied === "universal" ? "✓ Copied!" : "Copy Universal Template"}
+                    {copied === "universal" ? "Copied!" : "Copy Universal Template"}
                   </button>
                 </div>
               </div>
@@ -1249,7 +1287,7 @@ Length: [word count or structure]
             {tab === "milestones" && (
               <div className="space-y-4">
                 <div className="bg-gray-900 border border-gray-700 rounded-xl p-4 mb-2">
-                  <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">⏱ Time to Expert</p>
+                  <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1"><Zap size={12} className="inline mr-1.5 align-middle"/>Time to Expert</p>
                   <p className="text-gray-300 text-sm">At your current level (daily AI user, software dev), expect <span className="text-white font-semibold">6–8 weeks</span> of deliberate practice to reach expert level. The key word is <span className="text-white font-semibold">deliberate</span> — random usage doesn't build expertise. Intentional practice does.</p>
                 </div>
                 {promptMilestones.map((m, i) => (
@@ -1264,7 +1302,7 @@ Length: [word count or structure]
                     <div className="space-y-1.5">
                       {m.tasks.map((t, j) => (
                         <div key={j} className="flex gap-2">
-                          <span className="text-gray-400 flex-shrink-0 mt-0.5">→</span>
+                          <span className="text-gray-400 flex-shrink-0 mt-0.5"><ArrowRight size={13} className="flex-shrink-0"/></span>
                           <p className="text-xs text-gray-300">{t}</p>
                         </div>
                       ))}
@@ -1272,7 +1310,7 @@ Length: [word count or structure]
                   </div>
                 ))}
                 <div className="bg-gray-900 border border-green-800 rounded-xl p-4">
-                  <p className="text-green-400 font-semibold text-sm mb-2">🏆 How You Know You're Expert Level</p>
+                  <p className="text-green-400 font-semibold text-sm mb-2"><Trophy size={14} className="inline mr-1.5 align-middle"/>How You Know You're Expert Level</p>
                   <div className="space-y-1.5">
                     {[
                       "You instinctively know which technique to apply for any task",
@@ -1283,7 +1321,7 @@ Length: [word count or structure]
                       "You test and version your prompts like code",
                     ].map((s, i) => (
                       <div key={i} className="flex gap-2">
-                        <span className="text-green-400 flex-shrink-0">✓</span>
+                        <span className="text-green-400 flex-shrink-0"><Check size={13}/></span>
                         <p className="text-xs text-gray-300">{s}</p>
                       </div>
                     ))}
@@ -1297,7 +1335,7 @@ Length: [word count or structure]
                 {["Free", "Book", "Tool", "Practice"].map(type => (
                   <div key={type}>
                     <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
-                      {type === "Free" ? "🎓 Free Courses & Guides" : type === "Book" ? "📖 Books" : type === "Tool" ? "🛠 Tools" : "💬 Community"}
+                      {type === "Free" ? <><GraduationCap size={12} className="inline mr-1"/>Free Courses & Guides</> : type === "Book" ? <><BookOpen size={12} className="inline mr-1"/>Books</> : type === "Tool" ? <><Wrench size={12} className="inline mr-1"/>Tools</> : <><MessageSquare size={12} className="inline mr-1"/>Community</>}
                     </p>
                     <div className="space-y-2">
                       {promptResources.filter(r => r.type === type).map((r, i) => (
@@ -1320,118 +1358,268 @@ Length: [word count or structure]
     }
 
     // ═══════════════════════════════════════════════════════════
-    // PREP PLAN COMPONENT  (prep_plan.md → rendered via marked.js)
+    // PREP PLAN COMPONENT
     // ═══════════════════════════════════════════════════════════
-    const prepPlanMd = `# 🧠 ByteByteAI – Free 6-Week Prep Plan
-> Match the course pace using only free resources
+    const prepWeeks = [
+      {
+        week: 1, title: "How LLMs Actually Work",
+        phase: "Phase 1 — Foundations", phaseColor: "text-green-400 bg-green-500/10 border-green-500/20",
+        icon: Brain, color: "from-green-500 to-emerald-600",
+        goal: "Establish conceptual foundations — not implementation depth. By the end of this week you should be able to explain what an LLM is and how it generates text to a non-technical colleague.",
+        resources: [
+          { label: "3Blue1Brown – Neural Networks playlist", url: "https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi", time: "~1.5 hrs", type: "video" },
+          { label: "Andrej Karpathy – Intro to LLMs", url: "https://www.youtube.com/watch?v=zjkBMFhNj_g", time: "1 hr", type: "video" },
+          { label: "The Illustrated Transformer – Jay Alammar", url: "https://jalammar.github.io/illustrated-transformer/", time: "30 min", type: "article" },
+        ],
+        project: "Explore 3 pre-built AI demos on Hugging Face Spaces — text generation, sentiment analysis, image captioning.",
+      },
+      {
+        week: 2, title: "Set Up Your AI Environment",
+        phase: "Phase 2 — LLM Setup", phaseColor: "text-slate-400 bg-slate-500/10 border-slate-500/20",
+        icon: Settings, color: "from-slate-500 to-gray-600",
+        goal: "Move from theory to practice. The objective is to have at least one LLM running and callable from code — both locally and via a cloud API.",
+        resources: [
+          { label: "Ollama – run a 7B model locally in 10 minutes", url: "https://ollama.com", time: "setup", type: "tool" },
+          { label: "Open Source Models with Hugging Face (DeepLearning.AI)", url: "https://www.deeplearning.ai/short-courses/open-source-models-hugging-face/", time: "1.5 hrs", type: "course" },
+          { label: "Anthropic API Quickstart", url: "https://docs.anthropic.com/en/docs/quickstart", time: "reference", type: "article" },
+        ],
+        project: "Run Llama 3 locally via Ollama and call the same prompt against a cloud API. Compare speed, quality, and cost.",
+      },
+      {
+        week: 3, title: "Prompt Engineering",
+        phase: "Phase 3 — Prompting & APIs", phaseColor: "text-blue-400 bg-blue-500/10 border-blue-500/20",
+        icon: Zap, color: "from-blue-500 to-indigo-600",
+        goal: "Prompt engineering is where most developers can add immediate value without deep ML knowledge. This week covers the core patterns used in production systems.",
+        resources: [
+          { label: "Prompt Engineering for Devs (DeepLearning.AI)", url: "https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/", time: "1.5 hrs", type: "course" },
+          { label: "Anthropic Prompt Engineering Docs", url: "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview", time: "reference", type: "article" },
+          { label: "Building Systems with LLM APIs (DeepLearning.AI)", url: "https://www.deeplearning.ai/short-courses/building-systems-with-chatgpt/", time: "1.5 hrs", type: "course" },
+        ],
+        project: "Build a simple CLI tool powered by an LLM API — a code reviewer, doc summarizer, or Q&A bot.",
+      },
+      {
+        week: 4, title: "RAG — Making AI Know Your Data",
+        phase: "Phase 4 — RAG & Data", phaseColor: "text-purple-400 bg-purple-500/10 border-purple-500/20",
+        icon: BookOpen, color: "from-purple-500 to-violet-600",
+        goal: "Retrieval-Augmented Generation (RAG) is how production AI systems connect to private data, documentation, and domain knowledge. It is the most widely deployed pattern in enterprise AI applications.",
+        resources: [
+          { label: "LangChain: Chat with Your Data (DeepLearning.AI)", url: "https://www.deeplearning.ai/short-courses/langchain-chat-with-your-data/", time: "1.5 hrs", type: "course" },
+          { label: "Building & Evaluating Advanced RAG (DeepLearning.AI)", url: "https://www.deeplearning.ai/short-courses/building-evaluating-advanced-rag/", time: "1.5 hrs", type: "course" },
+          { label: "Hugging Face NLP Course – Ch. 1–4", url: "https://huggingface.co/learn/nlp-course/chapter1/1", time: "self-paced", type: "course" },
+        ],
+        project: "Build a chatbot that answers questions from a PDF you care about — a technical doc, book, or internal guide.",
+      },
+      {
+        week: 5, title: "Agentic AI & Tool Use",
+        phase: "Phase 5 — Agentic AI", phaseColor: "text-orange-400 bg-orange-500/10 border-orange-500/20",
+        icon: Bot, color: "from-orange-500 to-amber-600",
+        goal: "Agentic systems go beyond question-answering — they plan, invoke tools, and execute multi-step workflows with minimal human intervention. This represents the current frontier of practical AI development.",
+        resources: [
+          { label: "AI Agents in LangGraph (DeepLearning.AI)", url: "https://www.deeplearning.ai/short-courses/ai-agents-in-langgraph/", time: "2 hrs", type: "course" },
+          { label: "Functions, Tools and Agents with LangChain (DeepLearning.AI)", url: "https://www.deeplearning.ai/short-courses/functions-tools-agents-langchain/", time: "2 hrs", type: "course" },
+          { label: "Anthropic MCP Documentation", url: "https://docs.anthropic.com/en/docs/agents-and-tools/mcp", time: "reference", type: "article" },
+        ],
+        project: "Build a simple ReACT agent that can search the web and write a summary report.",
+      },
+      {
+        week: 6, title: "Fine-Tuning & Multimodal AI",
+        phase: "Phases 6–7 — Training & Beyond", phaseColor: "text-rose-400 bg-rose-500/10 border-rose-500/20",
+        icon: Rocket, color: "from-rose-500 to-pink-600",
+        goal: "A survey of the deeper end of the stack — how models are trained, adapted, and extended to handle images, audio, and video. The objective this week is informed awareness, not implementation mastery.",
+        resources: [
+          { label: "Finetuning Large Language Models (DeepLearning.AI)", url: "https://www.deeplearning.ai/short-courses/finetuning-large-language-models/", time: "1 hr", type: "course" },
+          { label: "Diffusion Models Course (Hugging Face)", url: "https://huggingface.co/learn/diffusion-course/unit0/1", time: "self-paced", type: "course" },
+          { label: "Andrej Karpathy – Let's build GPT from scratch", url: "https://www.youtube.com/watch?v=kCc8FmEb1nY", time: "2 hrs", type: "video" },
+        ],
+        project: "Fine-tune a small model on Google Colab using the DeepLearning.AI notebook, or run Stable Diffusion in a Hugging Face Space.",
+      },
+    ];
 
----
+    const prepTools = [
+      { name: "Google Colab", desc: "Run Python/AI code in browser, free GPU", url: "https://colab.research.google.com" },
+      { name: "Ollama", desc: "Run LLMs locally for free", url: "https://ollama.com" },
+      { name: "Hugging Face", desc: "Models, datasets, free Spaces", url: "https://huggingface.co" },
+      { name: "LangChain", desc: "Build RAG & agent apps", url: "https://python.langchain.com" },
+      { name: "Claude.ai", desc: "Prompt engineering practice", url: "https://claude.ai" },
+      { name: "ChatGPT", desc: "Prompt engineering practice", url: "https://chat.openai.com" },
+    ];
 
-## ✅ Pre-Course (Do This First)
-**Goal:** Get your foundations solid before Week 1
-
-- **Python basics** → [freeCodeCamp Python for Beginners (YouTube)](https://www.youtube.com/watch?v=rfscVS0vtbw) — 4.5 hrs
-- **NumPy + basics of ML** → [Kaggle's free Intro to ML course](https://www.kaggle.com/learn/intro-to-machine-learning) — ~3 hrs
-- **Setup:** Install Python, VS Code, and a free Google Colab account (for running code)
-
----
-
-## 📅 Week 1 — LLM Foundations & Pre-Training
-**Course topic:** Data collection, tokenization, Transformer architecture, GPT/Llama family
-
-### Free Resources:
-- 🎥 [3Blue1Brown – Neural Networks playlist](https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi) (4 videos, ~1.5 hrs) — best visual intro to neural nets
-- 🎥 [Andrej Karpathy – "Let's build GPT from scratch"](https://www.youtube.com/watch?v=kCc8FmEb1nY) (~2 hrs) — hands-on transformer building
-- 📖 [The Illustrated Transformer – Jay Alammar](https://jalammar.github.io/illustrated-transformer/) — visual deep dive into attention
-
-**Practice:** Run Karpathy's code in Google Colab
-
----
-
-## 📅 Week 2 — Prompt Engineering & Fine-Tuning (RAG Prep)
-**Course topic:** SFT, RLHF, LoRA, few-shot/zero-shot, chain-of-thought prompting
-
-### Free Resources:
-- 🎓 [DeepLearning.AI – ChatGPT Prompt Engineering for Devs](https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/) (~1.5 hrs, free)
-- 🎓 [DeepLearning.AI – Finetuning Large Language Models](https://www.deeplearning.ai/short-courses/finetuning-large-language-models/) (~1 hr, free)
-- 📖 [Anthropic Prompt Engineering Docs](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview) — reference guide
-
-**Practice:** Try zero-shot vs few-shot prompts on Claude.ai or ChatGPT
-
----
-
-## 📅 Week 3 — RAG Systems & Vector Search
-**Course topic:** Document parsing, chunking, vector indexing, embeddings, RAG evaluation
-
-### Free Resources:
-- 🎓 [DeepLearning.AI – Building Systems with the ChatGPT API](https://www.deeplearning.ai/short-courses/building-systems-with-chatgpt/) (~1.5 hrs, free)
-- 🎓 [DeepLearning.AI – LangChain: Chat with Your Data](https://www.deeplearning.ai/short-courses/langchain-chat-with-your-data/) (~1.5 hrs, free)
-- 📖 [Hugging Face – NLP Course (Ch. 1–4)](https://huggingface.co/learn/nlp-course/chapter1/1) — covers tokenizers & embeddings
-
-**Practice:** Build a simple RAG using LangChain + a free PDF in Colab
-
----
-
-## 📅 Week 4 — AI Agents & Tool Calling
-**Course topic:** Workflows, ReACT, tool calling, MCP, multi-agent systems
-
-### Free Resources:
-- 🎓 [DeepLearning.AI – AI Agents in LangGraph](https://www.deeplearning.ai/short-courses/ai-agents-in-langgraph/) (~2 hrs, free)
-- 🎓 [DeepLearning.AI – Functions, Tools and Agents with LangChain](https://www.deeplearning.ai/short-courses/functions-tools-agents-langchain/) (~2 hrs, free)
-- 🎥 [Anthropic MCP Explained (YouTube)](https://www.youtube.com/results?search_query=model+context+protocol+MCP+explained) — search for recent MCP explainer videos
-
-**Practice:** Build a simple ReACT agent that can search the web
-
----
-
-## 📅 Week 5 — Reasoning Models & Inference-Time Techniques
-**Course topic:** Chain-of-thought, Tree of Thoughts, DeepSeek-R1, OpenAI "o" family, RL with verifier
-
-### Free Resources:
-- 📄 [Chain-of-Thought Prompting Paper (Google, free)](https://arxiv.org/abs/2201.11903) — original CoT paper, very readable
-- 📄 [DeepSeek-R1 Technical Report (free)](https://arxiv.org/abs/2501.12948) — skim the intro & results sections
-- 🎥 [Andrej Karpathy – "Deep Dive into LLM Reasoning" (YouTube)](https://www.youtube.com/results?search_query=karpathy+reasoning+LLM) — look for his 2025 talks
-- 🎓 [DeepLearning.AI – Reasoning with o1](https://www.deeplearning.ai/short-courses/reasoning-with-o1/) (~1 hr, free)
-
-**Practice:** Compare standard prompting vs chain-of-thought on a logic problem
-
----
-
-## 📅 Week 6 — Multimodal & Image/Video Generation
-**Course topic:** VAE, GANs, Diffusion models, U-Net, DiT, text-to-image, text-to-video
-
-### Free Resources:
-- 🎓 [Hugging Face – Diffusion Models Course](https://huggingface.co/learn/diffusion-course/unit0/1) (free, hands-on)
-- 🎓 [DeepLearning.AI – How Diffusion Models Work](https://www.deeplearning.ai/short-courses/how-diffusion-models-work/) (~1.5 hrs, free)
-- 🎥 [Computerphile – How Stable Diffusion Works (YouTube)](https://www.youtube.com/watch?v=1CIpzeNxIhU) — great visual explainer
-
-**Practice:** Run Stable Diffusion in a free Hugging Face Space
-
----
-
-## 🛠️ Tools to Set Up (All Free)
-| Tool | Purpose | Link |
-|------|----------|-------|
-| Google Colab | Run Python/AI code free in browser | colab.research.google.com |
-| Hugging Face | Download models, run Spaces | huggingface.co |
-| LangChain | Build RAG & agent apps | python.langchain.com |
-| Ollama | Run LLMs locally for free | ollama.com |
-| Claude.ai / ChatGPT | Prompt engineering practice | claude.ai |
-
----
-
-## 📌 Tips
-- **Don't try to master everything** — the goal is familiarity, not expertise before class
-- **Prioritize the DeepLearning.AI short courses** — they're free, short, and match the syllabus best
-- **Use Google Colab** for all coding — no setup needed, runs in browser
-- **Skim papers** — just read abstract, intro, and conclusion; skip the math at first
-`;
+    const resourceTypeStyle = {
+      video:   { label: "Video",   cls: "bg-red-500/10 text-red-400 border border-red-500/20" },
+      course:  { label: "Course",  cls: "bg-blue-500/10 text-blue-400 border border-blue-500/20" },
+      article: { label: "Read",    cls: "bg-gray-500/10 text-gray-400 border border-gray-500/20" },
+      tool:    { label: "Tool",    cls: "bg-green-500/10 text-green-400 border border-green-500/20" },
+    };
 
     function PrepPlan() {
+      const [open, setOpen] = useState(null);
+
       return (
-        <div className="min-h-screen p-4">
-          <div className="max-w-3xl mx-auto md-content"
-            dangerouslySetInnerHTML={{ __html: marked.parse(prepPlanMd) }} />
+        <div className="min-h-screen text-gray-100 p-4 font-sans">
+          <div className="max-w-3xl mx-auto">
+
+            {/* Header */}
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-3 py-1 mb-4">
+                <Calendar size={12} className="text-blue-400"/>
+                <span className="text-xs text-blue-400 font-medium">6-Week Fast Track</span>
+              </div>
+              <h1 className="text-3xl md:text-4xl font-bold mb-3">AI Engineering Fast Track</h1>
+              <p className="text-gray-400 text-sm max-w-lg mx-auto">
+                A structured 6-week overview of the full AI engineering stack — free resources only.{" "}
+                Inspired by the{" "}
+                <a href="https://bytebyteai.com" target="_blank" rel="noopener noreferrer"
+                  className="text-blue-400 hover:text-blue-300 transition-colors">ByteByteAI course</a>.
+              </p>
+            </div>
+
+            {/* Goal callout */}
+            <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 mb-8">
+              <p className="text-xs font-semibold text-blue-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                <Target size={12}/> Goal
+              </p>
+              <p className="text-gray-200 text-sm leading-relaxed">
+                This plan is <strong className="text-white">not a replacement</strong> for the ByteByteAI course — it's preparation for it.
+                Complete this first and you will either match the course pace from day one, or progress through it
+                significantly faster because the core concepts will already be familiar.
+              </p>
+            </div>
+
+            {/* Before you start — treated as week 0 in the timeline */}
+            <div className="relative mb-2">
+              <div className="flex gap-4">
+                <div className="flex flex-col items-center flex-shrink-0 z-10">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-gray-600 to-gray-700 flex items-center justify-center shadow-lg ring-2 ring-gray-900">
+                    <Check size={20} className="text-white"/>
+                  </div>
+                </div>
+                <div className="flex-1 min-w-0 pb-6">
+                  <div className="bg-gray-900/60 border border-white/8 rounded-xl p-4">
+                    <p className="font-semibold text-sm text-white mb-3">Before You Start</p>
+                    <div className="space-y-2">
+                      {[
+                        ["Google Colab account", "No local setup needed — runs Python in your browser for free", "https://colab.research.google.com"],
+                        ["Claude.ai or ChatGPT account", "Free tier is enough for prompt practice", "https://claude.ai"],
+                        ["4–6 hours per week", "Enough to complete the resources and mini-project each week", null],
+                      ].map(([title, desc, url], i) => (
+                        <div key={i} className="flex gap-3 items-start">
+                          <Check size={13} className="text-green-400 mt-0.5 flex-shrink-0"/>
+                          <div>
+                            {url
+                              ? <a href={url} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors">{title}</a>
+                              : <span className="text-sm font-medium text-white">{title}</span>
+                            }
+                            <p className="text-xs text-gray-400 mt-0.5">{desc}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Timeline */}
+            <div className="relative mb-10">
+              {/* Vertical line */}
+              <div className="absolute left-6 top-6 bottom-6 w-0.5 bg-gradient-to-b from-green-500 via-blue-500 via-purple-500 to-rose-500 opacity-30" />
+              <div className="space-y-6">
+                {prepWeeks.map((w) => (
+                  <div key={w.week} className="relative flex gap-4">
+                    {/* Timeline node */}
+                    <div className="flex flex-col items-center flex-shrink-0 z-10">
+                      <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${w.color} flex items-center justify-center shadow-lg ring-2 ring-gray-900`}>
+                        <w.icon size={20} className="text-white"/>
+                      </div>
+                    </div>
+                    {/* Card */}
+                    <div className="flex-1 min-w-0">
+                      <div
+                        className={`rounded-xl border cursor-pointer transition-all duration-200 backdrop-blur-sm ${open === w.week ? "border-blue-500/30 bg-gray-900/80 shadow-[0_0_30px_rgba(59,130,246,0.08)]" : "border-white/8 bg-gray-900/60 hover:border-white/15 hover:bg-gray-900/80"}`}
+                        onClick={() => setOpen(open === w.week ? null : w.week)}>
+
+                        {/* Card header */}
+                        <div className="flex items-center gap-3 p-4">
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-2 flex-wrap">
+                              <span className="font-semibold text-sm">{w.title}</span>
+                              <span className={`text-xs px-2 py-0.5 rounded-full border ${w.phaseColor}`}>{w.phase}</span>
+                            </div>
+                            <p className="text-gray-400 text-xs mt-0.5">Week {w.week} · ~4–6 hrs</p>
+                          </div>
+                          <span className="text-gray-400 flex-shrink-0">{open === w.week ? <ChevronUp size={14}/> : <ChevronDown size={14}/>}</span>
+                        </div>
+
+                        {/* Expanded */}
+                        {open === w.week && (
+                          <div className="border-t border-gray-800 p-4 space-y-4">
+                            <p className="text-gray-300 text-sm">{w.goal}</p>
+
+                            {/* Resources */}
+                            <div className="space-y-1.5">
+                              {w.resources.map((r, i) => (
+                                <a key={i} href={r.url} target="_blank" rel="noopener noreferrer"
+                                  className="flex items-center justify-between bg-gray-800 hover:bg-gray-700 rounded-lg px-3 py-2 transition-colors group"
+                                  onClick={e => e.stopPropagation()}>
+                                  <span className="text-sm text-blue-400 group-hover:text-blue-300 flex items-center gap-1.5">
+                                    <ExternalLink size={12} className="flex-shrink-0 opacity-60"/>{r.label}
+                                  </span>
+                                  <div className="flex items-center gap-2 flex-shrink-0 ml-3">
+                                    <span className="text-xs text-gray-400">{r.time}</span>
+                                    <span className={`text-xs px-1.5 py-0.5 rounded ${resourceTypeStyle[r.type].cls}`}>{resourceTypeStyle[r.type].label}</span>
+                                  </div>
+                                </a>
+                              ))}
+                            </div>
+
+                            {/* Project */}
+                            <div className="bg-gray-800 rounded-lg p-3">
+                              <p className="text-xs font-semibold text-yellow-400 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                                <Wrench size={11}/> Week {w.week} Project
+                              </p>
+                              <p className="text-sm text-gray-200">{w.project}</p>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Tools */}
+            <div className="mb-8">
+              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                <Wrench size={12}/> Essential Free Tools
+              </p>
+              <div className="grid grid-cols-2 gap-2">
+                {prepTools.map((t, i) => (
+                  <a key={i} href={t.url} target="_blank" rel="noopener noreferrer"
+                    className="bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-3 transition-colors">
+                    <p className="text-sm font-medium text-blue-400">{t.name}</p>
+                    <p className="text-xs text-gray-400 mt-0.5">{t.desc}</p>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Roadmap callout */}
+            <div className="bg-gray-900 border border-gray-800 rounded-xl p-4">
+              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                <ArrowRight size={12}/> How This Connects to the Roadmap
+              </p>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                This 6-week plan is a <strong className="text-white">deliberate survey</strong> — one structured pass across every major layer of the AI stack.
+                The Roadmap tab then guides you through each phase at the appropriate depth, with curated resources and hands-on projects to build production-level expertise.
+              </p>
+              <p className="text-gray-400 text-xs mt-2">
+                Treat this plan as orientation — a map of the terrain before committing to the full journey.
+              </p>
+            </div>
+
+            <p className="text-center text-gray-400 text-xs mt-6">Click each week to expand · Resources open in a new tab</p>
+          </div>
         </div>
       );
     }
@@ -1445,7 +1633,7 @@ const genaiTabIds = ["overview", "text", "code", "image", "audio", "tools", "roa
 
 const domainData = {
   text: {
-    emoji: "💬", title: "Text & LLMs", color: "from-blue-600 to-indigo-700", border: "border-blue-700",
+    icon: MessageSquare, title: "Text & LLMs", color: "from-blue-600 to-indigo-700", border: "border-blue-700",
     tagline: "The foundation of all GenAI. Everything else builds on these ideas.",
     howItWorks: [
       { step: "1. Tokenization", desc: "Text is broken into tokens (word pieces). 'Unbelievable' → ['Un','believ','able']. The model never sees raw text — only token IDs." },
@@ -1480,7 +1668,7 @@ const domainData = {
     ]
   },
   code: {
-    emoji: "💻", title: "Code Generation", color: "from-green-600 to-teal-700", border: "border-green-700",
+    icon: Code2, title: "Code Generation", color: "from-green-600 to-teal-700", border: "border-green-700",
     tagline: "The most immediately useful GenAI for software developers. Already transforming how code is written.",
     howItWorks: [
       { step: "1. Code Pre-training", desc: "Models trained on massive code corpora (GitHub, Stack Overflow, docs). They learn syntax, patterns, and the relationships between natural language descriptions and code." },
@@ -1518,7 +1706,7 @@ const domainData = {
     ]
   },
   image: {
-    emoji: "🎨", title: "Image & Video Generation", color: "from-purple-600 to-pink-700", border: "border-purple-700",
+    icon: Palette, title: "Image & Video Generation", color: "from-purple-600 to-pink-700", border: "border-purple-700",
     tagline: "From pixels to meaning — how AI learned to paint, and now to direct films.",
     howItWorks: [
       { step: "1. VAE – Compress to Latent Space", desc: "A Variational Autoencoder compresses images into a compact latent representation (much smaller than raw pixels). Generation happens in this compressed space — far more efficient." },
@@ -1552,7 +1740,7 @@ const domainData = {
     ]
   },
   audio: {
-    emoji: "🎵", title: "Audio & Music Generation", color: "from-orange-600 to-red-700", border: "border-orange-700",
+    icon: Music, title: "Audio & Music Generation", color: "from-orange-600 to-red-700", border: "border-orange-700",
     tagline: "The most rapidly evolving GenAI domain — voice cloning, music generation, and real-time speech are all here now.",
     howItWorks: [
       { step: "1. Audio as Spectrogram", desc: "Audio is represented as a spectrogram — a 2D image of frequency vs time. Many audio models are essentially image diffusion models operating on spectrograms." },
@@ -1589,7 +1777,7 @@ const domainData = {
 
 const allTools = [
   {
-    category: "Text & Chat", emoji: "💬",
+    category: "Text & Chat", icon: MessageSquare,
     tools: [
       { name: "Claude.ai", maker: "Anthropic", free: "Free tier", best: "Long docs, analysis, coding, nuanced writing", url: "https://claude.ai" },
       { name: "ChatGPT", maker: "OpenAI", free: "Free tier", best: "General use, image gen (DALL-E), browsing", url: "https://chat.openai.com" },
@@ -1598,7 +1786,7 @@ const allTools = [
     ]
   },
   {
-    category: "Code", emoji: "💻",
+    category: "Code", icon: Code2,
     tools: [
       { name: "Cursor", maker: "Cursor", free: "Free tier", best: "Best AI code editor, codebase-aware", url: "https://cursor.sh" },
       { name: "GitHub Copilot", maker: "GitHub", free: "$10/mo", best: "Inline autocomplete, VS Code native", url: "https://github.com/features/copilot" },
@@ -1607,7 +1795,7 @@ const allTools = [
     ]
   },
   {
-    category: "Image Generation", emoji: "🎨",
+    category: "Image Generation", icon: Palette,
     tools: [
       { name: "Midjourney", maker: "Midjourney", free: "Paid ($10/mo)", best: "Best aesthetic quality, photorealism", url: "https://midjourney.com" },
       { name: "DALL-E 3", maker: "OpenAI", free: "In ChatGPT free", best: "Best prompt adherence, safe", url: "https://openai.com/dall-e-3" },
@@ -1618,7 +1806,7 @@ const allTools = [
     ]
   },
   {
-    category: "Video Generation", emoji: "🎬",
+    category: "Video Generation", icon: Video,
     tools: [
       { name: "Runway Gen-3", maker: "Runway", free: "Free credits", best: "Best quality, professional use", url: "https://runwayml.com" },
       { name: "Kling AI", maker: "Kuaishou", free: "Free tier", best: "Realistic motion, free generous tier", url: "https://klingai.com" },
@@ -1627,7 +1815,7 @@ const allTools = [
     ]
   },
   {
-    category: "Audio & Voice", emoji: "🎵",
+    category: "Audio & Voice", icon: Music,
     tools: [
       { name: "ElevenLabs", maker: "ElevenLabs", free: "Free tier", best: "Best TTS + voice cloning", url: "https://elevenlabs.io" },
       { name: "Suno", maker: "Suno", free: "Free tier", best: "Full song generation with lyrics", url: "https://suno.com" },
@@ -1636,7 +1824,7 @@ const allTools = [
     ]
   },
   {
-    category: "Productivity & Workflow", emoji: "⚡",
+    category: "Productivity & Workflow", icon: Zap,
     tools: [
       { name: "NotebookLM", maker: "Google", free: "Free", best: "Chat with documents, podcast generation", url: "https://notebooklm.google.com" },
       { name: "Notion AI", maker: "Notion", free: "Add-on", best: "AI inside your notes/docs/wiki", url: "https://notion.so/product/ai" },
@@ -1652,10 +1840,10 @@ const genaiRoadmapPhases = [
     color: "from-blue-600 to-indigo-700",
     goal: "Build mental models for how each GenAI domain works. Not hands-on yet — concepts first.",
     tasks: [
-      { domain: "Text", icon: "💬", task: "Watch Karpathy's Intro to LLMs (1hr). Understand: tokens, attention, next-token prediction, temperature." },
-      { domain: "Image", icon: "🎨", task: "Watch Computerphile's Stable Diffusion video (20min). Understand: latent space, diffusion process, text conditioning." },
-      { domain: "Audio", icon: "🎵", task: "Read ElevenLabs blog on how TTS works. Try Whisper for transcription. Understand: spectrograms, codec models." },
-      { domain: "Code", icon: "💻", task: "Install Cursor or Copilot. Use it for a real coding task. Notice what it does well and where it fails." },
+      { domain: "Text", icon: MessageSquare, task: "Watch Karpathy's Intro to LLMs (1hr). Understand: tokens, attention, next-token prediction, temperature." },
+      { domain: "Image", icon: Palette, task: "Watch Computerphile's Stable Diffusion video (20min). Understand: latent space, diffusion process, text conditioning." },
+      { domain: "Audio", icon: Music, task: "Read ElevenLabs blog on how TTS works. Try Whisper for transcription. Understand: spectrograms, codec models." },
+      { domain: "Code", icon: Code2, task: "Install Cursor or Copilot. Use it for a real coding task. Notice what it does well and where it fails." },
     ]
   },
   {
@@ -1663,10 +1851,10 @@ const genaiRoadmapPhases = [
     color: "from-purple-600 to-violet-700",
     goal: "Get practical experience with the best tools in each domain. Build something small in each.",
     tasks: [
-      { domain: "Text", icon: "💬", task: "Build a prompt library for your top 5 use cases. Experiment with system prompts. Compare Claude vs GPT-4 on the same tasks." },
-      { domain: "Image", icon: "🎨", task: "Use Midjourney or DALL-E 3 for 2 weeks daily. Learn CFG scale, negative prompts, style references. Try Flux locally via ComfyUI." },
-      { domain: "Audio", icon: "🎵", task: "Clone your own voice with ElevenLabs. Generate a full song with Suno. Run Whisper locally on a long audio file." },
-      { domain: "Code", icon: "💻", task: "Build a small full-stack feature using only AI assistance. Use Claude Code for a refactoring task. Measure time saved vs unassisted." },
+      { domain: "Text", icon: MessageSquare, task: "Build a prompt library for your top 5 use cases. Experiment with system prompts. Compare Claude vs GPT-4 on the same tasks." },
+      { domain: "Image", icon: Palette, task: "Use Midjourney or DALL-E 3 for 2 weeks daily. Learn CFG scale, negative prompts, style references. Try Flux locally via ComfyUI." },
+      { domain: "Audio", icon: Music, task: "Clone your own voice with ElevenLabs. Generate a full song with Suno. Run Whisper locally on a long audio file." },
+      { domain: "Code", icon: Code2, task: "Build a small full-stack feature using only AI assistance. Use Claude Code for a refactoring task. Measure time saved vs unassisted." },
     ]
   },
   {
@@ -1674,9 +1862,9 @@ const genaiRoadmapPhases = [
     color: "from-orange-600 to-amber-700",
     goal: "Combine domains. The real power of GenAI comes from chaining modalities together.",
     tasks: [
-      { domain: "Text + Code", icon: "💬💻", task: "Build an AI app using LLM APIs. Add structured output parsing. Deploy it." },
-      { domain: "Text + Image", icon: "💬🎨", task: "Build an automated image generation pipeline: text prompt → LLM refines prompt → image model generates → auto-saved." },
-      { domain: "Text + Audio", icon: "💬🎵", task: "Build a document-to-podcast pipeline: PDF → LLM summarizes → ElevenLabs narrates → audio file output." },
+      { domain: "Text + Code", icon: Code2, task: "Build an AI app using LLM APIs. Add structured output parsing. Deploy it." },
+      { domain: "Text + Image", icon: Palette, task: "Build an automated image generation pipeline: text prompt → LLM refines prompt → image model generates → auto-saved." },
+      { domain: "Text + Audio", icon: Music, task: "Build a document-to-podcast pipeline: PDF → LLM summarizes → ElevenLabs narrates → audio file output." },
       { domain: "Full Pipeline", icon: "🔗", task: "Pick one ambitious project that combines 3+ modalities. E.g.: video script generator → voiceover → auto image/video selection." },
     ]
   },
@@ -1685,20 +1873,20 @@ const genaiRoadmapPhases = [
     color: "from-teal-600 to-cyan-700",
     goal: "Generalist foundation → specialize in the domain most relevant to your work and goals.",
     tasks: [
-      { domain: "If Text/LLMs", icon: "💬", task: "Study RAG, fine-tuning (LoRA), and agent systems. Build a production-grade LLM app with evals." },
-      { domain: "If Image/Video", icon: "🎨", task: "Learn ComfyUI workflows, LoRA training, ControlNet. Take HuggingFace Diffusion Course." },
-      { domain: "If Audio", icon: "🎵", task: "Build a voice agent with Vapi or ElevenLabs Conversational AI. Study real-time speech models." },
-      { domain: "If Code", icon: "💻", task: "Build an agentic coding pipeline. Study how Claude Code/Devin work. Contribute to an open source AI coding tool." },
+      { domain: "If Text/LLMs", icon: MessageSquare, task: "Study RAG, fine-tuning (LoRA), and agent systems. Build a production-grade LLM app with evals." },
+      { domain: "If Image/Video", icon: Palette, task: "Learn ComfyUI workflows, LoRA training, ControlNet. Take HuggingFace Diffusion Course." },
+      { domain: "If Audio", icon: Music, task: "Build a voice agent with Vapi or ElevenLabs Conversational AI. Study real-time speech models." },
+      { domain: "If Code", icon: Code2, task: "Build an agentic coding pipeline. Study how Claude Code/Devin work. Contribute to an open source AI coding tool." },
     ]
   },
 ];
 
 const overview = {
   domains: [
-    { emoji: "💬", name: "Text & LLMs", status: "Mature", desc: "Transformers → next token prediction. GPT, Claude, Gemini. Powers everything.", color: "blue" },
-    { emoji: "💻", name: "Code Generation", status: "Mature", desc: "Specialized LLMs trained on code. Copilot, Cursor, Claude Code. Already transforming dev.", color: "green" },
-    { emoji: "🎨", name: "Image & Video", status: "Rapidly evolving", desc: "Diffusion models. DALL-E, Midjourney, Sora. Going from images → films.", color: "purple" },
-    { emoji: "🎵", name: "Audio & Music", status: "Fast growing", desc: "Codec + transformer models. ElevenLabs, Suno, Whisper. Voice is nearly perfect now.", color: "orange" },
+    { icon: MessageSquare, name: "Text & LLMs", status: "Mature", desc: "Transformers → next token prediction. GPT, Claude, Gemini. Powers everything.", color: "blue" },
+    { icon: Code2, name: "Code Generation", status: "Mature", desc: "Specialized LLMs trained on code. Copilot, Cursor, Claude Code. Already transforming dev.", color: "green" },
+    { icon: Palette, name: "Image & Video", status: "Rapidly evolving", desc: "Diffusion models. DALL-E, Midjourney, Sora. Going from images → films.", color: "purple" },
+    { icon: Music, name: "Audio & Music", status: "Fast growing", desc: "Codec + transformer models. ElevenLabs, Suno, Whisper. Voice is nearly perfect now.", color: "orange" },
   ],
   convergence: "All four domains are converging. GPT-4o processes text, image, and audio in one model. Gemini 1.5 is natively multimodal. The future is a single model that sees, hears, speaks, reads, and writes — and the components you learn today are the building blocks of that future.",
 };
@@ -1726,7 +1914,7 @@ const DomainDetail = ({ d }) => {
   return (
     <div className="space-y-4">
       <div className={`bg-gradient-to-r ${d.color} rounded-xl p-4`}>
-        <p className="text-lg font-bold">{d.emoji} {d.title}</p>
+        <p className="text-lg font-bold">{d.title}</p>
         <p className="text-white text-opacity-80 text-sm mt-1">{d.tagline}</p>
       </div>
       <div className="flex gap-1 flex-wrap">
@@ -1799,7 +1987,7 @@ function GenAIGuide() {
 
         {/* Tab bar */}
         <div className="flex gap-1 overflow-x-auto bg-gray-900 rounded-xl p-1 mb-6 border border-gray-800">
-          {[["overview","🗺 Overview"],["text","💬 Text"],["code","💻 Code"],["image","🎨 Image/Video"],["audio","🎵 Audio"],["tools","🛠 All Tools"],["roadmap","🚀 Roadmap"]].map(([k,v]) => (
+          {[["overview","Overview"],["text","Text"],["code","Code"],["image","Image/Video"],["audio","Audio"],["tools","All Tools"],["roadmap","Roadmap"]].map(([k,v]) => (
             <TabBtn key={k} id={k} label={v} active={tab===k} onClick={setTab} />
           ))}
         </div>
@@ -1815,7 +2003,7 @@ function GenAIGuide() {
               {overview.domains.map((d, i) => (
                 <button key={i} onClick={() => setTab(["overview","text","code","image","audio"][i+1])}
                   className="bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-xl p-3 text-left transition-colors">
-                  <p className="text-2xl mb-1">{d.emoji}</p>
+                  
                   <p className="font-semibold text-sm text-white">{d.name}</p>
                   <span className={`text-xs px-2 py-0.5 rounded-full ${d.status === "Mature" ? "bg-green-900 text-green-400" : "bg-yellow-900 text-yellow-400"}`}>{d.status}</span>
                   <p className="text-xs text-gray-400 mt-1">{d.desc}</p>
@@ -1856,7 +2044,7 @@ function GenAIGuide() {
             <p className="text-gray-400 text-xs">Best tools by category — covering free tiers and paid options across all GenAI domains.</p>
             {allTools.map((cat, i) => (
               <div key={i}>
-                <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">{cat.emoji} {cat.category}</p>
+                <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">{React.createElement(cat.icon, {size:14, className:"inline mr-1 align-middle"})} {cat.category}</p>
                 <div className="space-y-2">
                   {cat.tools.map((t, j) => (
                     <a key={j} href={t.url} target="_blank" rel="noopener noreferrer"
@@ -1881,7 +2069,7 @@ function GenAIGuide() {
         {tab === "roadmap" && (
           <div className="space-y-4">
             <div className="bg-gray-900 border border-gray-700 rounded-xl p-4 mb-2">
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">⏱ Timeline</p>
+              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1"><Zap size={12} className="inline mr-1.5 align-middle"/>Timeline</p>
               <p className="text-gray-300 text-sm">At 4–6 hrs/week: <span className="text-white font-semibold">4–5 months</span> to strong generalist across all 4 domains. This roadmap is designed to run <span className="text-white">in parallel with</span> the main AI learning roadmap — not after it.</p>
             </div>
             {genaiRoadmapPhases.map((p, i) => (
@@ -1918,7 +2106,7 @@ function GenAIGuide() {
                   "The real skill isn't knowing individual tools — it's knowing which tool to chain with which for a given outcome",
                   "Tools change every 3–6 months. Learn the underlying concepts; the tools will follow naturally",
                 ].map((s, i) => (
-                  <div key={i} className="flex gap-2"><span className="text-yellow-500 flex-shrink-0">→</span><p className="text-xs text-gray-300">{s}</p></div>
+                  <div key={i} className="flex gap-2"><span className="text-yellow-500 flex-shrink-0"><ArrowRight size={13} className="flex-shrink-0"/></span><p className="text-xs text-gray-300">{s}</p></div>
                 ))}
               </div>
             </div>
@@ -1933,7 +2121,7 @@ function GenAIGuide() {
     // ─── READINESS CHECKER COMPONENT ───
 const readinessPhases = [
   {
-    id: 1, emoji: "🌱", title: "Phase 1 – AI Foundations",
+    id: 1, icon: Sprout, title: "Phase 1 – AI Foundations",
     color: "from-green-600 to-emerald-700", border: "border-green-700",
     duration: "4–6 weeks", nextPhase: "Phase 2 – LLM Setup",
     readinessThreshold: 75,
@@ -1955,7 +2143,7 @@ const readinessPhases = [
     skipRule: "If you already know all 7 green flags — skip Phase 1 entirely.",
   },
   {
-    id: 2, emoji: "⚙️", title: "Phase 2 – LLM Setup & Config",
+    id: 2, icon: Settings, title: "Phase 2 – LLM Setup & Config",
     color: "from-slate-500 to-gray-600", border: "border-slate-600",
     duration: "2–3 weeks", nextPhase: "Phase 3 – Prompt Engineering",
     readinessThreshold: 80,
@@ -1976,7 +2164,7 @@ const readinessPhases = [
     skipRule: "Already calling APIs from code and running local models? Skip to Phase 3.",
   },
   {
-    id: 3, emoji: "🔧", title: "Phase 3 – Prompt Engineering",
+    id: 3, icon: Wrench, title: "Phase 3 – Prompt Engineering",
     color: "from-blue-600 to-indigo-700", border: "border-blue-700",
     duration: "3–4 weeks", nextPhase: "Phase 4 – RAG",
     readinessThreshold: 80,
@@ -1998,7 +2186,7 @@ const readinessPhases = [
     skipRule: "Already an expert prompter with a template library? Skim Phase 3 and move on.",
   },
   {
-    id: 4, emoji: "📚", title: "Phase 4 – RAG Systems",
+    id: 4, icon: BookOpen, title: "Phase 4 – RAG Systems",
     color: "from-purple-600 to-violet-700", border: "border-purple-700",
     duration: "4–5 weeks", nextPhase: "Phase 5 – Agentic AI",
     readinessThreshold: 70,
@@ -2019,7 +2207,7 @@ const readinessPhases = [
     skipRule: "No skip recommended. RAG is foundational for Phases 5 and 6.",
   },
   {
-    id: 5, emoji: "🤖", title: "Phase 5 – Agentic AI",
+    id: 5, icon: Bot, title: "Phase 5 – Agentic AI",
     color: "from-orange-600 to-amber-700", border: "border-orange-700",
     duration: "4–5 weeks", nextPhase: "Phase 6 – Fine-Tuning",
     readinessThreshold: 70,
@@ -2040,7 +2228,7 @@ const readinessPhases = [
     skipRule: "No skip recommended. Agent patterns appear in nearly every advanced AI system.",
   },
   {
-    id: 6, emoji: "🏗️", title: "Phase 6 – Fine-Tuning & Training",
+    id: 6, icon: Building2, title: "Phase 6 – Fine-Tuning & Training",
     color: "from-rose-600 to-pink-700", border: "border-rose-700",
     duration: "6–8 weeks", nextPhase: "Phase 7 – Ship & Specialize",
     readinessThreshold: 65,
@@ -2061,7 +2249,7 @@ const readinessPhases = [
     skipRule: "If your goals are purely app-building and not model internals, you can treat Phase 6 as optional and move to Phase 7 with awareness of what you're skipping.",
   },
   {
-    id: 7, emoji: "🚀", title: "Phase 7 – Build & Specialize",
+    id: 7, icon: Rocket, title: "Phase 7 – Build & Specialize",
     color: "from-teal-600 to-cyan-700", border: "border-teal-700",
     duration: "Ongoing", nextPhase: "Continuous mastery",
     readinessThreshold: 60,
@@ -2085,7 +2273,7 @@ const readinessPhases = [
 
 const generalRules = [
   {
-    icon: "⏱️", title: "Time is a signal, not a deadline",
+    icon: Zap, title: "Time is a signal, not a deadline",
     desc: "The durations are estimates at 4–6 hrs/week. If you're spending more time, you'll move faster. If less, slower. Don't use time to judge readiness — use the green flags."
   },
   {
@@ -2093,7 +2281,7 @@ const generalRules = [
     desc: "You don't need 100% of the green flags to move on. If you have 70%+ and you've built the phase project — move. The remaining 30% will fill in naturally in the next phase."
   },
   {
-    icon: "🔁", title: "Phases aren't waterfall",
+    icon: RotateCcw, title: "Phases aren't waterfall",
     desc: "You'll revisit earlier phases constantly. Moving to Phase 4 (RAG) doesn't mean you stop prompting. Think of it as 'primary focus' shifts, not 'completed and locked'."
   },
   {
@@ -2101,7 +2289,7 @@ const generalRules = [
     desc: "Reading all the resources for a phase doesn't mean you're ready to move on. Building the phase project is the real readiness signal. No project = not done."
   },
   {
-    icon: "⚡", title: "Boredom is a green flag",
+    icon: Zap, title: "Boredom is a green flag",
     desc: "If the current phase feels too easy or you're no longer learning anything new, that's a signal to move on — even if the checklist isn't 100% complete."
   },
   {
@@ -2170,7 +2358,7 @@ function ReadinessChecker() {
                 <div key={p.id} className={`rounded-xl border overflow-hidden transition-all ${isOpen ? "border-gray-500" : "border-gray-800"} bg-gray-900`}>
                   {/* Header */}
                   <div className="flex items-center gap-3 p-4 cursor-pointer" onClick={() => setOpenPhase(isOpen ? null : p.id)}>
-                    <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${p.color} flex items-center justify-center text-base flex-shrink-0`}>{p.emoji}</div>
+                    <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${p.color} flex items-center justify-center text-base flex-shrink-0`}><p.icon size={20} className="text-white"/></div>
                     <div className="flex-1 min-w-0">
                       <p className="font-semibold text-sm">{p.title}</p>
                       <div className="flex items-center gap-2 mt-1">
@@ -2182,7 +2370,7 @@ function ReadinessChecker() {
                         {score >= p.readinessThreshold && <span className="text-xs bg-green-900 text-green-400 border border-green-800 px-2 py-0.5 rounded-full">Ready ✓</span>}
                       </div>
                     </div>
-                    <span className="text-gray-400">{isOpen ? "▲" : "▼"}</span>
+                    <span className="text-gray-400">{isOpen ? <ChevronUp size={14}/> : <ChevronDown size={14}/>}</span>
                   </div>
 
                   {isOpen && (
@@ -2221,12 +2409,12 @@ function ReadinessChecker() {
 
                       {/* Skip rule */}
                       <div className="bg-blue-950 border border-blue-900 rounded-lg p-3">
-                        <p className="text-xs font-semibold text-blue-400 mb-1">⚡ Skip Rule</p>
+                        <p className="text-xs font-semibold text-blue-400 mb-1"><Zap size={11} className="inline mr-1 align-middle"/>Skip Rule</p>
                         <p className="text-xs text-gray-300">{p.skipRule}</p>
                       </div>
 
                       <div className="flex items-center justify-between text-xs text-gray-400 pt-1">
-                        <span>⏱ Estimated: {p.duration}</span>
+                        <span><Zap size={11} className="inline mr-1 align-middle"/>{p.duration}</span>
                         <span>Next: {p.nextPhase} →</span>
                       </div>
                     </div>
@@ -2246,7 +2434,7 @@ function ReadinessChecker() {
             </div>
             {generalRules.map((r, i) => (
               <div key={i} className="bg-gray-900 border border-gray-700 rounded-xl p-4 flex gap-3">
-                <span className="text-2xl flex-shrink-0">{r.icon}</span>
+                <span className="flex-shrink-0">{React.createElement(r.icon, {size:22})}</span>
                 <div>
                   <p className="font-semibold text-sm text-white mb-1">{r.title}</p>
                   <p className="text-xs text-gray-400">{r.desc}</p>
@@ -2301,7 +2489,7 @@ function ReadinessChecker() {
                         onClick={() => { setTab("checker"); setOpenPhase(p.id); }}>
                         <td className="p-3">
                           <div className="flex items-center gap-2">
-                            <span>{p.emoji}</span>
+                            <span><p.icon size={20} className="text-white"/></span>
                             <span className="text-gray-300 font-medium">Phase {p.id}</span>
                           </div>
                         </td>
@@ -2362,19 +2550,19 @@ function ReadinessChecker() {
 
     // ─── WHATS LEFT COMPONENT ───
 const covered = [
-  { emoji: "🗺️", label: "AI Zero→Hero Roadmap" },
-  { emoji: "📚", label: "Books & Video Courses by Phase" },
-  { emoji: "⚡", label: "Prompt Engineering Mastery" },
-  { emoji: "🧬", label: "Generative AI (all 4 domains)" },
-  { emoji: "🚦", label: "Phase Readiness Checker" },
-  { emoji: "⚙️", label: "LLM Setup & Configuration" },
-  { emoji: "🤖", label: "Agentic AI Deep Dive" },
-  { emoji: "🏗️", label: "Building & Training LLMs" },
+  { icon: MapIcon, label: "AI Zero→Hero Roadmap" },
+  { icon: BookOpen, label: "Books & Video Courses by Phase" },
+  { icon: Zap, label: "Prompt Engineering Mastery" },
+  { icon: BrainCircuit, label: "Generative AI (all 4 domains)" },
+  { icon: Target, label: "Phase Readiness Checker" },
+  { icon: Settings, label: "LLM Setup & Configuration" },
+  { icon: Bot, label: "Agentic AI Deep Dive" },
+  { icon: Building2, label: "Building & Training LLMs" },
 ];
 
 const topics = [
   {
-    id: "mlops", emoji: "🔧", title: "MLOps & AI in Production",
+    id: "mlops", icon: Wrench, title: "MLOps & AI in Production",
     tag: "Critical for builders", tagColor: "bg-red-900 text-red-300 border-red-800",
     color: "from-red-600 to-rose-700",
     why: "Knowing how to build an AI app is only half the story. Deploying, monitoring, and maintaining it in production is a completely different skill — and where most projects fail.",
@@ -2392,7 +2580,7 @@ const topics = [
     resource: { label: "Chip Huyen – Designing ML Systems (O'Reilly)", url: "https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/" },
   },
   {
-    id: "evals", emoji: "📊", title: "AI Evaluation & Evals Engineering",
+    id: "evals", icon: BarChart, title: "AI Evaluation & Evals Engineering",
     tag: "Most underrated skill", tagColor: "bg-yellow-900 text-yellow-300 border-yellow-800",
     color: "from-yellow-600 to-amber-700",
     why: "How do you know if your AI app is actually good? Evals is the discipline of measuring AI quality systematically — it's the testing and QA of the AI world, and almost nobody does it well.",
@@ -2410,7 +2598,7 @@ const topics = [
     resource: { label: "DeepLearning.AI – Evaluating & Debugging GenAI (free)", url: "https://www.deeplearning.ai/short-courses/evaluating-debugging-generative-ai/" },
   },
   {
-    id: "security", emoji: "🔒", title: "AI Security & Red Teaming",
+    id: "security", icon: Lock, title: "AI Security & Red Teaming",
     tag: "Essential for apps", tagColor: "bg-orange-900 text-orange-300 border-orange-800",
     color: "from-orange-600 to-red-700",
     why: "AI apps have a completely new attack surface. Prompt injection, jailbreaking, data exfiltration, and model inversion are real threats that traditional security doesn't cover.",
@@ -2428,7 +2616,7 @@ const topics = [
     resource: { label: "OWASP LLM Top 10 (free)", url: "https://owasp.org/www-project-top-10-for-large-language-model-applications/" },
   },
   {
-    id: "multimodal", emoji: "👁️", title: "Multimodal AI (Vision + Language)",
+    id: "multimodal", icon: Eye, title: "Multimodal AI (Vision + Language)",
     tag: "Fast growing", tagColor: "bg-purple-900 text-purple-300 border-purple-800",
     color: "from-purple-600 to-violet-700",
     why: "The frontier is models that see, hear, and read simultaneously. Vision-language models (VLMs) are already in production — GPT-4V, Claude 3.5, Gemini. Understanding them opens a new class of applications.",
@@ -2446,7 +2634,7 @@ const topics = [
     resource: { label: "DeepLearning.AI – Prompt Engineering with Llama 2 (free)", url: "https://www.deeplearning.ai/short-courses/prompt-engineering-with-llama-2/" },
   },
   {
-    id: "reasoning", emoji: "🧠", title: "Reasoning Models & Thinking AI",
+    id: "reasoning", icon: Brain, title: "Reasoning Models & Thinking AI",
     tag: "Frontier topic", tagColor: "bg-blue-900 text-blue-300 border-blue-800",
     color: "from-blue-600 to-indigo-700",
     why: "OpenAI's o1/o3, DeepSeek R1, and Claude's extended thinking represent a new paradigm — AI that thinks before it answers. Understanding when and how to use reasoning models is a new skill.",
@@ -2464,7 +2652,7 @@ const topics = [
     resource: { label: "DeepLearning.AI – Reasoning with o1 (free)", url: "https://www.deeplearning.ai/short-courses/reasoning-with-o1/" },
   },
   {
-    id: "data", emoji: "🗄️", title: "Data Engineering for AI",
+    id: "data", icon: Database, title: "Data Engineering for AI",
     tag: "Often overlooked", tagColor: "bg-teal-900 text-teal-300 border-teal-800",
     color: "from-teal-600 to-cyan-700",
     why: "AI is only as good as the data it's built on. Data collection, cleaning, labeling, and pipeline engineering determine model quality more than architecture choices — yet most AI courses skip this.",
@@ -2482,7 +2670,7 @@ const topics = [
     resource: { label: "Hugging Face – Datasets library docs (free)", url: "https://huggingface.co/docs/datasets/index" },
   },
   {
-    id: "ondevice", emoji: "📱", title: "On-Device & Edge AI",
+    id: "ondevice", icon: Smartphone, title: "On-Device & Edge AI",
     tag: "Growing fast", tagColor: "bg-green-900 text-green-300 border-green-800",
     color: "from-green-600 to-emerald-700",
     why: "Not all AI runs in the cloud. Running models on phones, laptops, and edge hardware enables privacy-first, offline, and ultra-low latency applications — a massive underserved market.",
@@ -2500,7 +2688,7 @@ const topics = [
     resource: { label: "DeepLearning.AI – Intro to On-Device AI (free)", url: "https://www.deeplearning.ai/short-courses/introduction-to-on-device-ai/" },
   },
   {
-    id: "ai_safety", emoji: "🛡️", title: "AI Safety & Alignment",
+    id: "ai_safety", icon: Shield, title: "AI Safety & Alignment",
     tag: "Domain knowledge", tagColor: "bg-gray-700 text-gray-300 border-gray-600",
     color: "from-gray-600 to-slate-700",
     why: "Understanding AI safety isn't just for researchers — it shapes how you build responsible AI products, how you understand model behavior, and how you think about the long-term trajectory of the field.",
@@ -2518,7 +2706,7 @@ const topics = [
     resource: { label: "BlueDot – AI Safety Fundamentals (free)", url: "https://aisafetyfundamentals.com/" },
   },
   {
-    id: "career", emoji: "💼", title: "AI Career Paths & Roles",
+    id: "career", icon: Database, title: "AI Career Paths & Roles",
     tag: "For future planning", tagColor: "bg-indigo-900 text-indigo-300 border-indigo-800",
     color: "from-indigo-600 to-blue-700",
     why: "The AI job market is fragmented and confusing. Understanding the different roles — and what each actually requires — helps you aim your learning at the right target.",
@@ -2536,7 +2724,7 @@ const topics = [
     resource: { label: "Latent Space – The AI Engineer Job (podcast)", url: "https://www.latent.space/p/ai-engineer" },
   },
   {
-    id: "research", emoji: "🔬", title: "Reading & Understanding AI Research",
+    id: "research", icon: FlaskConical, title: "Reading & Understanding AI Research",
     tag: "Level up fast", tagColor: "bg-pink-900 text-pink-300 border-pink-800",
     color: "from-pink-600 to-rose-700",
     why: "AI moves at paper speed. Practitioners who can read research papers are 6–12 months ahead of those who wait for blog post summaries. It's a learnable skill — not a PhD requirement.",
@@ -2598,7 +2786,7 @@ function WhatsLeft() {
             {covered.map((c, i) => (
               <div key={i} className="flex items-center gap-2 text-xs text-gray-400">
                 <span className="text-green-400">✓</span>
-                <span>{c.emoji} {c.label}</span>
+                <span>{c.label}</span>
               </div>
             ))}
           </div>
@@ -2621,7 +2809,7 @@ function WhatsLeft() {
               className={`rounded-xl border overflow-hidden transition-all cursor-pointer ${open === t.id ? "border-gray-500" : "border-gray-800 hover:border-gray-600"} bg-gray-900`}
               onClick={() => setOpen(open === t.id ? null : t.id)}>
               <div className="flex items-center gap-3 p-4">
-                <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${t.color} flex items-center justify-center text-base flex-shrink-0`}>{t.emoji}</div>
+                <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${t.color} flex items-center justify-center text-base flex-shrink-0`}>{React.createElement(t.icon, {size:20, className:"text-white"})}</div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap mb-1">
                     <p className="font-semibold text-sm">{t.title}</p>
@@ -2629,7 +2817,7 @@ function WhatsLeft() {
                   </div>
                   <span className={`text-xs px-2 py-0.5 rounded-full border ${depthColors[t.depth]}`}>{depthLabels[t.depth]}</span>
                 </div>
-                <span className="text-gray-400 flex-shrink-0">{open === t.id ? "▲" : "▼"}</span>
+                <span className="text-gray-400 flex-shrink-0">{open === t.id ? <ChevronUp size={14}/> : <ChevronDown size={14}/>}</span>
               </div>
 
               {open === t.id && (
@@ -2708,7 +2896,7 @@ function WhatsLeft() {
     // ─── KNOWLEDGE GAPS COMPONENT ───
 const areas = [
   {
-    id: "llm", emoji: "🧠", title: "LLM Concepts & Internals", current: 80, target: 90,
+    id: "llm", icon: Brain, title: "LLM Concepts & Internals", current: 80, target: 90,
     color: "from-blue-600 to-indigo-700", border: "border-blue-800",
     gap: "You know the what. The 10% gap is the deep why — mathematical intuition behind attention, positional encodings, and scaling laws.",
     mathNeeded: "light",
@@ -2727,7 +2915,7 @@ const areas = [
     ],
   },
   {
-    id: "prompt", emoji: "⚡", title: "Prompt Engineering", current: 90, target: 95,
+    id: "prompt", icon: Zap, title: "Prompt Engineering", current: 90, target: 95,
     color: "from-green-600 to-teal-700", border: "border-green-800",
     gap: "Near expert. The 5% gap is systematic evaluation of prompts and knowledge of model-specific quirks (Claude vs GPT-4 vs Gemini behave differently at edge cases).",
     mathNeeded: "none",
@@ -2740,7 +2928,7 @@ const areas = [
     ],
   },
   {
-    id: "rag", emoji: "📚", title: "RAG Systems", current: 80, target: 90,
+    id: "rag", icon: BookOpen, title: "RAG Systems", current: 80, target: 90,
     color: "from-purple-600 to-violet-700", border: "border-purple-800",
     gap: "You can build RAG. The gap is advanced retrieval techniques, hybrid search, and production-grade evaluation.",
     mathNeeded: "light",
@@ -2759,7 +2947,7 @@ const areas = [
     ],
   },
   {
-    id: "agents", emoji: "🤖", title: "Agentic AI / Tool Use", current: 75, target: 88,
+    id: "agents", icon: Bot, title: "Agentic AI / Tool Use", current: 75, target: 88,
     color: "from-orange-600 to-amber-700", border: "border-orange-800",
     gap: "You understand patterns. The gap is reliability engineering for agents — making them robust, observable, and recoverable when they fail.",
     mathNeeded: "none",
@@ -2774,7 +2962,7 @@ const areas = [
     ],
   },
   {
-    id: "finetune", emoji: "🏗️", title: "Fine-Tuning / Training", current: 60, target: 80,
+    id: "finetune", icon: Building2, title: "Fine-Tuning / Training", current: 60, target: 80,
     color: "from-rose-600 to-pink-700", border: "border-rose-800",
     gap: "This is your biggest gap between where you are and where a solid AI engineer should be. The gap is hands-on training experience and understanding the math behind optimization.",
     mathNeeded: "medium",
@@ -2794,7 +2982,7 @@ const areas = [
     ],
   },
   {
-    id: "multimodal", emoji: "👁️", title: "Multimodal AI", current: 40, target: 75,
+    id: "multimodal", icon: Eye, title: "Multimodal AI", current: 40, target: 75,
     color: "from-violet-600 to-purple-700", border: "border-violet-800",
     gap: "Large gap. You understand diffusion conceptually but haven't built multimodal apps. This is the most immediately useful area to improve given Claude and GPT-4V are already in your hands.",
     mathNeeded: "light",
@@ -2812,7 +3000,7 @@ const areas = [
     ],
   },
   {
-    id: "math", emoji: "📐", title: "ML Research / Math", current: 30, target: 60,
+    id: "math", icon: BookMarked, title: "ML Research / Math", current: 30, target: 60,
     color: "from-cyan-600 to-blue-700", border: "border-cyan-800",
     gap: "30% is actually fine for a developer with your goals. You don't need 90% here. A target of 55–60% — enough to read papers fluently and understand training dynamics — is realistic and sufficient.",
     mathNeeded: "structured",
@@ -2832,7 +3020,7 @@ const areas = [
     ],
   },
   {
-    id: "mlops", emoji: "🔧", title: "Production / MLOps", current: 50, target: 75,
+    id: "mlops", icon: Wrench, title: "Production / MLOps", current: 50, target: 75,
     color: "from-red-600 to-rose-700", border: "border-red-800",
     gap: "You know the concepts but lack hands-on deployment experience. The gap is practical: deploy something, break it, observe it, fix it.",
     mathNeeded: "none",
@@ -2847,7 +3035,7 @@ const areas = [
     ],
   },
   {
-    id: "safety", emoji: "🛡️", title: "AI Safety & Ethics", current: 40, target: 60,
+    id: "safety", icon: Shield, title: "AI Safety & Ethics", current: 40, target: 60,
     color: "from-gray-600 to-slate-700", border: "border-gray-700",
     gap: "For your goals (building + domain knowledge), 60% awareness is sufficient. You don't need to become an alignment researcher. Focus on practical safety: how to build responsible AI products.",
     mathNeeded: "none",
@@ -2935,7 +3123,7 @@ function KnowledgeGaps() {
               onClick={() => setOpen(open === a.id ? null : a.id)}>
 
               <div className="flex items-center gap-3 p-4">
-                <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${a.color} flex items-center justify-center text-base flex-shrink-0`}>{a.emoji}</div>
+                <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${a.color} flex items-center justify-center text-base flex-shrink-0`}>{React.createElement(a.icon, {size:20, className:"text-white"})}</div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap mb-1">
                     <p className="font-semibold text-sm">{a.title}</p>
@@ -2946,7 +3134,7 @@ function KnowledgeGaps() {
                     <span className="text-xs text-gray-400 flex-shrink-0">{a.current}% → {a.target}%</span>
                   </div>
                 </div>
-                <span className="text-gray-400 flex-shrink-0">{open === a.id ? "▲" : "▼"}</span>
+                <span className="text-gray-400 flex-shrink-0">{open === a.id ? <ChevronUp size={14}/> : <ChevronDown size={14}/>}</span>
               </div>
 
               {open === a.id && (
@@ -3038,43 +3226,156 @@ function KnowledgeGaps() {
   );
 }
 
+    // ─── BEYOND ROADMAP (merged What's Left + Knowledge Gaps) ───
+    function BeyondRoadmap() {
+      const [subTab, setSubTab] = React.useState(0);
+      return (
+        <div className="min-h-screen text-gray-100 font-sans">
+          <div className="max-w-3xl mx-auto px-4 pt-6 pb-2">
+            <div className="text-center mb-5">
+              <div className="inline-flex items-center gap-2 mb-3">
+                <Compass size={20} className="text-blue-400"/>
+                <h1 className="text-2xl md:text-3xl font-bold">Beyond the Roadmap</h1>
+              </div>
+              <p className="text-gray-400 text-sm">Know where you stand, and where to go next</p>
+            </div>
+            <div className="flex gap-1 bg-gray-900/60 border border-white/8 rounded-xl p-1 mb-4">
+              <button onClick={() => setSubTab(0)}
+                className={`flex-1 text-xs py-2 rounded-lg transition-colors ${subTab === 0 ? "bg-blue-600 text-white font-semibold" : "text-gray-400 hover:text-gray-300"}`}>
+                Knowledge Gaps
+              </button>
+              <button onClick={() => setSubTab(1)}
+                className={`flex-1 text-xs py-2 rounded-lg transition-colors ${subTab === 1 ? "bg-blue-600 text-white font-semibold" : "text-gray-400 hover:text-gray-300"}`}>
+                What's Left
+              </button>
+            </div>
+          </div>
+          {subTab === 0 ? <KnowledgeGaps /> : <WhatsLeft />}
+        </div>
+      );
+    }
+
     // ─── MASTER APP ───
     const TABS = [
-      { label: "🧠 Roadmap",       Component: Roadmap },
-      { label: "📖 Alt Resources", Component: AltResources },
-      { label: "📊 Assessment",    Component: KnowledgeAssessment },
-      { label: "⚡ Prompt Eng",    Component: PromptEngineering },
-      { label: "📅 Prep Plan",     Component: PrepPlan },
-      { label: "🧬 GenAI Guide",   Component: GenAIGuide },
-      { label: "🚦 Readiness",     Component: ReadinessChecker },
-      { label: "🗺️ What's Left",   Component: WhatsLeft },
-      { label: "📐 Knowledge Gaps", Component: KnowledgeGaps },
+      { label: "Roadmap",         slug: "roadmap",        icon: BrainCircuit, Component: Roadmap },
+      { label: "Prep Plan",       slug: "prep-plan",      icon: Calendar,     Component: PrepPlan },
+      { label: "GenAI Guide",     slug: "genai-guide",    icon: Cpu,          Component: GenAIGuide },
+      { label: "Prompt Eng",      slug: "prompt-eng",     icon: Zap,          Component: PromptEngineering },
+      { label: "Resources",       slug: "resources",      icon: BookOpen,     Component: AltResources },
+      { label: "Readiness",       slug: "readiness",      icon: CheckCircle,  Component: ReadinessChecker },
+      { label: "Beyond Roadmap",  slug: "beyond-roadmap", icon: Compass,      Component: BeyondRoadmap },
+      { label: "Assessment",      slug: "assessment",     icon: BarChart2,    Component: KnowledgeAssessment },
     ];
 
+    function Footer() {
+      return (
+        <footer className="border-t border-white/8 bg-gray-950/80 backdrop-blur-sm mt-8">
+          <div className="max-w-3xl mx-auto px-4 py-8">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+              <div>
+                <p className="text-white font-semibold text-sm mb-1">ailearnings.in</p>
+                <p className="text-gray-400 text-xs">Free AI roadmap for software developers</p>
+                <div className="flex items-center gap-4 mt-3">
+                  <a href="https://github.com/amit352" target="_blank" rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-white transition-colors flex items-center gap-1.5" aria-label="GitHub">
+                    <Github size={16}/>
+                    <span className="text-xs">@amit352</span>
+                  </a>
+                  <a href="https://github.com/amit352/ailearnings/discussions" target="_blank" rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-white transition-colors flex items-center gap-1.5">
+                    <MessageSquare size={14}/>
+                    <span className="text-xs">Discussions</span>
+                  </a>
+                  <a href="https://github.com/sponsors/amit352" target="_blank" rel="noopener noreferrer"
+                    className="text-pink-400 hover:text-pink-300 transition-colors flex items-center gap-1.5">
+                    <Heart size={14}/>
+                    <span className="text-xs">Support</span>
+                  </a>
+                </div>
+              </div>
+              <div className="flex flex-col items-start md:items-end gap-3">
+                <div className="flex flex-wrap gap-3">
+                  {["Roadmap","Prep Plan","Resources","Readiness"].map((label) => {
+                    const tab = TABS.find(t => t.label === label);
+                    return tab ? (
+                      <a key={label} href={`#${tab.slug}`}
+                        className="text-xs text-gray-400 hover:text-white transition-colors">
+                        {label}
+                      </a>
+                    ) : null;
+                  })}
+                </div>
+                <p className="text-gray-400 text-xs">Last updated: March 2026 · © 2026 ailearnings.in</p>
+                <p className="text-gray-400 text-xs">Built for the dev community · No ads · Always free</p>
+              </div>
+            </div>
+          </div>
+        </footer>
+      );
+    }
+
+    function ScrollToTop() {
+      const [visible, setVisible] = React.useState(false);
+      React.useEffect(() => {
+        const onScroll = () => setVisible(window.scrollY > 400);
+        window.addEventListener("scroll", onScroll, { passive: true });
+        return () => window.removeEventListener("scroll", onScroll);
+      }, []);
+      if (!visible) return null;
+      return (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          aria-label="Scroll to top"
+          className="fixed bottom-6 right-6 z-50 bg-gray-800 hover:bg-gray-700 text-white rounded-full p-2.5 shadow-lg transition-colors">
+          <ArrowUp size={16}/>
+        </button>
+      );
+    }
+
     function App() {
-      const [activeTab, setActiveTab] = React.useState(0);
+      const getInitialTab = () => {
+        const hash = window.location.hash.replace("#", "");
+        const idx = TABS.findIndex(t => t.slug === hash);
+        return idx >= 0 ? idx : 0;
+      };
+
+      const [activeTab, setActiveTab] = React.useState(getInitialTab);
       const [menuOpen, setMenuOpen] = React.useState(false);
       const { Component } = TABS[activeTab];
 
       const handleTabClick = (i) => {
         setActiveTab(i);
         setMenuOpen(false);
+        window.location.hash = TABS[i].slug;
+        window.scrollTo({ top: 0, behavior: "smooth" });
       };
+
+      React.useEffect(() => {
+        const onHashChange = () => {
+          const hash = window.location.hash.replace("#", "");
+          const idx = TABS.findIndex(t => t.slug === hash);
+          if (idx >= 0) { setActiveTab(idx); window.scrollTo({ top: 0, behavior: "smooth" }); }
+        };
+        window.addEventListener("hashchange", onHashChange);
+        return () => window.removeEventListener("hashchange", onHashChange);
+      }, []);
 
       return (
         <div>
           {/* Navbar */}
-          <nav className="sticky top-0 z-50 bg-gray-900/70 backdrop-blur-md border-b border-gray-800">
+          <nav className="sticky top-0 z-50 bg-gray-900/70 backdrop-blur-md border-b border-white/8">
 
             {/* Desktop: horizontal tabs */}
             <div className="hidden md:flex max-w-full mx-auto gap-1 px-3 py-2 overflow-x-auto">
               {TABS.map((t, i) => (
                 <button key={i} onClick={() => handleTabClick(i)}
-                  className={`text-xs px-3 py-1.5 rounded-lg whitespace-nowrap transition-colors flex-shrink-0 ${
+                  aria-current={activeTab === i ? "page" : undefined}
+                  className={`text-xs px-3 py-1.5 rounded-lg whitespace-nowrap transition-colors flex-shrink-0 flex items-center gap-1.5 ${
                     activeTab === i
-                      ? "bg-blue-600 text-white font-semibold"
+                      ? "bg-blue-600 text-white font-semibold shadow-[0_0_12px_rgba(59,130,246,0.4)]"
                       : "text-gray-400 hover:text-white hover:bg-gray-800"
                   }`}>
+                  <t.icon size={13} strokeWidth={2} />
                   {t.label}
                 </button>
               ))}
@@ -3082,33 +3383,30 @@ function KnowledgeGaps() {
 
             {/* Mobile: current tab + hamburger */}
             <div className="md:hidden flex items-center justify-between px-4 py-3">
-              <span className="text-sm font-semibold text-white">{TABS[activeTab].label}</span>
+              <span className="text-sm font-semibold text-white flex items-center gap-1.5">
+                {React.createElement(TABS[activeTab].icon, {size: 14})}
+                {TABS[activeTab].label}
+              </span>
               <button onClick={() => setMenuOpen(!menuOpen)}
                 aria-label={menuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={menuOpen}
                 className="text-gray-400 hover:text-white p-1 rounded-lg hover:bg-gray-800 transition-colors">
-                {menuOpen ? (
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                ) : (
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                  </svg>
-                )}
+                {menuOpen ? <X size={20} /> : <Menu size={20} />}
               </button>
             </div>
 
             {/* Mobile dropdown menu */}
             {menuOpen && (
-              <div className="md:hidden border-t border-gray-800 bg-gray-900/95 backdrop-blur-md">
+              <div className="md:hidden border-t border-white/8 bg-gray-900/95 backdrop-blur-md">
                 {TABS.map((t, i) => (
                   <button key={i} onClick={() => handleTabClick(i)}
-                    className={`w-full text-left px-4 py-3 text-sm transition-colors border-b border-gray-800/50 ${
+                    aria-current={activeTab === i ? "page" : undefined}
+                    className={`w-full text-left px-4 py-3 text-sm transition-colors border-b border-gray-800/50 flex items-center gap-2.5 ${
                       activeTab === i
                         ? "bg-blue-600/20 text-blue-400 font-semibold"
                         : "text-gray-400 hover:text-white hover:bg-gray-800"
                     }`}>
+                    <t.icon size={15} />
                     {t.label}
                   </button>
                 ))}
@@ -3117,6 +3415,8 @@ function KnowledgeGaps() {
           </nav>
 
           <main><div key={activeTab}><Component /></div></main>
+          <Footer />
+          <ScrollToTop />
         </div>
       );
     }
