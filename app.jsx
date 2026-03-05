@@ -270,9 +270,9 @@
       const scrollToPhase1 = () => {
         setOpen(1);
         setTimeout(() => {
-          const el = document.getElementById("phase-card-1");
+          const el = document.getElementById("roadmap-start");
           if (el) {
-            const top = el.getBoundingClientRect().top + window.scrollY - 72;
+            const top = el.getBoundingClientRect().top + window.scrollY - 16;
             window.scrollTo({ top, behavior: "smooth" });
           }
         }, 50);
@@ -384,7 +384,7 @@
 
           {/* ── ROADMAP SECTION ── */}
           <div className="px-4 pb-8 max-w-3xl mx-auto">
-            <div className="flex items-center gap-3 mb-6 pt-2">
+            <div id="roadmap-start" className="flex items-center gap-3 mb-6 pt-2">
               <div className="flex-1 h-px bg-gray-800"/>
               <span className="text-xs text-gray-500 uppercase tracking-widest font-medium">The Roadmap</span>
               <div className="flex-1 h-px bg-gray-800"/>
