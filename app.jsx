@@ -330,7 +330,7 @@
 
               {/* Section links — pills with hover tooltip */}
               <div>
-                <p className="text-xs text-gray-500 uppercase tracking-wider mb-3 text-center">Also inside this tool</p>
+                <p className="text-xs text-gray-400 uppercase tracking-wider mb-3 text-center">Also inside this tool</p>
                 <div className="flex flex-wrap justify-center gap-2">
                   {[
                     { slug: "prep-plan",      icon: Calendar,    color: "text-orange-400", label: "Prep Plan",       when: "Already know some AI basics?", why: "A focused 6-week sprint to go from zero to building your first AI app — faster than the full roadmap." },
@@ -386,7 +386,7 @@
                 </a>
               </div>
 
-              <button onClick={scrollToPhase1} className="flex flex-col items-center gap-1 text-gray-600 hover:text-gray-400 transition-colors">
+              <button onClick={scrollToPhase1} className="flex flex-col items-center gap-1 text-gray-500 hover:text-gray-300 transition-colors">
                 <span className="text-xs tracking-wider uppercase">Scroll to roadmap</span>
                 <ChevronDown size={16} className="animate-bounce"/>
               </button>
@@ -397,7 +397,7 @@
           <div className="px-4 pb-8 max-w-3xl mx-auto">
             <div id="roadmap-start" className="flex items-center gap-3 mb-6 pt-2">
               <div className="flex-1 h-px bg-gray-800"/>
-              <span className="text-xs text-gray-500 uppercase tracking-widest font-medium">The Roadmap</span>
+              <span className="text-xs text-gray-400 uppercase tracking-widest font-medium">The Roadmap</span>
               <div className="flex-1 h-px bg-gray-800"/>
             </div>
 
@@ -422,7 +422,7 @@
                       <Icon size={12} className="text-gray-400 flex-shrink-0 mt-0.5"/>
                       <div>
                         <p className="text-xs font-medium text-gray-300">{title}</p>
-                        <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">{desc}</p>
+                        <p className="text-xs text-gray-400 mt-0.5 leading-relaxed">{desc}</p>
                       </div>
                     </div>
                   ))}
@@ -456,8 +456,8 @@
                           </div>
                           <div className="flex items-center gap-2 mt-1 flex-wrap">
                             <span className="text-gray-400 text-xs">{p.duration}</span>
-                            <span className="text-gray-600 text-xs">·</span>
-                            <span className="text-gray-500 text-xs">{p.topics.length} topics · {p.resources.length} resources</span>
+                            <span className="text-gray-400 text-xs">·</span>
+                            <span className="text-gray-400 text-xs">{p.topics.length} topics · {p.resources.length} resources</span>
                             {(() => { const pg = phaseProgress(p); return pg.completed > 0 ? (
                               <span className="text-xs text-green-400 font-medium">{pg.completed}/{pg.total} done</span>
                             ) : null; })()}
@@ -502,7 +502,7 @@
                             {activeTab === "learn" && (
                               <ul className="space-y-1.5">
                                 {totalDone === 0 && (
-                                  <li className="flex items-center gap-1.5 text-xs text-gray-500 pb-1">
+                                  <li className="flex items-center gap-1.5 text-xs text-gray-400 pb-1">
                                     <MousePointer size={11} className="flex-shrink-0"/>
                                     Click any topic to check it off and track your progress
                                   </li>
