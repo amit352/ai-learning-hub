@@ -310,7 +310,10 @@
                           </div>
                           <p className="text-gray-400 text-xs mt-0.5">{p.duration}</p>
                         </div>
-                        <div className="text-gray-400 text-lg flex-shrink-0">{open === p.id ? <ChevronUp size={14}/> : <ChevronDown size={14}/>}</div>
+                        <div className="flex items-center gap-2 flex-shrink-0">
+                          {open !== p.id && <span className="text-xs text-gray-500 hidden sm:inline">expand</span>}
+                          <div className={`text-gray-400 ${open !== p.id ? "animate-bounce" : ""}`}>{open === p.id ? <ChevronUp size={14}/> : <ChevronDown size={14}/>}</div>
+                        </div>
                       </div>
 
                       {open === p.id && (
