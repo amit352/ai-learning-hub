@@ -229,7 +229,7 @@
     ];
 
     function Roadmap() {
-      const [open, setOpen] = useState(null);
+      const [open, setOpen] = useState(1);
       const [tab, setTab] = useState({});
       const setPhaseTab = (id, t, e) => { e.stopPropagation(); setTab(prev => ({ ...prev, [id]: t })); };
 
@@ -256,7 +256,7 @@
                 <span className="text-white">Roadmap</span>
               </h1>
               <p className="text-gray-400 text-base max-w-lg mx-auto mb-6">
-                A structured, free path for software developers — from your first LLM call to production-ready AI systems.
+                Not sure where to start with AI? This roadmap cuts through the noise — curated free resources, in the right order, for working developers.
               </p>
               <div className="flex flex-wrap justify-center gap-3 mb-6">
                 <span className="inline-flex items-center gap-1.5 bg-gray-800/60 border border-white/8 text-gray-300 text-xs px-3 py-1.5 rounded-full">
