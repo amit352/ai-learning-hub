@@ -643,7 +643,7 @@
                               </div>
                               <div className="flex items-center gap-2 mb-2">
                                 <p className="text-gray-400 text-xs">{vid.author}</p>
-                                <span className="text-gray-700">·</span>
+                                <span className="text-gray-400">·</span>
                                 <p className="text-gray-400 text-xs">{vid.duration}</p>
                               </div>
                               <p className="text-gray-300 text-xs leading-relaxed">{vid.why}</p>
@@ -2597,7 +2597,7 @@ function WhatsLeft() {
           <div className="grid grid-cols-2 gap-1.5">
             {covered.map((c, i) => (
               <div key={i} className="flex items-center gap-2 text-xs text-gray-400">
-                <span className="text-green-700">✓</span>
+                <span className="text-green-400">✓</span>
                 <span>{c.emoji} {c.label}</span>
               </div>
             ))}
