@@ -6,9 +6,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const root = path.resolve(__dirname, '..');
+const root = path.resolve(__dirname, '../..');
 
-let html = fs.readFileSync(path.join(root, 'src/index.html'), 'utf8');
+let html = fs.readFileSync(path.join(root, 'source/src/index.html'), 'utf8');
 
 const css    = fs.readFileSync(path.join(root, 'dist/app.css'), 'utf8');
 const react  = fs.readFileSync(path.join(root, 'dist/vendor/react.production.min.js'), 'utf8');

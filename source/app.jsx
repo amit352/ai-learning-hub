@@ -1,5 +1,13 @@
     const { useState } = React;
 
+    // ── SEO helper — call at the top of each page component ──────────────────
+    function useSeo(title, description) {
+      React.useEffect(() => {
+        document.title = title;
+        const el = document.querySelector('meta[name="description"]');
+        if (el) el.setAttribute('content', description);
+      }, []);
+    }
 
     // ─────────────────────────────────────────────────────────────
     // MASTER APP — defined last, but forward-declared here as shell
@@ -229,6 +237,10 @@
     ];
 
     function Roadmap() {
+      useSeo(
+        "AI Learning Hub – Zero to Hero Roadmap for Developers",
+        "Free 7-phase AI roadmap for software developers. Master LLMs, Prompt Engineering, RAG, and Agentic AI with curated free resources and hands-on projects."
+      );
       const [open, setOpen] = useState(1);
       const [tab, setTab] = useState({});
       const [visited, setVisited] = useState({ "1-learn": true });
@@ -342,7 +354,7 @@
                     { slug: "beyond-roadmap", icon: Compass,     color: "text-teal-400",   label: "Beyond Roadmap",  when: "Finished the roadmap?",        why: "What to learn next, what gaps remain, and what projects will take you from competent to expert." },
                   ].map(({ slug, icon: Icon, color, label, when, why }) => (
                     <div key={slug} className="relative group">
-                      <a href={`#${slug}`}
+                      <a href={tabPath(slug)}
                         className="inline-flex items-center gap-1.5 bg-gray-800/60 hover:bg-gray-700/60 border border-white/8 hover:border-white/15 text-gray-300 hover:text-white text-xs px-3 py-1.5 rounded-full transition-colors">
                         <Icon size={11} className={color}/>{label}
                       </a>
@@ -867,6 +879,10 @@
     };
 
     function AltResources() {
+      useSeo(
+        "AI Learning Resources – Books & Courses by Phase | AI Learning Hub",
+        "Curated books, video courses, and references mapped to each phase of the AI roadmap. Includes free and O'Reilly resources for every level."
+      );
       const [open, setOpen] = useState(null);
       const [view, setView] = useState({});
       const toggle = (id) => setOpen(open === id ? null : id);
@@ -1126,6 +1142,10 @@
     ];
 
     function KnowledgeAssessment() {
+      useSeo(
+        "AI Knowledge Assessment – Where You'll Stand After the Roadmap | AI Learning Hub",
+        "An honest assessment of your AI engineer skill level after completing all 7 phases — what you can do, what gaps remain, and the best next steps."
+      );
       const [openStep, setOpenStep] = useState(null);
 
       return (
@@ -1407,6 +1427,10 @@ Length: [word count or structure]
 [paste your actual content here]`;
 
     function PromptEngineering() {
+      useSeo(
+        "Prompt Engineering Guide – Techniques & Templates | AI Learning Hub",
+        "Master prompt engineering with 15 techniques from zero-shot to tree-of-thoughts, copy-paste templates for coding, writing, and research, plus a 6-week practice plan."
+      );
       const [openTech, setOpenTech] = useState(null);
       const [openTier, setOpenTier] = useState(1);
       const [openUC, setOpenUC] = useState(null);
@@ -1713,6 +1737,10 @@ Length: [word count or structure]
     };
 
     function PrepPlan() {
+      useSeo(
+        "AI Interview Prep Plan – 6-Week Fast Track | AI Learning Hub",
+        "Structured 6-week AI prep plan for software developers. Cover LLMs, Prompt Engineering, RAG, and Agentic AI with free resources — 4–6 hours per week."
+      );
       const [open, setOpen] = useState(null);
 
       return (
@@ -2240,6 +2268,10 @@ const DomainDetail = ({ d }) => {
 };
 
 function GenAIGuide() {
+  useSeo(
+    "Generative AI Guide – Text, Code, Image & Audio | AI Learning Hub",
+    "Complete overview of Generative AI domains — text, code, image, audio. How each works, top models, tools, and a learning roadmap for developers."
+  );
   const [tab, setTab] = useState("overview");
 
   return (
@@ -2574,6 +2606,10 @@ const CheckItem = ({ text, checked, onToggle }) => (
 );
 
 function ReadinessChecker() {
+  useSeo(
+    "AI Phase Readiness Checker – Know When to Move On | AI Learning Hub",
+    "Check if you're ready to advance to the next AI learning phase. Green flags, red flags, move-on rules, and a progress overview for all 7 phases."
+  );
   const [checks, setChecks] = useState({});
   const [openPhase, setOpenPhase] = useState(null);
   const [tab, setTab] = useState("checker");
@@ -3495,6 +3531,10 @@ function KnowledgeGaps() {
 
     // ─── BEYOND ROADMAP (merged What's Left + Knowledge Gaps) ───
     function BeyondRoadmap() {
+      useSeo(
+        "Beyond the AI Roadmap – Knowledge Gaps & What's Next | AI Learning Hub",
+        "Finished the AI roadmap? See your knowledge gaps by area, explore advanced topics not covered in the core roadmap, and plan your specialization."
+      );
       const [subTab, setSubTab] = React.useState(0);
       return (
         <div className="min-h-screen text-gray-100 font-sans">
@@ -3566,7 +3606,7 @@ function KnowledgeGaps() {
                   {["Roadmap","Prep Plan","Resources","Readiness"].map((label) => {
                     const tab = TABS.find(t => t.label === label);
                     return tab ? (
-                      <a key={label} href={`#${tab.slug}`}
+                      <a key={label} href={tabPath(tab.slug)}
                         className="text-xs text-gray-400 hover:text-white transition-colors">
                         {label}
                       </a>
@@ -3601,10 +3641,15 @@ function KnowledgeGaps() {
       );
     }
 
+    function tabPath(slug) {
+      return slug === "roadmap" ? "/" : "/" + slug + "/";
+    }
+
     function App() {
       const getInitialTab = () => {
-        const hash = window.location.hash.replace("#", "");
-        const idx = TABS.findIndex(t => t.slug === hash);
+        const p = window.location.pathname.replace(/\/+$/, "") || "";
+        const slug = p.replace(/^\//, "") || "roadmap";
+        const idx = TABS.findIndex(t => t.slug === slug);
         return idx >= 0 ? idx : 0;
       };
 
@@ -3612,21 +3657,23 @@ function KnowledgeGaps() {
       const [menuOpen, setMenuOpen] = React.useState(false);
       const { Component } = TABS[activeTab];
 
-      const handleTabClick = (i) => {
+      const handleTabClick = (i, e) => {
+        if (e) e.preventDefault();
         setActiveTab(i);
         setMenuOpen(false);
-        window.location.hash = TABS[i].slug;
+        history.pushState(null, "", tabPath(TABS[i].slug));
         window.scrollTo({ top: 0, behavior: "smooth" });
       };
 
       React.useEffect(() => {
-        const onHashChange = () => {
-          const hash = window.location.hash.replace("#", "");
-          const idx = TABS.findIndex(t => t.slug === hash);
+        const onPopState = () => {
+          const p = window.location.pathname.replace(/\/+$/, "") || "";
+          const slug = p.replace(/^\//, "") || "roadmap";
+          const idx = TABS.findIndex(t => t.slug === slug);
           if (idx >= 0) { setActiveTab(idx); window.scrollTo({ top: 0, behavior: "smooth" }); }
         };
-        window.addEventListener("hashchange", onHashChange);
-        return () => window.removeEventListener("hashchange", onHashChange);
+        window.addEventListener("popstate", onPopState);
+        return () => window.removeEventListener("popstate", onPopState);
       }, []);
 
       return (
@@ -3637,7 +3684,7 @@ function KnowledgeGaps() {
             {/* Desktop: horizontal tabs */}
             <div className="hidden md:flex max-w-full mx-auto gap-1 px-3 py-2 overflow-x-auto">
               {TABS.map((t, i) => (
-                <button key={i} onClick={() => handleTabClick(i)}
+                <a key={i} href={tabPath(t.slug)} onClick={(e) => handleTabClick(i, e)}
                   aria-current={activeTab === i ? "page" : undefined}
                   className={`text-xs px-3 py-1.5 rounded-lg whitespace-nowrap transition-colors flex-shrink-0 flex items-center gap-1.5 ${
                     activeTab === i
@@ -3646,7 +3693,7 @@ function KnowledgeGaps() {
                   }`}>
                   <t.icon size={13} strokeWidth={2} />
                   {t.label}
-                </button>
+                </a>
               ))}
             </div>
 
@@ -3668,7 +3715,7 @@ function KnowledgeGaps() {
             {menuOpen && (
               <div className="md:hidden border-t border-white/8 bg-gray-900/95 backdrop-blur-md">
                 {TABS.map((t, i) => (
-                  <button key={i} onClick={() => handleTabClick(i)}
+                  <a key={i} href={tabPath(t.slug)} onClick={(e) => handleTabClick(i, e)}
                     aria-current={activeTab === i ? "page" : undefined}
                     className={`w-full text-left px-4 py-3 text-sm transition-colors border-b border-gray-800/50 flex items-center gap-2.5 ${
                       activeTab === i
@@ -3677,7 +3724,7 @@ function KnowledgeGaps() {
                     }`}>
                     <t.icon size={15} />
                     {t.label}
-                  </button>
+                  </a>
                 ))}
               </div>
             )}
