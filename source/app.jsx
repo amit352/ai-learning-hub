@@ -4005,6 +4005,45 @@ function KnowledgeGaps() {
       );
     }
 
+    // ═══════════════════════════════════════════════════════════
+    // BLOG INDEX PAGE
+    // ═══════════════════════════════════════════════════════════
+    const BLOG_POSTS = [
+      { slug: "how-to-become-ai-engineer",   title: "How to Become an AI Engineer in 2026 (From Any Background)",              date: "2026-03-09", desc: "What skills you need, how long it takes, what to build, and how to land your first AI engineering role — from any starting point." },
+      { slug: "machine-learning-roadmap",    title: "Machine Learning Roadmap 2026: From Beginner to Job-Ready",               date: "2026-03-09", desc: "The complete ML path — Python, math, classical ML, deep learning, LLMs, and MLOps — with free resources and project milestones at each stage." },
+      { slug: "rag-tutorial-step-by-step",   title: "RAG Tutorial 2026: Build a Retrieval-Augmented Generation Pipeline",      date: "2026-03-09", desc: "Step-by-step guide: document loading, chunking, vector embeddings, semantic search, and LLM generation with LangChain and ChromaDB." },
+      { slug: "prompt-engineering-techniques", title: "Prompt Engineering Guide 2026: 12 Techniques That Actually Work",      date: "2026-03-09", desc: "Zero-shot, few-shot, chain-of-thought, ReAct, and more — with copy-paste templates and real examples for each technique." },
+      { slug: "ai-roadmap-for-developers",   title: "AI Roadmap for Developers 2026: The Complete Learning Path",             date: "2026-03-09", desc: "7 phases from AI foundations to shipping real AI projects, with free resources and milestone projects for every phase." },
+    ];
+
+    function BlogIndexPage() {
+      useSeo(
+        "AI Engineering Blog – Guides, Tutorials & Roadmaps | AI Learning Hub",
+        "AI engineering articles for software developers. Learn LLMs, RAG, prompt engineering, machine learning, and agentic AI with practical guides and tutorials."
+      );
+      return (
+        <div className="max-w-3xl mx-auto px-4 py-10 text-gray-100">
+          <div className="mb-8">
+            <span className="inline-block bg-blue-600/20 text-blue-400 text-xs font-semibold px-3 py-1 rounded-full mb-4">Blog</span>
+            <h1 className="text-3xl font-bold text-white mb-3">AI Engineering Articles</h1>
+            <p className="text-gray-400 text-lg">Practical guides and tutorials for developers learning AI — LLMs, RAG, prompt engineering, and machine learning.</p>
+          </div>
+
+          <div className="space-y-4">
+            {BLOG_POSTS.map(({ slug, title, date, desc }) => (
+              <a key={slug} href={`/blog/${slug}/`}
+                className="block bg-gray-800/40 rounded-xl p-5 border border-white/8 hover:border-blue-500/30 hover:bg-gray-800/60 transition-all">
+                <div className="text-xs text-gray-500 mb-2">{new Date(date + 'T00:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</div>
+                <h2 className="text-white font-semibold mb-2 leading-snug">{title}</h2>
+                <p className="text-gray-400 text-sm leading-relaxed">{desc}</p>
+                <span className="inline-block mt-3 text-blue-400 text-xs">Read article →</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      );
+    }
+
     // ─── MASTER APP ───
     const TABS = [
       { label: "Roadmap",         slug: "roadmap",               icon: BrainCircuit, Component: Roadmap },
