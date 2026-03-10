@@ -737,6 +737,65 @@
             </div>
 
             <p className="text-center text-gray-400 text-xs mt-6">Click each phase to expand · Use tabs to navigate sections</p>
+
+            {/* ── Explore the Platform ── */}
+            <div className="mt-10 mb-2">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="flex-1 h-px bg-gray-800"/>
+                <span className="text-xs text-gray-400 uppercase tracking-widest font-medium">Explore the Platform</span>
+                <div className="flex-1 h-px bg-gray-800"/>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {[
+                  {
+                    href: "/blog/",
+                    icon: BookOpen,
+                    color: "text-blue-400",
+                    border: "hover:border-blue-500/40",
+                    bg: "hover:bg-blue-500/5",
+                    title: "Developer Guides",
+                    desc: "Deep-dive articles on ML, LLMs, RAG, prompt engineering, and AI agents.",
+                    meta: "28 guides",
+                  },
+                  {
+                    href: "/projects/",
+                    icon: Wrench,
+                    color: "text-green-400",
+                    border: "hover:border-green-500/40",
+                    bg: "hover:bg-green-500/5",
+                    title: "AI Projects",
+                    desc: "Hands-on project guides from beginner chatbots to advanced multi-agent systems.",
+                    meta: "20 projects",
+                  },
+                  {
+                    href: "/paths/",
+                    icon: Layers,
+                    color: "text-purple-400",
+                    border: "hover:border-purple-500/40",
+                    bg: "hover:bg-purple-500/5",
+                    title: "Career Paths",
+                    desc: "Role-based learning paths for AI Engineer, ML Engineer, LLM Engineer, and more.",
+                    meta: "5 paths",
+                  },
+                ].map(({ href, icon: Icon, color, border, bg, title, desc, meta }) => (
+                  <a key={href} href={href}
+                    className={`block rounded-xl border border-white/8 ${border} ${bg} p-5 transition-all`}
+                    style={{textDecoration:"none"}}>
+                    <div className="flex items-center gap-2 mb-3">
+                      <Icon size={16} className={color}/>
+                      <span className={`text-xs font-semibold ${color}`}>{meta}</span>
+                    </div>
+                    <h3 className="text-sm font-bold text-white mb-1.5">{title}</h3>
+                    <p className="text-xs text-gray-400 leading-relaxed">{desc}</p>
+                    <div className="mt-3 flex items-center gap-1 text-xs text-gray-500">
+                      <span>Explore</span>
+                      <ArrowRight size={11}/>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+
           </div>
         </div>
       );
@@ -4154,6 +4213,12 @@ function KnowledgeGaps() {
               <a href="/blog/" className="text-xs px-3 py-1.5 rounded-lg whitespace-nowrap transition-colors flex-shrink-0 text-gray-400 hover:text-white hover:bg-gray-800">
                 Blog
               </a>
+              <a href="/projects/" className="text-xs px-3 py-1.5 rounded-lg whitespace-nowrap transition-colors flex-shrink-0 text-gray-400 hover:text-white hover:bg-gray-800">
+                Projects
+              </a>
+              <a href="/paths/" className="text-xs px-3 py-1.5 rounded-lg whitespace-nowrap transition-colors flex-shrink-0 text-gray-400 hover:text-white hover:bg-gray-800">
+                Paths
+              </a>
             </div>
 
             {/* Mobile: current tab + hamburger */}
@@ -4188,9 +4253,17 @@ function KnowledgeGaps() {
                     </a>
                   );
                 })}
-                <a href="/blog/" className="w-full text-left px-4 py-3 text-sm text-gray-400 hover:text-white hover:bg-gray-800 transition-colors flex items-center gap-2.5">
+                <a href="/blog/" className="w-full text-left px-4 py-3 text-sm text-gray-400 hover:text-white hover:bg-gray-800 transition-colors flex items-center gap-2.5 border-b border-gray-800/50">
                   <BookOpen size={15} />
                   Blog
+                </a>
+                <a href="/projects/" className="w-full text-left px-4 py-3 text-sm text-gray-400 hover:text-white hover:bg-gray-800 transition-colors flex items-center gap-2.5 border-b border-gray-800/50">
+                  <Wrench size={15} />
+                  Projects
+                </a>
+                <a href="/paths/" className="w-full text-left px-4 py-3 text-sm text-gray-400 hover:text-white hover:bg-gray-800 transition-colors flex items-center gap-2.5">
+                  <Layers size={15} />
+                  Paths
                 </a>
               </div>
             )}
