@@ -424,6 +424,80 @@
               <div className="flex-1 h-px bg-gray-800"/>
             </div>
 
+            {/* ── Start Here + Visual Phase Map ── */}
+            <div className="mb-6">
+              {/* Start Here selector */}
+              <div className="flex flex-wrap items-center justify-center gap-2 mb-5">
+                <span className="text-xs text-gray-500 mr-1">Where are you starting?</span>
+                {[
+                  { label: "New to AI",              phase: 1 },
+                  { label: "Developer leveling up",  phase: 2 },
+                  { label: "ML Engineer → GenAI",    phase: 4 },
+                ].map(({ label, phase }) => (
+                  <button key={label}
+                    onClick={() => {
+                      setOpen(phase);
+                      setTimeout(() => {
+                        const el = document.getElementById(`phase-card-${phase}`);
+                        if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 104, behavior: 'smooth' });
+                      }, 50);
+                    }}
+                    className="text-xs px-3 py-1.5 rounded-full border border-white/12 bg-gray-800/60 text-gray-300 hover:text-white hover:border-white/30 hover:bg-gray-700/60 transition-all">
+                    {label}
+                  </button>
+                ))}
+              </div>
+
+              {/* Phase flow diagram */}
+              <div className="overflow-x-auto -mx-4 px-4" style={{scrollbarWidth:'none',msOverflowStyle:'none'}}>
+                <div className="flex items-stretch gap-0 min-w-max mx-auto" style={{width:'fit-content'}}>
+                  {roadmapPhases.map((p, i) => {
+                    const isActive = open === p.id;
+                    const pg = phaseProgress(p);
+                    const isDone = pg.pct === 100;
+                    const shortNames = ["AI Foundations","LLM Setup","Prompt Eng","RAG & Data","Agentic AI","Fine-tuning","Ship Projects"];
+                    return (
+                      <React.Fragment key={p.id}>
+                        <button
+                          onClick={() => {
+                            setOpen(isActive ? null : p.id);
+                            setTimeout(() => {
+                              const el = document.getElementById(`phase-card-${p.id}`);
+                              if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 104, behavior: 'smooth' });
+                            }, 50);
+                          }}
+                          className={`group flex flex-col items-center gap-2 px-3 py-3 rounded-xl border transition-all w-[90px] flex-shrink-0 ${
+                            isActive
+                              ? 'bg-blue-600 border-blue-500 shadow-[0_0_16px_rgba(59,130,246,0.35)]'
+                              : isDone
+                              ? 'bg-green-900/20 border-green-500/30 hover:border-green-400/50'
+                              : 'bg-gray-800/50 border-white/8 hover:bg-gray-800 hover:border-white/20'
+                          }`}
+                        >
+                          <div className={`w-9 h-9 rounded-xl bg-gradient-to-br ${p.color} flex items-center justify-center text-white font-bold text-sm flex-shrink-0`}>{p.id}</div>
+                          <div className="text-center">
+                            <div className={`text-[10px] font-semibold leading-tight ${isActive ? 'text-white' : isDone ? 'text-green-300' : 'text-gray-300 group-hover:text-white'}`}>{shortNames[i]}</div>
+                            <div className={`text-[9px] mt-0.5 ${isActive ? 'text-blue-200' : 'text-gray-600'}`}>{p.duration}</div>
+                          </div>
+                          {isDone
+                            ? <span className="text-[9px] text-green-400 font-semibold flex items-center gap-0.5"><Check size={8}/>Done</span>
+                            : pg.completed > 0
+                            ? <span className={`text-[9px] font-semibold ${isActive ? 'text-blue-200' : 'text-blue-400'}`}>{pg.pct}%</span>
+                            : <span className="text-[9px] text-gray-700">· · ·</span>
+                          }
+                        </button>
+                        {i < roadmapPhases.length - 1 && (
+                          <div className="flex items-center flex-shrink-0 px-0.5">
+                            <ArrowRight size={11} className="text-gray-700"/>
+                          </div>
+                        )}
+                      </React.Fragment>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+
             {/* ── Quick tools strip ── */}
             <div className="flex flex-wrap gap-2 mb-5">
               {[
