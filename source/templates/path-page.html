@@ -40,15 +40,14 @@
 <body style="background-color:#030712;color:#f9fafb;font-family:system-ui,sans-serif;margin:0;">
 
   <!-- Header -->
-  <header style="border-bottom:1px solid rgba(255,255,255,0.06);padding:1rem 0;background:#030712;">
-    <div style="max-width:64rem;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;">
-      <a href="/" style="font-weight:700;font-size:1rem;color:#f9fafb;text-decoration:none;">AI Learning Hub</a>
-      <nav style="display:flex;gap:1.5rem;font-size:0.8rem;">
-        <a href="/" style="color:#9ca3af;text-decoration:none;">Roadmap</a>
-        <a href="/blog/" style="color:#9ca3af;text-decoration:none;">Blog</a>
-        <a href="/projects/" style="color:#9ca3af;text-decoration:none;">Projects</a>
-        <a href="/paths/" style="color:#818cf8;text-decoration:none;font-weight:600;">Learning Paths</a>
-      </nav>
+  <header class="sticky top-0 z-50 bg-gray-900/70 backdrop-blur-md border-b border-white/8">
+    <div class="flex items-center gap-1 px-3 py-2 overflow-x-auto" style="scrollbar-width:none;-ms-overflow-style:none;">
+      <a href="/" class="text-sm font-semibold text-white px-3 py-1.5 whitespace-nowrap flex-shrink-0 mr-1 hover:text-blue-400 transition-colors" style="text-decoration:none;">AI Learning Hub</a>
+      <a href="/" class="text-xs px-3 py-1.5 rounded-lg whitespace-nowrap transition-colors flex-shrink-0 text-gray-400 hover:text-white hover:bg-gray-800" style="text-decoration:none;">Roadmap</a>
+      <a href="/resources/" class="text-xs px-3 py-1.5 rounded-lg whitespace-nowrap transition-colors flex-shrink-0 text-gray-400 hover:text-white hover:bg-gray-800" style="text-decoration:none;">Resources</a>
+      <a href="/blog/" class="text-xs px-3 py-1.5 rounded-lg whitespace-nowrap transition-colors flex-shrink-0 text-gray-400 hover:text-white hover:bg-gray-800" style="text-decoration:none;">Blog</a>
+      <a href="/projects/" class="text-xs px-3 py-1.5 rounded-lg whitespace-nowrap transition-colors flex-shrink-0 text-gray-400 hover:text-white hover:bg-gray-800" style="text-decoration:none;">Projects</a>
+      <a href="/paths/" class="text-xs px-3 py-1.5 rounded-lg whitespace-nowrap flex-shrink-0 bg-blue-600 text-white font-semibold" style="text-decoration:none;box-shadow:0 0 12px rgba(59,130,246,0.4);">Paths</a>
     </div>
   </header>
 
