@@ -143,18 +143,22 @@ function main() {
     const kb = Math.round(Buffer.byteLength(html, 'utf8') / 1024);
     console.log(`   ✓ Wrote blog/${slug}/index.html (${kb} KB)`);
 
-    posts.push({ slug, title, description, date });
+    posts.push({ slug, title, description, date, mins });
   }
 
   // Sort posts newest-first
   posts.sort((a, b) => b.date.localeCompare(a.date));
 
   // Generate blog/index.html from template
-  const postListHtml = posts.map(({ slug, title, description, date }) => `
-    <a href="/blog/${slug}/" class="block bg-gray-800/40 rounded-xl p-5 border border-white/8 hover:border-blue-500/30 hover:bg-gray-800/60 transition-all" style="text-decoration:none;">
-      <div class="text-xs text-gray-500 mb-2">${formatDate(date)}</div>
-      <h2 class="text-white font-semibold text-base mb-2 leading-snug">${esc(title)}</h2>
-      <p class="text-gray-400 text-sm leading-relaxed">${esc(description)}</p>
+  const postListHtml = posts.map(({ slug, title, description, date, mins }) => `
+    <a href="/blog/${slug}/" class="group block bg-gray-800/40 rounded-xl p-5 border border-white/8 hover:border-blue-500/30 hover:bg-gray-800/60 transition-all" style="text-decoration:none;">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs text-gray-500">${formatDate(date)}</span>
+        <span class="text-xs text-gray-600">${mins} min read</span>
+      </div>
+      <h2 class="text-white font-semibold text-base mb-2 leading-snug group-hover:text-blue-300 transition-colors">${esc(title)}</h2>
+      <p class="text-gray-400 text-sm leading-relaxed mb-3">${esc(description)}</p>
+      <div class="flex items-center gap-1 text-xs text-blue-400">Read article <span>→</span></div>
     </a>`).join('\n');
 
   let indexHtml = indexTemplate
@@ -237,16 +241,20 @@ function main() {
       const kb = Math.round(Buffer.byteLength(html, 'utf8') / 1024);
       console.log(`   ✓ Wrote blog/roadmap-guides/${slug}/index.html (${kb} KB)`);
 
-      rgPosts.push({ slug, title, description, date });
+      rgPosts.push({ slug, title, description, date, mins });
     }
 
     // Generate blog/roadmap-guides/index.html
     rgPosts.sort((a, b) => b.date.localeCompare(a.date));
-    const rgListHtml = rgPosts.map(({ slug, title, description, date }) => `
-    <a href="/blog/roadmap-guides/${slug}/" class="block bg-gray-800/40 rounded-xl p-5 border border-white/8 hover:border-blue-500/30 hover:bg-gray-800/60 transition-all" style="text-decoration:none;">
-      <div class="text-xs text-gray-500 mb-2">${formatDate(date)}</div>
-      <h2 class="text-white font-semibold text-base mb-2 leading-snug">${esc(title)}</h2>
-      <p class="text-gray-400 text-sm leading-relaxed">${esc(description)}</p>
+    const rgListHtml = rgPosts.map(({ slug, title, description, date, mins }) => `
+    <a href="/blog/roadmap-guides/${slug}/" class="group block bg-gray-800/40 rounded-xl p-5 border border-white/8 hover:border-blue-500/30 hover:bg-gray-800/60 transition-all" style="text-decoration:none;">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs text-gray-500">${formatDate(date)}</span>
+        <span class="text-xs text-gray-600">${mins} min read</span>
+      </div>
+      <h2 class="text-white font-semibold text-base mb-2 leading-snug group-hover:text-blue-300 transition-colors">${esc(title)}</h2>
+      <p class="text-gray-400 text-sm leading-relaxed mb-3">${esc(description)}</p>
+      <div class="flex items-center gap-1 text-xs text-blue-400">Read guide <span>→</span></div>
     </a>`).join('\n');
 
     let rgIndexHtml = indexTemplate
