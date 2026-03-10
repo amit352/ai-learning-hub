@@ -293,31 +293,127 @@
       return (
         <div className="text-gray-100 font-sans">
 
-          {/* ── HERO ── */}
-          <div className="px-4 pt-12 pb-10 max-w-3xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl font-bold mb-4 leading-[1.1] tracking-tight">
-              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">AI Engineering</span>
-              <br />
-              <span className="text-white">Roadmap 2026</span>
-            </h1>
-            <p className="text-gray-400 text-lg max-w-md mx-auto mb-8 leading-relaxed">
-              The structured path from zero to production-ready AI — 7 phases, free for developers.
-            </p>
-            {totalDone > 0 && (
-              <div className="w-full max-w-xs mx-auto bg-gray-800/60 border border-blue-500/20 rounded-xl px-4 py-3 mb-6">
-                <div className="flex justify-between text-xs mb-2">
-                  <span className="text-gray-400 font-medium">Your progress</span>
-                  <span className="text-blue-400 font-semibold">{totalDone}/{totalTopics} · {overallPct}%</span>
-                </div>
-                <div className="h-1.5 bg-gray-700 rounded-full overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full transition-all duration-500" style={{width: `${overallPct}%`}}/>
+          {/* ── HERO — full viewport ── */}
+          <div className="min-h-[calc(100vh-52px)] flex flex-col justify-between px-4 pt-8 pb-6 max-w-3xl mx-auto">
+
+            {/* Top: badge + headline + subtitle + stats */}
+            <div className="text-center">
+              <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-3 py-1 mb-5">
+                <BrainCircuit size={12} className="text-blue-400"/>
+                <span className="text-xs text-blue-400 font-medium">The Developer Roadmap to AI Engineering · 2026</span>
+              </div>
+              <h1 className="text-5xl md:text-6xl font-bold mb-4 leading-[1.1] tracking-tight">
+                <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">AI Engineering</span>
+                <br />
+                <span className="text-white">Roadmap</span>
+              </h1>
+              <p className="text-gray-300 text-lg max-w-xl mx-auto mb-1 leading-relaxed">
+                The structured path from zero to{" "}
+                <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">production-ready AI</span>
+              </p>
+              <p className="text-gray-400 text-sm max-w-lg mx-auto mb-6">
+                Roadmap · guides · projects · career paths — all free for developers
+              </p>
+              <div className="flex flex-wrap justify-center gap-2">
+                {[[Layers,"blue","7","Phases"],[Clock,"purple","~14","months"],[BookOpen,"green","50+","Free resources"],[Wrench,"orange","7","Projects"]].map(([Icon,color,val,label]) => (
+                  <span key={label} className="inline-flex items-center gap-1.5 bg-gray-800/60 border border-white/8 text-gray-300 text-xs px-3 py-1.5 rounded-full">
+                    <Icon size={12} className={`text-${color}-400`}/><strong className="text-white">{val}</strong> {label}
+                  </span>
+                ))}
+              </div>
+              {/* Social proof */}
+              <div className="flex items-center justify-center flex-wrap gap-x-3 gap-y-1 mt-4 text-xs text-gray-600">
+                <a href="https://github.com/amit352/ailearnings" target="_blank" rel="noopener noreferrer"
+                  className="flex items-center gap-1 hover:text-gray-400 transition-colors">
+                  <Github size={11}/> Open source
+                </a>
+                <span>·</span>
+                <span>No ads</span>
+                <span>·</span>
+                <span>No login required</span>
+                <span>·</span>
+                <span>Free forever</span>
+              </div>
+            </div>
+
+            {/* Middle: USP cards + section pills */}
+            <div className="space-y-6 my-8">
+              {/* USP — 3 cards horizontal */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {[
+                  { icon: BookOpen, color: "text-blue-400",   bg: "bg-blue-500/8 border-blue-500/20",   title: "Not just links",       desc: "Topics, projects & milestones — not a bookmark list." },
+                  { icon: Code2,    color: "text-purple-400", bg: "bg-purple-500/8 border-purple-500/20", title: "Built for developers", desc: "No math papers. Ship AI products from day one." },
+                  { icon: Check,    color: "text-green-400",  bg: "bg-green-500/8 border-green-500/20",  title: "Track progress",       desc: "Check off topics. Saved in your browser forever." },
+                ].map(({icon: Icon, color, bg, title, desc}) => (
+                  <div key={title} className={`flex flex-col gap-2 rounded-xl border ${bg} px-4 py-4`}>
+                    <Icon size={18} className={color}/>
+                    <p className="text-sm font-semibold text-white">{title}</p>
+                    <p className="text-xs text-gray-400 leading-relaxed">{desc}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Platform cards — surfaced early */}
+              <div>
+                <p className="text-xs text-gray-400 uppercase tracking-wider mb-3 text-center">Everything on this platform</p>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  {[
+                    { href: "/blog/",     icon: BookOpen, color: "text-blue-400",   border: "hover:border-blue-500/40",   bg: "hover:bg-blue-500/5",   title: "Developer Guides", meta: "28 guides",   desc: "Deep-dives on ML, LLMs, RAG, prompt engineering, and AI agents." },
+                    { href: "/projects/", icon: Wrench,   color: "text-green-400",  border: "hover:border-green-500/40",  bg: "hover:bg-green-500/5",  title: "AI Projects",      meta: "20 projects", desc: "Hands-on builds from beginner chatbots to multi-agent systems." },
+                    { href: "/paths/",    icon: Layers,   color: "text-purple-400", border: "hover:border-purple-500/40", bg: "hover:bg-purple-500/5", title: "Career Paths",     meta: "5 paths",     desc: "Role-based paths for AI Engineer, ML Engineer, LLM Engineer." },
+                  ].map(({ href, icon: Icon, color, border, bg, title, meta, desc }) => (
+                    <a key={href} href={href}
+                      className={`block rounded-xl border border-white/8 ${border} ${bg} px-4 py-4 transition-all`}
+                      style={{textDecoration:"none"}}>
+                      <div className="flex items-center gap-2 mb-2">
+                        <Icon size={14} className={color}/>
+                        <span className={`text-xs font-semibold ${color}`}>{meta}</span>
+                      </div>
+                      <p className="text-sm font-bold text-white mb-1">{title}</p>
+                      <p className="text-xs text-gray-400 leading-relaxed">{desc}</p>
+                      <div className="mt-2 flex items-center gap-1 text-xs text-gray-500">
+                        <span>Explore</span><ArrowRight size={10}/>
+                      </div>
+                    </a>
+                  ))}
                 </div>
               </div>
-            )}
-            <button onClick={scrollToPhase1}
-              className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-3 rounded-xl transition-all shadow-[0_0_24px_rgba(59,130,246,0.35)] hover:shadow-[0_0_32px_rgba(59,130,246,0.5)] text-sm">
-              {totalDone > 0 ? "Continue learning" : "Start the roadmap"} <ArrowRight size={15}/>
-            </button>
+            </div>
+
+            {/* Bottom: progress → CTA → scroll hint */}
+            <div className="flex flex-col items-center gap-5">
+              {totalDone > 0 ? (
+                <div className="w-full max-w-sm bg-gray-800/60 border border-blue-500/20 rounded-xl px-4 py-3">
+                  <div className="flex justify-between text-xs mb-2">
+                    <span className="text-gray-400 font-medium">Your progress</span>
+                    <span className="text-blue-400 font-semibold">{totalDone}/{totalTopics} topics · {overallPct}%</span>
+                  </div>
+                  <div className="h-2 bg-gray-700 rounded-full overflow-hidden">
+                    <div className="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full transition-all duration-500" style={{width: `${overallPct}%`}}/>
+                  </div>
+                </div>
+              ) : null}
+
+              <div className="flex flex-col sm:flex-row items-center gap-3">
+                <button onClick={scrollToPhase1}
+                  className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-3 rounded-xl transition-all shadow-[0_0_24px_rgba(59,130,246,0.35)] hover:shadow-[0_0_32px_rgba(59,130,246,0.5)] text-sm">
+                  {totalDone > 0 ? "Continue learning" : "Start the roadmap"} <ArrowRight size={15}/>
+                </button>
+                <a href="https://github.com/amit352/ailearnings" target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-gray-400 hover:text-white text-sm transition-colors">
+                  <Github size={14}/> Star on GitHub
+                </a>
+                <a href="https://github.com/amit352/ailearnings/discussions" target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-gray-400 hover:text-white text-sm transition-colors">
+                  <MessageSquare size={14}/> Feedback
+                </a>
+              </div>
+
+              <button onClick={scrollToPhase1} className="flex flex-col items-center gap-1 text-gray-400 hover:text-gray-200 transition-colors">
+                <span className="text-xs tracking-wider uppercase">Scroll to roadmap</span>
+                <ChevronDown size={16} className="animate-bounce"/>
+              </button>
+            </div>
           </div>
 
           {/* ── ROADMAP SECTION ── */}
