@@ -1,4 +1,11 @@
 User-agent: *
 Allow: /
+Disallow: /feed/
+Disallow: /comments/
+Disallow: /search/
+Disallow: /category/
+Disallow: /author/
+Disallow: /lander
+Disallow: /wp-
 
 Sitemap: https://ailearnings.in/sitemap.xml
