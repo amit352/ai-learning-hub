@@ -81,6 +81,7 @@ function main() {
       '@type': 'Article',
       headline: title,
       description: description,
+      image: 'https://ailearnings.in/og-image.jpg',
       url: canonical,
       datePublished: date,
       dateModified: date,

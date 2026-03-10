@@ -381,6 +381,14 @@ const PROJECT_LIST = [
     "stack": "Python, OpenAI API, pypdf, Streamlit"
   },
   {
+    "slug": "build-chatgpt-clone",
+    "title": "Build a ChatGPT Clone from Scratch: Full-Stack AI Chat App",
+    "description": "Build a full-stack conversational AI app with streaming responses, persistent conversation history, and a React chat UI — using FastAPI and the OpenAI API.",
+    "level": "Beginner",
+    "time": "3–4 hours",
+    "stack": "Python, FastAPI, React, OpenAI API"
+  },
+  {
     "slug": "document-summarizer",
     "title": "Build an AI Document Summarizer: PDF, Text, and URL Summarization",
     "description": "Build an AI-powered document summarizer that handles PDFs, plain text, and web URLs. Supports map-reduce summarization for long documents and outputs key bullet points.",

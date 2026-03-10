@@ -238,8 +238,8 @@
 
     function Roadmap() {
       useSeo(
-        "AI Learning Hub – Zero to Hero Roadmap for Developers",
-        "Free 7-phase AI roadmap for software developers. Master LLMs, Prompt Engineering, RAG, and Agentic AI with curated free resources and hands-on projects."
+        "AI Learning Hub – The Complete AI Roadmap for Developers",
+        "Free 7-phase AI roadmap for software developers. Learn LLMs, Prompt Engineering, RAG Systems, AI Agents, and Fine-Tuning with a structured step-by-step learning path."
       );
       const [open, setOpen] = useState(1);
       const [tab, setTab] = useState({});
@@ -311,15 +311,15 @@
           <div className="flex flex-col items-center justify-center text-center px-4 max-w-3xl mx-auto gap-5" style={{minHeight:'calc(100vh - 52px)'}}>
             <div>
               <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold px-3 py-1.5 rounded-full mb-5 select-none">
-                The Developer Roadmap to AI Engineering · 2026
+                AI Learning Hub
               </div>
               <h1 className="text-5xl md:text-6xl font-bold mb-4 leading-[1.1] tracking-tight">
-                <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">AI Engineering</span>
+                <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">The Complete AI Roadmap</span>
                 <br />
-                <span className="text-white">Roadmap</span>
+                <span className="text-white">for Developers</span>
               </h1>
               <p className="text-gray-300 text-lg max-w-xl mx-auto mb-3 leading-relaxed">
-                The structured path from zero to production-ready AI.
+                Learn LLMs, Prompt Engineering, RAG Systems, AI Agents, and Fine-Tuning with a structured step-by-step learning path.
               </p>
               <p className="text-gray-500 text-sm">
                 7 phases · ~14 months · 50+ resources · real projects
@@ -345,7 +345,7 @@
             <div className="flex flex-col sm:flex-row items-center gap-3">
               <button onClick={scrollToPhase1}
                 className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-3 rounded-xl transition-all shadow-[0_0_24px_rgba(59,130,246,0.35)] hover:shadow-[0_0_32px_rgba(59,130,246,0.5)] text-sm">
-                {totalDone > 0 ? "Continue learning" : "Start the roadmap"} <ArrowRight size={15}/>
+                {totalDone > 0 ? "Continue learning" : "Start the AI roadmap"} <ArrowRight size={15}/>
               </button>
               <a href="https://github.com/amit352/ailearnings" target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-gray-400 hover:text-white text-sm transition-colors">
