@@ -4500,6 +4500,605 @@ function KnowledgeGaps() {
       );
     }
 
+    // ─── SEO LANDING PAGES ───
+
+    function HowToLearnAIPage() {
+      useSeo(
+        "How to Learn AI in 2026: Complete Guide for Developers | AI Learning Hub",
+        "A complete guide to learning AI as a developer in 2026. Step-by-step path covering Python, machine learning, deep learning, LLMs, and building AI projects."
+      );
+      return (
+        <div className="max-w-3xl mx-auto px-4 py-10">
+          {/* Hero */}
+          <div className="mb-10">
+            <span className="inline-block bg-blue-600/20 text-blue-400 text-xs font-semibold px-3 py-1 rounded-full mb-4">Learning Guide</span>
+            <h1 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">How to Learn AI in 2026: Complete Guide for Developers</h1>
+            <p className="text-gray-400 text-lg leading-relaxed">AI is no longer optional for software developers. Whether you're building features, switching roles, or just staying relevant — this guide gives you the exact path to go from zero to production-ready AI engineering.</p>
+          </div>
+
+          {/* TOC */}
+          <div className="bg-gray-800/50 border border-white/8 rounded-xl p-5 mb-10">
+            <p className="text-white font-semibold text-sm mb-3">In this guide</p>
+            <ol className="space-y-1.5 text-sm text-blue-400">
+              <li><a href="#foundations" className="hover:text-blue-300">1. Learn AI Foundations</a></li>
+              <li><a href="#python" className="hover:text-blue-300">2. Learn Python for AI</a></li>
+              <li><a href="#machine-learning" className="hover:text-blue-300">3. Understand Machine Learning</a></li>
+              <li><a href="#deep-learning" className="hover:text-blue-300">4. Learn Deep Learning</a></li>
+              <li><a href="#llms" className="hover:text-blue-300">5. Learn LLM Engineering</a></li>
+              <li><a href="#projects" className="hover:text-blue-300">6. Build AI Projects</a></li>
+              <li><a href="#path" className="hover:text-blue-300">7. Recommended Learning Path</a></li>
+              <li><a href="#faq" className="hover:text-blue-300">8. FAQ</a></li>
+            </ol>
+          </div>
+
+          {/* Intro */}
+          <div className="mb-10">
+            <h2 className="text-xl font-bold text-white mb-4">Why Learning AI is Different from Traditional Programming</h2>
+            <p className="text-gray-300 leading-relaxed mb-4">Traditional programming is deterministic — you write rules, the computer follows them. AI flips this: you provide data and desired outcomes, and the model learns the rules itself. This fundamental shift means your mental model needs to change before your skill set can.</p>
+            <p className="text-gray-300 leading-relaxed mb-4">As a developer, you have a huge advantage. You already understand data structures, APIs, version control, and debugging. What you need to add is: statistical thinking, model evaluation, and the AI engineering stack (LLMs, vector databases, embeddings, agents).</p>
+            <p className="text-gray-300 leading-relaxed">This guide gives you a structured 6-step path. Follow it sequentially — each step builds on the last.</p>
+          </div>
+
+          {/* Step 1 */}
+          <section id="foundations" className="mb-10">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="flex-shrink-0 w-8 h-8 bg-green-600/20 text-green-400 rounded-full flex items-center justify-center text-sm font-bold">1</span>
+              <h2 className="text-xl font-bold text-white">Learn AI Foundations</h2>
+            </div>
+            <p className="text-gray-300 leading-relaxed mb-4">Before writing any code, understand what AI actually is. Machine learning is the branch of AI where systems learn patterns from data instead of following explicit rules.</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              <div className="bg-gray-800/60 rounded-lg p-4">
+                <p className="text-white font-semibold text-sm mb-2">Supervised Learning</p>
+                <p className="text-gray-400 text-sm">Learn from labeled examples. Input → Output mappings. Used for classification, regression, and prediction tasks.</p>
+              </div>
+              <div className="bg-gray-800/60 rounded-lg p-4">
+                <p className="text-white font-semibold text-sm mb-2">Unsupervised Learning</p>
+                <p className="text-gray-400 text-sm">Find patterns in unlabeled data. Used for clustering, anomaly detection, and dimensionality reduction.</p>
+              </div>
+              <div className="bg-gray-800/60 rounded-lg p-4">
+                <p className="text-white font-semibold text-sm mb-2">Reinforcement Learning</p>
+                <p className="text-gray-400 text-sm">Learn by trial and reward signals. Used for game-playing, robotics, and optimization problems.</p>
+              </div>
+              <div className="bg-gray-800/60 rounded-lg p-4">
+                <p className="text-white font-semibold text-sm mb-2">Generative AI</p>
+                <p className="text-gray-400 text-sm">Models that generate new content — text, images, code. Built on large pretrained neural networks (LLMs).</p>
+              </div>
+            </div>
+            <p className="text-gray-300 leading-relaxed"><span className="text-white font-semibold">Time estimate:</span> 1–2 weeks to build solid conceptual foundations before writing code.</p>
+          </section>
+
+          {/* Step 2 */}
+          <section id="python" className="mb-10">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="flex-shrink-0 w-8 h-8 bg-blue-600/20 text-blue-400 rounded-full flex items-center justify-center text-sm font-bold">2</span>
+              <h2 className="text-xl font-bold text-white">Learn Python for AI</h2>
+            </div>
+            <p className="text-gray-300 leading-relaxed mb-4">Python is the language of AI. Not because it's the fastest — it's not — but because the entire ML/AI ecosystem is built around it: NumPy, Pandas, PyTorch, Hugging Face, LangChain, and every major LLM SDK.</p>
+            <p className="text-gray-300 leading-relaxed mb-4">You don't need to master Python. You need to be comfortable with: list comprehensions, classes, decorators, async/await, and package management with pip/uv.</p>
+            <div className="bg-indigo-900/20 border border-indigo-500/20 rounded-lg p-4 mb-4">
+              <p className="text-indigo-300 text-sm font-semibold mb-1">Recommended resource</p>
+              <a href="/blog/python-for-machine-learning/" className="text-blue-400 hover:text-blue-300 text-sm">Python for Machine Learning: The Complete Guide →</a>
+            </div>
+            <p className="text-gray-300 leading-relaxed"><span className="text-white font-semibold">Key libraries to learn:</span> NumPy (array math), Pandas (data manipulation), Matplotlib (visualization), Scikit-learn (classical ML).</p>
+          </section>
+
+          {/* Step 3 */}
+          <section id="machine-learning" className="mb-10">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="flex-shrink-0 w-8 h-8 bg-purple-600/20 text-purple-400 rounded-full flex items-center justify-center text-sm font-bold">3</span>
+              <h2 className="text-xl font-bold text-white">Understand Machine Learning</h2>
+            </div>
+            <p className="text-gray-300 leading-relaxed mb-4">Machine learning gives you the mental model for how all AI systems work — even LLMs at their core. Learn to train models, evaluate them, and avoid the most common failure modes (overfitting, data leakage, distribution shift).</p>
+            <div className="space-y-2 mb-4">
+              {[
+                ["Linear & logistic regression", "The simplest models — learn the math before the magic"],
+                ["Decision trees & random forests", "Interpretable models that work well on tabular data"],
+                ["Model evaluation", "Accuracy, precision, recall, F1, AUC — know when to use each"],
+                ["Feature engineering", "Often more impactful than model choice"],
+                ["Cross-validation", "Prevent overfitting with proper train/val/test splits"],
+              ].map(([topic, desc]) => (
+                <div key={topic} className="flex items-start gap-3 bg-gray-800/40 rounded-lg px-4 py-3">
+                  <span className="text-green-400 mt-0.5">✓</span>
+                  <div>
+                    <span className="text-white text-sm font-medium">{topic}</span>
+                    <span className="text-gray-400 text-sm"> — {desc}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="bg-indigo-900/20 border border-indigo-500/20 rounded-lg p-4">
+              <p className="text-indigo-300 text-sm font-semibold mb-1">Recommended resource</p>
+              <a href="/blog/machine-learning-basics-for-developers/" className="text-blue-400 hover:text-blue-300 text-sm">Machine Learning Basics for Developers →</a>
+            </div>
+          </section>
+
+          {/* Step 4 */}
+          <section id="deep-learning" className="mb-10">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="flex-shrink-0 w-8 h-8 bg-orange-600/20 text-orange-400 rounded-full flex items-center justify-center text-sm font-bold">4</span>
+              <h2 className="text-xl font-bold text-white">Learn Deep Learning</h2>
+            </div>
+            <p className="text-gray-300 leading-relaxed mb-4">Deep learning is the foundation of modern AI — from image recognition to language models. Neural networks with many layers can learn extremely complex patterns from large datasets.</p>
+            <p className="text-gray-300 leading-relaxed mb-4">For developers focused on LLM engineering and AI applications, you don't need to become a deep learning researcher. You need enough understanding to:</p>
+            <ul className="space-y-2 text-gray-300 text-sm mb-4 pl-4">
+              <li>• Understand how neural networks learn (forward pass, backprop, gradient descent)</li>
+              <li>• Know why transformers work and what attention mechanisms do</li>
+              <li>• Be able to fine-tune pretrained models for your domain</li>
+              <li>• Debug training issues (loss not converging, NaN gradients, memory errors)</li>
+            </ul>
+            <p className="text-gray-300 leading-relaxed"><span className="text-white font-semibold">Framework to learn:</span> PyTorch. It's the standard for research and increasingly for production. Hugging Face builds on top of it.</p>
+          </section>
+
+          {/* Step 5 */}
+          <section id="llms" className="mb-10">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="flex-shrink-0 w-8 h-8 bg-rose-600/20 text-rose-400 rounded-full flex items-center justify-center text-sm font-bold">5</span>
+              <h2 className="text-xl font-bold text-white">Learn LLM Engineering</h2>
+            </div>
+            <p className="text-gray-300 leading-relaxed mb-4">Large Language Models are the most impactful technology in AI today. As a developer, the key skill is learning to work with LLMs as building blocks — not just call an API and hope for the best.</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              {[
+                { title: "Prompt Engineering", desc: "System prompts, few-shot examples, chain-of-thought, structured outputs" },
+                { title: "RAG Systems", desc: "Retrieval-augmented generation — give LLMs access to your documents" },
+                { title: "Fine-tuning", desc: "Adapt pretrained models to your domain with custom training data" },
+                { title: "AI Agents", desc: "LLMs that use tools, browse the web, write code, and take actions" },
+              ].map(({ title, desc }) => (
+                <div key={title} className="bg-gray-800/60 rounded-lg p-4">
+                  <p className="text-white font-semibold text-sm mb-1">{title}</p>
+                  <p className="text-gray-400 text-sm">{desc}</p>
+                </div>
+              ))}
+            </div>
+            <div className="bg-indigo-900/20 border border-indigo-500/20 rounded-lg p-4">
+              <p className="text-indigo-300 text-sm font-semibold mb-1">Recommended resource</p>
+              <a href="/blog/transformer-architecture-explained/" className="text-blue-400 hover:text-blue-300 text-sm">Transformer Architecture Explained →</a>
+            </div>
+          </section>
+
+          {/* Step 6 */}
+          <section id="projects" className="mb-10">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="flex-shrink-0 w-8 h-8 bg-teal-600/20 text-teal-400 rounded-full flex items-center justify-center text-sm font-bold">6</span>
+              <h2 className="text-xl font-bold text-white">Build AI Projects</h2>
+            </div>
+            <p className="text-gray-300 leading-relaxed mb-4">Theory without practice is useless. The fastest way to solidify AI knowledge is to build real projects — things you can demo, share, and iterate on. Projects also give you portfolio proof that you can ship AI systems.</p>
+            <p className="text-gray-300 leading-relaxed mb-4">Start with beginner projects (API integrations, simple chatbots), progress to intermediate (RAG systems, fine-tuning), and eventually build production-grade agentic systems.</p>
+            <div className="bg-gray-800/50 border border-white/8 rounded-xl p-5 mb-4">
+              <p className="text-white font-semibold text-sm mb-3">Suggested project progression</p>
+              <div className="space-y-2 text-sm">
+                <div className="flex items-center gap-3"><span className="text-green-400 text-xs font-bold px-2 py-0.5 bg-green-400/10 rounded">Beginner</span><span className="text-gray-300">AI chatbot → Document summarizer → Sentiment analyzer</span></div>
+                <div className="flex items-center gap-3"><span className="text-blue-400 text-xs font-bold px-2 py-0.5 bg-blue-400/10 rounded">Intermediate</span><span className="text-gray-300">RAG document assistant → AI meeting summarizer → Research assistant</span></div>
+                <div className="flex items-center gap-3"><span className="text-purple-400 text-xs font-bold px-2 py-0.5 bg-purple-400/10 rounded">Advanced</span><span className="text-gray-300">Multi-agent system → Fine-tuned domain LLM → Production AI app</span></div>
+              </div>
+            </div>
+            <a href="/projects/" className="text-blue-400 hover:text-blue-300 text-sm">Browse all AI project guides →</a>
+          </section>
+
+          {/* Recommended Path */}
+          <section id="path" className="mb-10 bg-gradient-to-br from-blue-900/30 to-purple-900/20 border border-blue-500/20 rounded-xl p-6">
+            <h2 className="text-xl font-bold text-white mb-3">Recommended AI Learning Path</h2>
+            <p className="text-gray-300 text-sm leading-relaxed mb-4">If you want a structured, phase-by-phase curriculum with resources, projects, and milestones for each step — follow the complete AI roadmap for developers.</p>
+            <div className="flex flex-wrap gap-3">
+              <a href="/blog/ai-roadmap-for-developers/" className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors">View the full AI roadmap →</a>
+              <a href="/ai-projects-for-beginners/" className="inline-flex items-center gap-2 bg-gray-700 hover:bg-gray-600 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors">See beginner AI projects →</a>
+            </div>
+          </section>
+
+          {/* FAQ */}
+          <section id="faq" className="mb-10">
+            <h2 className="text-xl font-bold text-white mb-6">Frequently Asked Questions</h2>
+            <div className="space-y-4">
+              {[
+                {
+                  q: "How long does it take to learn AI?",
+                  a: "With consistent daily practice (1–2 hours), most developers reach job-ready AI engineering skills in 6–12 months. The foundations (Python + ML basics) take 2–3 months. LLM engineering and building projects take another 3–6 months. Specializing in a niche (RAG, agents, fine-tuning) takes an additional 2–4 months."
+                },
+                {
+                  q: "Do you need math to learn AI?",
+                  a: "You need enough linear algebra to understand matrix multiplication, enough calculus to understand gradients, and enough statistics to understand probability distributions and model evaluation metrics. You don't need a PhD — a comfortable understanding of high school/undergrad math fundamentals is sufficient for most AI engineering work."
+                },
+                {
+                  q: "Can developers learn AI without a degree?",
+                  a: "Yes — and many of the best AI engineers are self-taught developers who transitioned. Companies hiring AI engineers care far more about your GitHub portfolio, ability to ship production AI systems, and understanding of LLM/RAG/agent patterns than your educational background."
+                },
+                {
+                  q: "What's the best first AI project to build?",
+                  a: "Start with a simple document Q&A chatbot using LangChain and OpenAI. It covers the complete stack: document loading, chunking, embedding, vector search, and LLM generation. It takes 4–8 hours to build and gives you hands-on experience with every component of a production RAG system."
+                },
+                {
+                  q: "Should I learn TensorFlow or PyTorch?",
+                  a: "Learn PyTorch. It has become the dominant framework in AI research and is increasingly used in production. Hugging Face, the central platform for pretrained models, is PyTorch-first. TensorFlow/Keras is still used in some production systems but PyTorch is the better investment for 2026."
+                },
+              ].map(({ q, a }) => (
+                <div key={q} className="bg-gray-800/40 rounded-xl p-5">
+                  <p className="text-white font-semibold text-sm mb-2">{q}</p>
+                  <p className="text-gray-400 text-sm leading-relaxed">{a}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Internal links footer */}
+          <div className="border-t border-white/8 pt-8">
+            <p className="text-white font-semibold text-sm mb-4">Continue learning</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+              <a href="/blog/ai-roadmap-for-developers/" className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors">→ AI Roadmap for Developers</a>
+              <a href="/projects/" className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors">→ AI Project Library</a>
+              <a href="/ai-projects-for-beginners/" className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors">→ AI Projects for Beginners</a>
+              <a href="/best-ai-tools-for-developers/" className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors">→ Best AI Tools for Developers</a>
+              <a href="/llm-roadmap/" className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors">→ LLM Engineering Roadmap</a>
+              <a href="/paths/" className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors">→ AI Learning Paths</a>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    function AiProjectsForBeginnersPage() {
+      useSeo(
+        "20 AI Projects for Beginners in 2026 (Step-by-Step Guides) | AI Learning Hub",
+        "The best AI projects for beginners in 2026. 20 hands-on builds from chatbots to RAG systems — each with step-by-step guides, tech stacks, and free resources."
+      );
+
+      const beginnerProjects = [
+        { title: "AI Chatbot with Python", level: "Beginner", time: "4–6 hrs", stack: "Python, OpenAI API", href: "/projects/ai-chatbot-python/", desc: "Build a conversational chatbot with memory, system prompts, and a simple web UI using Gradio." },
+        { title: "Build a ChatGPT Clone", level: "Beginner", time: "6–8 hrs", stack: "Python, OpenAI, Streamlit", href: "/projects/build-chatgpt-clone/", desc: "Recreate the core ChatGPT experience with streaming responses, conversation history, and a polished UI." },
+        { title: "Document Summarizer", level: "Beginner", time: "3–4 hrs", stack: "Python, LangChain, OpenAI", href: "/projects/document-summarizer/", desc: "Upload a PDF or text file and get a structured summary with key points and action items." },
+        { title: "Sentiment Analyzer", level: "Beginner", time: "3–5 hrs", stack: "Python, Hugging Face, Gradio", href: "/projects/sentiment-analyzer/", desc: "Classify text sentiment using a pretrained transformer model. Build a real-time demo UI." },
+        { title: "AI Resume Analyzer", level: "Beginner", time: "4–6 hrs", stack: "Python, OpenAI, FastAPI", href: "/projects/ai-resume-analyzer/", desc: "Parse a resume and provide structured feedback on skills gaps, formatting, and job alignment." },
+        { title: "AI Code Explainer", level: "Beginner", time: "3–4 hrs", stack: "Python, Claude API", href: "/projects/ai-code-explainer/", desc: "Paste any code snippet and get a plain-English explanation with complexity analysis." },
+        { title: "AI Email Writer", level: "Beginner", time: "3–4 hrs", stack: "Python, OpenAI, Streamlit", href: "/projects/ai-email-writer/", desc: "Generate professional emails from bullet points. Supports different tones (formal, friendly, urgent)." },
+        { title: "AI Quiz Generator", level: "Beginner", time: "4–5 hrs", stack: "Python, OpenAI, FastAPI", href: "/projects/ai-quiz-generator/", desc: "Generate multiple-choice quizzes from any topic or document. Export to JSON or HTML." },
+      ];
+
+      const intermediateProjects = [
+        { title: "RAG Document Assistant", level: "Intermediate", time: "8–12 hrs", stack: "LangChain, Chroma, OpenAI", href: "/projects/rag-document-assistant/", desc: "Build a chatbot that answers questions from your own documents using retrieval-augmented generation." },
+        { title: "AI Meeting Summarizer", level: "Intermediate", time: "6–8 hrs", stack: "Whisper, OpenAI, Python", href: "/projects/ai-meeting-summarizer/", desc: "Transcribe meeting audio with Whisper, then extract key decisions, action items, and summaries." },
+        { title: "AI Research Assistant", level: "Intermediate", time: "8–10 hrs", stack: "LangChain, Tavily, OpenAI", href: "/projects/ai-research-assistant/", desc: "An agent that searches the web, reads pages, and writes structured research reports on any topic." },
+        { title: "AI Data Analyst", level: "Intermediate", time: "8–10 hrs", stack: "Python, Pandas, OpenAI, Gradio", href: "/projects/ai-data-analyst/", desc: "Natural language interface for data analysis — ask questions about a CSV and get charts and insights." },
+        { title: "AI Support Bot", level: "Intermediate", time: "8–12 hrs", stack: "LangChain, Chroma, FastAPI", href: "/projects/ai-support-bot/", desc: "Build a customer support bot trained on your product docs with escalation logic and conversation memory." },
+        { title: "Voice AI Assistant", level: "Intermediate", time: "8–10 hrs", stack: "Whisper, OpenAI, ElevenLabs", href: "/projects/voice-ai-assistant/", desc: "Voice-to-voice AI assistant: speech recognition, LLM reasoning, and text-to-speech output." },
+        { title: "AI Content Moderator", level: "Intermediate", time: "6–8 hrs", stack: "Python, Claude API, FastAPI", href: "/projects/ai-content-moderator/", desc: "Classify user-generated content for toxicity, spam, and policy violations with explainable decisions." },
+      ];
+
+      const advancedProjects = [
+        { title: "Multi-Agent Research System", level: "Advanced", time: "16–24 hrs", stack: "LangGraph, OpenAI, Tavily", href: "/projects/multi-agent-research-system/", desc: "Orchestrator + worker agent system where a planner delegates research tasks to specialized agents." },
+        { title: "AI Personal Knowledge Base", level: "Advanced", time: "12–16 hrs", stack: "LangChain, Chroma, Obsidian", href: "/projects/ai-personal-knowledge-base/", desc: "RAG system over your personal notes, bookmarks, and documents with automatic incremental indexing." },
+        { title: "AI Code Review Assistant", level: "Advanced", time: "10–14 hrs", stack: "Python, Claude API, GitHub API", href: "/projects/ai-code-review-assistant/", desc: "GitHub bot that reviews pull requests, suggests improvements, and explains code decisions." },
+        { title: "AI Study Planner", level: "Advanced", time: "12–16 hrs", stack: "LangChain, OpenAI, FastAPI", href: "/projects/ai-study-planner/", desc: "Generates personalized learning plans with milestones, resources, and progress tracking." },
+      ];
+
+      const levelColor = { Beginner: "text-green-400 bg-green-400/10", Intermediate: "text-blue-400 bg-blue-400/10", Advanced: "text-purple-400 bg-purple-400/10" };
+
+      const ProjectCard = ({ p }) => (
+        <a href={p.href} className="block bg-gray-800/50 hover:bg-gray-800/80 border border-white/8 hover:border-white/15 rounded-xl p-5 transition-all group">
+          <div className="flex items-start justify-between gap-3 mb-2">
+            <h3 className="text-white font-semibold text-sm group-hover:text-blue-300 transition-colors">{p.title}</h3>
+            <span className={`flex-shrink-0 text-xs font-semibold px-2 py-0.5 rounded ${levelColor[p.level]}`}>{p.level}</span>
+          </div>
+          <p className="text-gray-400 text-sm leading-relaxed mb-3">{p.desc}</p>
+          <div className="flex items-center gap-3 text-xs text-gray-500">
+            <span>⏱ {p.time}</span>
+            <span>·</span>
+            <span>{p.stack}</span>
+          </div>
+        </a>
+      );
+
+      return (
+        <div className="max-w-3xl mx-auto px-4 py-10">
+          {/* Hero */}
+          <div className="mb-10">
+            <span className="inline-block bg-green-600/20 text-green-400 text-xs font-semibold px-3 py-1 rounded-full mb-4">AI Projects</span>
+            <h1 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">20 AI Projects for Beginners (Step-by-Step Guides)</h1>
+            <p className="text-gray-400 text-lg leading-relaxed">The fastest way to learn AI is to build things. Every project here comes with a step-by-step guide, tech stack, and the skills it teaches — from simple API wrappers to production RAG systems.</p>
+          </div>
+
+          {/* Stats */}
+          <div className="grid grid-cols-3 gap-4 mb-10">
+            {[["20", "guided projects"], ["3", "difficulty levels"], ["0", "cost to start"]].map(([n, l]) => (
+              <div key={l} className="bg-gray-800/50 rounded-xl p-4 text-center">
+                <p className="text-2xl font-bold text-white mb-1">{n}</p>
+                <p className="text-gray-400 text-xs">{l}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Intro */}
+          <div className="mb-10">
+            <h2 className="text-xl font-bold text-white mb-4">Why Build AI Projects as a Beginner?</h2>
+            <p className="text-gray-300 leading-relaxed mb-4">Reading about AI and building AI are completely different experiences. Projects force you to confront real problems: API errors, chunking strategies, prompt failures, latency issues. Each bug you fix teaches you something no tutorial will.</p>
+            <p className="text-gray-300 leading-relaxed mb-4">For job seekers: hiring managers for AI roles don't care about certificates — they want to see you can ship. A GitHub repo with a working RAG system or AI agent is worth more than any course completion badge.</p>
+            <p className="text-gray-300 leading-relaxed">This list starts with 8 beginner projects you can complete in a weekend, progresses to intermediate projects that teach production patterns, and ends with advanced projects that belong on any AI engineer's resume.</p>
+          </div>
+
+          {/* Beginner projects */}
+          <section className="mb-12">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="text-green-400 font-bold text-sm px-3 py-1 bg-green-400/10 rounded-full">Beginner</span>
+              <h2 className="text-xl font-bold text-white">Beginner AI Projects</h2>
+            </div>
+            <p className="text-gray-400 text-sm mb-6">No ML experience needed. These projects use LLM APIs (OpenAI, Claude, Gemini) as building blocks. Focus on learning the API patterns, prompt design, and building UIs.</p>
+            <div className="grid grid-cols-1 gap-4">
+              {beginnerProjects.map(p => <ProjectCard key={p.title} p={p} />)}
+            </div>
+          </section>
+
+          {/* Intermediate projects */}
+          <section className="mb-12">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="text-blue-400 font-bold text-sm px-3 py-1 bg-blue-400/10 rounded-full">Intermediate</span>
+              <h2 className="text-xl font-bold text-white">Intermediate AI Projects</h2>
+            </div>
+            <p className="text-gray-400 text-sm mb-6">These projects introduce RAG, multi-modal AI, and more complex agent patterns. Expect to spend a full weekend on each. They're the projects that most effectively demonstrate AI engineering competence.</p>
+            <div className="grid grid-cols-1 gap-4">
+              {intermediateProjects.map(p => <ProjectCard key={p.title} p={p} />)}
+            </div>
+          </section>
+
+          {/* Advanced projects */}
+          <section className="mb-12">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="text-purple-400 font-bold text-sm px-3 py-1 bg-purple-400/10 rounded-full">Advanced</span>
+              <h2 className="text-xl font-bold text-white">Advanced AI Projects</h2>
+            </div>
+            <p className="text-gray-400 text-sm mb-6">These projects require solid understanding of LLMs, RAG, and agent architectures. They take multiple days and are appropriate for a professional portfolio.</p>
+            <div className="grid grid-cols-1 gap-4">
+              {advancedProjects.map(p => <ProjectCard key={p.title} p={p} />)}
+            </div>
+          </section>
+
+          {/* Learning path CTA */}
+          <section className="mb-10 bg-gradient-to-br from-blue-900/30 to-purple-900/20 border border-blue-500/20 rounded-xl p-6">
+            <h2 className="text-xl font-bold text-white mb-3">Complete AI Learning Path</h2>
+            <p className="text-gray-300 text-sm leading-relaxed mb-4">Projects are most effective when combined with structured learning. Follow the AI roadmap for developers to build foundational knowledge alongside your projects.</p>
+            <div className="flex flex-wrap gap-3">
+              <a href="/blog/ai-roadmap-for-developers/" className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors">View the full AI roadmap →</a>
+              <a href="/how-to-learn-ai/" className="inline-flex items-center gap-2 bg-gray-700 hover:bg-gray-600 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors">How to learn AI →</a>
+            </div>
+          </section>
+
+          {/* Internal links footer */}
+          <div className="border-t border-white/8 pt-8">
+            <p className="text-white font-semibold text-sm mb-4">Related resources</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+              <a href="/blog/ai-roadmap-for-developers/" className="text-blue-400 hover:text-blue-300 transition-colors">→ AI Roadmap for Developers</a>
+              <a href="/blog/rag-tutorial-step-by-step/" className="text-blue-400 hover:text-blue-300 transition-colors">→ RAG Tutorial Step by Step</a>
+              <a href="/how-to-learn-ai/" className="text-blue-400 hover:text-blue-300 transition-colors">→ How to Learn AI Guide</a>
+              <a href="/best-ai-tools-for-developers/" className="text-blue-400 hover:text-blue-300 transition-colors">→ Best AI Tools for Developers</a>
+              <a href="/llm-roadmap/" className="text-blue-400 hover:text-blue-300 transition-colors">→ LLM Engineering Roadmap</a>
+              <a href="/paths/" className="text-blue-400 hover:text-blue-300 transition-colors">→ AI Learning Paths</a>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    function BestAiToolsPage() {
+      useSeo(
+        "Best AI Tools for Developers in 2026 | AI Learning Hub",
+        "The complete AI developer toolstack for 2026. LLM APIs, local models, RAG frameworks, vector databases, agent frameworks, and deployment tools — with honest comparisons."
+      );
+
+      return (
+        <div className="max-w-3xl mx-auto px-4 py-10">
+          {/* Hero */}
+          <div className="mb-10">
+            <span className="inline-block bg-purple-600/20 text-purple-400 text-xs font-semibold px-3 py-1 rounded-full mb-4">Developer Tools</span>
+            <h1 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">Best AI Tools for Developers in 2026</h1>
+            <p className="text-gray-400 text-lg leading-relaxed">The AI toolstack changes fast. This guide covers the tools that are actually worth learning — organized by category, with honest tradeoffs and links to get started.</p>
+          </div>
+
+          {/* LLM APIs */}
+          <section className="mb-12">
+            <h2 className="text-xl font-bold text-white mb-2">LLM APIs</h2>
+            <p className="text-gray-400 text-sm mb-6">The foundation of most AI applications. Choose based on price, capability, context window, and your latency requirements.</p>
+            <div className="overflow-x-auto mb-6">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-white/10">
+                    <th className="text-left text-gray-400 font-semibold py-3 pr-4">Provider</th>
+                    <th className="text-left text-gray-400 font-semibold py-3 pr-4">Best models</th>
+                    <th className="text-left text-gray-400 font-semibold py-3 pr-4">Best for</th>
+                    <th className="text-left text-gray-400 font-semibold py-3">Free tier</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-white/5">
+                  <tr>
+                    <td className="py-3 pr-4 text-white font-medium">OpenAI</td>
+                    <td className="py-3 pr-4 text-gray-300">GPT-4o, o3</td>
+                    <td className="py-3 pr-4 text-gray-400">General purpose, function calling</td>
+                    <td className="py-3 text-gray-400">$5 credit</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 pr-4 text-white font-medium">Anthropic</td>
+                    <td className="py-3 pr-4 text-gray-300">Claude 4 Opus/Sonnet</td>
+                    <td className="py-3 pr-4 text-gray-400">Long context, coding, safety</td>
+                    <td className="py-3 text-gray-400">API trial</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 pr-4 text-white font-medium">Google</td>
+                    <td className="py-3 pr-4 text-gray-300">Gemini 2.0 Flash/Pro</td>
+                    <td className="py-3 pr-4 text-gray-400">Multimodal, long context</td>
+                    <td className="py-3 text-gray-400">Generous free tier</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 pr-4 text-white font-medium">Groq</td>
+                    <td className="py-3 pr-4 text-gray-300">Llama 3.3, Mixtral</td>
+                    <td className="py-3 pr-4 text-gray-400">Ultra-low latency inference</td>
+                    <td className="py-3 text-gray-400">Free tier available</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 pr-4 text-white font-medium">Mistral</td>
+                    <td className="py-3 pr-4 text-gray-300">Mistral Large, Codestral</td>
+                    <td className="py-3 pr-4 text-gray-400">Code generation, EU data</td>
+                    <td className="py-3 text-gray-400">Free tier available</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="bg-indigo-900/20 border border-indigo-500/20 rounded-lg p-4">
+              <p className="text-indigo-300 text-sm font-semibold mb-1">Recommended guide</p>
+              <a href="/blog/openai-api-complete-guide/" className="text-blue-400 hover:text-blue-300 text-sm">OpenAI API Complete Guide →</a>
+            </div>
+          </section>
+
+          {/* Local LLM Tools */}
+          <section className="mb-12">
+            <h2 className="text-xl font-bold text-white mb-2">Local LLM Tools</h2>
+            <p className="text-gray-400 text-sm mb-6">Run models locally for privacy, cost savings, and offline development. The tooling has matured significantly — you can now run capable models on a laptop.</p>
+            <div className="space-y-4 mb-6">
+              {[
+                { name: "Ollama", desc: "The easiest way to run LLMs locally. One command to pull and serve any open-source model. Supports Llama 3, Mistral, Phi-4, Gemma, and 100+ others. Has an OpenAI-compatible API.", tag: "Most popular" },
+                { name: "LM Studio", desc: "Desktop app for running local LLMs with a ChatGPT-style UI. Great for non-technical users and quick experimentation. Has a local server mode for API access.", tag: "Best UI" },
+                { name: "vLLM", desc: "High-performance inference engine for production local deployment. PagedAttention delivers 2-4x throughput vs naive serving. Use for self-hosted production deployments.", tag: "Production" },
+                { name: "llama.cpp", desc: "C++ inference engine that runs quantized models on CPU with no GPU required. The underlying engine for Ollama. Use directly for maximum control.", tag: "Lightweight" },
+              ].map(({ name, desc, tag }) => (
+                <div key={name} className="bg-gray-800/50 border border-white/8 rounded-xl p-5">
+                  <div className="flex items-center gap-2 mb-2">
+                    <p className="text-white font-semibold text-sm">{name}</p>
+                    <span className="text-xs text-gray-500 px-2 py-0.5 bg-gray-700/50 rounded">{tag}</span>
+                  </div>
+                  <p className="text-gray-400 text-sm leading-relaxed">{desc}</p>
+                </div>
+              ))}
+            </div>
+            <div className="bg-indigo-900/20 border border-indigo-500/20 rounded-lg p-4">
+              <p className="text-indigo-300 text-sm font-semibold mb-1">Recommended guide</p>
+              <a href="/blog/open-source-llms-guide/" className="text-blue-400 hover:text-blue-300 text-sm">Open Source LLMs Guide →</a>
+            </div>
+          </section>
+
+          {/* RAG Stack */}
+          <section className="mb-12">
+            <h2 className="text-xl font-bold text-white mb-2">RAG Stack</h2>
+            <p className="text-gray-400 text-sm mb-6">Retrieval-Augmented Generation lets LLMs answer questions from your own documents. The stack has three layers: orchestration framework, vector database, and embedding model.</p>
+
+            <h3 className="text-base font-semibold text-white mb-3">Orchestration Frameworks</h3>
+            <div className="overflow-x-auto mb-6">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-white/10">
+                    <th className="text-left text-gray-400 font-semibold py-3 pr-4">Framework</th>
+                    <th className="text-left text-gray-400 font-semibold py-3 pr-4">Best for</th>
+                    <th className="text-left text-gray-400 font-semibold py-3">Learning curve</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-white/5">
+                  <tr><td className="py-3 pr-4 text-white font-medium">LangChain</td><td className="py-3 pr-4 text-gray-300">Agents, RAG, most integrations</td><td className="py-3 text-gray-400">Medium</td></tr>
+                  <tr><td className="py-3 pr-4 text-white font-medium">LlamaIndex</td><td className="py-3 pr-4 text-gray-300">Complex document retrieval</td><td className="py-3 text-gray-400">Medium</td></tr>
+                  <tr><td className="py-3 pr-4 text-white font-medium">LangGraph</td><td className="py-3 pr-4 text-gray-300">Stateful multi-agent systems</td><td className="py-3 text-gray-400">High</td></tr>
+                  <tr><td className="py-3 pr-4 text-white font-medium">Haystack</td><td className="py-3 pr-4 text-gray-300">Production search pipelines</td><td className="py-3 text-gray-400">Medium</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 className="text-base font-semibold text-white mb-3">Vector Databases</h3>
+            <div className="overflow-x-auto mb-6">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-white/10">
+                    <th className="text-left text-gray-400 font-semibold py-3 pr-4">Database</th>
+                    <th className="text-left text-gray-400 font-semibold py-3 pr-4">Type</th>
+                    <th className="text-left text-gray-400 font-semibold py-3 pr-4">Best for</th>
+                    <th className="text-left text-gray-400 font-semibold py-3">Free</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-white/5">
+                  <tr><td className="py-3 pr-4 text-white font-medium">Chroma</td><td className="py-3 pr-4 text-gray-400">Embedded</td><td className="py-3 pr-4 text-gray-300">Local dev, prototyping</td><td className="py-3 text-green-400">✓</td></tr>
+                  <tr><td className="py-3 pr-4 text-white font-medium">Pinecone</td><td className="py-3 pr-4 text-gray-400">Managed cloud</td><td className="py-3 pr-4 text-gray-300">Production, scale</td><td className="py-3 text-gray-400">Free tier</td></tr>
+                  <tr><td className="py-3 pr-4 text-white font-medium">Qdrant</td><td className="py-3 pr-4 text-gray-400">Self-hosted/cloud</td><td className="py-3 pr-4 text-gray-300">High performance, filtering</td><td className="py-3 text-green-400">✓</td></tr>
+                  <tr><td className="py-3 pr-4 text-white font-medium">Weaviate</td><td className="py-3 pr-4 text-gray-400">Self-hosted/cloud</td><td className="py-3 pr-4 text-gray-300">Hybrid search</td><td className="py-3 text-green-400">✓</td></tr>
+                  <tr><td className="py-3 pr-4 text-white font-medium">pgvector</td><td className="py-3 pr-4 text-gray-400">Postgres extension</td><td className="py-3 pr-4 text-gray-300">Existing Postgres users</td><td className="py-3 text-green-400">✓</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="bg-indigo-900/20 border border-indigo-500/20 rounded-lg p-4">
+                <p className="text-indigo-300 text-sm font-semibold mb-1">LangChain RAG tutorial</p>
+                <a href="/blog/langchain-rag-tutorial/" className="text-blue-400 hover:text-blue-300 text-sm">LangChain RAG Tutorial →</a>
+              </div>
+              <div className="bg-indigo-900/20 border border-indigo-500/20 rounded-lg p-4">
+                <p className="text-indigo-300 text-sm font-semibold mb-1">Vector DB deep dive</p>
+                <a href="/blog/vector-database-guide/" className="text-blue-400 hover:text-blue-300 text-sm">Vector Database Guide →</a>
+              </div>
+            </div>
+          </section>
+
+          {/* Agent Frameworks */}
+          <section className="mb-12">
+            <h2 className="text-xl font-bold text-white mb-2">Agent Frameworks</h2>
+            <p className="text-gray-400 text-sm mb-6">AI agents use LLMs to plan, use tools, and take actions autonomously. The framework landscape is evolving fast — these are the ones worth your time.</p>
+            <div className="space-y-4 mb-6">
+              {[
+                { name: "LangGraph", desc: "Build stateful, multi-agent workflows as directed graphs. Each node is a function; edges define control flow. The standard for production agentic systems in 2026.", tag: "Production standard" },
+                { name: "CrewAI", desc: "Multi-agent framework focused on collaborative AI teams. Define agents with roles, goals, and backstories. Great for research, content, and automation workflows.", tag: "Easy to start" },
+                { name: "AutoGen (Microsoft)", desc: "Conversational multi-agent framework where agents communicate via messages. Excellent for code generation workflows and human-in-the-loop patterns.", tag: "Conversational" },
+                { name: "Smolagents (Hugging Face)", desc: "Lightweight agent library from Hugging Face. Minimal abstraction, maximum control. Good for learning agent fundamentals without framework magic.", tag: "Minimal" },
+              ].map(({ name, desc, tag }) => (
+                <div key={name} className="bg-gray-800/50 border border-white/8 rounded-xl p-5">
+                  <div className="flex items-center gap-2 mb-2">
+                    <p className="text-white font-semibold text-sm">{name}</p>
+                    <span className="text-xs text-gray-500 px-2 py-0.5 bg-gray-700/50 rounded">{tag}</span>
+                  </div>
+                  <p className="text-gray-400 text-sm leading-relaxed">{desc}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Deployment Tools */}
+          <section className="mb-12">
+            <h2 className="text-xl font-bold text-white mb-2">Deployment Tools</h2>
+            <p className="text-gray-400 text-sm mb-6">Getting AI from your laptop to production is a distinct skill. These tools handle the deployment layer.</p>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-white/10">
+                    <th className="text-left text-gray-400 font-semibold py-3 pr-4">Tool</th>
+                    <th className="text-left text-gray-400 font-semibold py-3 pr-4">Use case</th>
+                    <th className="text-left text-gray-400 font-semibold py-3">Complexity</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-white/5">
+                  <tr><td className="py-3 pr-4 text-white font-medium">Vercel AI SDK</td><td className="py-3 pr-4 text-gray-300">Streaming LLM UI, Next.js apps</td><td className="py-3 text-gray-400">Low</td></tr>
+                  <tr><td className="py-3 pr-4 text-white font-medium">FastAPI</td><td className="py-3 pr-4 text-gray-300">Python AI APIs, async endpoints</td><td className="py-3 text-gray-400">Low</td></tr>
+                  <tr><td className="py-3 pr-4 text-white font-medium">Docker</td><td className="py-3 pr-4 text-gray-300">Containerizing AI apps with GPU</td><td className="py-3 text-gray-400">Medium</td></tr>
+                  <tr><td className="py-3 pr-4 text-white font-medium">Modal</td><td className="py-3 pr-4 text-gray-300">Serverless GPU inference, fine-tuning</td><td className="py-3 text-gray-400">Low</td></tr>
+                  <tr><td className="py-3 pr-4 text-white font-medium">Ray Serve</td><td className="py-3 pr-4 text-gray-300">High-throughput model serving</td><td className="py-3 text-gray-400">High</td></tr>
+                  <tr><td className="py-3 pr-4 text-white font-medium">BentoML</td><td className="py-3 pr-4 text-gray-300">Model packaging and serving</td><td className="py-3 text-gray-400">Medium</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          {/* CTA */}
+          <section className="mb-10 bg-gradient-to-br from-blue-900/30 to-purple-900/20 border border-blue-500/20 rounded-xl p-6">
+            <h2 className="text-xl font-bold text-white mb-3">Ready to start building?</h2>
+            <p className="text-gray-300 text-sm leading-relaxed mb-4">Knowing the tools is one thing — building with them is another. Browse hands-on project guides that show you exactly how to put this stack together.</p>
+            <div className="flex flex-wrap gap-3">
+              <a href="/projects/" className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors">Browse AI project guides →</a>
+              <a href="/blog/ai-roadmap-for-developers/" className="inline-flex items-center gap-2 bg-gray-700 hover:bg-gray-600 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors">View the AI roadmap →</a>
+            </div>
+          </section>
+
+          {/* Internal links footer */}
+          <div className="border-t border-white/8 pt-8">
+            <p className="text-white font-semibold text-sm mb-4">Related resources</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+              <a href="/blog/ai-roadmap-for-developers/" className="text-blue-400 hover:text-blue-300 transition-colors">→ AI Roadmap for Developers</a>
+              <a href="/blog/rag-system-architecture/" className="text-blue-400 hover:text-blue-300 transition-colors">→ RAG System Architecture</a>
+              <a href="/how-to-learn-ai/" className="text-blue-400 hover:text-blue-300 transition-colors">→ How to Learn AI</a>
+              <a href="/ai-projects-for-beginners/" className="text-blue-400 hover:text-blue-300 transition-colors">→ AI Projects for Beginners</a>
+              <a href="/llm-roadmap/" className="text-blue-400 hover:text-blue-300 transition-colors">→ LLM Engineering Roadmap</a>
+              <a href="/paths/" className="text-blue-400 hover:text-blue-300 transition-colors">→ AI Learning Paths</a>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
     // ─── MASTER APP ───
     const TABS = [
       { label: "Roadmap",         slug: "roadmap",               icon: BrainCircuit, Component: Roadmap },
@@ -4519,6 +5118,9 @@ function KnowledgeGaps() {
       { label: "Blog",            slug: "blog",     icon: BookOpen, Component: BlogIndexPage     },
       { label: "Projects",        slug: "projects", icon: Wrench,    Component: ProjectsIndexPage },
       { label: "Paths",           slug: "paths",    icon: Layers,    Component: PathsIndexPage    },
+      { label: "How to Learn AI",           slug: "how-to-learn-ai",             icon: BrainCircuit, Component: HowToLearnAIPage,           nav: false },
+      { label: "AI Projects for Beginners", slug: "ai-projects-for-beginners",   icon: Wrench,       Component: AiProjectsForBeginnersPage, nav: false },
+      { label: "Best AI Tools",             slug: "best-ai-tools-for-developers", icon: Wrench,       Component: BestAiToolsPage,            nav: false },
     ];
 
     function Footer() {

@@ -690,6 +690,127 @@ const PAGES = [
       { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'AI Engineering Learning Paths', url: 'https://ailearnings.in/paths/', description: 'Structured learning paths for AI engineers, ML engineers, and LLM engineers.' },
     ],
   },
+  {
+    slug:        'how-to-learn-ai',
+    outDir:      'how-to-learn-ai',
+    url:         'http://localhost:3131/how-to-learn-ai/',
+    title:       'How to Learn AI in 2026: Complete Guide for Developers | AI Learning Hub',
+    description: 'A complete guide to learning AI as a developer in 2026. Step-by-step path covering Python, machine learning, deep learning, LLMs, and building AI projects.',
+    canonical:   'https://ailearnings.in/how-to-learn-ai/',
+    ogUrl:       'https://ailearnings.in/how-to-learn-ai/',
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'HowTo',
+        name: 'How to Learn AI in 2026',
+        description: 'A complete step-by-step guide for developers learning AI — from Python basics to LLM engineering and building production AI projects.',
+        step: [
+          { '@type': 'HowToStep', position: 1, name: 'Learn AI Foundations', text: 'Understand the difference between supervised, unsupervised, and reinforcement learning. Build a conceptual model of how ML systems work.' },
+          { '@type': 'HowToStep', position: 2, name: 'Learn Python for AI', text: 'Get comfortable with Python, NumPy, Pandas, and Scikit-learn. These are the foundation tools for all AI development.' },
+          { '@type': 'HowToStep', position: 3, name: 'Understand Machine Learning', text: 'Learn to train, evaluate, and tune ML models. Understand overfitting, cross-validation, and model selection.' },
+          { '@type': 'HowToStep', position: 4, name: 'Learn Deep Learning', text: 'Understand neural networks, backpropagation, and PyTorch. Learn why transformers work and how attention mechanisms function.' },
+          { '@type': 'HowToStep', position: 5, name: 'Learn LLM Engineering', text: 'Master prompt engineering, RAG systems, fine-tuning, and building AI agents with LangChain and LangGraph.' },
+          { '@type': 'HowToStep', position: 6, name: 'Build AI Projects', text: 'Build a portfolio of AI projects: chatbot, RAG system, AI agent, fine-tuned model. Start simple and increase complexity.' },
+        ],
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [
+          { '@type': 'Question', name: 'How long does it take to learn AI?', acceptedAnswer: { '@type': 'Answer', text: 'With 1–2 hours of daily practice, most developers reach job-ready AI engineering skills in 6–12 months. Python and ML basics take 2–3 months. LLM engineering and building production projects take another 3–6 months.' } },
+          { '@type': 'Question', name: 'Do you need math to learn AI?', acceptedAnswer: { '@type': 'Answer', text: 'You need enough linear algebra to understand matrix multiplication, enough calculus to understand gradients, and basic statistics for model evaluation. A comfortable high school/undergrad level understanding is sufficient for most AI engineering work.' } },
+          { '@type': 'Question', name: 'Can developers learn AI without a degree?', acceptedAnswer: { '@type': 'Answer', text: 'Yes — many of the best AI engineers are self-taught developers. Companies hiring AI engineers care about your GitHub portfolio and ability to ship production AI systems far more than educational background.' } },
+        ],
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://ailearnings.in/' },
+          { '@type': 'ListItem', position: 2, name: 'How to Learn AI', item: 'https://ailearnings.in/how-to-learn-ai/' },
+        ],
+      },
+    ],
+  },
+  {
+    slug:        'ai-projects-for-beginners',
+    outDir:      'ai-projects-for-beginners',
+    url:         'http://localhost:3131/ai-projects-for-beginners/',
+    title:       '20 AI Projects for Beginners in 2026 (Step-by-Step) | AI Learning Hub',
+    description: 'The best AI projects for beginners in 2026. 20 hands-on builds from chatbots to RAG systems — each with step-by-step guides, tech stacks, and free resources.',
+    canonical:   'https://ailearnings.in/ai-projects-for-beginners/',
+    ogUrl:       'https://ailearnings.in/ai-projects-for-beginners/',
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: '20 AI Projects for Beginners',
+        description: '20 hands-on AI project guides for developers, from beginner chatbots to advanced multi-agent systems.',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'AI Chatbot with Python', url: 'https://ailearnings.in/projects/ai-chatbot-python/' },
+          { '@type': 'ListItem', position: 2, name: 'Build a ChatGPT Clone', url: 'https://ailearnings.in/projects/build-chatgpt-clone/' },
+          { '@type': 'ListItem', position: 3, name: 'Document Summarizer', url: 'https://ailearnings.in/projects/document-summarizer/' },
+          { '@type': 'ListItem', position: 4, name: 'Sentiment Analyzer', url: 'https://ailearnings.in/projects/sentiment-analyzer/' },
+          { '@type': 'ListItem', position: 5, name: 'AI Resume Analyzer', url: 'https://ailearnings.in/projects/ai-resume-analyzer/' },
+          { '@type': 'ListItem', position: 6, name: 'AI Code Explainer', url: 'https://ailearnings.in/projects/ai-code-explainer/' },
+          { '@type': 'ListItem', position: 7, name: 'AI Email Writer', url: 'https://ailearnings.in/projects/ai-email-writer/' },
+          { '@type': 'ListItem', position: 8, name: 'AI Quiz Generator', url: 'https://ailearnings.in/projects/ai-quiz-generator/' },
+          { '@type': 'ListItem', position: 9, name: 'RAG Document Assistant', url: 'https://ailearnings.in/projects/rag-document-assistant/' },
+          { '@type': 'ListItem', position: 10, name: 'AI Meeting Summarizer', url: 'https://ailearnings.in/projects/ai-meeting-summarizer/' },
+        ],
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [
+          { '@type': 'Question', name: 'What are the best AI projects for beginners?', acceptedAnswer: { '@type': 'Answer', text: 'The best beginner AI projects are: (1) AI chatbot with Python using the OpenAI API, (2) Document summarizer with LangChain, (3) Sentiment analyzer with Hugging Face, (4) AI resume analyzer. These cover the core patterns of LLM API usage, prompt design, and building simple UIs.' } },
+          { '@type': 'Question', name: 'What AI projects are good for a portfolio?', acceptedAnswer: { '@type': 'Answer', text: 'Portfolio-worthy AI projects include: a RAG document assistant (shows retrieval and generation), a multi-agent research system (shows agent patterns), and an AI code review tool (shows real-world utility). Focus on projects that solve real problems, not just API wrappers.' } },
+        ],
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://ailearnings.in/' },
+          { '@type': 'ListItem', position: 2, name: 'AI Projects for Beginners', item: 'https://ailearnings.in/ai-projects-for-beginners/' },
+        ],
+      },
+    ],
+  },
+  {
+    slug:        'best-ai-tools-for-developers',
+    outDir:      'best-ai-tools-for-developers',
+    url:         'http://localhost:3131/best-ai-tools-for-developers/',
+    title:       'Best AI Tools for Developers in 2026 | AI Learning Hub',
+    description: 'The complete AI developer toolstack for 2026. LLM APIs, local models, RAG frameworks, vector databases, agent frameworks, and deployment tools — with honest comparisons.',
+    canonical:   'https://ailearnings.in/best-ai-tools-for-developers/',
+    ogUrl:       'https://ailearnings.in/best-ai-tools-for-developers/',
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: 'Best AI Tools for Developers in 2026',
+        description: 'Comprehensive guide to the AI developer toolstack — LLM APIs, local models, RAG frameworks, vector databases, agent frameworks, and deployment tools.',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'OpenAI API', description: 'GPT-4o and o3 models — industry standard for general-purpose LLM integration.' },
+          { '@type': 'ListItem', position: 2, name: 'Anthropic Claude API', description: 'Claude 4 Opus and Sonnet — best for long context, coding, and safety-critical applications.' },
+          { '@type': 'ListItem', position: 3, name: 'Ollama', description: 'Run open-source LLMs locally with a simple CLI. Supports 100+ models including Llama 3, Mistral, and Phi-4.' },
+          { '@type': 'ListItem', position: 4, name: 'LangChain', description: 'Orchestration framework for LLM apps — chains, agents, RAG pipelines, and 600+ integrations.' },
+          { '@type': 'ListItem', position: 5, name: 'LangGraph', description: 'Build stateful multi-agent systems as directed graphs. The standard for production agentic workflows.' },
+          { '@type': 'ListItem', position: 6, name: 'Chroma', description: 'Open-source embedded vector database. Ideal for local development and prototyping RAG systems.' },
+          { '@type': 'ListItem', position: 7, name: 'Pinecone', description: 'Managed vector database built for production scale. Simple API, automatic sharding.' },
+        ],
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://ailearnings.in/' },
+          { '@type': 'ListItem', position: 2, name: 'Best AI Tools for Developers', item: 'https://ailearnings.in/best-ai-tools-for-developers/' },
+        ],
+      },
+    ],
+  },
 ];
 
 // ── Static file server with SPA fallback ────────────────────────────────────
