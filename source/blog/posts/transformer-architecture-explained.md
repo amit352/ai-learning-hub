@@ -1,9 +1,9 @@
 ---
-title: "Transformer Architecture Explained: How LLMs Actually Work"
-description: "A developer-friendly deep dive into transformer architecture — self-attention, multi-head attention, positional encoding, encoder-decoder structure, and how it powers GPT and BERT."
-date: "2026-03-10"
+title: "Transformer Architecture Explained for Developers"
+description: "Learn how transformer models power modern AI systems."
+date: "2026-03-13"
 slug: "transformer-architecture-explained"
-keywords: ["transformer architecture", "how transformers work", "self-attention explained", "LLM architecture"]
+keywords: ["transformer architecture", "how transformers work", "self-attention explained", "LLM architecture", "transformer explained"]
 ---
 
 ## Learning Objectives
@@ -301,7 +301,6 @@ Typically a word piece (subword unit). "unbelievable" might tokenize to ["un", "
 
 ## What to Learn Next
 
-- **Fine-tuning LLMs** → fine-tuning-llms-guide
-- **LLM inference and serving** → llm-inference-and-serving
-- **Prompt engineering** → [Prompt Engineering Techniques](/blog/prompt-engineering-techniques/)
-- **Full LLM path** → [AI Roadmap for Developers](/blog/ai-roadmap-for-developers/)
+- **How LLMs work overall** → [How Large Language Models Work](/blog/how-llms-work/)
+- **The attention mechanism in depth** → [Attention Mechanism Explained](/blog/attention-mechanism-explained/)
+- **Fine-tuning LLMs** → [LLM Fine-Tuning Guide](/blog/llm-fine-tuning-guide/)
