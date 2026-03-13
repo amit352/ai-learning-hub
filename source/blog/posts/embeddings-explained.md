@@ -1,9 +1,9 @@
 ---
-title: "Embeddings Explained: Vectors, Semantic Search, and Practical Applications"
-description: "A practical guide to embeddings — what they are, how to generate them, measure similarity, use them for semantic search, and choose the right embedding model."
-date: "2026-03-10"
+title: "Embeddings Explained – How AI Understands Meaning"
+description: "Understand embeddings and how they power semantic search and AI applications."
+date: "2026-03-13"
 slug: "embeddings-explained"
-keywords: ["embeddings explained", "text embeddings", "word embeddings", "semantic search embeddings"]
+keywords: ["embeddings explained", "text embeddings", "word embeddings", "semantic search embeddings", "what are embeddings"]
 ---
 
 ## Learning Objectives
@@ -309,6 +309,6 @@ Use a vector database (Chroma, Qdrant, Pinecone) or store as numpy arrays with `
 
 ## What to Learn Next
 
-- **Vector databases** → [Vector Database Guide](/blog/vector-database-guide/)
-- **RAG pipeline** → [RAG Tutorial Step by Step](/blog/rag-tutorial-step-by-step/)
-- **LangChain RAG** → [LangChain RAG Tutorial](/blog/langchain-rag-tutorial/)
+- **Vector databases** → [Vector Databases Explained](/blog/vector-database-explained/)
+- **RAG pipeline** → [RAG Explained](/blog/rag-explained/)
+- **Using embeddings via OpenAI Python** → [OpenAI Python Client Guide](/blog/openai-python-client-guide/)

@@ -1,9 +1,9 @@
 ---
-title: "Chain-of-Thought Prompting: Techniques for Better LLM Reasoning"
-description: "Master chain-of-thought prompting — zero-shot CoT, few-shot CoT, self-consistency, tree-of-thought, and how to elicit step-by-step reasoning from LLMs."
-date: "2026-03-10"
+title: "Chain-of-Thought Prompting Explained for Developers"
+description: "Learn how chain-of-thought prompting improves reasoning in large language models."
+date: "2026-03-13"
 slug: "chain-of-thought-prompting"
-keywords: ["chain of thought prompting", "CoT prompting", "LLM reasoning", "few-shot CoT"]
+keywords: ["chain of thought prompting", "CoT prompting", "LLM reasoning", "few-shot CoT", "chain of thought explained"]
 ---
 
 ## Learning Objectives
@@ -336,6 +336,6 @@ No. For simple factual questions or classification, CoT adds cost without benefi
 
 ## What to Learn Next
 
-- **All prompt engineering techniques** → [Prompt Engineering Techniques](/blog/prompt-engineering-techniques/)
-- **LLM function calling** → [Tool Use and Function Calling](/blog/tool-use-and-function-calling/)
-- **AI agents with reasoning** → [AI Agent Fundamentals](/blog/ai-agent-fundamentals/)
+- **Prompt engineering foundation** → [Prompt Engineering Guide](/blog/prompt-engineering-guide/)
+- **All prompting techniques** → [Prompt Engineering Techniques](/blog/prompt-engineering-techniques/)
+- **In-context learning with examples** → [Few-Shot Prompting Explained](/blog/few-shot-prompting-explained/)
