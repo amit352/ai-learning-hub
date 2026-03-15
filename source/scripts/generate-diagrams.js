@@ -68,7 +68,7 @@ for (const dir of DIRS) {
 
       try {
         execSync(
-          `${MMDC} -i "${tmpFile}" -o "${imgPath}" -b transparent -t dark --width 900`,
+          `${MMDC} -i "${tmpFile}" -o "${imgPath}" -b transparent -t dark --width 1400 --scale 2`,
           { stdio: 'pipe' }
         );
         console.log(`  ✓  Rendered: ${imgName}`);
