@@ -49,7 +49,50 @@ An AI Engineer is a **builder** — they take AI capabilities (LLMs, ML models, 
 
 ## Learning Path
 
-### Phase 1: Python & AI Foundations (Weeks 1–4)
+### Phase 0: Warmup & Prerequisites (Weeks 1–2)
+
+New to coding or AI? Start here. If you're already comfortable writing Python scripts and have a rough sense of what LLMs are, skip to Phase 1.
+
+**Environment Setup:**
+- Install Python 3.11+ — [python.org/downloads](https://python.org/downloads)
+- Install VS Code + Python extension — your primary code editor
+- Create a virtual environment: `python -m venv ai-env && source ai-env/bin/activate`
+- Install basics: `pip install openai requests python-dotenv`
+
+**Math You Actually Need:**
+For this path, you need almost no advanced math. Basic algebra and the ability to read Python code is enough. You will not need calculus or linear algebra to get started.
+
+**AI Fundamentals:**
+- What is AI? — machine learning, deep learning, and LLMs are not the same thing
+- How LLMs work — they predict the next token, they do not "know" things the way humans do
+- What tokens are — the units LLMs process (roughly 3/4 of a word on average)
+- Training vs. inference — building a model vs. using one
+- What a context window is — the memory limit of an LLM conversation
+
+**Your First Demo:**
+```python
+from openai import OpenAI
+client = OpenAI()  # set OPENAI_API_KEY in your .env
+
+response = client.chat.completions.create(
+    model="gpt-4o-mini",
+    messages=[{"role": "user", "content": "Explain what a token is in one sentence."}]
+)
+print(response.choices[0].message.content)
+```
+
+**Recommended Resources:**
+- [AI Foundations for Developers](/blog/roadmap-guides/ai-foundations-for-developers/) — core AI concepts explained for engineers
+- [Python for AI Complete Guide](/blog/roadmap-guides/python-for-ai-complete-guide/) — Python environment and essentials
+- [Andrej Karpathy — Intro to Large Language Models](https://www.youtube.com/watch?v=zjkBMFhNj_g) *(YouTube, 1hr)* — the clearest non-technical explanation of LLMs
+- [OpenAI Quickstart](https://platform.openai.com/docs/quickstart) — official API docs with working examples
+- [CS50P](https://cs50.harvard.edu/python/) *(free)* — if you need to build Python confidence first
+
+**Milestone:** Your Python environment works, you've made your first API call, and you understand what an LLM actually does under the hood.
+
+---
+
+### Phase 1: Python & AI Foundations (Weeks 3–6)
 
 Build the foundation before touching LLMs.
 
@@ -65,7 +108,7 @@ Build the foundation before touching LLMs.
 
 ---
 
-### Phase 2: Prompt Engineering (Weeks 5–6)
+### Phase 2: Prompt Engineering (Weeks 7–8)
 
 Prompts are your primary tool. Master them.
 
@@ -81,7 +124,7 @@ Prompts are your primary tool. Master them.
 
 ---
 
-### Phase 3: RAG Systems (Weeks 7–10)
+### Phase 3: RAG Systems (Weeks 9–12)
 
 RAG is the most important AI pattern for production applications.
 
@@ -100,7 +143,7 @@ RAG is the most important AI pattern for production applications.
 
 ---
 
-### Phase 4: AI Agents (Weeks 11–14)
+### Phase 4: AI Agents (Weeks 13–16)
 
 Extend LLMs with tools and autonomous decision-making.
 
@@ -117,7 +160,7 @@ Extend LLMs with tools and autonomous decision-making.
 
 ---
 
-### Phase 5: Production & Deployment (Weeks 15–20)
+### Phase 5: Production & Deployment (Weeks 17–22)
 
 Ship reliable AI systems.
 

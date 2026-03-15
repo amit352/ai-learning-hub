@@ -49,7 +49,54 @@ An LLM Engineer specializes in the complete lifecycle of large language models �
 
 ## Learning Path
 
-### Phase 1: Deep Python & ML Foundations (Weeks 1–6)
+### Phase 0: Warmup & Prerequisites (Weeks 1–2)
+
+LLM engineering is the most technically demanding path on this site. This phase tells you exactly what you need before starting — and what to do if you're missing it.
+
+**Environment Setup:**
+- Install Python 3.11+ and PyTorch (CPU is fine to start): `pip install torch numpy jupyter`
+- Install VS Code and the Jupyter extension
+- Create a virtual environment: `python -m venv llm-env && source llm-env/bin/activate`
+- Optional: install CUDA drivers if you have an NVIDIA GPU (needed for Phase 3+)
+- Create a free Hugging Face account at huggingface.co
+
+**Math You Actually Need:**
+This path requires serious mathematics. You will struggle without:
+- **Linear algebra** — vectors, matrices, matrix multiplication, dot products, eigenvalues
+- **Calculus** — derivatives, partial derivatives, the chain rule (backpropagation is just the chain rule)
+- **Probability** — distributions, expectation, KL divergence
+
+Phase 1 covers these with an AI lens, but if they are entirely new to you, spend 1–2 weeks first on 3Blue1Brown's Essence of Linear Algebra and Essence of Calculus (YouTube, free).
+
+**LLM Fundamentals:**
+- What a neural network is — a function with learned parameters, optimized via gradient descent
+- What a transformer is — an architecture that uses attention to relate tokens to each other
+- What pre-training is — training on massive text data to learn language structure
+- What fine-tuning is — adapting a pre-trained model to a specific task with less data
+- What inference is — running a trained model to generate output (the part you pay for)
+
+**Your First Demo:**
+```python
+from transformers import pipeline
+
+generator = pipeline("text-generation", model="distilgpt2")
+result = generator("The transformer architecture works by", max_new_tokens=30)
+print(result[0]["generated_text"])
+```
+
+**Recommended Resources:**
+- [Neural Networks from Scratch](/blog/roadmap-guides/neural-networks-from-scratch/) — build fundamentals before using frameworks
+- [Linear Algebra for AI](/blog/roadmap-guides/linear-algebra-for-ai/) — matrix operations that power every transformer
+- [How LLMs Work](/blog/roadmap-guides/how-llms-work/) — GPT architecture, pretraining, RLHF explained
+- [3Blue1Brown — Essence of Linear Algebra](https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab) *(YouTube, free)* — visual intuition for vectors and matrices
+- [Andrej Karpathy — Neural Networks: Zero to Hero](https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ) *(YouTube, free)* — the best from-scratch deep learning series
+- [Hugging Face NLP Course](https://huggingface.co/learn/nlp-course) *(free)* — transformers and the HF ecosystem from first principles
+
+**Milestone:** You've run your first local LLM inference, understand why transformers use attention, and know what calculus concepts you'll need to derive them.
+
+---
+
+### Phase 1: Deep Python & ML Foundations (Weeks 3–8)
 
 **Learn:**
 - [Python for AI Complete Guide](/blog/roadmap-guides/python-for-ai-complete-guide/) — async, generators, performance
@@ -65,7 +112,7 @@ An LLM Engineer specializes in the complete lifecycle of large language models �
 
 ---
 
-### Phase 2: Transformer Architecture & PyTorch (Weeks 7–12)
+### Phase 2: Transformer Architecture & PyTorch (Weeks 9–14)
 
 **Learn:**
 - [Deep Learning Fundamentals](/blog/roadmap-guides/deep-learning-fundamentals/) — CNNs, RNNs, the transformer paper
@@ -80,7 +127,7 @@ An LLM Engineer specializes in the complete lifecycle of large language models �
 
 ---
 
-### Phase 3: Fine-Tuning & Alignment (Weeks 13–20)
+### Phase 3: Fine-Tuning & Alignment (Weeks 15–22)
 
 **Learn:**
 - [Fine-Tuning LLMs Guide](/blog/fine-tuning-llms-guide/) — LoRA, QLoRA, full fine-tuning strategies
@@ -96,7 +143,7 @@ An LLM Engineer specializes in the complete lifecycle of large language models �
 
 ---
 
-### Phase 4: Inference Optimization & Serving (Weeks 21–26)
+### Phase 4: Inference Optimization & Serving (Weeks 23–28)
 
 **Learn:**
 - [LLM Inference and Serving](/blog/llm-inference-and-serving/) — production serving patterns
@@ -112,7 +159,7 @@ An LLM Engineer specializes in the complete lifecycle of large language models �
 
 ---
 
-### Phase 5: Evaluation & Production Systems (Weeks 27–32)
+### Phase 5: Evaluation & Production Systems (Weeks 29–34)
 
 **Learn:**
 - LLM evaluation frameworks: ELMO, HELM, BigBench, custom eval suites

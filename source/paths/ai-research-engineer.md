@@ -49,7 +49,67 @@ An AI Research Engineer is both a scientist and an engineer. They develop new AI
 
 ## Learning Path
 
-### Phase 1: Mathematical Foundations (Weeks 1–8)
+### Phase 0: Warmup & Prerequisites (Weeks 1–2)
+
+AI Research Engineering is the longest and hardest path here. This warmup phase is not optional — it ensures you have the foundations that Phase 1 assumes.
+
+**Environment Setup:**
+- Install Python 3.11+, PyTorch, and Jupyter: `pip install torch numpy jupyter matplotlib`
+- Install VS Code with Jupyter and LaTeX extensions (you will write papers)
+- Install Obsidian (free) — for building a personal knowledge base of papers you read
+- Create accounts: Hugging Face, Weights & Biases (free tier), arXiv (for paper browsing)
+- Create a virtual environment: `python -m venv research-env && source research-env/bin/activate`
+
+**Math You Actually Need:**
+Research requires genuine mathematical fluency. Be honest with yourself:
+- **Linear algebra** — matrix multiplication, eigendecomposition, SVD, rank. If you can't do these by hand, study before starting Phase 1.
+- **Calculus** — multivariable differentiation, the chain rule, Jacobians. Backpropagation is the chain rule applied repeatedly.
+- **Probability** — distributions, expectation, MLE, Bayes' theorem
+- **These are hard requirements**, not nice-to-haves. Phase 1 goes deep on all of them.
+
+Resources to close gaps: 3Blue1Brown (YouTube), MIT OpenCourseWare 18.06 (linear algebra), Khan Academy (calculus).
+
+**Research Mindset:**
+- Reading papers is a skill, not a talent — it takes practice to extract signal from dense academic writing
+- Reproducing results matters more than reading more papers — understanding something means implementing it
+- Negative results are valid — failed experiments that are well-documented are real research contributions
+- Follow researchers on X/Twitter — the real discourse happens there, not in published papers
+
+**Your First Demo:**
+```python
+import numpy as np
+
+# Implement a single neuron (perceptron) from scratch
+def sigmoid(x): return 1 / (1 + np.exp(-x))
+def sigmoid_deriv(x): return sigmoid(x) * (1 - sigmoid(x))
+
+X = np.array([[0,0],[0,1],[1,0],[1,1]])
+y = np.array([0, 0, 0, 1])  # AND gate
+
+w, b, lr = np.random.randn(2), 0.0, 0.1
+for _ in range(1000):
+    pred = sigmoid(X @ w + b)
+    loss = -np.mean(y * np.log(pred) + (1-y) * np.log(1-pred))
+    dw = X.T @ (pred - y) / len(y)
+    w -= lr * dw
+
+print("Predictions:", sigmoid(X @ w + b).round(2))
+```
+
+**Recommended Resources:**
+- [Linear Algebra for AI](/blog/roadmap-guides/linear-algebra-for-ai/) — the math backbone of every ML algorithm
+- [Statistics for Machine Learning](/blog/roadmap-guides/statistics-for-machine-learning/) — probability theory and estimation
+- [Neural Networks from Scratch](/blog/roadmap-guides/neural-networks-from-scratch/) — derive and implement before using frameworks
+- [3Blue1Brown — Essence of Linear Algebra](https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab) *(YouTube, free)* — geometric intuition for matrices and transformations
+- [3Blue1Brown — Essence of Calculus](https://www.youtube.com/playlist?list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr) *(YouTube, free)* — derivatives and integrals visually
+- [Andrej Karpathy — Neural Networks: Zero to Hero](https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ) *(YouTube, free)* — research-quality implementations from scratch
+- [How to Read a Paper — Keshav](https://web.stanford.edu/class/ee384m/Handouts/HowtoReadPaper.pdf) *(PDF, free)* — the three-pass method every researcher uses
+
+**Milestone:** You've implemented gradient descent by hand, understand what a loss function is geometrically, and have identified any math gaps to close before Phase 1.
+
+---
+
+### Phase 1: Mathematical Foundations (Weeks 3–10)
 
 Research requires deep mathematical fluency. There are no shortcuts here.
 
@@ -68,7 +128,7 @@ Research requires deep mathematical fluency. There are no shortcuts here.
 
 ---
 
-### Phase 2: Deep Learning Mastery (Weeks 9–16)
+### Phase 2: Deep Learning Mastery (Weeks 11–18)
 
 **Learn:**
 - [Neural Networks from Scratch](/blog/roadmap-guides/neural-networks-from-scratch/) — every component derived and implemented
@@ -84,7 +144,7 @@ Research requires deep mathematical fluency. There are no shortcuts here.
 
 ---
 
-### Phase 3: Research Skills & Paper Reading (Weeks 17–22)
+### Phase 3: Research Skills & Paper Reading (Weeks 19–24)
 
 **Learn:**
 - How to read a research paper: skim → deep read → reproduce → critique
@@ -101,7 +161,7 @@ Research requires deep mathematical fluency. There are no shortcuts here.
 
 ---
 
-### Phase 4: Specialization (Weeks 23–32)
+### Phase 4: Specialization (Weeks 25–34)
 
 Pick one research area and go deep.
 
@@ -134,7 +194,7 @@ Pick one research area and go deep.
 
 ---
 
-### Phase 5: Contributing to the Field (Weeks 33–52)
+### Phase 5: Contributing to the Field (Weeks 35–54)
 
 **Activities:**
 - Submit to workshops (NeurIPS, ICML, ICLR workshops have lower bars than main tracks)

@@ -49,7 +49,56 @@ An ML Engineer bridges research and production. They take raw data and deliver r
 
 ## Learning Path
 
-### Phase 1: Python, Math & Statistics Foundations (Weeks 1–6)
+### Phase 0: Warmup & Prerequisites (Weeks 1–2)
+
+ML engineering is math-heavy. This phase checks whether your foundations are solid enough to proceed — and fills in the gaps if not.
+
+**Environment Setup:**
+- Install Python 3.11+ and Jupyter: `pip install jupyter numpy pandas matplotlib scikit-learn`
+- Install VS Code with the Jupyter extension
+- Create a virtual environment: `python -m venv ml-env && source ml-env/bin/activate`
+- Optional but recommended: create a free Kaggle account for datasets and notebooks
+
+**Math You Actually Need:**
+This path requires real math. Before Phase 1, you should be comfortable with:
+- **High school algebra** — variables, functions, equations
+- **Basic statistics** — mean, variance, distributions (Phase 1 covers this deeply)
+- **Willingness to learn** — linear algebra and calculus are taught in Phase 1, but they will be challenging without prior exposure. If you've never seen a derivative, consider watching 3Blue1Brown's Essence of Calculus first.
+
+**ML Fundamentals:**
+- What is machine learning — finding patterns in data by optimizing a function
+- Supervised vs. unsupervised vs. reinforcement learning — the three paradigms
+- What training means — adjusting model parameters to minimize error on examples
+- What a feature is — an input variable the model uses to make predictions
+- Overfitting vs. underfitting — the central tradeoff in ML
+
+**Your First Demo:**
+```python
+from sklearn.datasets import load_iris
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import train_test_split
+
+X, y = load_iris(return_X_y=True)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+model = DecisionTreeClassifier()
+model.fit(X_train, y_train)
+print(f"Accuracy: {model.score(X_test, y_test):.2%}")
+```
+
+**Recommended Resources:**
+- [Python for AI Complete Guide](/blog/roadmap-guides/python-for-ai-complete-guide/) — scientific Python stack: NumPy, pandas, Jupyter
+- [Linear Algebra for AI](/blog/roadmap-guides/linear-algebra-for-ai/) — the math behind ML algorithms
+- [Statistics for Machine Learning](/blog/roadmap-guides/statistics-for-machine-learning/) — probability and distributions you'll use constantly
+- [3Blue1Brown — Essence of Linear Algebra](https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab) *(YouTube, free)* — best visual introduction to linear algebra
+- [3Blue1Brown — Essence of Calculus](https://www.youtube.com/playlist?list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr) *(YouTube, free)* — intuition for derivatives before you need them
+- [Kaggle Learn — Intro to ML](https://www.kaggle.com/learn/intro-to-machine-learning) *(free)* — hands-on ML in your browser, zero setup
+
+**Milestone:** Your environment works, you've trained your first model (even a trivial one), and you understand the vocabulary of ML.
+
+---
+
+### Phase 1: Python, Math & Statistics Foundations (Weeks 3–8)
 
 **Learn:**
 - [Python for AI Complete Guide](/blog/roadmap-guides/python-for-ai-complete-guide/) — scientific Python stack
@@ -64,7 +113,7 @@ An ML Engineer bridges research and production. They take raw data and deliver r
 
 ---
 
-### Phase 2: Machine Learning Fundamentals (Weeks 7–12)
+### Phase 2: Machine Learning Fundamentals (Weeks 9–14)
 
 **Learn:**
 - [Machine Learning Basics for Developers](/blog/machine-learning-basics-for-developers/) — core algorithms
@@ -81,7 +130,7 @@ An ML Engineer bridges research and production. They take raw data and deliver r
 
 ---
 
-### Phase 3: Deep Learning (Weeks 13–18)
+### Phase 3: Deep Learning (Weeks 15–20)
 
 **Learn:**
 - [Neural Networks from Scratch](/blog/roadmap-guides/neural-networks-from-scratch/) — build to understand
@@ -96,7 +145,7 @@ An ML Engineer bridges research and production. They take raw data and deliver r
 
 ---
 
-### Phase 4: MLOps & Production (Weeks 19–24)
+### Phase 4: MLOps & Production (Weeks 21–26)
 
 **Learn:**
 - [Deploying AI Applications](/blog/deploying-ai-applications/) — serving models in production
@@ -111,7 +160,7 @@ An ML Engineer bridges research and production. They take raw data and deliver r
 
 ---
 
-### Phase 5: LLMs for ML Engineers (Weeks 25–28)
+### Phase 5: LLMs for ML Engineers (Weeks 27–30)
 
 **Learn:**
 - [How LLMs Work](/blog/roadmap-guides/how-llms-work/) — pretraining, RLHF, inference

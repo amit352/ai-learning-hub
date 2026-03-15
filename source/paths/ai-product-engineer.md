@@ -49,7 +49,58 @@ An AI Product Engineer sits at the intersection of product management and engine
 
 ## Learning Path
 
-### Phase 1: AI Foundations & Product Thinking (Weeks 1–4)
+### Phase 0: Warmup & Prerequisites (Weeks 1–2)
+
+This path is the most accessible on the site. If you can write basic code and think clearly about user problems, you're ready. This phase gets your environment set up and your mental model calibrated.
+
+**Environment Setup:**
+- Install Python 3.11+: `pip install openai streamlit requests python-dotenv`
+- Install Node.js (LTS) — for frontend work in later phases
+- Install VS Code — your primary editor
+- Create a virtual environment: `python -m venv product-env && source product-env/bin/activate`
+- Get an OpenAI API key at platform.openai.com (you'll need a small amount of credit, ~$5)
+
+**Math You Actually Need:**
+Almost none. Basic algebra is sufficient for this path. You do not need calculus, linear algebra, or statistics to build great AI-powered products. What matters far more is product intuition and clear thinking about user needs.
+
+**AI Capabilities & Limitations:**
+Understanding what AI can and cannot do is the core skill for this path:
+- **What LLMs are good at** — generating text, summarizing, classifying, translating, coding, structured extraction
+- **What LLMs are bad at** — precise arithmetic, real-time information, consistency across long outputs, guaranteed factual accuracy
+- **Hallucination** — LLMs confidently produce wrong information; your product design must account for this
+- **Latency and cost** — every token costs money and time; product decisions must balance quality with economics
+- **Context limits** — LLMs can only "see" a limited amount of text at once; RAG solves this
+
+**Your First Demo:**
+```python
+import streamlit as st
+from openai import OpenAI
+
+client = OpenAI()
+st.title("My First AI Feature")
+user_input = st.text_input("Ask anything:")
+
+if user_input:
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[{"role": "user", "content": user_input}]
+    )
+    st.write(response.choices[0].message.content)
+```
+Run with: `streamlit run app.py`
+
+**Recommended Resources:**
+- [AI Foundations for Developers](/blog/roadmap-guides/ai-foundations-for-developers/) — AI capabilities and limitations from a product perspective
+- [Python for AI Complete Guide](/blog/roadmap-guides/python-for-ai-complete-guide/) — get comfortable with Python for AI services
+- [Andrej Karpathy — Intro to Large Language Models](https://www.youtube.com/watch?v=zjkBMFhNj_g) *(YouTube, 1hr)* — how LLMs work without the math
+- [Streamlit Docs — Get Started](https://docs.streamlit.io/get-started) *(free)* — build AI UIs in pure Python in minutes
+- [OpenAI Quickstart](https://platform.openai.com/docs/quickstart) — official guide with copy-paste examples
+
+**Milestone:** You have a live, working AI-powered web app. You understand what LLMs can and can't do. You're thinking about which user problems AI is actually a good fit for.
+
+---
+
+### Phase 1: AI Foundations & Product Thinking (Weeks 3–6)
 
 Understand both AI capabilities and how to build products around them.
 
@@ -66,7 +117,7 @@ Understand both AI capabilities and how to build products around them.
 
 ---
 
-### Phase 2: Prompt Engineering for Products (Weeks 5–7)
+### Phase 2: Prompt Engineering for Products (Weeks 7–9)
 
 User-facing AI is only as good as its prompts.
 
@@ -82,7 +133,7 @@ User-facing AI is only as good as its prompts.
 
 ---
 
-### Phase 3: Full-Stack AI Features (Weeks 8–13)
+### Phase 3: Full-Stack AI Features (Weeks 10–15)
 
 Build complete, shippable AI features.
 
@@ -99,7 +150,7 @@ Build complete, shippable AI features.
 
 ---
 
-### Phase 4: RAG for Product Features (Weeks 14–17)
+### Phase 4: RAG for Product Features (Weeks 16–19)
 
 Knowledge-intensive AI features require great retrieval.
 
@@ -116,7 +167,7 @@ Knowledge-intensive AI features require great retrieval.
 
 ---
 
-### Phase 5: Measuring & Improving AI Products (Weeks 18–22)
+### Phase 5: Measuring & Improving AI Products (Weeks 20–24)
 
 Shipping is step one. Iteration is the real work.
 
