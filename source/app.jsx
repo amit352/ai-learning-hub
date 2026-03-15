@@ -4355,7 +4355,8 @@ function KnowledgeGaps() {
                         <h2 className="text-white font-bold text-base leading-snug mb-1 group-hover:text-blue-300 transition-colors line-clamp-2">{post.title}</h2>
                         <p className="text-gray-500 text-sm leading-relaxed line-clamp-2 mb-2">{post.description}</p>
                         <div className="flex items-center gap-1.5 text-[11px] text-gray-600">
-                          <span>Amit K Chauhan</span><span>·</span><span>{post.date_display}</span>
+                          <span className="w-5 h-5 rounded-full bg-blue-600/30 text-blue-400 flex items-center justify-center text-[9px] font-bold flex-shrink-0">AK</span>
+                          <span className="text-gray-400 font-medium">Amit K Chauhan</span><span>·</span><span>{post.date_display}</span><span>·</span><span>{post.mins} min read</span>
                         </div>
                       </div>
                     </a>
