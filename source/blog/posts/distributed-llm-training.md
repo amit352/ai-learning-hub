@@ -39,21 +39,7 @@ One thing many developers overlook: in 2026, for most fine-tuning workflows, FSD
 
 ## How It Works
 
-```mermaid
-graph TD
-    A[Training Data] --> B[Batch Splitter]
-    B --> C[GPU 0<br/>Micro-batch 0]
-    B --> D[GPU 1<br/>Micro-batch 1]
-    B --> E[GPU 2<br/>Micro-batch 2]
-    B --> F[GPU 3<br/>Micro-batch 3]
-    C --> G[Forward Pass<br/>Local model shard]
-    D --> G
-    E --> G
-    F --> G
-    G --> H[All-Reduce<br/>Gradient Sync]
-    H --> I[Updated Model<br/>All shards synchronized]
-    I --> J[Next Training Step]
-```
+![Architecture diagram](/assets/diagrams/distributed-llm-training-diagram-1.png)
 
 For FSDP, each GPU holds a shard of the model parameters. During the forward pass, each GPU gathers the full layer weights needed for its computation (all-gather operation), computes, then discards those weights. This is what makes FSDP memory-efficient while staying relatively simple to implement.
 

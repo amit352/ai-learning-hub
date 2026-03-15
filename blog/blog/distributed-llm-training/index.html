@@ -253,20 +253,7 @@
 </ul>
 <p><strong>FSDP (Fully Sharded Data Parallel)</strong> is PyTorch&#39;s native implementation of ZeRO-3. Integrated directly with PyTorch and HuggingFace Accelerate. Less feature-complete than DeepSpeed but easier to configure.</p>
 <h2>How It Works</h2>
-<pre><code class="language-mermaid">graph TD
-    A[Training Data] --&gt; B[Batch Splitter]
-    B --&gt; C[GPU 0&lt;br/&gt;Micro-batch 0]
-    B --&gt; D[GPU 1&lt;br/&gt;Micro-batch 1]
-    B --&gt; E[GPU 2&lt;br/&gt;Micro-batch 2]
-    B --&gt; F[GPU 3&lt;br/&gt;Micro-batch 3]
-    C --&gt; G[Forward Pass&lt;br/&gt;Local model shard]
-    D --&gt; G
-    E --&gt; G
-    F --&gt; G
-    G --&gt; H[All-Reduce&lt;br/&gt;Gradient Sync]
-    H --&gt; I[Updated Model&lt;br/&gt;All shards synchronized]
-    I --&gt; J[Next Training Step]
-</code></pre>
+<p><img src="/assets/diagrams/distributed-llm-training-diagram-1.png" alt="Architecture diagram"></p>
 <p>For FSDP, each GPU holds a shard of the model parameters. During the forward pass, each GPU gathers the full layer weights needed for its computation (all-gather operation), computes, then discards those weights. This is what makes FSDP memory-efficient while staying relatively simple to implement.</p>
 <h2>Implementation Example</h2>
 <h3>Option 1: FSDP with HuggingFace Accelerate (Recommended)</h3>
