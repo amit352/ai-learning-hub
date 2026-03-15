@@ -5638,7 +5638,7 @@ print(response["message"]["content"])`}</pre>
             {/* Desktop: horizontal tabs */}
             <div className="hidden md:flex max-w-full mx-auto items-center gap-1 px-3 py-2 overflow-x-auto">
               <a href="/" className="flex items-center gap-2 mr-3 flex-shrink-0 select-none" onClick={(e) => { e.preventDefault(); handleTabClick(0, e); }}>
-                <img src="/trans_logo.png" alt="AI Learning Hub" className="w-6 h-6 rounded-md object-contain" />
+                <img src="/trans_logo.png" alt="AI Learning Hub" className="w-7 h-7 rounded-md object-contain bg-white/10 p-0.5" />
                 <span className="text-sm font-bold text-white whitespace-nowrap">AI Learning Hub</span>
               </a>
               <div className="w-px h-4 bg-white/10 mr-2 flex-shrink-0"></div>
@@ -5659,7 +5659,7 @@ print(response["message"]["content"])`}</pre>
             {/* Mobile: current tab + hamburger */}
             <div className="md:hidden flex items-center justify-between px-4 py-3">
               <span className="text-sm font-bold text-white flex items-center gap-2">
-                <img src="/trans_logo.png" alt="AI Learning Hub" className="w-6 h-6 rounded-md object-contain" />
+                <img src="/trans_logo.png" alt="AI Learning Hub" className="w-7 h-7 rounded-md object-contain bg-white/10 p-0.5" />
                 AI Learning Hub
               </span>
               <button onClick={() => setMenuOpen(!menuOpen)}
