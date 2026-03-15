@@ -36,16 +36,7 @@ The effective update is `ΔW = B × A`, with only `2 × d_model × r` trainable 
 
 ## How It Works
 
-```mermaid
-graph TD
-    A[Pre-trained Weight Matrix W<br/>shape: d_model × d_model<br/>FROZEN — never updated] --> B[Forward Pass]
-    C[LoRA Matrix A<br/>shape: d_model × r<br/>TRAINABLE] --> D[Matrix Product A × B]
-    E[LoRA Matrix B<br/>shape: r × d_model<br/>TRAINABLE — init zeros] --> D
-    D --> F[ΔW = B × A<br/>Low-rank update]
-    B --> G[Output = W·x + ΔW·x]
-    F --> G
-    G --> H[Merged Model<br/>W_final = W + ΔW<br/>No inference overhead]
-```
+![Architecture diagram](/assets/diagrams/lora-fine-tuning-tutorial-diagram-1.png)
 
 One thing many developers overlook: matrix B is initialized to zeros at the start of training. This means ΔW = 0 at initialization — the LoRA model begins training from exactly the base model's behavior, with no random disruption. This is why LoRA training is stable even at relatively high learning rates.
 

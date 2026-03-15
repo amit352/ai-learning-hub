@@ -229,7 +229,7 @@
               <span>Published <time datetime="2026-03-15">March 15, 2026</time></span>
               
               <span class="sep">·</span>
-              <span>10 min read</span>
+              <span>9 min read</span>
             </div>
           </div>
         </div>
@@ -289,26 +289,7 @@
 </ul>
 <hr>
 <h2>How It Works</h2>
-<pre><code class="language-mermaid">graph TD
-    A[Python App] --&gt; B[genai.GenerativeModel]
-    B --&gt; C[generate_content call]
-    C --&gt; D{Input type}
-    D -- Text only --&gt; E[Text part]
-    D -- Multimodal --&gt; F[Text + Image + File parts]
-    D -- Function calling --&gt; G[Tool declarations]
-    E --&gt; H[Gemini inference]
-    F --&gt; H
-    G --&gt; H
-    H --&gt; I{Response type}
-    I -- Standard --&gt; J[response.text]
-    I -- Streaming --&gt; K[chunk.text iterator]
-    I -- Function call --&gt; L[response.parts with FunctionCall]
-    L --&gt; M[Execute function in Python]
-    M --&gt; N[Send FunctionResponse back]
-    N --&gt; H
-    J --&gt; A
-    K --&gt; A
-</code></pre>
+<p><img src="/assets/diagrams/gemini-api-tutorial-diagram-1.png" alt="Architecture diagram"></p>
 <p>One structural difference from OpenAI: Gemini models are initialized with the system instruction baked in, not passed per-request. This means if you need different system behaviors, you initialize different model instances — a pattern that is odd at first but makes sense for applications with a fixed persona.</p>
 <hr>
 <h2>Implementation Example</h2>

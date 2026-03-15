@@ -44,23 +44,7 @@ I have seen teams run $40,000/month API bills for workloads that could run on $8
 
 ## How It Works
 
-```mermaid
-graph TD
-    A[Application Request] --> B{Routing Decision}
-    B -- API route --> C[HTTPS to OpenAI/Anthropic]
-    C --> D[Provider's GPU cluster]
-    D --> E[Response returned via API]
-    B -- Local route --> F[Local inference server]
-    F --> G{Hardware?}
-    G -- Consumer GPU --> H[Ollama on MacBook/workstation]
-    G -- Cloud GPU --> I[vLLM on A100/H100 instance]
-    G -- CPU only --> J[llama.cpp quantized model]
-    H --> K[Response from local model]
-    I --> K
-    J --> K
-    E --> L[Application]
-    K --> L
-```
+![Architecture diagram](/assets/diagrams/api-vs-local-llm-diagram-1.png)
 
 ---
 

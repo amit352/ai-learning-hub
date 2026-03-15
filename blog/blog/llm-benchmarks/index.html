@@ -229,7 +229,7 @@
               <span>Published <time datetime="2026-03-15">March 15, 2026</time></span>
               
               <span class="sep">·</span>
-              <span>11 min read</span>
+              <span>10 min read</span>
             </div>
           </div>
         </div>
@@ -251,25 +251,7 @@
 <p>The score you should care most about depends entirely on your use case. A high MATH score is irrelevant if your application is customer support chat.</p>
 <hr>
 <h2>How It Works</h2>
-<pre><code class="language-mermaid">graph TD
-    A[LLM Model] --&gt; B{Benchmark Type}
-
-    B --&gt;|Knowledge| C[MMLU&lt;br/&gt;57 subjects, MCQ]
-    B --&gt;|Coding| D[HumanEval&lt;br/&gt;164 Python problems]
-    B --&gt;|Math| E[MATH&lt;br/&gt;12,500 competition problems]
-    B --&gt;|Instruction| F[IFEval&lt;br/&gt;541 verifiable instructions]
-    B --&gt;|Expert| G[GPQA&lt;br/&gt;Expert-level science Q&amp;A]
-
-    C --&gt; H[Score / Ranking]
-    D --&gt; H
-    E --&gt; H
-    F --&gt; H
-    G --&gt; H
-
-    H --&gt; I{Trust the Score?}
-    I --&gt;|Task is similar| J[Useful signal]
-    I --&gt;|Your use case differs| K[Run internal eval]
-</code></pre>
+<p><img src="/assets/diagrams/llm-benchmarks-diagram-1.png" alt="Architecture diagram"></p>
 <hr>
 <h2>Key Benchmarks Explained</h2>
 <h3>MMLU (Massive Multitask Language Understanding)</h3>

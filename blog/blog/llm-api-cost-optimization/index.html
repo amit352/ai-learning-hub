@@ -305,21 +305,7 @@
 </ol>
 <hr>
 <h2>How It Works</h2>
-<pre><code class="language-mermaid">graph TD
-    A[Incoming Request] --&gt; B{Response Cached?}
-    B -- Yes --&gt; C[Return cached response — $0 cost]
-    B -- No --&gt; D{Task complexity?}
-    D -- Simple --&gt; E[Cheap model: GPT-4o-mini / Haiku]
-    D -- Complex --&gt; F[Premium model: GPT-4o / Sonnet]
-    E --&gt; G{Large repeated context?}
-    F --&gt; G
-    G -- Yes --&gt; H[Prompt caching — 90% off input cost]
-    G -- No --&gt; I[Standard API call]
-    H --&gt; J[LLM Response]
-    I --&gt; J
-    J --&gt; K[Cache response if cacheable]
-    K --&gt; L[Return to user]
-</code></pre>
+<p><img src="/assets/diagrams/llm-api-cost-optimization-diagram-1.png" alt="Architecture diagram"></p>
 <hr>
 <h2>Implementation Example</h2>
 <h3>Step 1: Instrument Costs First</h3>

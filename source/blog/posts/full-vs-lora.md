@@ -30,19 +30,7 @@ A common mistake I've seen in production systems is teams defaulting to full fin
 
 ## How It Works
 
-```mermaid
-graph TD
-    A[Training Data] --> B{Method?}
-    B -- Full Fine-Tuning --> C[Update All Parameters<br/>W_new = W_old + ΔW_full]
-    B -- LoRA --> D[Freeze Base Model<br/>Train A × B adapters only]
-    C --> E[Memory: 14-20x model size<br/>Requires multi-GPU for 7B+]
-    D --> F[Memory: 2-4x model size<br/>Single GPU for 70B with QLoRA]
-    E --> G[Result: Fully adapted weights<br/>High capacity for domain shift]
-    F --> H[Result: Adapter + frozen base<br/>Efficient, reversible]
-    G --> I{Evaluate}
-    H --> I
-    I --> J[Task-specific benchmark<br/>Quality comparison]
-```
+![Architecture diagram](/assets/diagrams/full-vs-lora-diagram-1.png)
 
 In practice, the decision tree is simpler than the architecture diagram. If you can run LoRA and it achieves acceptable quality, there is rarely a reason to move to full fine-tuning.
 

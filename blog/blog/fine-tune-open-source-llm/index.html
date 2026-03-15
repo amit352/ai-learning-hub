@@ -248,22 +248,7 @@
 <p><strong>TRL (Transformer Reinforcement Learning)</strong> is HuggingFace&#39;s training library that provides the <code>SFTTrainer</code> — a wrapper that handles the chat template formatting, tokenization, and training loop for supervised fine-tuning.</p>
 <hr>
 <h2>How It Works</h2>
-<pre><code class="language-mermaid">graph TD
-    A[Training Dataset&lt;br/&gt;JSONL, conversations] --&gt; B[Unsloth Model Loading&lt;br/&gt;4-bit QLoRA]
-    B --&gt; C[LoRA Adapter Init&lt;br/&gt;Trainable params: 1-3%]
-    C --&gt; D[SFT Training&lt;br/&gt;TRL SFTTrainer]
-    D --&gt; E[Trained LoRA Adapters&lt;br/&gt;adapter_model.safetensors]
-
-    E --&gt; F{Deployment Path}
-    F --&gt;|Merge + GGUF| G[Export GGUF&lt;br/&gt;llama.cpp quantize]
-    F --&gt;|HuggingFace| H[Merged FP16 Model&lt;br/&gt;saved_model/]
-
-    G --&gt; I[Ollama Modelfile&lt;br/&gt;ollama create]
-    H --&gt; J[vLLM Serving&lt;br/&gt;Production API]
-
-    I --&gt; K[Inference]
-    J --&gt; K
-</code></pre>
+<p><img src="/assets/diagrams/fine-tune-open-source-llm-diagram-1.png" alt="Architecture diagram"></p>
 <hr>
 <h2>Implementation Example</h2>
 <h3>Step 1: Environment Setup</h3>

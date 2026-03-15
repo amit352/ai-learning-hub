@@ -268,17 +268,7 @@
 </ul>
 <hr>
 <h2>How It Works</h2>
-<pre><code class="language-mermaid">graph TD
-    A[User Input] --&gt; B[ChatPromptTemplate]
-    B --&gt; C[ChatOpenAI model]
-    C --&gt; D[Output Parser]
-    D --&gt; E[Parsed Response]
-    A --&gt; F[Retriever]
-    F --&gt; G[Retrieved Documents]
-    G --&gt; B
-    E --&gt; H[Memory Store]
-    H --&gt; B
-</code></pre>
+<p><img src="/assets/diagrams/openai-langchain-diagram-1.png" alt="Architecture diagram"></p>
 <p>LCEL chains are built with the <code>|</code> pipe operator. Each component is a <code>Runnable</code> with <code>.invoke()</code>, <code>.stream()</code>, and <code>.batch()</code> methods. This uniformity means you can swap any component without changing the rest of the chain.</p>
 <hr>
 <h2>Implementation Example</h2>

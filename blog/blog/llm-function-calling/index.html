@@ -262,16 +262,7 @@
 </ul>
 <hr>
 <h2>How It Works</h2>
-<pre><code class="language-mermaid">graph TD
-    A[User Message + Tool Definitions] --&gt; B[LLM]
-    B --&gt; C{Model decision}
-    C -- Needs tool --&gt; D[Tool call response]
-    C -- Has answer --&gt; E[Text response]
-    D --&gt; F[Your code executes function]
-    F --&gt; G[Tool result sent back to model]
-    G --&gt; B
-    E --&gt; H[Final answer to user]
-</code></pre>
+<p><img src="/assets/diagrams/llm-function-calling-diagram-1.png" alt="Architecture diagram"></p>
 <p>The loop can repeat multiple times — the model might call a tool, receive results, decide it needs another tool, call that, and only then generate a final answer. This is the foundation of agent behavior: a model that can plan, act, observe, and re-plan.</p>
 <hr>
 <h2>Implementation Example</h2>

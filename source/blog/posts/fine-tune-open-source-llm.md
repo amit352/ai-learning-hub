@@ -36,23 +36,7 @@ This guide covers the complete pipeline: preparing your dataset in the format Un
 
 ## How It Works
 
-```mermaid
-graph TD
-    A[Training Dataset<br/>JSONL, conversations] --> B[Unsloth Model Loading<br/>4-bit QLoRA]
-    B --> C[LoRA Adapter Init<br/>Trainable params: 1-3%]
-    C --> D[SFT Training<br/>TRL SFTTrainer]
-    D --> E[Trained LoRA Adapters<br/>adapter_model.safetensors]
-
-    E --> F{Deployment Path}
-    F -->|Merge + GGUF| G[Export GGUF<br/>llama.cpp quantize]
-    F -->|HuggingFace| H[Merged FP16 Model<br/>saved_model/]
-
-    G --> I[Ollama Modelfile<br/>ollama create]
-    H --> J[vLLM Serving<br/>Production API]
-
-    I --> K[Inference]
-    J --> K
-```
+![Architecture diagram](/assets/diagrams/fine-tune-open-source-llm-diagram-1.png)
 
 ---
 

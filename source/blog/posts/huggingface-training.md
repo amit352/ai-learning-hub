@@ -36,22 +36,7 @@ One thing many developers overlook is the difference between `Trainer` and `SFTT
 
 ## How It Works
 
-```mermaid
-graph TD
-    A[Your Training Script] --> B[PEFT / LoRA Config<br/>get_peft_model]
-    A --> C[Dataset<br/>HuggingFace datasets]
-    A --> D[SFTConfig / TrainingArguments<br/>hyperparameters + infrastructure]
-    B --> E[SFTTrainer]
-    C --> E
-    D --> E
-    E --> F[Accelerate Backend<br/>single GPU / multi-GPU / TPU]
-    F --> G{Backend Type}
-    G -- Single GPU --> H[Standard PyTorch Training]
-    G -- Multi GPU --> I[FSDP or DeepSpeed ZeRO]
-    H --> J[Checkpoint + Adapter Weights]
-    I --> J
-    J --> K[Evaluation Loop<br/>val loss + custom metrics]
-```
+![Architecture diagram](/assets/diagrams/huggingface-training-diagram-1.png)
 
 In practice, switching from single-GPU to multi-GPU training requires almost no code changes — just an Accelerate configuration file and launching with `accelerate launch` instead of `python`.
 

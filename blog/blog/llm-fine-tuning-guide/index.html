@@ -229,7 +229,7 @@
               <span>Published <time datetime="2026-03-15">March 15, 2026</time></span>
               
               <span class="sep">·</span>
-              <span>11 min read</span>
+              <span>10 min read</span>
             </div>
           </div>
         </div>
@@ -285,18 +285,7 @@
 <p>Fine-tuning wins when you need a specific output format to be consistent across thousands of calls, when the task requires a writing style or tone that cannot be injected reliably via system prompt, or when you need to deploy a smaller, faster, cheaper model than the frontier option.</p>
 <p>Fine-tuning does not help when the model&#39;s knowledge is the gap. If your model hallucinates because it lacks domain facts, fine-tuning on examples will teach it to generate confidently — not accurately. Use RAG for knowledge gaps.</p>
 <h2>How It Works</h2>
-<pre><code class="language-mermaid">graph TD
-    A[Base Model&lt;br/&gt;e.g. Llama 3 8B] --&gt; B[Dataset Preparation&lt;br/&gt;Format + Clean]
-    B --&gt; C[Method Selection&lt;br/&gt;LoRA / QLoRA / Full]
-    C --&gt; D[LoRA Adapters&lt;br/&gt;A × B = ΔW]
-    D --&gt; E[Training Loop&lt;br/&gt;SFTTrainer / Unsloth]
-    E --&gt; F[Checkpoint Evaluation&lt;br/&gt;val loss + task metrics]
-    F --&gt; G{Converged?}
-    G -- No --&gt; E
-    G -- Yes --&gt; H[Merge Adapters&lt;br/&gt;into Base Model]
-    H --&gt; I[Evaluation&lt;br/&gt;BLEU / LLM-as-judge]
-    I --&gt; J[Deployed Model]
-</code></pre>
+<p><img src="/assets/diagrams/llm-fine-tuning-guide-diagram-1.png" alt="Architecture diagram"></p>
 <p>In practice, the dataset preparation and evaluation stages consume more engineering time than the training itself. A training run on a 7B model with LoRA takes 30–90 minutes for 1,000 examples. Preparing those 1,000 high-quality examples takes days.</p>
 <h2>Implementation Example</h2>
 <h3>Install Dependencies</h3>

@@ -229,7 +229,7 @@
               <span>Published <time datetime="2026-03-15">March 15, 2026</time></span>
               
               <span class="sep">·</span>
-              <span>11 min read</span>
+              <span>10 min read</span>
             </div>
           </div>
         </div>
@@ -312,17 +312,7 @@
 </tr>
 </tbody></table>
 <h2>How It Works</h2>
-<pre><code class="language-mermaid">graph TD
-    A[Raw Data Sources&lt;br/&gt;Web, docs, human-written, logs] --&gt; B[Format Normalization&lt;br/&gt;Convert all to messages format]
-    B --&gt; C[Quality Filtering&lt;br/&gt;Remove short, corrupt, duplicates]
-    C --&gt; D[Length Distribution Check&lt;br/&gt;Token count histogram]
-    D --&gt; E{Data Sufficient?}
-    E -- No --&gt; F[Synthetic Data Generation&lt;br/&gt;GPT-4 / Claude augmentation]
-    F --&gt; C
-    E -- Yes --&gt; G[Train / Eval Split&lt;br/&gt;90/10 stratified]
-    G --&gt; H[HuggingFace Dataset&lt;br/&gt;Push to Hub or save local]
-    H --&gt; I[Fine-tuning Pipeline&lt;br/&gt;SFTTrainer]
-</code></pre>
+<p><img src="/assets/diagrams/finetuning-datasets-diagram-1.png" alt="Architecture diagram"></p>
 <p>In practice, the filtering and synthetic generation steps are iterative. You filter, discover you have 400 examples after filtering (not enough), generate synthetic data, filter the synthetic data, and then combine.</p>
 <h2>Implementation Example</h2>
 <h3>Step 1: Load and Normalize Data from Multiple Sources</h3>

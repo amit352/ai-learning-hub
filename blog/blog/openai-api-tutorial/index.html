@@ -290,20 +290,7 @@
 <p>For most production applications, GPT-4o-mini handles 70–80% of tasks adequately at 15–20x lower cost. Reserve GPT-4o for tasks that require the highest reasoning quality.</p>
 <hr>
 <h2>How It Works</h2>
-<pre><code class="language-mermaid">graph TD
-    A[Python App] --&gt; B[OpenAI SDK]
-    B --&gt; C[HTTPS API Request]
-    C --&gt; D{Auth Check}
-    D -- 401 --&gt; E[AuthenticationError]
-    D -- OK --&gt; F{Rate Limiter}
-    F -- 429 --&gt; G[RateLimitError]
-    F -- OK --&gt; H[Model Inference]
-    H --&gt; I{stream=True?}
-    I -- Yes --&gt; J[SSE token stream]
-    I -- No --&gt; K[Full JSON response]
-    J --&gt; L[Python App]
-    K --&gt; L
-</code></pre>
+<p><img src="/assets/diagrams/openai-api-tutorial-diagram-1.png" alt="Architecture diagram"></p>
 <hr>
 <h2>Implementation Example</h2>
 <h3>Setup</h3>

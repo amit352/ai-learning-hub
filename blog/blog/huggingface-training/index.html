@@ -248,21 +248,7 @@
 <p><strong><code>accelerate</code></strong> — Distribution layer. Enables training across multiple GPUs with minimal code changes. Handles FSDP (Fully Sharded Data Parallel) and DeepSpeed integration.</p>
 <p><strong><code>peft</code></strong> — Parameter-Efficient Fine-Tuning library. Provides LoRA, QLoRA (via BitsAndBytes integration), prefix tuning, and other adapter methods. Composes with any Trainer.</p>
 <h2>How It Works</h2>
-<pre><code class="language-mermaid">graph TD
-    A[Your Training Script] --&gt; B[PEFT / LoRA Config&lt;br/&gt;get_peft_model]
-    A --&gt; C[Dataset&lt;br/&gt;HuggingFace datasets]
-    A --&gt; D[SFTConfig / TrainingArguments&lt;br/&gt;hyperparameters + infrastructure]
-    B --&gt; E[SFTTrainer]
-    C --&gt; E
-    D --&gt; E
-    E --&gt; F[Accelerate Backend&lt;br/&gt;single GPU / multi-GPU / TPU]
-    F --&gt; G{Backend Type}
-    G -- Single GPU --&gt; H[Standard PyTorch Training]
-    G -- Multi GPU --&gt; I[FSDP or DeepSpeed ZeRO]
-    H --&gt; J[Checkpoint + Adapter Weights]
-    I --&gt; J
-    J --&gt; K[Evaluation Loop&lt;br/&gt;val loss + custom metrics]
-</code></pre>
+<p><img src="/assets/diagrams/huggingface-training-diagram-1.png" alt="Architecture diagram"></p>
 <p>In practice, switching from single-GPU to multi-GPU training requires almost no code changes — just an Accelerate configuration file and launching with <code>accelerate launch</code> instead of <code>python</code>.</p>
 <h2>Implementation Example</h2>
 <h3>Complete SFT Training Script</h3>

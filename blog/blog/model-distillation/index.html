@@ -248,21 +248,7 @@
 <p>For LLMs specifically, response distillation has become the dominant practical approach: generate large quantities of high-quality text using a frontier model (GPT-4o, Claude 3 Opus), then fine-tune a smaller open source model on those outputs. This is how many high-quality open source instruction-tuned models were created, and it is within reach for most engineering teams with modest compute budgets.</p>
 <hr>
 <h2>How It Works</h2>
-<pre><code class="language-mermaid">graph TD
-    A[Teacher Model&lt;br/&gt;GPT-4o / Claude / Llama 70B] --&gt; B[Generate Training Data&lt;br/&gt;High-quality responses, CoT traces]
-    B --&gt; C[Distillation Dataset&lt;br/&gt;Prompt → Teacher Response pairs]
-
-    D[Student Model&lt;br/&gt;Llama 3.1 8B / Phi-3 Mini] --&gt; E[Fine-tuning Process&lt;br/&gt;SFT on teacher outputs]
-    C --&gt; E
-
-    E --&gt; F[Distilled Student&lt;br/&gt;Small model with teacher-like behavior]
-
-    G[Original Training Data&lt;br/&gt;Ground truth labels] --&gt; H[Standard Training&lt;br/&gt;Student without distillation]
-
-    F --&gt; I{Comparison}
-    H --&gt; I
-    I --&gt; J[Distilled student outperforms&lt;br/&gt;standard-trained model of same size]
-</code></pre>
+<p><img src="/assets/diagrams/model-distillation-diagram-1.png" alt="Architecture diagram"></p>
 <p>The key insight is that teacher outputs encode implicit knowledge — reasoning patterns, stylistic conventions, uncertainty calibration — that raw ground-truth labels do not. A student trained on teacher outputs learns not just what the right answer is, but how a capable model reasons to that answer.</p>
 <hr>
 <h2>Distillation vs Quantization: When to Use Which</h2>

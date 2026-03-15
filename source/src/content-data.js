@@ -150,7 +150,7 @@ const BLOG_POSTS = [
     "description": "How to prepare high-quality datasets for LLM fine-tuning: Alpaca format, ShareGPT, deduplication, quality filtering, synthetic data with GPT-4, and HuggingFace datasets.",
     "date": "2026-03-15",
     "date_display": "March 15, 2026",
-    "mins": 11
+    "mins": 10
   },
   {
     "slug": "/blog/full-vs-lora",
@@ -166,7 +166,7 @@ const BLOG_POSTS = [
     "description": "Complete Google Gemini API tutorial — setup, generateContent, streaming, multimodal inputs, function calling, and safety settings with Python SDK examples.",
     "date": "2026-03-15",
     "date_display": "March 15, 2026",
-    "mins": 10
+    "mins": 9
   },
   {
     "slug": "/blog/gguf-models",
@@ -174,7 +174,7 @@ const BLOG_POSTS = [
     "description": "Understand GGUF — what it is, how llama.cpp uses it, Q4_K_M vs Q5_K_M vs Q8_0 quant levels, finding models on HuggingFace, and loading with llama-cpp-python.",
     "date": "2026-03-15",
     "date_display": "March 15, 2026",
-    "mins": 9
+    "mins": 8
   },
   {
     "slug": "/blog/huggingface-training",
@@ -222,7 +222,7 @@ const BLOG_POSTS = [
     "description": "Handle LLM API errors in production — 429 rate limits, 500 server errors, context length exceeded, content filters, circuit breaker pattern, and fallback providers.",
     "date": "2026-03-15",
     "date_display": "March 15, 2026",
-    "mins": 13
+    "mins": 12
   },
   {
     "slug": "/blog/llm-api-guide",
@@ -238,7 +238,7 @@ const BLOG_POSTS = [
     "description": "Understand key LLM benchmarks — MMLU, HumanEval, MATH, MT-Bench, GPQA, IFEval — what they measure, benchmark gaming, and how to run your own evals with lm-eval-harness.",
     "date": "2026-03-15",
     "date_display": "March 15, 2026",
-    "mins": 11
+    "mins": 10
   },
   {
     "slug": "/blog/llm-evaluation",
@@ -254,7 +254,7 @@ const BLOG_POSTS = [
     "description": "Complete guide to LLM fine-tuning: when to use LoRA vs QLoRA vs full fine-tuning, dataset prep, training infra, and evaluation with TRL and Unsloth.",
     "date": "2026-03-15",
     "date_display": "March 15, 2026",
-    "mins": 11
+    "mins": 10
   },
   {
     "slug": "/blog/llm-function-calling",
@@ -278,7 +278,7 @@ const BLOG_POSTS = [
     "description": "Understand LLM quantization — INT8, INT4, GGUF formats, quality vs size trade-offs, BitsAndBytes, and how to choose the right quantization level for production.",
     "date": "2026-03-15",
     "date_display": "March 15, 2026",
-    "mins": 9
+    "mins": 8
   },
   {
     "slug": "/blog/llm-rate-limits",
@@ -359,6 +359,14 @@ const BLOG_POSTS = [
     "date": "2026-03-15",
     "date_display": "March 15, 2026",
     "mins": 13
+  },
+  {
+    "slug": "/blog/open-vs-closed-llm",
+    "title": "Open Source vs Proprietary LLMs: Which to Choose?",
+    "description": "Practical decision framework for open vs closed LLMs — capability, cost, privacy, fine-tuning control, vendor lock-in, and when each makes sense for production systems.",
+    "date": "2026-03-15",
+    "date_display": "March 15, 2026",
+    "mins": 10
   },
   {
     "slug": "/blog/openai-api-tutorial",
@@ -497,6 +505,14 @@ const BLOG_POSTS = [
     "mins": 9
   },
   {
+    "slug": "/blog/rlhf-guide",
+    "title": "RLHF Explained: How LLMs Learn from Human Feedback",
+    "description": "RLHF pipeline explained: SFT to reward model to PPO. DPO as a simpler alternative. TRL DPOTrainer code. Practical challenges of reward hacking and training instability.",
+    "date": "2026-03-15",
+    "date_display": "March 15, 2026",
+    "mins": 10
+  },
+  {
     "slug": "role-prompting",
     "title": "Role Prompting Explained for LLMs",
     "description": "Learn how role prompting shapes LLM outputs — when persona assignment improves results, how to write effective role prompts, and the trade-offs to know.",
@@ -511,6 +527,14 @@ const BLOG_POSTS = [
     "date": "2026-03-15",
     "date_display": "March 15, 2026",
     "mins": 8
+  },
+  {
+    "slug": "/blog/synthetic-data-llm",
+    "title": "Synthetic Data for LLM Training: Generate Your Own Dataset",
+    "description": "How to generate synthetic training data for LLM fine-tuning using GPT-4 and Claude. Self-instruct method, Evol-Instruct, quality filtering, and a complete 1,000-example generation script.",
+    "date": "2026-03-15",
+    "date_display": "March 15, 2026",
+    "mins": 11
   },
   {
     "slug": "system-prompts-guide",

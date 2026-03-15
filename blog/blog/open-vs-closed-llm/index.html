@@ -252,22 +252,7 @@
 <p>A comprehensive decision weighs all six dimensions, not just the one that is easiest to quantify.</p>
 <hr>
 <h2>How It Works</h2>
-<pre><code class="language-mermaid">graph TD
-    A[New LLM Feature Request] --&gt; B{Data Leaves Infrastructure?}
-    B --&gt;|Cannot allow| C[Open Source Self-Hosted&lt;br/&gt;Mandatory]
-    B --&gt;|Acceptable| D{Monthly Inference Volume}
-
-    D --&gt;|Low volume&lt;br/&gt;under $200/mo API| E[Proprietary API&lt;br/&gt;Cost-effective]
-    D --&gt;|High volume&lt;br/&gt;over $500/mo API| F{Task Complexity}
-
-    F --&gt;|Complex reasoning&lt;br/&gt;frontier quality needed| G[Proprietary API&lt;br/&gt;Quality justifies cost]
-    F --&gt;|Routine tasks&lt;br/&gt;extraction, summary, Q&amp;A| H[Open Source Self-Hosted&lt;br/&gt;Cost-efficient]
-
-    C --&gt; I[Final Architecture]
-    E --&gt; I
-    G --&gt; I
-    H --&gt; I
-</code></pre>
+<p><img src="/assets/diagrams/open-vs-closed-llm-diagram-1.png" alt="Architecture diagram"></p>
 <hr>
 <h2>Capability Comparison</h2>
 <p>The capability gap between frontier proprietary models and the best open source models has narrowed significantly, but it has not closed.</p>

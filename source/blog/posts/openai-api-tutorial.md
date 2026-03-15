@@ -50,21 +50,7 @@ For most production applications, GPT-4o-mini handles 70–80% of tasks adequate
 
 ## How It Works
 
-```mermaid
-graph TD
-    A[Python App] --> B[OpenAI SDK]
-    B --> C[HTTPS API Request]
-    C --> D{Auth Check}
-    D -- 401 --> E[AuthenticationError]
-    D -- OK --> F{Rate Limiter}
-    F -- 429 --> G[RateLimitError]
-    F -- OK --> H[Model Inference]
-    H --> I{stream=True?}
-    I -- Yes --> J[SSE token stream]
-    I -- No --> K[Full JSON response]
-    J --> L[Python App]
-    K --> L
-```
+![Architecture diagram](/assets/diagrams/openai-api-tutorial-diagram-1.png)
 
 ---
 

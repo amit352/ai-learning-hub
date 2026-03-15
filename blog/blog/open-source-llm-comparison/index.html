@@ -253,19 +253,7 @@
 <p>Only after all three gates pass does a model go to production. The comparison below focuses on what matters at each gate.</p>
 <hr>
 <h2>How It Works</h2>
-<pre><code class="language-mermaid">graph TD
-    A[Task Requirements&lt;br/&gt;coding / reasoning / RAG / chat] --&gt; B{VRAM Budget}
-    B --&gt;|Less than 8GB| C[7B Models&lt;br/&gt;Llama 3.1 8B / Mistral 7B]
-    B --&gt;|8–24GB| D[13B–32B Models&lt;br/&gt;Qwen2.5 32B / Mistral 24B]
-    B --&gt;|24–48GB| E[70B+ Models&lt;br/&gt;Llama 3.3 70B / Qwen2.5 72B]
-
-    C --&gt; F{Eval on Your Task}
-    D --&gt; F
-    E --&gt; F
-
-    F --&gt;|Pass| G[Production Deployment]
-    F --&gt;|Fail| H[Try Next Model Family]
-</code></pre>
+<p><img src="/assets/diagrams/open-source-llm-comparison-diagram-1.png" alt="Architecture diagram"></p>
 <hr>
 <h2>Benchmark Reference</h2>
 <p>The benchmarks below are from public evaluations. Treat these as directional signals, not definitive rankings — your internal evals matter more.</p>

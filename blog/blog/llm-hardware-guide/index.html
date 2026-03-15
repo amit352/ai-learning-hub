@@ -248,18 +248,7 @@
 <p><strong>System RAM</strong> matters for CPU-only inference and for models that partially run on CPU. Fast RAM (DDR5) helps; more RAM (64–128GB) determines which models fit in CPU memory.</p>
 <hr>
 <h2>How It Works</h2>
-<pre><code class="language-mermaid">graph TD
-    A[Model Parameters&lt;br/&gt;e.g., 70B] --&gt; B[Quantization Level&lt;br/&gt;Q4, Q8, FP16]
-    B --&gt; C[VRAM Required&lt;br/&gt;Weights + KV Cache]
-
-    C --&gt; D{VRAM Available}
-    D --&gt;|Fits in VRAM| E[Full GPU Inference&lt;br/&gt;Fast: 20–80 tok/s]
-    D --&gt;|Partial fit| F[GPU + CPU Split&lt;br/&gt;Medium: 5–15 tok/s]
-    D --&gt;|Does not fit| G[CPU-Only Inference&lt;br/&gt;Slow: 1–8 tok/s]
-
-    H[Memory Bandwidth&lt;br/&gt;GB/s] --&gt; E
-    I[CPU Threads + RAM| G
-</code></pre>
+<p><img src="/assets/diagrams/llm-hardware-guide-diagram-1.png" alt="Architecture diagram"></p>
 <hr>
 <h2>VRAM Requirements by Model Size</h2>
 <p>The formula for minimum VRAM (in GB) is approximately: <code>(parameters × bits_per_weight / 8) × 1.1</code></p>

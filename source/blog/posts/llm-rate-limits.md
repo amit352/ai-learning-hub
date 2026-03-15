@@ -49,22 +49,7 @@ Anthropic and Google have similar tiered structures. The key insight: you may ne
 
 ## How It Works
 
-```mermaid
-graph TD
-    A[Application] --> B[Rate Limit Tracker]
-    B --> C{Within limits?}
-    C -- Yes --> D[Send API request]
-    C -- No --> E[Enqueue / Wait]
-    D --> F{Response?}
-    F -- 200 OK --> G[Process response]
-    F -- 429 Rate Limited --> H[Read Retry-After header]
-    H --> I[Exponential backoff with jitter]
-    I --> D
-    F -- 5xx Error --> J[Retry with backoff]
-    J --> D
-    E --> K[Token bucket refills]
-    K --> C
-```
+![Architecture diagram](/assets/diagrams/llm-rate-limits-diagram-1.png)
 
 When you receive a 429, the response headers contain useful information: `retry-after` (seconds to wait), `x-ratelimit-remaining-requests`, `x-ratelimit-remaining-tokens`, and `x-ratelimit-reset-requests` (timestamp when limits reset). Using these headers for proactive throttling is more efficient than reacting to 429 errors after they occur.
 

@@ -49,19 +49,7 @@ Fine-tuning does not help when the model's knowledge is the gap. If your model h
 
 ## How It Works
 
-```mermaid
-graph TD
-    A[Base Model<br/>e.g. Llama 3 8B] --> B[Dataset Preparation<br/>Format + Clean]
-    B --> C[Method Selection<br/>LoRA / QLoRA / Full]
-    C --> D[LoRA Adapters<br/>A × B = ΔW]
-    D --> E[Training Loop<br/>SFTTrainer / Unsloth]
-    E --> F[Checkpoint Evaluation<br/>val loss + task metrics]
-    F --> G{Converged?}
-    G -- No --> E
-    G -- Yes --> H[Merge Adapters<br/>into Base Model]
-    H --> I[Evaluation<br/>BLEU / LLM-as-judge]
-    I --> J[Deployed Model]
-```
+![Architecture diagram](/assets/diagrams/llm-fine-tuning-guide-diagram-1.png)
 
 In practice, the dataset preparation and evaluation stages consume more engineering time than the training itself. A training run on a 7B model with LoRA takes 30–90 minutes for 1,000 examples. Preparing those 1,000 high-quality examples takes days.
 

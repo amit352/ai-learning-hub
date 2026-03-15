@@ -36,22 +36,7 @@ A common mistake I've seen in production systems is shipping a fine-tuned model 
 
 ## How It Works
 
-```mermaid
-graph TD
-    A[Fine-Tuned Model] --> B[Evaluation Pipeline]
-    B --> C[Automatic Metrics<br/>perplexity, BLEU, ROUGE]
-    B --> D[LLM-as-Judge<br/>GPT-4 / Claude scoring]
-    B --> E[Task-Specific Eval<br/>accuracy, format, execution]
-    B --> F[Benchmark Suite<br/>lm-eval-harness, MMLU]
-    C --> G[Training Signal<br/>Is the model learning?]
-    D --> H[Quality Signal<br/>Is output good?]
-    E --> I[Production Signal<br/>Does it work for the task?]
-    F --> J[Regression Signal<br/>Did fine-tuning hurt general capabilities?]
-    G --> K[Evaluation Report]
-    H --> K
-    I --> K
-    J --> K
-```
+![Architecture diagram](/assets/diagrams/llm-evaluation-diagram-1.png)
 
 The right evaluation strategy depends on where you are in the development cycle. During training, track perplexity. After training, run task-specific evals and a regression benchmark. Before shipping, use LLM-as-judge for qualitative scoring on diverse test prompts.
 

@@ -39,20 +39,7 @@ Only after all three gates pass does a model go to production. The comparison be
 
 ## How It Works
 
-```mermaid
-graph TD
-    A[Task Requirements<br/>coding / reasoning / RAG / chat] --> B{VRAM Budget}
-    B -->|Less than 8GB| C[7B Models<br/>Llama 3.1 8B / Mistral 7B]
-    B -->|8–24GB| D[13B–32B Models<br/>Qwen2.5 32B / Mistral 24B]
-    B -->|24–48GB| E[70B+ Models<br/>Llama 3.3 70B / Qwen2.5 72B]
-
-    C --> F{Eval on Your Task}
-    D --> F
-    E --> F
-
-    F -->|Pass| G[Production Deployment]
-    F -->|Fail| H[Try Next Model Family]
-```
+![Architecture diagram](/assets/diagrams/open-source-llm-comparison-diagram-1.png)
 
 ---
 

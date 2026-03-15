@@ -252,15 +252,7 @@
 <li><code>lora_dropout</code>: Regularization on adapter weights. Often 0–0.05.</li>
 </ul>
 <h2>How It Works</h2>
-<pre><code class="language-mermaid">graph TD
-    A[Pre-trained Weight Matrix W&lt;br/&gt;shape: d_model × d_model&lt;br/&gt;FROZEN — never updated] --&gt; B[Forward Pass]
-    C[LoRA Matrix A&lt;br/&gt;shape: d_model × r&lt;br/&gt;TRAINABLE] --&gt; D[Matrix Product A × B]
-    E[LoRA Matrix B&lt;br/&gt;shape: r × d_model&lt;br/&gt;TRAINABLE — init zeros] --&gt; D
-    D --&gt; F[ΔW = B × A&lt;br/&gt;Low-rank update]
-    B --&gt; G[Output = W·x + ΔW·x]
-    F --&gt; G
-    G --&gt; H[Merged Model&lt;br/&gt;W_final = W + ΔW&lt;br/&gt;No inference overhead]
-</code></pre>
+<p><img src="/assets/diagrams/lora-fine-tuning-tutorial-diagram-1.png" alt="Architecture diagram"></p>
 <p>One thing many developers overlook: matrix B is initialized to zeros at the start of training. This means ΔW = 0 at initialization — the LoRA model begins training from exactly the base model&#39;s behavior, with no random disruption. This is why LoRA training is stable even at relatively high learning rates.</p>
 <h2>Implementation Example</h2>
 <h3>Step 1: Install Dependencies</h3>

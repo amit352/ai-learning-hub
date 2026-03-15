@@ -34,22 +34,7 @@ The full RLHF pipeline — SFT, reward model training, PPO — is complex, unsta
 
 ## How It Works
 
-```mermaid
-graph TD
-    A[Prompt] --> B[SFT Model<br/>Instruction-tuned baseline]
-    B --> C[Response A]
-    B --> D[Response B]
-    C --> E[Human Annotator<br/>Which is better?]
-    D --> E
-    E --> F[Preference Dataset<br/>prompt, chosen, rejected]
-    F --> G{Training Method}
-    G -- RLHF Path --> H[Reward Model<br/>Trained on preferences]
-    H --> I[PPO Training<br/>Maximize reward - KL penalty]
-    G -- DPO Path --> J[DPO Training<br/>Direct preference optimization]
-    I --> K[Aligned Model]
-    J --> K
-    K --> L[Human Evaluation<br/>More helpful? Safer?]
-```
+![Architecture diagram](/assets/diagrams/rlhf-guide-diagram-1.png)
 
 In practice, the arrow from human annotator to preference dataset is the most expensive part. Each annotation requires showing a human two model responses and asking for a comparison. At the scale needed for production alignment (thousands to tens of thousands of pairs), annotation costs dominate.
 

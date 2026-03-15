@@ -38,22 +38,7 @@ Quantization is the process of reducing the numerical precision of model weights
 
 ## How It Works
 
-```mermaid
-graph TD
-    A[FP16 Model Weights<br/>HuggingFace Hub] --> B{Quantization Method}
-
-    B -->|GPU inference<br/>NVIDIA| C[GPTQ / AWQ<br/>INT4 GPU-optimized]
-    B -->|CPU / Ollama<br/>llama.cpp| D[GGUF<br/>Q4_K_M, Q5_K_M, Q8_0]
-    B -->|Python training<br/>or inference| E[BitsAndBytes<br/>INT8 / NF4]
-
-    C --> F[vLLM / TGI<br/>High-throughput serving]
-    D --> G[Ollama / llama.cpp<br/>Local inference]
-    E --> H[Transformers library<br/>Python inference + QLoRA]
-
-    F --> I[Application]
-    G --> I
-    H --> I
-```
+![Architecture diagram](/assets/diagrams/llm-quantization-diagram-1.png)
 
 The calibration step is important: when quantizing, most methods run a small representative dataset through the model to determine optimal quantization parameters per layer. Methods that skip calibration (round-to-nearest) produce lower quality than calibrated methods (GPTQ, AWQ, GGUF's K-quants).
 

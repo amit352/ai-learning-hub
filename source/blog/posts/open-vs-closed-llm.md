@@ -44,23 +44,7 @@ A comprehensive decision weighs all six dimensions, not just the one that is eas
 
 ## How It Works
 
-```mermaid
-graph TD
-    A[New LLM Feature Request] --> B{Data Leaves Infrastructure?}
-    B -->|Cannot allow| C[Open Source Self-Hosted<br/>Mandatory]
-    B -->|Acceptable| D{Monthly Inference Volume}
-
-    D -->|Low volume<br/>under $200/mo API| E[Proprietary API<br/>Cost-effective]
-    D -->|High volume<br/>over $500/mo API| F{Task Complexity}
-
-    F -->|Complex reasoning<br/>frontier quality needed| G[Proprietary API<br/>Quality justifies cost]
-    F -->|Routine tasks<br/>extraction, summary, Q&A| H[Open Source Self-Hosted<br/>Cost-efficient]
-
-    C --> I[Final Architecture]
-    E --> I
-    G --> I
-    H --> I
-```
+![Architecture diagram](/assets/diagrams/open-vs-closed-llm-diagram-1.png)
 
 ---
 

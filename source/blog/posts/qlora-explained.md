@@ -41,18 +41,7 @@ The result of all three techniques combined:
 
 ## How It Works
 
-```mermaid
-graph TD
-    A[Pre-trained Model<br/>16-bit fp16/bf16] --> B[NF4 Quantization<br/>4-bit NormalFloat]
-    B --> C[Frozen Base Model<br/>~4x smaller footprint]
-    C --> D[Forward Pass<br/>Dequantize to fp16 on-the-fly]
-    D --> E[LoRA Adapter Forward<br/>A × B in fp16]
-    E --> F[Combined Output]
-    F --> G[Loss Computation]
-    G --> H[Backprop through Adapters only]
-    H --> I[Paged AdamW<br/>Optimizer States in CPU RAM]
-    I --> J[Adapter Weight Update<br/>Only 0.5% of params]
-```
+![Architecture diagram](/assets/diagrams/qlora-explained-diagram-1.png)
 
 One thing many developers overlook: the base model is dequantized back to fp16 during the forward pass computation. The 4-bit weights are stored in 4-bit, but computation happens in 16-bit. This is what makes QLoRA lossless enough to be practically useful — you get 4-bit storage with 16-bit compute quality.
 

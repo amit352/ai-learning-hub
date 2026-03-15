@@ -260,20 +260,7 @@ data: [DONE]
 </ul>
 <hr>
 <h2>How It Works</h2>
-<pre><code class="language-mermaid">graph TD
-    A[Browser / Client] --&gt; B[HTTP POST request to your backend]
-    B --&gt; C[FastAPI streaming endpoint]
-    C --&gt; D[LLM API call with stream=True]
-    D --&gt; E[LLM Inference begins]
-    E --&gt; F[Token generated]
-    F --&gt; G[SSE chunk sent to backend]
-    G --&gt; H[Backend forwards chunk to client]
-    H --&gt; A
-    F --&gt; F
-    G --&gt; I{done signal?}
-    I -- No --&gt; F
-    I -- Yes --&gt; J[Close SSE connection]
-</code></pre>
+<p><img src="/assets/diagrams/llm-streaming-diagram-1.png" alt="Architecture diagram"></p>
 <p>The backend acts as a streaming proxy: it receives the SSE stream from the LLM API and forwards chunks to the client. This pattern keeps your API key server-side (never exposed to the browser) and lets you add authentication, logging, and per-user rate limiting in the middle.</p>
 <hr>
 <h2>Implementation Example</h2>

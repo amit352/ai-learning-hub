@@ -38,19 +38,7 @@ A local AI development stack has four components:
 
 ## How It Works
 
-```mermaid
-graph TD
-    A[User Query] --> B[LangChain Chain]
-    B --> C[ChromaDB Vector Store<br/>Local embeddings]
-    C --> D[Retrieved Documents<br/>Relevant chunks]
-    D --> E[Prompt Construction]
-    E --> F[Ollama Local LLM<br/>localhost:11434]
-    F --> G[Response]
-
-    H[Source Documents<br/>PDF / Markdown / Text] --> I[Text Splitter]
-    I --> J[Local Embedding Model<br/>nomic-embed-text via Ollama]
-    J --> C
-```
+![Architecture diagram](/assets/diagrams/local-ai-development-diagram-1.png)
 
 ---
 

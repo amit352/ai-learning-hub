@@ -248,21 +248,7 @@
 <p><strong>Task-specific evals</strong> measure the metric that actually matters — format adherence for structured output tasks, accuracy for QA tasks, code execution pass rate for code generation. These require custom implementation but are the most reliable signal.</p>
 <p><strong>Benchmark suites</strong> (lm-eval-harness, MMLU, MT-Bench) provide standardized tasks for comparing models. Essential for tracking regression when fine-tuning, since fine-tuned models often degrade on tasks not in the training set.</p>
 <h2>How It Works</h2>
-<pre><code class="language-mermaid">graph TD
-    A[Fine-Tuned Model] --&gt; B[Evaluation Pipeline]
-    B --&gt; C[Automatic Metrics&lt;br/&gt;perplexity, BLEU, ROUGE]
-    B --&gt; D[LLM-as-Judge&lt;br/&gt;GPT-4 / Claude scoring]
-    B --&gt; E[Task-Specific Eval&lt;br/&gt;accuracy, format, execution]
-    B --&gt; F[Benchmark Suite&lt;br/&gt;lm-eval-harness, MMLU]
-    C --&gt; G[Training Signal&lt;br/&gt;Is the model learning?]
-    D --&gt; H[Quality Signal&lt;br/&gt;Is output good?]
-    E --&gt; I[Production Signal&lt;br/&gt;Does it work for the task?]
-    F --&gt; J[Regression Signal&lt;br/&gt;Did fine-tuning hurt general capabilities?]
-    G --&gt; K[Evaluation Report]
-    H --&gt; K
-    I --&gt; K
-    J --&gt; K
-</code></pre>
+<p><img src="/assets/diagrams/llm-evaluation-diagram-1.png" alt="Architecture diagram"></p>
 <p>The right evaluation strategy depends on where you are in the development cycle. During training, track perplexity. After training, run task-specific evals and a regression benchmark. Before shipping, use LLM-as-judge for qualitative scoring on diverse test prompts.</p>
 <h2>Implementation Example</h2>
 <h3>Perplexity on a Test Set</h3>

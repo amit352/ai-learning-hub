@@ -48,21 +48,7 @@ SSE is one-directional (server to client) and works over standard HTTP — no We
 
 ## How It Works
 
-```mermaid
-graph TD
-    A[Browser / Client] --> B[HTTP POST request to your backend]
-    B --> C[FastAPI streaming endpoint]
-    C --> D[LLM API call with stream=True]
-    D --> E[LLM Inference begins]
-    E --> F[Token generated]
-    F --> G[SSE chunk sent to backend]
-    G --> H[Backend forwards chunk to client]
-    H --> A
-    F --> F
-    G --> I{done signal?}
-    I -- No --> F
-    I -- Yes --> J[Close SSE connection]
-```
+![Architecture diagram](/assets/diagrams/llm-streaming-diagram-1.png)
 
 The backend acts as a streaming proxy: it receives the SSE stream from the LLM API and forwards chunks to the client. This pattern keeps your API key server-side (never exposed to the browser) and lets you add authentication, logging, and per-user rate limiting in the middle.
 

@@ -48,27 +48,7 @@ The **Google Generative AI API** (commonly called the Gemini API) is accessed vi
 
 ## How It Works
 
-```mermaid
-graph TD
-    A[Python App] --> B[genai.GenerativeModel]
-    B --> C[generate_content call]
-    C --> D{Input type}
-    D -- Text only --> E[Text part]
-    D -- Multimodal --> F[Text + Image + File parts]
-    D -- Function calling --> G[Tool declarations]
-    E --> H[Gemini inference]
-    F --> H
-    G --> H
-    H --> I{Response type}
-    I -- Standard --> J[response.text]
-    I -- Streaming --> K[chunk.text iterator]
-    I -- Function call --> L[response.parts with FunctionCall]
-    L --> M[Execute function in Python]
-    M --> N[Send FunctionResponse back]
-    N --> H
-    J --> A
-    K --> A
-```
+![Architecture diagram](/assets/diagrams/gemini-api-tutorial-diagram-1.png)
 
 One structural difference from OpenAI: Gemini models are initialized with the system instruction baked in, not passed per-request. This means if you need different system behaviors, you initialize different model instances — a pattern that is odd at first but makes sense for applications with a fixed persona.
 

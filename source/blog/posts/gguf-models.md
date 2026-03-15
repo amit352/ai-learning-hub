@@ -38,27 +38,7 @@ The "unified" in GGUF means everything needed to run the model — including the
 
 ## How It Works
 
-```mermaid
-graph TD
-    A[HuggingFace Hub<br/>FP16 / BF16 Safetensors] --> B[Conversion Script<br/>convert_hf_to_gguf.py]
-    B --> C[GGUF FP16 Base]
-    C --> D[llama-quantize tool]
-    D --> E{Quantization Level}
-
-    E --> F[Q4_K_M<br/>Recommended default]
-    E --> G[Q5_K_M<br/>Higher quality]
-    E --> H[Q8_0<br/>Near-lossless]
-    E --> I[Q2_K / Q3_K<br/>Minimum footprint]
-
-    F --> J[llama.cpp Runtime]
-    G --> J
-    H --> J
-    I --> J
-
-    J --> K[Ollama]
-    J --> L[llama-cpp-python]
-    J --> M[LM Studio]
-```
+![Architecture diagram](/assets/diagrams/gguf-models-diagram-1.png)
 
 The K-quant variants (Q4_K_M, Q5_K_M, Q6_K) use a more sophisticated quantization algorithm than the older non-K variants. In K-quants, different layers use different quantization parameters, and the quantization is applied in groups with shared scale factors. The `_M` suffix means "medium" — a balance between quality and size within that bit depth. `_S` is smaller/lower quality, `_L` is larger/higher quality.
 

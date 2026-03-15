@@ -36,22 +36,7 @@ For LLMs specifically, response distillation has become the dominant practical a
 
 ## How It Works
 
-```mermaid
-graph TD
-    A[Teacher Model<br/>GPT-4o / Claude / Llama 70B] --> B[Generate Training Data<br/>High-quality responses, CoT traces]
-    B --> C[Distillation Dataset<br/>Prompt → Teacher Response pairs]
-
-    D[Student Model<br/>Llama 3.1 8B / Phi-3 Mini] --> E[Fine-tuning Process<br/>SFT on teacher outputs]
-    C --> E
-
-    E --> F[Distilled Student<br/>Small model with teacher-like behavior]
-
-    G[Original Training Data<br/>Ground truth labels] --> H[Standard Training<br/>Student without distillation]
-
-    F --> I{Comparison}
-    H --> I
-    I --> J[Distilled student outperforms<br/>standard-trained model of same size]
-```
+![Architecture diagram](/assets/diagrams/model-distillation-diagram-1.png)
 
 The key insight is that teacher outputs encode implicit knowledge — reasoning patterns, stylistic conventions, uncertainty calibration — that raw ground-truth labels do not. A student trained on teacher outputs learns not just what the right answer is, but how a capable model reasons to that answer.
 

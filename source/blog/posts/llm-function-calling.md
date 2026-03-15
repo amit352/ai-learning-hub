@@ -45,17 +45,7 @@ The core loop:
 
 ## How It Works
 
-```mermaid
-graph TD
-    A[User Message + Tool Definitions] --> B[LLM]
-    B --> C{Model decision}
-    C -- Needs tool --> D[Tool call response]
-    C -- Has answer --> E[Text response]
-    D --> F[Your code executes function]
-    F --> G[Tool result sent back to model]
-    G --> B
-    E --> H[Final answer to user]
-```
+![Architecture diagram](/assets/diagrams/llm-function-calling-diagram-1.png)
 
 The loop can repeat multiple times — the model might call a tool, receive results, decide it needs another tool, call that, and only then generate a final answer. This is the foundation of agent behavior: a model that can plan, act, observe, and re-plan.
 

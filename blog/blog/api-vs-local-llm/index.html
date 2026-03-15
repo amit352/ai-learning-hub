@@ -261,22 +261,7 @@
 <p><strong>Key capability gap (2026):</strong> Frontier API models still outperform the best open-source alternatives on complex reasoning, instruction following, and coding tasks. The gap has narrowed significantly — Llama 3.1 70B and Qwen 2.5 72B are genuinely competitive on many benchmarks — but it has not closed. For tasks requiring the absolute best output quality, API models maintain an advantage.</p>
 <hr>
 <h2>How It Works</h2>
-<pre><code class="language-mermaid">graph TD
-    A[Application Request] --&gt; B{Routing Decision}
-    B -- API route --&gt; C[HTTPS to OpenAI/Anthropic]
-    C --&gt; D[Provider&#39;s GPU cluster]
-    D --&gt; E[Response returned via API]
-    B -- Local route --&gt; F[Local inference server]
-    F --&gt; G{Hardware?}
-    G -- Consumer GPU --&gt; H[Ollama on MacBook/workstation]
-    G -- Cloud GPU --&gt; I[vLLM on A100/H100 instance]
-    G -- CPU only --&gt; J[llama.cpp quantized model]
-    H --&gt; K[Response from local model]
-    I --&gt; K
-    J --&gt; K
-    E --&gt; L[Application]
-    K --&gt; L
-</code></pre>
+<p><img src="/assets/diagrams/api-vs-local-llm-diagram-1.png" alt="Architecture diagram"></p>
 <hr>
 <h2>Implementation Example</h2>
 <h3>Using Ollama for Local Inference</h3>

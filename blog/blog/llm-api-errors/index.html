@@ -229,7 +229,7 @@
               <span>Published <time datetime="2026-03-15">March 15, 2026</time></span>
               
               <span class="sep">·</span>
-              <span>13 min read</span>
+              <span>12 min read</span>
             </div>
           </div>
         </div>
@@ -289,20 +289,7 @@
 </ul>
 <hr>
 <h2>How It Works</h2>
-<pre><code class="language-mermaid">graph TD
-    A[API Request] --&gt; B{HTTP Response}
-    B -- 200 OK --&gt; C[Success — process response]
-    B -- 401 Unauthorized --&gt; D[Log + alert — do not retry]
-    B -- 400 Bad Request --&gt; E{Error subtype?}
-    E -- Context too long --&gt; F[Truncate input and retry]
-    E -- Content filter --&gt; G[Log + return safe fallback]
-    E -- Other 400 --&gt; H[Log + raise — do not retry]
-    B -- 429 Rate Limited --&gt; I[Exponential backoff + retry]
-    B -- 500 Server Error --&gt; J[Exponential backoff + retry]
-    B -- 503 Unavailable --&gt; K{Circuit breaker open?}
-    K -- Yes --&gt; L[Fallback provider]
-    K -- No --&gt; J
-</code></pre>
+<p><img src="/assets/diagrams/llm-api-errors-diagram-1.png" alt="Architecture diagram"></p>
 <hr>
 <h2>Implementation Example</h2>
 <h3>Comprehensive Error Handler</h3>

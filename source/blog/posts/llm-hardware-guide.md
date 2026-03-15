@@ -36,19 +36,7 @@ Three hardware metrics determine your LLM inference performance:
 
 ## How It Works
 
-```mermaid
-graph TD
-    A[Model Parameters<br/>e.g., 70B] --> B[Quantization Level<br/>Q4, Q8, FP16]
-    B --> C[VRAM Required<br/>Weights + KV Cache]
-
-    C --> D{VRAM Available}
-    D -->|Fits in VRAM| E[Full GPU Inference<br/>Fast: 20–80 tok/s]
-    D -->|Partial fit| F[GPU + CPU Split<br/>Medium: 5–15 tok/s]
-    D -->|Does not fit| G[CPU-Only Inference<br/>Slow: 1–8 tok/s]
-
-    H[Memory Bandwidth<br/>GB/s] --> E
-    I[CPU Threads + RAM| G
-```
+![Architecture diagram](/assets/diagrams/llm-hardware-guide-diagram-1.png)
 
 ---
 

@@ -56,22 +56,7 @@ The delta between input and output pricing matters because output tokens are 4�
 
 ## How It Works
 
-```mermaid
-graph TD
-    A[Incoming Request] --> B{Response Cached?}
-    B -- Yes --> C[Return cached response — $0 cost]
-    B -- No --> D{Task complexity?}
-    D -- Simple --> E[Cheap model: GPT-4o-mini / Haiku]
-    D -- Complex --> F[Premium model: GPT-4o / Sonnet]
-    E --> G{Large repeated context?}
-    F --> G
-    G -- Yes --> H[Prompt caching — 90% off input cost]
-    G -- No --> I[Standard API call]
-    H --> J[LLM Response]
-    I --> J
-    J --> K[Cache response if cacheable]
-    K --> L[Return to user]
-```
+![Architecture diagram](/assets/diagrams/llm-api-cost-optimization-diagram-1.png)
 
 ---
 

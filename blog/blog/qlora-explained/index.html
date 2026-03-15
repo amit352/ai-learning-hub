@@ -281,17 +281,7 @@
 </tr>
 </tbody></table>
 <h2>How It Works</h2>
-<pre><code class="language-mermaid">graph TD
-    A[Pre-trained Model&lt;br/&gt;16-bit fp16/bf16] --&gt; B[NF4 Quantization&lt;br/&gt;4-bit NormalFloat]
-    B --&gt; C[Frozen Base Model&lt;br/&gt;~4x smaller footprint]
-    C --&gt; D[Forward Pass&lt;br/&gt;Dequantize to fp16 on-the-fly]
-    D --&gt; E[LoRA Adapter Forward&lt;br/&gt;A × B in fp16]
-    E --&gt; F[Combined Output]
-    F --&gt; G[Loss Computation]
-    G --&gt; H[Backprop through Adapters only]
-    H --&gt; I[Paged AdamW&lt;br/&gt;Optimizer States in CPU RAM]
-    I --&gt; J[Adapter Weight Update&lt;br/&gt;Only 0.5% of params]
-</code></pre>
+<p><img src="/assets/diagrams/qlora-explained-diagram-1.png" alt="Architecture diagram"></p>
 <p>One thing many developers overlook: the base model is dequantized back to fp16 during the forward pass computation. The 4-bit weights are stored in 4-bit, but computation happens in 16-bit. This is what makes QLoRA lossless enough to be practically useful — you get 4-bit storage with 16-bit compute quality.</p>
 <h2>Implementation Example</h2>
 <h3>Step 1: Install Dependencies</h3>

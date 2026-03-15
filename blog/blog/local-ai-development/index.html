@@ -249,18 +249,7 @@
 <p><strong>Application code</strong> — Python ties everything together. The data flow: documents → chunking → local embeddings → ChromaDB → query → retrieved context → local LLM → response.</p>
 <hr>
 <h2>How It Works</h2>
-<pre><code class="language-mermaid">graph TD
-    A[User Query] --&gt; B[LangChain Chain]
-    B --&gt; C[ChromaDB Vector Store&lt;br/&gt;Local embeddings]
-    C --&gt; D[Retrieved Documents&lt;br/&gt;Relevant chunks]
-    D --&gt; E[Prompt Construction]
-    E --&gt; F[Ollama Local LLM&lt;br/&gt;localhost:11434]
-    F --&gt; G[Response]
-
-    H[Source Documents&lt;br/&gt;PDF / Markdown / Text] --&gt; I[Text Splitter]
-    I --&gt; J[Local Embedding Model&lt;br/&gt;nomic-embed-text via Ollama]
-    J --&gt; C
-</code></pre>
+<p><img src="/assets/diagrams/local-ai-development-diagram-1.png" alt="Architecture diagram"></p>
 <hr>
 <h2>Environment Setup</h2>
 <h3>Install Ollama and Pull Required Models</h3>

@@ -42,26 +42,7 @@ The score you should care most about depends entirely on your use case. A high M
 
 ## How It Works
 
-```mermaid
-graph TD
-    A[LLM Model] --> B{Benchmark Type}
-
-    B -->|Knowledge| C[MMLU<br/>57 subjects, MCQ]
-    B -->|Coding| D[HumanEval<br/>164 Python problems]
-    B -->|Math| E[MATH<br/>12,500 competition problems]
-    B -->|Instruction| F[IFEval<br/>541 verifiable instructions]
-    B -->|Expert| G[GPQA<br/>Expert-level science Q&A]
-
-    C --> H[Score / Ranking]
-    D --> H
-    E --> H
-    F --> H
-    G --> H
-
-    H --> I{Trust the Score?}
-    I -->|Task is similar| J[Useful signal]
-    I -->|Your use case differs| K[Run internal eval]
-```
+![Architecture diagram](/assets/diagrams/llm-benchmarks-diagram-1.png)
 
 ---
 

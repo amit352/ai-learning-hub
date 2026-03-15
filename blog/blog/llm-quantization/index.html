@@ -229,7 +229,7 @@
               <span>Published <time datetime="2026-03-15">March 15, 2026</time></span>
               
               <span class="sep">·</span>
-              <span>9 min read</span>
+              <span>8 min read</span>
             </div>
           </div>
         </div>
@@ -249,21 +249,7 @@
 <p><strong>GGUF</strong> — A file format (not a quantization method itself) used by llama.cpp and Ollama. It packages the model weights in any of several quantization levels (Q2 through Q8) with metadata in a single portable file.</p>
 <hr>
 <h2>How It Works</h2>
-<pre><code class="language-mermaid">graph TD
-    A[FP16 Model Weights&lt;br/&gt;HuggingFace Hub] --&gt; B{Quantization Method}
-
-    B --&gt;|GPU inference&lt;br/&gt;NVIDIA| C[GPTQ / AWQ&lt;br/&gt;INT4 GPU-optimized]
-    B --&gt;|CPU / Ollama&lt;br/&gt;llama.cpp| D[GGUF&lt;br/&gt;Q4_K_M, Q5_K_M, Q8_0]
-    B --&gt;|Python training&lt;br/&gt;or inference| E[BitsAndBytes&lt;br/&gt;INT8 / NF4]
-
-    C --&gt; F[vLLM / TGI&lt;br/&gt;High-throughput serving]
-    D --&gt; G[Ollama / llama.cpp&lt;br/&gt;Local inference]
-    E --&gt; H[Transformers library&lt;br/&gt;Python inference + QLoRA]
-
-    F --&gt; I[Application]
-    G --&gt; I
-    H --&gt; I
-</code></pre>
+<p><img src="/assets/diagrams/llm-quantization-diagram-1.png" alt="Architecture diagram"></p>
 <p>The calibration step is important: when quantizing, most methods run a small representative dataset through the model to determine optimal quantization parameters per layer. Methods that skip calibration (round-to-nearest) produce lower quality than calibrated methods (GPTQ, AWQ, GGUF&#39;s K-quants).</p>
 <hr>
 <h2>Implementation Example</h2>

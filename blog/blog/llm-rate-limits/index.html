@@ -293,21 +293,7 @@
 <p>Anthropic and Google have similar tiered structures. The key insight: you may need to spend a certain amount with the provider before your limits increase. This matters for launch planning.</p>
 <hr>
 <h2>How It Works</h2>
-<pre><code class="language-mermaid">graph TD
-    A[Application] --&gt; B[Rate Limit Tracker]
-    B --&gt; C{Within limits?}
-    C -- Yes --&gt; D[Send API request]
-    C -- No --&gt; E[Enqueue / Wait]
-    D --&gt; F{Response?}
-    F -- 200 OK --&gt; G[Process response]
-    F -- 429 Rate Limited --&gt; H[Read Retry-After header]
-    H --&gt; I[Exponential backoff with jitter]
-    I --&gt; D
-    F -- 5xx Error --&gt; J[Retry with backoff]
-    J --&gt; D
-    E --&gt; K[Token bucket refills]
-    K --&gt; C
-</code></pre>
+<p><img src="/assets/diagrams/llm-rate-limits-diagram-1.png" alt="Architecture diagram"></p>
 <p>When you receive a 429, the response headers contain useful information: <code>retry-after</code> (seconds to wait), <code>x-ratelimit-remaining-requests</code>, <code>x-ratelimit-remaining-tokens</code>, and <code>x-ratelimit-reset-requests</code> (timestamp when limits reset). Using these headers for proactive throttling is more efficient than reacting to 429 errors after they occur.</p>
 <hr>
 <h2>Implementation Example</h2>

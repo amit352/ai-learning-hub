@@ -255,16 +255,7 @@
 </code></pre>
 <p>Modern instruction-tuned models use the third format, applied through each model&#39;s specific chat template. Using the wrong format or ignoring the chat template is the single most common cause of poor fine-tuning results.</p>
 <h2>How It Works</h2>
-<pre><code class="language-mermaid">graph TD
-    A[Base Pre-trained Model&lt;br/&gt;Next-token predictor] --&gt; B[Instruction Dataset&lt;br/&gt;instruction-response pairs]
-    B --&gt; C[Chat Template Application&lt;br/&gt;tokenizer.apply_chat_template]
-    C --&gt; D[SFT Training&lt;br/&gt;Cross-entropy loss on response tokens]
-    D --&gt; E{Validation Loss&lt;br/&gt;Converging?}
-    E -- No, still high --&gt; F[Check data quality&lt;br/&gt;Review format / more examples]
-    F --&gt; B
-    E -- Yes --&gt; G[Instruction-Tuned Model&lt;br/&gt;Follows instructions reliably]
-    G --&gt; H[Optional: RLHF/DPO&lt;br/&gt;Alignment fine-tuning]
-</code></pre>
+<p><img src="/assets/diagrams/instruction-tuning-diagram-1.png" alt="Architecture diagram"></p>
 <p>The key implementation detail is in the loss computation. During SFT, we compute cross-entropy loss only on the response tokens — not on the instruction tokens. The model needs to learn to generate the response, not to predict the instruction. SFTTrainer handles this automatically when using the chat template format with <code>completion_only</code> training.</p>
 <h2>Implementation Example</h2>
 <h3>Step 1: Install and Import</h3>

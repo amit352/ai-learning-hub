@@ -47,17 +47,7 @@ Modern instruction-tuned models use the third format, applied through each model
 
 ## How It Works
 
-```mermaid
-graph TD
-    A[Base Pre-trained Model<br/>Next-token predictor] --> B[Instruction Dataset<br/>instruction-response pairs]
-    B --> C[Chat Template Application<br/>tokenizer.apply_chat_template]
-    C --> D[SFT Training<br/>Cross-entropy loss on response tokens]
-    D --> E{Validation Loss<br/>Converging?}
-    E -- No, still high --> F[Check data quality<br/>Review format / more examples]
-    F --> B
-    E -- Yes --> G[Instruction-Tuned Model<br/>Follows instructions reliably]
-    G --> H[Optional: RLHF/DPO<br/>Alignment fine-tuning]
-```
+![Architecture diagram](/assets/diagrams/instruction-tuning-diagram-1.png)
 
 The key implementation detail is in the loss computation. During SFT, we compute cross-entropy loss only on the response tokens — not on the instruction tokens. The model needs to learn to generate the response, not to predict the instruction. SFTTrainer handles this automatically when using the chat template format with `completion_only` training.
 

@@ -47,21 +47,7 @@ The key insight: only server errors and rate limits are reliably retryable. Clie
 
 ## How It Works
 
-```mermaid
-graph TD
-    A[API Request] --> B{HTTP Response}
-    B -- 200 OK --> C[Success — process response]
-    B -- 401 Unauthorized --> D[Log + alert — do not retry]
-    B -- 400 Bad Request --> E{Error subtype?}
-    E -- Context too long --> F[Truncate input and retry]
-    E -- Content filter --> G[Log + return safe fallback]
-    E -- Other 400 --> H[Log + raise — do not retry]
-    B -- 429 Rate Limited --> I[Exponential backoff + retry]
-    B -- 500 Server Error --> J[Exponential backoff + retry]
-    B -- 503 Unavailable --> K{Circuit breaker open?}
-    K -- Yes --> L[Fallback provider]
-    K -- No --> J
-```
+![Architecture diagram](/assets/diagrams/llm-api-errors-diagram-1.png)
 
 ---
 

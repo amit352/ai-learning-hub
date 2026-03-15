@@ -72,18 +72,7 @@ The OpenAI messages format is the standard in 2026. All major model families (Ll
 
 ## How It Works
 
-```mermaid
-graph TD
-    A[Raw Data Sources<br/>Web, docs, human-written, logs] --> B[Format Normalization<br/>Convert all to messages format]
-    B --> C[Quality Filtering<br/>Remove short, corrupt, duplicates]
-    C --> D[Length Distribution Check<br/>Token count histogram]
-    D --> E{Data Sufficient?}
-    E -- No --> F[Synthetic Data Generation<br/>GPT-4 / Claude augmentation]
-    F --> C
-    E -- Yes --> G[Train / Eval Split<br/>90/10 stratified]
-    G --> H[HuggingFace Dataset<br/>Push to Hub or save local]
-    H --> I[Fine-tuning Pipeline<br/>SFTTrainer]
-```
+![Architecture diagram](/assets/diagrams/finetuning-datasets-diagram-1.png)
 
 In practice, the filtering and synthetic generation steps are iterative. You filter, discover you have 400 examples after filtering (not enough), generate synthetic data, filter the synthetic data, and then combine.
 

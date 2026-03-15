@@ -248,17 +248,7 @@
 <p><strong>The API layer</strong> exposes two interfaces: a native Ollama API and an OpenAI-compatible completions/chat API at <code>/v1/chat/completions</code>. The OpenAI-compatible endpoint means any library that supports custom base URLs — LangChain, LlamaIndex, the official openai Python package — works with Ollama without modification.</p>
 <hr>
 <h2>How It Works</h2>
-<pre><code class="language-mermaid">graph TD
-    A[Python Application&lt;br/&gt;ollama library / OpenAI client] --&gt; B[Ollama REST API&lt;br/&gt;localhost:11434]
-    B --&gt; C[Model Manager&lt;br/&gt;Model loading, caching]
-    C --&gt; D{Hardware Detection}
-    D --&gt;|NVIDIA CUDA| E[GPU Inference&lt;br/&gt;30–80 tok/s]
-    D --&gt;|Apple Metal| F[Apple Silicon&lt;br/&gt;15–40 tok/s]
-    D --&gt;|CPU Fallback| G[CPU Inference&lt;br/&gt;2–8 tok/s]
-
-    H[Modelfile&lt;br/&gt;System prompt, params] --&gt; C
-    I[GGUF Model Files&lt;br/&gt;~/.ollama/models] --&gt; C
-</code></pre>
+<p><img src="/assets/diagrams/ollama-tutorial-diagram-1.png" alt="Architecture diagram"></p>
 <p>The model stays loaded in memory between requests (configurable timeout). The first request after a cold start incurs a model load delay — typically 5–30 seconds depending on model size. Subsequent requests use the cached model and respond in milliseconds for the first token.</p>
 <hr>
 <h2>Installation</h2>

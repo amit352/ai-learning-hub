@@ -229,7 +229,7 @@
               <span>Published <time datetime="2026-03-15">March 15, 2026</time></span>
               
               <span class="sep">·</span>
-              <span>9 min read</span>
+              <span>8 min read</span>
             </div>
           </div>
         </div>
@@ -253,26 +253,7 @@
 <p>The &quot;unified&quot; in GGUF means everything needed to run the model — including the tokenizer — is in one file. GGML required separate tokenizer files. This makes GGUF files genuinely portable: download one file, run it. No config.json, no tokenizer.json, no separate safetensors shards.</p>
 <hr>
 <h2>How It Works</h2>
-<pre><code class="language-mermaid">graph TD
-    A[HuggingFace Hub&lt;br/&gt;FP16 / BF16 Safetensors] --&gt; B[Conversion Script&lt;br/&gt;convert_hf_to_gguf.py]
-    B --&gt; C[GGUF FP16 Base]
-    C --&gt; D[llama-quantize tool]
-    D --&gt; E{Quantization Level}
-
-    E --&gt; F[Q4_K_M&lt;br/&gt;Recommended default]
-    E --&gt; G[Q5_K_M&lt;br/&gt;Higher quality]
-    E --&gt; H[Q8_0&lt;br/&gt;Near-lossless]
-    E --&gt; I[Q2_K / Q3_K&lt;br/&gt;Minimum footprint]
-
-    F --&gt; J[llama.cpp Runtime]
-    G --&gt; J
-    H --&gt; J
-    I --&gt; J
-
-    J --&gt; K[Ollama]
-    J --&gt; L[llama-cpp-python]
-    J --&gt; M[LM Studio]
-</code></pre>
+<p><img src="/assets/diagrams/gguf-models-diagram-1.png" alt="Architecture diagram"></p>
 <p>The K-quant variants (Q4_K_M, Q5_K_M, Q6_K) use a more sophisticated quantization algorithm than the older non-K variants. In K-quants, different layers use different quantization parameters, and the quantization is applied in groups with shared scale factors. The <code>_M</code> suffix means &quot;medium&quot; — a balance between quality and size within that bit depth. <code>_S</code> is smaller/lower quality, <code>_L</code> is larger/higher quality.</p>
 <hr>
 <h2>Implementation Example</h2>

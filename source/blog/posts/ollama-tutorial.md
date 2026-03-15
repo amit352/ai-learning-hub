@@ -36,18 +36,7 @@ Ollama has three components that are useful to understand before diving into cod
 
 ## How It Works
 
-```mermaid
-graph TD
-    A[Python Application<br/>ollama library / OpenAI client] --> B[Ollama REST API<br/>localhost:11434]
-    B --> C[Model Manager<br/>Model loading, caching]
-    C --> D{Hardware Detection}
-    D -->|NVIDIA CUDA| E[GPU Inference<br/>30–80 tok/s]
-    D -->|Apple Metal| F[Apple Silicon<br/>15–40 tok/s]
-    D -->|CPU Fallback| G[CPU Inference<br/>2–8 tok/s]
-
-    H[Modelfile<br/>System prompt, params] --> C
-    I[GGUF Model Files<br/>~/.ollama/models] --> C
-```
+![Architecture diagram](/assets/diagrams/ollama-tutorial-diagram-1.png)
 
 The model stays loaded in memory between requests (configurable timeout). The first request after a cold start incurs a model load delay — typically 5–30 seconds depending on model size. Subsequent requests use the cached model and respond in milliseconds for the first token.
 
