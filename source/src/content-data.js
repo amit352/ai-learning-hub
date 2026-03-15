@@ -6,7 +6,7 @@ const BLOG_POSTS = [
     "description": "A developer's guide to chain-of-thought prompting — how it works, when to use it, and production implementations including zero-shot CoT, self-consistency, and Tree of Thought.",
     "date": "2026-03-15",
     "date_display": "March 15, 2026",
-    "mins": 9
+    "mins": 8
   },
   {
     "slug": "few-shot-vs-zero-shot",
@@ -41,12 +41,52 @@ const BLOG_POSTS = [
     "mins": 8
   },
   {
+    "slug": "prompt-engineering-mistakes",
+    "title": "Common Prompt Engineering Mistakes Developers Make",
+    "description": "The most common prompt engineering mistakes developers make in production — and how to fix them with concrete, actionable techniques.",
+    "date": "2026-03-15",
+    "date_display": "March 15, 2026",
+    "mins": 9
+  },
+  {
     "slug": "prompt-engineering-techniques",
     "title": "26 Prompt Engineering Techniques Every AI Developer Should Know (2026 Guide)",
     "description": "A complete reference of 26 prompt engineering techniques used in production AI systems — from zero-shot basics to agent loops and self-critique patterns.",
     "date": "2026-03-15",
     "date_display": "March 15, 2026",
     "mins": 10
+  },
+  {
+    "slug": "prompt-injection",
+    "title": "Prompt Injection Attacks and How to Prevent Them",
+    "description": "Understand prompt injection attacks — how they work, real-world examples, and practical defenses for production LLM applications.",
+    "date": "2026-03-15",
+    "date_display": "March 15, 2026",
+    "mins": 9
+  },
+  {
+    "slug": "prompt-templates",
+    "title": "Prompt Templates for AI Applications",
+    "description": "Learn how to build reusable, maintainable prompt templates for production AI applications — covering parameterization, versioning, and testing patterns.",
+    "date": "2026-03-15",
+    "date_display": "March 15, 2026",
+    "mins": 8
+  },
+  {
+    "slug": "role-prompting",
+    "title": "Role Prompting Explained for LLMs",
+    "description": "Learn how role prompting shapes LLM outputs — when persona assignment improves results, how to write effective role prompts, and the trade-offs to know.",
+    "date": "2026-03-15",
+    "date_display": "March 15, 2026",
+    "mins": 9
+  },
+  {
+    "slug": "system-prompts-guide",
+    "title": "System Prompts: How to Control LLM Behavior",
+    "description": "Learn how to write effective system prompts that control LLM tone, persona, output format, and safety constraints across production AI applications.",
+    "date": "2026-03-15",
+    "date_display": "March 15, 2026",
+    "mins": 9
   },
   {
     "slug": "advanced-prompt-engineering",

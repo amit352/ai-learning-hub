@@ -29,16 +29,7 @@ In practice, there are three levels of prompt template maturity:
 
 ## How It Works
 
-```mermaid
-flowchart LR
-    A[Template Definition\nwith placeholders] --> B[Template Registry]
-    C[Runtime Variables\nuser_query, context, etc.] --> D[Template.render]
-    B --> D
-    D --> E[Rendered Prompt]
-    E --> F[LLM API]
-    F --> G[Response]
-    G --> H[Output Validation]
-```
+![Architecture diagram](/assets/diagrams/prompt-templates-diagram-1.png)
 
 The template registry is the key architectural piece. Rather than templates scattered across service files, they live in a central location with names, versions, and metadata. The calling code references a template by name, not by value.
 
