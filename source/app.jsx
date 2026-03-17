@@ -386,12 +386,12 @@
                 <div key={title} className={`flex flex-col gap-1.5 rounded-xl border ${bg} px-4 py-3.5 text-left`}>
                   <Icon size={14} className={color}/>
                   <p className="text-sm font-semibold text-gray-300">{title}</p>
-                  <p className="text-xs text-gray-500 leading-relaxed">{desc}</p>
+                  <p className="text-xs text-gray-400 leading-relaxed">{desc}</p>
                 </div>
               ))}
             </div>
 
-            <button onClick={scrollToPhase1} className="flex flex-col items-center gap-1 text-gray-400 hover:text-gray-200 transition-colors">
+            <button onClick={scrollToPhase1} aria-label="Scroll to roadmap" className="flex flex-col items-center gap-1 text-gray-400 hover:text-gray-200 transition-colors">
               <ChevronDown size={16} className="animate-bounce"/>
             </button>
           </div>
@@ -407,7 +407,7 @@
             {/* ── Visual Roadmap Preview (horizontal stepper) ── */}
             <div className="mb-5">
               <div className="flex items-center justify-between mb-3">
-                <p className="text-xs text-gray-500 uppercase tracking-widest font-medium">Roadmap Preview</p>
+                <p className="text-xs text-gray-400 uppercase tracking-widest font-medium">Roadmap Preview</p>
                 {totalDone > 0 && (
                   <div className="flex items-center gap-2">
                     <div className="flex items-center gap-1.5">
@@ -482,7 +482,7 @@
                     }}
                     className="flex flex-col items-center px-6 py-4 rounded-xl border border-white/12 bg-gray-800/60 text-gray-200 hover:text-white hover:border-blue-500/40 hover:bg-gray-800 transition-all">
                     <span className="text-sm font-semibold">{label}</span>
-                    <span className="text-xs text-gray-500 mt-0.5">{sub}</span>
+                    <span className="text-xs text-gray-400 mt-0.5">{sub}</span>
                   </button>
                 ))}
               </div>
@@ -547,7 +547,7 @@
                         <Icon size={10} className="text-gray-400 flex-shrink-0"/>
                         <span className="text-xs font-semibold text-gray-300">{title}</span>
                       </div>
-                      <p className="text-xs text-gray-500 leading-relaxed">{desc}</p>
+                      <p className="text-xs text-gray-400 leading-relaxed">{desc}</p>
                     </div>
                   ))}
                 </div>
@@ -600,7 +600,7 @@
                           ) : null; })()}
                           {open !== p.id && (
                             <div className="mt-2 space-y-1">
-                              <p className="text-[10px] text-gray-600 uppercase tracking-wide font-medium mt-2">You will be able to:</p>
+                              <p className="text-[10px] text-gray-500 uppercase tracking-wide font-medium mt-2">You will be able to:</p>
                               {(phaseOutcomes[p.id] || []).slice(0, 2).map((o, i) => (
                                 <div key={i} className="flex items-start gap-1.5">
                                   <Check size={9} className="text-blue-400 flex-shrink-0 mt-0.5"/>
@@ -822,7 +822,7 @@
 
             {/* ── Additional Tools ── */}
             <div className="mb-8">
-              <p className="text-xs text-gray-500 uppercase tracking-widest font-medium mb-3">Additional Tools</p>
+              <p className="text-xs text-gray-400 uppercase tracking-widest font-medium mb-3">Additional Tools</p>
               <div className="flex flex-wrap gap-2">
                 {[
                   { slug: "prep-plan",      icon: Calendar,    color: "text-orange-400", label: "Prep Plan" },
@@ -884,7 +884,7 @@
                   ]},
                 ].map(({ category, items }) => (
                   <div key={category}>
-                    <p className="text-[10px] text-gray-600 uppercase tracking-wider font-medium mb-2">{category}</p>
+                    <p className="text-[10px] text-gray-400 uppercase tracking-wider font-medium mb-2">{category}</p>
                     <div className="grid grid-cols-2 gap-2">
                       {items.map((t) => (
                         <a key={t.name} href={t.url} target="_blank" rel="noopener noreferrer"
@@ -4110,7 +4110,7 @@ function KnowledgeGaps() {
             <div className="flex items-center gap-2 text-sm text-gray-300 mb-4">
               <span className="text-green-400 font-semibold">~12 months</span>
               <span className="text-gray-500">at 6–8 hrs / week</span>
-              <span className="text-gray-600 mx-1">·</span>
+              <span className="text-gray-500 mx-1">·</span>
               <span className="text-blue-400 font-semibold">~18 months</span>
               <span className="text-gray-500">at 4 hrs / week</span>
             </div>
@@ -4294,7 +4294,7 @@ function KnowledgeGaps() {
                   <div className="flex items-center gap-2">
                     {activeMeta.dot && <span className={`w-2 h-2 rounded-full ${activeMeta.dot}`}/>}
                     <span className={`text-sm font-medium ${activeMeta.text}`}>{category}</span>
-                    <span className="text-xs text-gray-600">
+                    <span className="text-xs text-gray-500">
                       {category === "All" ? allPosts.length : allPosts.filter(p => getCategory(p.slug) === category).length} posts
                     </span>
                   </div>
@@ -4330,7 +4330,7 @@ function KnowledgeGaps() {
 
             {/* Left vertical sidebar — desktop only */}
             <aside className="hidden md:block w-48 flex-shrink-0">
-              <p className="text-[10px] uppercase tracking-widest text-gray-600 font-bold mb-3 px-2">Topics</p>
+              <p className="text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-3 px-2">Topics</p>
               <nav className="space-y-0.5">
                 {CATS.map(cat => {
                   const count = cat === "All" ? allPosts.length : allPosts.filter(p => getCategory(p.slug) === cat).length;
@@ -4392,11 +4392,11 @@ function KnowledgeGaps() {
                           <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${m.text} ${m.bg}`}>
                             {tab === "articles" ? getCategory(post.slug) : "Roadmap Guide"}
                           </span>
-                          <span className="text-[11px] text-gray-600">{post.mins} min read</span>
+                          <span className="text-[11px] text-gray-500">{post.mins} min read</span>
                         </div>
                         <h2 className="text-white font-bold text-base leading-snug mb-1 group-hover:text-blue-300 transition-colors line-clamp-2">{post.title}</h2>
                         <p className="text-gray-500 text-sm leading-relaxed line-clamp-2 mb-2">{post.description}</p>
-                        <div className="flex items-center gap-1.5 text-[11px] text-gray-600">
+                        <div className="flex items-center gap-1.5 text-[11px] text-gray-500">
                           <span className="w-5 h-5 rounded-full bg-blue-600/30 text-blue-400 flex items-center justify-center text-[9px] font-bold flex-shrink-0">AK</span>
                           <span className="text-gray-400 font-medium">Amit K Chauhan</span><span>·</span><span>{post.date_display}</span><span>·</span><span>{post.mins} min read</span>
                         </div>
@@ -4463,11 +4463,11 @@ function KnowledgeGaps() {
                 <div key={lv} className="flex items-center gap-2">
                   <span className={`w-2 h-2 rounded-full ${m.dot} flex-shrink-0`}/>
                   <span className={`text-xs font-semibold ${m.pill.split(" ")[0]}`}>{lv}</span>
-                  <span className="text-xs text-gray-600">{count}</span>
+                  <span className="text-xs text-gray-500">{count}</span>
                 </div>
               );
             })}
-            <span className="ml-auto text-xs text-gray-600">{PROJECT_LIST.length} total</span>
+            <span className="ml-auto text-xs text-gray-500">{PROJECT_LIST.length} total</span>
           </div>
           {/* Level sections */}
           {levels.map(level => {
@@ -4479,7 +4479,7 @@ function KnowledgeGaps() {
                 <div className="flex items-center gap-3 mb-5">
                   <span className={`text-[11px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wide ${m.pill}`}>{level}</span>
                   <div className="flex-1 h-px bg-white/6"/>
-                  <span className="text-[11px] text-gray-600">{items.length} projects</span>
+                  <span className="text-[11px] text-gray-500">{items.length} projects</span>
                 </div>
                 <div className="divide-y divide-white/6">
                   {items.map(p => (
@@ -4488,7 +4488,7 @@ function KnowledgeGaps() {
                       <div className="flex-1 min-w-0">
                         <div className="flex flex-wrap items-center gap-2 mb-1.5">
                           <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${m.pill}`}>{level}</span>
-                          <span className="text-[11px] text-gray-600">{p.time}</span>
+                          <span className="text-[11px] text-gray-500">{p.time}</span>
                           {p.stack && <span className="text-[11px] text-gray-700">· {Array.isArray(p.stack) ? p.stack.join(", ") : p.stack}</span>}
                         </div>
                         <h2 className="text-white font-bold text-base leading-snug mb-1 group-hover:text-green-300 transition-colors line-clamp-2">{p.title}</h2>
@@ -5683,7 +5683,7 @@ print(response["message"]["content"])`}</pre>
             {/* Desktop: horizontal tabs */}
             <div className="hidden md:flex max-w-full mx-auto items-center gap-1 px-3 py-2 overflow-x-auto">
               <a href="/" className="flex items-center gap-2 mr-3 flex-shrink-0 select-none" onClick={(e) => { e.preventDefault(); handleTabClick(0, e); }}>
-                <img src="/trans_logo.png" alt="AI Learning Hub" className="w-7 h-7 rounded-md object-contain bg-white/10 p-0.5" />
+                <picture><source srcSet="/trans_logo.webp" type="image/webp"/><img src="/trans_logo.png" alt="AI Learning Hub" className="w-7 h-7 rounded-md object-contain bg-white/10 p-0.5" width="28" height="28"/></picture>
                 <span className="text-sm font-bold text-white whitespace-nowrap">AI Learning Hub</span>
               </a>
               <div className="w-px h-4 bg-white/10 mr-2 flex-shrink-0"></div>
@@ -5704,7 +5704,7 @@ print(response["message"]["content"])`}</pre>
             {/* Mobile: current tab + hamburger */}
             <div className="md:hidden flex items-center justify-between px-4 py-3">
               <span className="text-sm font-bold text-white flex items-center gap-2">
-                <img src="/trans_logo.png" alt="AI Learning Hub" className="w-7 h-7 rounded-md object-contain bg-white/10 p-0.5" />
+                <picture><source srcSet="/trans_logo.webp" type="image/webp"/><img src="/trans_logo.png" alt="AI Learning Hub" className="w-7 h-7 rounded-md object-contain bg-white/10 p-0.5" width="28" height="28"/></picture>
                 AI Learning Hub
               </span>
               <button onClick={() => setMenuOpen(!menuOpen)}
