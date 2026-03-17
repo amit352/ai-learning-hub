@@ -417,7 +417,7 @@
                       <span className="text-xs text-blue-400 font-medium">{overallPct}%</span>
                     </div>
                     <button onClick={resetProgress}
-                      className="text-[10px] text-gray-600 hover:text-red-400 transition-colors leading-none">
+                      className="text-[10px] text-gray-400 hover:text-red-400 transition-colors leading-none">
                       Reset
                     </button>
                   </div>
@@ -4617,7 +4617,7 @@ function KnowledgeGaps() {
                     <p className="text-gray-400 text-sm mb-2">{outcome}</p>
                     <div className="flex flex-wrap gap-1.5">
                       {phaseTools.map(t => (
-                        <span key={t} className="text-[10px] text-gray-500 bg-gray-900 border border-white/8 px-2 py-0.5 rounded-full">{t}</span>
+                        <span key={t} className="text-[10px] text-gray-400 bg-gray-900 border border-white/8 px-2 py-0.5 rounded-full">{t}</span>
                       ))}
                     </div>
                   </div>
