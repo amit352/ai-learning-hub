@@ -43,7 +43,7 @@ marked.use({
   }
 });
 
-const ROOT          = path.resolve(__dirname, '../..');
+const ROOT          = path.resolve(__dirname, '../../docs');
 const POSTS_DIR     = path.join(__dirname, '../projects/posts');
 const TEMPLATES_DIR = path.join(__dirname, '../templates');
 const OUT_DIR       = path.join(ROOT, 'projects');

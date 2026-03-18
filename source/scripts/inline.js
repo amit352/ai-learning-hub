@@ -6,18 +6,20 @@
 const fs = require('fs');
 const path = require('path');
 
-const root = path.resolve(__dirname, '../..');
+const sourceRoot = path.resolve(__dirname, '..');
+const docsRoot   = path.resolve(__dirname, '../../docs');
 
-let html = fs.readFileSync(path.join(root, 'source/src/index.html'), 'utf8');
+let html = fs.readFileSync(path.join(sourceRoot, 'src/index.html'), 'utf8');
 
-const css = fs.readFileSync(path.join(root, 'dist/app.css'), 'utf8');
+const css = fs.readFileSync(path.join(docsRoot, 'dist/app.css'), 'utf8');
 
 // Use a function replacer to avoid $ special characters in replacement strings
 const r = (str, search, replacement) => str.replace(search, () => replacement);
 
 html = r(html, '<link rel="stylesheet" href="dist/app.css">', `<style>${css}</style>`);
 
-fs.writeFileSync(path.join(root, 'index.html'), html);
+fs.mkdirSync(docsRoot, { recursive: true });
+fs.writeFileSync(path.join(docsRoot, 'index.html'), html);
 
-const kb = Math.round(fs.statSync(path.join(root, 'index.html')).size / 1024);
+const kb = Math.round(fs.statSync(path.join(docsRoot, 'index.html')).size / 1024);
 console.log(`✓ index.html inlined — ${kb} KB`);

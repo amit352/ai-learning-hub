@@ -56,7 +56,7 @@ marked.use({
   }
 });
 
-const ROOT              = path.resolve(__dirname, '../..');
+const ROOT              = path.resolve(__dirname, '../../docs');
 const POSTS_DIR         = path.join(__dirname, '../blog/posts');
 const ROADMAP_GUIDES_DIR = path.join(__dirname, '../blog/roadmap-guides');
 const TEMPLATES_DIR     = path.join(__dirname, '../templates');

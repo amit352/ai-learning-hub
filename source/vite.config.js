@@ -6,7 +6,7 @@ export default defineConfig({
     react(),
   ],
   build: {
-    outDir: '../dist',
+    outDir: '../docs/dist',
     emptyOutDir: false,
     cssCodeSplit: false,
     rolldownOptions: {
