@@ -152,6 +152,46 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a good perplexity score for a fine-tuned LLM?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Perplexity is relative — it depends on the domain, sequence length, and tokenizer. What matters is the trajectory: perplexity should decrease during training and then plateau. If perplexity is decreasing on training data but increasing on eval data, you are overfitting. Compare relative to the base model's perplexity on the same eval set."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many test examples do I need for reliable evaluation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For LLM-as-judge evaluation, 100–200 examples gives statistically stable averages (within 2–3% margin of error). For binary metrics like format adherence, 50–100 examples is often enough. For benchmark suites like MMLU, each task has hundreds of multiple-choice questions built in."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I detect if my LLM judge has systematic bias?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Create a \"position bias test\": run the same pair with chosen and rejected responses swapped. If the judge consistently scores the first-presented response higher regardless of content, you have position bias. Mitigate by averaging scores from both orderings."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use the fine-tuned model as its own judge?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Only if it is substantially more capable than the model being evaluated. Typically, you want a more capable model (GPT-4o, Claude 3.5 Sonnet) judging a smaller fine-tuned model. Using the same model as judge creates a self-serving bias where the model favors its own style."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

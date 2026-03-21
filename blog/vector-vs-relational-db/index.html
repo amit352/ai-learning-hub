@@ -152,6 +152,46 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I replace my relational database entirely with a vector database?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, and you shouldn't try. Vector databases have no transactions, no foreign keys, no joins, and approximate (not exact) search. For any application with user accounts, orders, payments, or complex relational data, a relational database is non-negotiable. Vector databases augment — they don't replace."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is pgvector production-ready?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, as of PostgreSQL 16+ with pgvector 0.6+, HNSW indexing in pgvector is production-grade. Companies like Supabase, Neon, and many startups run pgvector in production at meaningful scale. The limitation is single-node capacity — above 10–20M vectors, you need a dedicated vector database or distribution strategy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I decide between pgvector and a dedicated vector database?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use pgvector if: you're already on PostgreSQL, your vector dataset is under 5M vectors, and operational simplicity matters. Use a dedicated vector database (Qdrant, Pinecone, Weaviate) if: you need more than 10M vectors, you need sub-5ms query latency at high concurrency, or you need features like multi-vector queries, named vectors, or built-in hybrid search."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does PostgreSQL full-text search replace vector search for document retrieval?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For keyword-based retrieval, yes — `tsvector` + `tsquery` with GIN indexes is efficient and precise. For semantic retrieval (finding documents by meaning, not keywords), no — full-text search cannot bridge vocabulary mismatches. For most production document search systems, combining BM25 (PostgreSQL full-text) with vector search via pgvector gives the best results."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

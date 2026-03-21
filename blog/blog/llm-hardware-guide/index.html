@@ -152,6 +152,46 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Q: Can I run a 70B model on a single RTX 4090?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. A 70B model at Q4_K_M requires approximately 42GB VRAM. The RTX 4090 has 24GB. You can run it split across two RTX 4090s (48GB total) using llama.cpp tensor splitting, or use Q3_K_M (29.7GB) which barely fits in 32GB — but at meaningful quality cost."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Q: Is Apple Silicon worth it for LLM inference vs NVIDIA?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For 70B models on a single machine, yes. An M3 Ultra with 128–192GB unified memory is the most capable single-machine 70B inference setup outside of server hardware. For smaller models (7B, 13B), NVIDIA cards are more cost-efficient per token."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Q: How many VRAM do I need for a RAG application with long context?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For a 7B model with 32K context, budget 4.9GB (weights) + ~4GB (KV cache) = roughly 9GB VRAM. A 13B model at 32K context needs approximately 8.1GB + ~6GB = 14GB. Always measure your actual KV cache usage at your target context length."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Q: What happens when VRAM is exceeded?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "With Ollama and llama.cpp, layers that do not fit in VRAM are offloaded to CPU RAM. Inference continues but the CPU-GPU memory transfer becomes a severe bottleneck. A model that runs at 50 tok/s fully on GPU might run at 3–5 tok/s when even a few layers are on CPU."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

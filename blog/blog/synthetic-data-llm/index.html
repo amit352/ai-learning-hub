@@ -152,6 +152,46 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does synthetic data actually work for fine-tuning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — with quality controls. The Stanford Alpaca project showed that GPT-3-generated instruction data produces instruction-following models from scratch. More recent work (WizardLM, Orca, OpenHermes) has shown that GPT-4-generated data of sufficient quality can match or exceed human-annotated data for many tasks. The critical variable is filtering — unfiltered synthetic data consistently underperforms filtered synthetic data."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I prevent the fine-tuned model from inheriting GPT-4's style?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Two strategies: (1) Filter your generation prompt explicitly for GPT-4-specific patterns (\"As an AI\", \"I cannot browse the internet\") before training. (2) Mix synthetic data with some real human-written examples that establish the target style. The fine-tuned model's style is shaped by all training data — a 10% mix of real examples significantly influences the output style."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a legal issue with using GPT-4-generated data to train another model?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "OpenAI's terms of service currently prohibit using outputs to train models that compete with OpenAI's products. For non-competing models (domain-specific fine-tunes, open-source research), this is generally not a concern in practice. For commercial models intended to compete directly, consult legal counsel. Claude's terms have different provisions — check Anthropic's current usage policy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I verify that synthetic data is factually accurate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For factual domains: run the generated responses through a fact-checking step using a separate model call that specifically checks for factual errors. For code: execute the generated code in a sandbox and check for errors. For less verifiable content (writing style, strategy), rely on human auditing of samples. No automated filter catches all factual errors."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

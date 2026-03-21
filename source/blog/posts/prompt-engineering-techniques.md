@@ -1,6 +1,6 @@
 ---
-title: "26 Prompt Engineering Techniques Every AI Developer Should Know (2026 Guide)"
-description: "A complete reference of 26 prompt engineering techniques used in production AI systems — from zero-shot basics to agent loops and self-critique patterns."
+title: "26 Prompt Engineering Techniques Every AI Developer Should Know (2026)"
+description: "26 battle-tested prompt engineering techniques with Python examples — zero-shot, chain-of-thought, ReAct, self-critique, and agent loop patterns used in production AI systems."
 date: "2026-03-15"
 slug: "prompt-engineering-techniques"
 keywords: ["prompt engineering techniques", "llm prompting", "zero-shot prompting", "few-shot prompting", "chain of thought prompting", "ReAct prompting", "prompt design"]

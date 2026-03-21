@@ -1,18 +1,17 @@
 ---
-title: "LLM APIs Guide for Developers"
-description: "Complete guide to working with LLM APIs — authentication, tokens, streaming, function calling, error handling, and cost management across OpenAI, Anthropic, and Gemini."
-date: "2026-03-15"
-updatedAt: "2026-03-15"
-slug: "/blog/llm-api-guide"
-keywords: ["llm api", "openai api", "anthropic api", "gemini api", "llm api guide"]
+title: "LLM API Guide: Choosing and Using OpenAI, Anthropic & Gemini APIs (2026)"
+description: "Compare and use the major LLM APIs in Python — OpenAI, Anthropic Claude, and Google Gemini — with auth, streaming, error handling, and cost management."
+date: "2026-02-28"
+updatedAt: "2026-02-28"
+slug: "llm-api-guide"
+keywords: ["LLM API guide", "OpenAI API", "Anthropic API", "Gemini API", "LLM API comparison", "Python LLM API"]
 author: "Amit K Chauhan"
 authorTitle: "Software Engineer & AI Builder"
-level: "intermediate"
-time: "18 min"
-stack: ["Python", "OpenAI", "Anthropic", "Gemini"]
 ---
 
-# LLM APIs Guide for Developers
+# LLM API Guide: Choosing and Using OpenAI, Anthropic & Gemini APIs (2026)
+
+Last updated: March 2026
 
 Most developers start with the OpenAI quickstart, get a response in five minutes, and then spend the next three weeks debugging production issues they didn't anticipate. Rate limit errors at scale. Token costs that doubled overnight. Streaming that works in development but breaks behind a reverse proxy. Context windows that silently truncate conversation history.
 
@@ -330,73 +329,23 @@ The most impactful optimizations are model routing (use cheaper models for simpl
 
 ## FAQ
 
-**Q: Which LLM API should I use for a new project?**
+### Which LLM API should I use for a new project?
 
 Start with OpenAI GPT-4o-mini for most use cases — it has the most mature ecosystem, best documentation, and the widest range of integrations. Switch to Anthropic Claude when you need a larger context window (200K tokens) or better instruction following on complex tasks. Consider Gemini when cost is the primary constraint or when you need Gemini's 1M context window.
 
-**Q: How do I avoid hitting rate limits?**
+### How do I avoid hitting rate limits?
 
 Implement exponential backoff with jitter on 429 responses, use a queue to control request concurrency, and pre-count tokens to avoid requests you know will fail. For high-throughput applications, request a rate limit increase from the provider, or use Azure OpenAI's provisioned throughput (PTU) for guaranteed capacity.
 
-**Q: Are LLM API responses deterministic at temperature=0?**
+### Are LLM API responses deterministic at temperature=0?
 
 Mostly, but not perfectly. At temperature=0, output is significantly more consistent, but not guaranteed identical across calls due to floating-point non-determinism during inference. For applications requiring identical outputs (like testing), store and replay cached responses rather than relying on determinism.
 
-**Q: How do I manage conversation history without hitting the context limit?**
+### How do I manage conversation history without hitting the context limit?
 
 Keep the system prompt and recent N turns. When the conversation exceeds 60–70% of the context limit, summarize older turns with a separate LLM call and replace them with the summary. This preserves important context without ballooning token usage.
 
-**Q: Can I use multiple providers as fallbacks?**
+### Can I use multiple providers as fallbacks?
 
 Yes, and it is a good pattern for production systems. Route to your primary provider; on failure (5xx errors or timeouts), fall back to a secondary provider. The main complexity is normalizing the different response schemas. A thin abstraction layer that wraps each provider behind a common interface makes this manageable.
 
----
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Which LLM API should I use for a new project?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Start with OpenAI GPT-4o-mini for most use cases — it has the most mature ecosystem and best documentation. Switch to Anthropic Claude for larger context windows (200K tokens). Consider Gemini when cost is the primary constraint or you need a 1M context window."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I avoid hitting rate limits?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Implement exponential backoff with jitter on 429 responses, use a queue to control request concurrency, and pre-count tokens to avoid requests you know will fail. For high-throughput, request a rate limit increase or use provisioned throughput."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Are LLM API responses deterministic at temperature=0?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Mostly, but not perfectly. At temperature=0, output is significantly more consistent but not guaranteed identical due to floating-point non-determinism. For testing, store and replay cached responses rather than relying on determinism."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I manage conversation history without hitting the context limit?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Keep the system prompt and recent N turns. When the conversation exceeds 60-70% of the context limit, summarize older turns with a separate LLM call and replace them with the summary."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I use multiple providers as fallbacks?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Route to your primary provider; on failure fall back to a secondary provider. A thin abstraction layer that wraps each provider behind a common interface makes this manageable."
-      }
-    }
-  ]
-}
-</script>

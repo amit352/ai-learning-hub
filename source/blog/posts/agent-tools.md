@@ -1,18 +1,17 @@
 ---
-title: "Tool Use in AI Agents"
-description: "How AI agents select and call tools — tool definitions, function calling, tool chaining. Build custom LangChain tools with web search, code execution, and file I/O."
-date: "2026-03-15"
-updatedAt: "2026-03-15"
-slug: "/blog/agent-tools"
-keywords: ["ai agent tools", "langchain tools", "function calling agents"]
+title: "AI Agent Tool Use: How to Give LLMs Access to APIs, Code & Search (2026)"
+description: "Learn how to give LLM agents access to APIs, code execution, and web search. Includes Python examples for building custom tools with LangChain and OpenAI functions."
+date: "2026-01-21"
+updatedAt: "2026-01-21"
+slug: "agent-tools"
+keywords: ["ai agent tools", "langchain tools", "function calling agents", "llm tool use", "openai function calling"]
 author: "Amit K Chauhan"
 authorTitle: "Software Engineer & AI Builder"
-level: "intermediate"
-time: "12 min"
-stack: ["Python", "LangChain"]
 ---
 
-# Tool Use in AI Agents
+_Last updated: March 2026_
+
+# AI Agent Tool Use: How to Give LLMs Access to APIs, Code & Search (2026)
 
 A language model without tools is read-only. It can reason about the world, synthesize information from its training data, and produce well-structured text — but it cannot take actions. Tools are what give agents the ability to interact with external systems: search the web, run code, read files, query databases, call APIs, and write outputs.
 

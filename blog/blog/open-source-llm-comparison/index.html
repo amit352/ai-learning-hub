@@ -152,6 +152,46 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Q: Is Llama 3.3 70B still the best open source model?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is one of the best general-purpose models, but Qwen2.5 72B now outperforms it on coding and math. The \"best\" depends heavily on your use case — there is no single winner across all dimensions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Q: Can Mistral 7B handle production workloads?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For moderate complexity tasks — classification, summarization, Q&A, structured extraction — yes. For complex reasoning chains, multi-step coding, or tasks requiring broad knowledge synthesis, you will want at least a 24B model."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Q: How often do I need to re-evaluate my model choice?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every 2–3 months in this ecosystem. Run a small eval set against new releases as they appear. Model updates can meaningfully change behavior even at the same model family and size."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Q: Should I use quantized models in production?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, Q4_K_M or Q5_K_M quantized models are appropriate for most production workloads. The quality difference from full-precision is marginal for the majority of tasks."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

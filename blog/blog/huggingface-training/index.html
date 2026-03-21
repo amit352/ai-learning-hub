@@ -152,6 +152,46 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between TRL and the base transformers Trainer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The base `Trainer` is a general-purpose training loop for any PyTorch model. TRL's `SFTTrainer` is specifically designed for supervised fine-tuning of causal language models — it handles chat template formatting, sequence packing, completion-only loss masking, and integrates with PEFT out of the box. For LLM fine-tuning, always use `SFTTrainer`."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I add custom callbacks to SFTTrainer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pass a list of `TrainerCallback` instances to the `callbacks` parameter. Common uses include early stopping (`EarlyStoppingCallback`), custom logging, and sample generation at checkpoints. You can also override `SFTTrainer` methods for more complex customization."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does Accelerate handle gradient accumulation in multi-GPU training?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Accelerate synchronizes gradients across GPUs at the gradient accumulation boundary, not at each step. This means with `gradient_accumulation_steps=8` across 4 GPUs, each GPU processes 8 steps locally before a gradient sync — an effective batch of `batch_size × 8 × 4 = 32x` the per-device batch. The `accumulate()` context manager handles this correctly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I train on cloud GPUs using HuggingFace tooling?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. HuggingFace has its own cloud training service (AutoTrain), but most practitioners use cloud GPU providers (Lambda Labs, RunPod, Vast.ai, Modal) and run standard Accelerate-based scripts. The HuggingFace ecosystem works identically on any CUDA-capable machine."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

@@ -152,6 +152,30 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between function calling and structured output?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Function calling: the model decides to call a tool when it needs external data or capabilities. Structured output: force the model to return a specific JSON schema for its final answer. They can be used together."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use function calling with open-source models?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Llama 3.1, Mistral, and Qwen2.5 support function calling. Use Ollama or vLLM with `tool_choice` parameter."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

@@ -1,18 +1,17 @@
 ---
-title: "Function Calling with LLM APIs: Practical Guide"
-description: "Master LLM function calling — OpenAI tool schemas, parallel tool calls, tool choice, chaining tool results, and building real weather and calculator tool examples."
-date: "2026-03-15"
-updatedAt: "2026-03-15"
-slug: "/blog/llm-function-calling"
-keywords: ["llm function calling", "openai function calling", "tool use llm", "parallel tool calls"]
+title: "LLM Function Calling: Build Tool-Using AI Apps with OpenAI & Claude (2026)"
+description: "Learn LLM function calling with OpenAI and Claude — define tool schemas, handle tool calls, chain results, and build real tool-using AI applications in Python."
+date: "2026-03-06"
+updatedAt: "2026-03-06"
+slug: "llm-function-calling"
+keywords: ["LLM function calling", "OpenAI function calling", "tool use LLM", "Claude tool calling", "AI tool use Python", "parallel tool calls"]
 author: "Amit K Chauhan"
 authorTitle: "Software Engineer & AI Builder"
-level: "intermediate"
-time: "14 min"
-stack: ["Python", "OpenAI"]
 ---
 
-# Function Calling with LLM APIs: Practical Guide
+# LLM Function Calling: Build Tool-Using AI Apps with OpenAI & Claude (2026)
+
+Last updated: March 2026
 
 Early in building an AI assistant, most developers try the obvious approach: ask the model to output JSON, then parse it. It works about 80% of the time. The other 20% is where production issues come from — the model wraps the JSON in markdown backticks, includes a preamble sentence, uses slightly different key names than specified, or generates invalid JSON when the response is complex.
 
@@ -471,65 +470,23 @@ Function calling is the mechanism that turns an LLM from a text generator into a
 
 ## FAQ
 
-**Q: What is the difference between function calling and JSON mode?**
+### What is the difference between function calling and JSON mode?
 
 JSON mode (`response_format={"type": "json_object"}`) tells the model to produce valid JSON text, but you define the structure through prompting. Function calling enforces a specific schema and produces the output as a structured object, not raw text. Function calling is more reliable for complex schemas with required fields.
 
-**Q: Can I use function calling for structured output without actually calling any external function?**
+### Can I use function calling for structured output without actually calling any external function?
 
 Yes, and this is a common pattern for extraction tasks. Define a "function" that describes the schema of the data you want to extract. Set `tool_choice` to force that function. Parse the arguments — that is your structured output. No actual function execution needed.
 
-**Q: How do I handle tool calls in streaming mode?**
+### How do I handle tool calls in streaming mode?
 
 Tool call arguments arrive as partial JSON strings across multiple chunks. You must accumulate all chunks for a given tool call index before parsing the complete JSON. The OpenAI SDK's streaming helpers can simplify this accumulation.
 
-**Q: Do all LLMs support function calling?**
+### Do all LLMs support function calling?
 
 Major commercial models (OpenAI GPT-4o, Anthropic Claude, Google Gemini, Mistral Large) support it. Many open-source models (Llama 3.1, Mistral 7B Instruct) support it with varying reliability. Smaller models tend to struggle with complex schemas or multi-step tool chains. Test your specific model and schema combination.
 
-**Q: How many tools can I define in a single request?**
+### How many tools can I define in a single request?
 
 OpenAI supports up to 128 tools per request. In practice, providing too many tools degrades model performance — the model has to choose from a large namespace, leading to worse tool selection accuracy. Keep it under 10–15 tools and dynamically select which tools to include based on the query context.
 
----
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the difference between function calling and JSON mode?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "JSON mode tells the model to produce valid JSON but you define structure through prompting. Function calling enforces a specific schema and produces structured output. Function calling is more reliable for complex schemas with required fields."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I use function calling for structured output without calling any external function?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, this is a common extraction pattern. Define a function describing your desired schema, force that function with tool_choice, and parse the arguments as your structured output. No actual function execution needed."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do all LLMs support function calling?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Major commercial models (OpenAI GPT-4o, Anthropic Claude, Google Gemini) support it reliably. Many open-source models support it with varying reliability. Smaller models struggle with complex schemas or multi-step tool chains."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How many tools can I define in a single request?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "OpenAI supports up to 128 tools, but providing too many degrades tool selection accuracy. Keep it under 10-15 tools and dynamically select which tools to include based on query context."
-      }
-    }
-  ]
-}
-</script>

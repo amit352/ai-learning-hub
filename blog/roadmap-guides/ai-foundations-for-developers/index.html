@@ -157,6 +157,38 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need to know math to use AI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For application development (API calls, prompt engineering): no. For fine-tuning or understanding model internals: basic calculus and linear algebra help but aren't required to start."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Python or JavaScript for AI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Python. The entire AI ecosystem (PyTorch, HuggingFace, LangChain, scikit-learn) is Python-first. JavaScript has decent SDKs for API calls, but you'll hit limits quickly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need a GPU?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For training: yes, expensive. For inference via API: no — the cloud provider handles it. For running local models (Ollama): a modern Mac with M-series chip or a GPU with 8GB+ VRAM works."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

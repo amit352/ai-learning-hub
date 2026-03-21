@@ -152,6 +152,46 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Q: Does quantization permanently reduce model quality?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The quantized model file has reduced precision, but the loss is largely irreversible. You cannot \"re-quantize\" to higher precision from a Q4 model — you need the original FP16 weights. This is why it is important to keep or pin access to the original model checkpoint."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Q: Which is better for CPU inference — GGUF Q4 or BitsAndBytes INT8?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GGUF Q4 via llama.cpp is significantly better for CPU inference. BitsAndBytes requires CUDA and does not work on CPU. For CPU-only deployments, GGUF is the only practical choice."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Q: Can I fine-tune a quantized model?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can fine-tune using QLoRA (LoRA adapters on a NF4 quantized base model). The base model weights stay frozen and quantized; only the LoRA adapter weights are trained in full precision. This is how most low-cost fine-tuning is done."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Q: How much quality is lost with Q4_K_M vs full precision?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "On standard benchmarks (MMLU, HumanEval), Q4_K_M models typically score 1–4% lower than FP16. In production applications, the difference is often imperceptible. Tasks involving precise numerical calculations or rare knowledge are most affected."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

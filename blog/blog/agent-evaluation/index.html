@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a good pass rate for an agent evaluation suite?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For production agents handling real user tasks, aim for 85%+ on your core test suite. Below 80% generally indicates fundamental problems with planning or tool reliability. 95%+ is achievable for well-defined, narrow tasks. For complex, open-ended research tasks, 75-80% may be realistic."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many test cases do I need?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A minimum of 20-30 test cases covering your primary task types. 50-100 is better for a system in production. The cases should cover: normal tasks, edge cases, tasks where tools fail, tasks requiring multiple tools, and tasks that should produce \"I don't know\" answers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use an LLM to evaluate an LLM agent?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — this is called LLM-as-judge. Use a more capable model (or same model with an evaluation rubric) to score agent outputs. This scales better than human evaluation but introduces its own biases. Always calibrate LLM-judge scores against human ratings on a sample before relying on them."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is LangSmith and is it required for production?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "LangSmith is Anthropic's LangChain's observability platform for production agent systems. It captures complete execution traces, token usage, and latency. It is not required but it significantly accelerates debugging. Open-source alternatives include Langfuse and Phoenix (Arize)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I handle non-deterministic agent outputs in evaluation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Run each test case multiple times (3-5 runs) and use aggregate statistics rather than single-run pass/fail. For outputs that vary by design (open-ended research), evaluate on criteria (contains required sections, minimum word count, no factual errors) rather than exact output matching."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">
@@ -642,7 +690,7 @@ Run each test case multiple times (3-5 runs) and use aggregate statistics rather
       <div>
         <div class="bio-name">Amit K Chauhan</div>
         <div class="bio-title">Software Engineer &amp; AI Builder</div>
-        <p class="bio-text">Software engineer building practical AI systems — RAG pipelines, LLM applications, and developer AI tools. Created AI Learning Hub to provide a structured, no-fluff roadmap for developers entering AI.</p>
+        <p class="bio-text">AI Learning Hub is a practical learning resource for developers building with LLMs, RAG pipelines, and AI systems. Created by engineers, for engineers — structured, no-fluff guides to help you navigate the fast-moving world of artificial intelligence.</p>
       </div>
     </div>
 

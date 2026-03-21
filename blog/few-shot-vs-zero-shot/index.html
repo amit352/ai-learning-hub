@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is few-shot the same as fine-tuning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Few-shot examples live in the prompt context — no model weights are updated. Fine-tuning updates the model's weights using gradient descent on a training dataset. Few-shot is inference-time, fine-tuning is training-time."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I know if my examples are helping or hurting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Build a test set, measure zero-shot accuracy, then measure few-shot accuracy with the same test set. If few-shot is lower, your examples are teaching the wrong pattern — revise them or add more diverse examples."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the order of examples matter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, slightly. The model pays more attention to examples closer to the actual query. Put the most representative examples last. Don't put your only null/edge case example first."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use few-shot prompting with system prompts?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, and this is the standard pattern. System prompt defines the task and rules. Examples in the user/assistant turns demonstrate the format. Both together is more reliable than either alone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the maximum number of few-shot examples that makes sense?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For most tasks, 3–5 examples is the sweet spot. Context window limits vary by model, but token cost is usually the binding constraint before context length is."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

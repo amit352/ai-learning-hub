@@ -1,18 +1,17 @@
 ---
-title: "LLM Benchmarks Explained: How to Compare AI Models"
-description: "Understand key LLM benchmarks — MMLU, HumanEval, MATH, MT-Bench, GPQA, IFEval — what they measure, benchmark gaming, and how to run your own evals with lm-eval-harness."
-date: "2026-03-15"
-updatedAt: "2026-03-15"
-slug: "/blog/llm-benchmarks"
-keywords: ["llm benchmarks", "mmlu benchmark", "humaneval benchmark", "llm evaluation"]
+title: "LLM Benchmarks Explained: MMLU, HumanEval, GPQA & What They Mean (2026)"
+description: "Understand the key LLM benchmarks developers use to compare models — MMLU, HumanEval, GPQA, MATH — what they measure and what they miss in production."
+date: "2026-03-02"
+updatedAt: "2026-03-02"
+slug: "llm-benchmarks"
+keywords: ["LLM benchmarks", "MMLU benchmark", "HumanEval benchmark", "GPQA benchmark", "LLM evaluation benchmarks", "compare LLMs"]
 author: "Amit K Chauhan"
 authorTitle: "Software Engineer & AI Builder"
-level: "intermediate"
-time: "13 min"
-stack: ["Python", "Ollama"]
 ---
 
-# LLM Benchmarks Explained: How to Compare AI Models
+# LLM Benchmarks Explained: MMLU, HumanEval, GPQA & What They Mean (2026)
+
+Last updated: March 2026
 
 Every model release announcement leads with benchmark scores. Llama 3.3 70B scores 86 on MMLU. Qwen2.5 72B scores 87.2. Phi-4 achieves "GPT-4 class" performance on MATH at 14B parameters. These numbers are real — but they tell a narrower story than the marketing copy implies, and engineering decisions made purely on published benchmarks tend to produce disappointment when the model meets your actual data.
 
@@ -313,55 +312,19 @@ Benchmarks are a starting point, not a conclusion. MMLU is useful for general kn
 
 ## FAQ
 
-**Q: Which benchmark best predicts real-world coding performance?**
+### Which benchmark best predicts real-world coding performance?
+
 SWE-bench is the closest to real software engineering tasks, but it is expensive to run. For practical evaluation, HumanEval provides a reasonable proxy for basic code generation, but build your own coding eval with examples from your actual codebase.
 
-**Q: Is a model that scores 80 on MMLU twice as good as one scoring 40?**
+### Is a model that scores 80 on MMLU twice as good as one scoring 40?
+
 No. MMLU scores are not linearly meaningful — 40% is near-random for 4-option MCQ, while 80% represents strong performance. The relevant range for comparing frontier models is 70–90%. Below 70% signals weak general knowledge; above 90% is near-ceiling.
 
-**Q: How do I know if a model has been trained on benchmark data?**
+### How do I know if a model has been trained on benchmark data?
+
 You often cannot verify this definitively. Red flags include suspiciously high performance on public benchmarks with weak qualitative performance, and labs that do not publish training data details. Run your own held-out evaluation as the most reliable check.
 
-**Q: What is a good internal eval set size?**
+### What is a good internal eval set size?
+
 50 cases is the minimum for a meaningful signal. 100–200 cases per task type gives you reliable pass rates. More than 500 is overkill for most practical model selection decisions.
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Which benchmark best predicts real-world coding performance?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "SWE-bench is closest to real software engineering tasks. For practical evaluation, HumanEval provides a reasonable proxy for basic code generation, but building your own coding eval with examples from your codebase is most reliable."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is a model that scores 80 on MMLU twice as good as one scoring 40?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. MMLU scores are not linearly meaningful. 40% is near-random for 4-option MCQ, while 80% represents strong performance. The relevant comparison range for frontier models is 70–90%."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I know if a model has been trained on benchmark data?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "You often cannot verify this definitively. Red flags include suspiciously high benchmark performance with weak qualitative output. Run your own held-out evaluation as the most reliable check."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is a good internal eval set size?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "50 cases is the minimum for a meaningful signal. 100–200 cases per task type gives reliable pass rates. More than 500 is overkill for most practical model selection decisions."
-      }
-    }
-  ]
-}
-</script>

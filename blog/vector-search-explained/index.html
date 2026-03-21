@@ -152,6 +152,46 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between vector search and semantic search?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Semantic search is the goal — finding content by meaning. Vector search is the mechanism — finding content by geometric similarity in embedding space. Semantic search is typically implemented using vector search, but can also use other techniques like knowledge graphs or query expansion."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate is vector search compared to brute-force exact search?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "With well-tuned HNSW parameters (`M=32`, `ef_construction=200`, `efSearch=100`), recall@10 is typically 95–99% compared to exact search. The 1–5% of cases where ANN misses the true nearest neighbor are usually borderline results that a human judge would rate similarly anyway."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can vector search handle multilingual queries?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, with a multilingual embedding model. Models like `intfloat/multilingual-e5-large` or Cohere's multilingual embed model map text from 100+ languages into a shared vector space. A query in French can retrieve documents in German without translation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I improve vector search recall without increasing latency?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The most effective levers: increase embedding model quality (use a larger model), improve chunking strategy (smaller, more focused chunks), and enable hybrid search to combine BM25 keyword signals with vector similarity. Increasing `efSearch` helps but increases latency proportionally."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

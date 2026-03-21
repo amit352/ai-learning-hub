@@ -1,18 +1,17 @@
 ---
-title: "LoRA Fine-Tuning Tutorial for LLMs (2026 Guide)"
-description: "Step-by-step LoRA fine-tuning tutorial for Llama 3 using Unsloth, TRL, and PEFT. Covers dataset formatting, training config, adapter merging, and testing."
+title: "LoRA Fine-Tuning Tutorial: Train Custom LLMs on a Single GPU (2026)"
+description: "Step-by-step LoRA fine-tuning tutorial — train a custom LLM on a single consumer GPU using PEFT, Unsloth, and TRL, from dataset prep to merged model deployment."
 date: "2026-03-15"
 updatedAt: "2026-03-15"
-slug: "/blog/lora-fine-tuning-tutorial"
-keywords: ["lora fine tuning tutorial", "lora llm", "lora peft", "unsloth lora", "llama lora fine tuning"]
+slug: "lora-fine-tuning-tutorial"
+keywords: ["LoRA fine-tuning tutorial", "train LLM single GPU", "PEFT LoRA", "Unsloth LoRA", "Llama LoRA fine-tuning", "QLoRA"]
 author: "Amit K Chauhan"
 authorTitle: "Software Engineer & AI Builder"
-level: "intermediate"
-time: "14 min"
-stack: ["Python", "HuggingFace", "PyTorch"]
 ---
 
-# LoRA Fine-Tuning Tutorial for LLMs (2026 Guide)
+# LoRA Fine-Tuning Tutorial: Train Custom LLMs on a Single GPU (2026)
+
+Last updated: March 2026
 
 Fine-tuning a 7B parameter model with standard methods means updating 7 billion parameters — each requiring gradient computation and optimizer state storage. The memory footprint is enormous. On most hardware, it is simply not feasible.
 
@@ -329,58 +328,22 @@ The practical workflow is: load the model with PEFT/Unsloth, apply a LoRA config
 
 ## FAQ
 
-**What is the best LoRA rank to start with?**
+### What is the best LoRA rank to start with?
+
 Start at r=16 for most fine-tuning tasks. If eval loss is high and the model is clearly underfitting, increase to r=32 or r=64. If you have a simple, narrow task (e.g., enforcing a specific output format), r=8 is often sufficient and trains faster.
 
-**Can I use LoRA with models larger than 13B?**
+### Can I use LoRA with models larger than 13B?
+
 Yes. LoRA works at any model size. For 30B+ models, you'll want QLoRA (4-bit quantization) to keep VRAM manageable. A 70B model with QLoRA + LoRA fits on an A100 80GB. Unsloth has pre-quantized versions of most popular models ready to fine-tune.
 
-**How do I know if my LoRA fine-tuning is working?**
+### How do I know if my LoRA fine-tuning is working?
+
 Track both training and eval loss curves. Training loss should decrease smoothly. Eval loss should also decrease and then level off. If eval loss rises while training loss falls, you're overfitting. Beyond metrics, generate test examples every 100 steps and evaluate output quality manually.
 
-**Is the merged model exactly equivalent to loading base + adapter separately?**
+### Is the merged model exactly equivalent to loading base + adapter separately?
+
 Mathematically yes — merging computes `W_new = W_base + B×A` per layer, which produces identical outputs to applying the adapter at inference time. The difference is inference speed: a merged model has no adapter overhead, while a loaded adapter adds computation at each forward pass.
 
-**Can I fine-tune on MacBook with Apple Silicon?**
-Yes, with limitations. Using MPS backend (`device_map="mps"`), you can fine-tune models up to ~7B on a 32GB M-series Mac. Unsloth does not support MPS — use standard HuggingFace PEFT. Training is slower than GPU, but feasible for experimentation.
+### Can I fine-tune on MacBook with Apple Silicon?
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the best LoRA rank to start with?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Start at r=16 for most fine-tuning tasks. If the model is underfitting, increase to r=32 or r=64. For simple, narrow tasks like enforcing output format, r=8 is often sufficient."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I use LoRA with models larger than 13B?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. LoRA works at any model size. For 30B+ models, use QLoRA (4-bit quantization) to manage VRAM. A 70B model with QLoRA fits on an A100 80GB."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I know if my LoRA fine-tuning is working?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Track training and eval loss. Training loss should decrease smoothly. Eval loss should also decrease then level off. If eval loss rises while training loss falls, you're overfitting. Also generate test examples periodically to evaluate quality manually."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is the merged model exactly equivalent to loading base and adapter separately?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Mathematically yes — merging computes W_new = W_base + B×A per layer, producing identical outputs. A merged model has no adapter overhead at inference time, while a loaded adapter adds computation at each forward pass."
-      }
-    }
-  ]
-}
-</script>
+Yes, with limitations. Using MPS backend (`device_map="mps"`), you can fine-tune models up to ~7B on a 32GB M-series Mac. Unsloth does not support MPS — use standard HuggingFace PEFT. Training is slower than GPU, but feasible for experimentation.

@@ -1,6 +1,6 @@
 ---
-title: "Multi-Document Retrieval in RAG Pipelines"
-description: "Learn how to build multi-document RAG pipelines that retrieve and synthesize information across multiple sources, with routing, filtering, and fusion strategies."
+title: "Multi-Document RAG: Search Across 100+ Sources Without Wrong Answers (2026)"
+description: "Stop getting wrong answers from flat vector stores. Learn routing, namespace filtering, and cross-document fusion to build RAG that works across hundreds of documents."
 date: "2026-03-15"
 slug: "multi-document-rag"
 keywords: ["multi document rag", "rag multiple documents", "multi source retrieval", "document routing rag", "rag pipeline multi document", "langchain multi document"]

@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the \"Lost in the Middle\" problem?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Research by Liu et al. (2023) showed that LLMs perform worse when relevant information appears in the middle of a long context. They attend more strongly to the beginning and end. The practical implication: put your most important chunks first and last in the context."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does cross-encoder reranking cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cross-encoder reranking runs locally with a HuggingFace model — no API cost. The `ms-marco-MiniLM-L-6-v2` model is ~80MB and runs in ~50ms on CPU for a 20-chunk candidate set. No GPU required for this use case."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the maximum effective context for GPT-4o-mini?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The model supports 128K tokens, but effective performance degrades beyond ~16K tokens for retrieval-intensive tasks. For RAG, keeping context under 4K tokens for the retrieved passages (plus system prompt and question) usually provides the best quality-per-token ratio."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I compress chunks before or after reranking?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "After reranking. Reranking operates on full chunks to score them accurately. Compressing before reranking would reduce the information available for scoring. The pipeline order should be: retrieve → rerank → compress → send to LLM."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does context ordering matter more for some models than others?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Smaller models (GPT-4o-mini, Llama 3 8B) show more pronounced \"Lost in the Middle\" degradation than larger models. If you're using smaller models for cost reasons, context ordering optimization is more important."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

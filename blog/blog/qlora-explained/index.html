@@ -152,6 +152,46 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What GPUs can run QLoRA fine-tuning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A 7B model with QLoRA fits in 10GB VRAM — accessible on RTX 3080 (10GB), RTX 3090 (24GB), RTX 4090 (24GB), A10G (24GB), or free Colab T4 (16GB). A 13B model needs ~16GB: RTX 3090, A10G, or A100 40GB. A 70B model needs ~48GB: A100 80GB."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does QLoRA reduce output quality compared to full fine-tuning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The original paper showed QLoRA-fine-tuned models matched full fine-tuning quality on benchmark tasks. In practice, the quality difference is task-dependent. For narrow task adaptation, QLoRA is indistinguishable. For major domain shifts requiring deep knowledge restructuring, full fine-tuning may have an edge — but the infrastructure cost is rarely justified."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use QLoRA with models other than Llama?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. QLoRA works with any transformer architecture that BitsAndBytes supports — Mistral, Phi, Gemma, Qwen, and others. The only model-specific configuration is `target_modules`, which varies by architecture. Check the model's config.json for the attention layer names."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does a QLoRA training run take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "On a single A100 40GB GPU: ~30–60 minutes for 1,000 examples at 2,048 token sequence length for a 7B model. 13B takes roughly 2x longer. Cloud GPU providers (Lambda Labs, RunPod, Vast.ai) typically charge $1–3/hour for A100 access, making fine-tuning affordable even for individuals."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How is prompt engineering different from fine-tuning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Fine-tuning modifies the model's weights using training data. Prompt engineering shapes outputs at inference time without changing the model. Prompting is faster and cheaper to iterate — but fine-tuning can achieve better results on very domain-specific tasks where the model's general knowledge is insufficient."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does prompt engineering still matter with GPT-4o and Claude 3.5?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "More than ever. More capable models are better at following precise instructions, which means well-engineered prompts unlock more of their capability. The gap between a vague prompt and a precise one is larger with better models, not smaller."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many few-shot examples should I include?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start with 2–3. More is not always better — beyond 5–6 examples, you often hit diminishing returns and increasing token cost. The quality and diversity of examples matters more than quantity."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I put instructions in the system prompt or user message?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Stable rules, persona definitions, and format requirements belong in the system prompt. The current task or question belongs in the user message. This separation makes prompts more maintainable and behaves more predictably in multi-turn conversations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I know if my prompt is good enough?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Build a test set of 15–30 examples covering typical inputs, edge cases, and adversarial inputs. Define what \"correct\" output looks like for each. Run your prompt against all of them. Measure pass rate. Iterate on failures. Anything less than systematic evaluation is guesswork."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

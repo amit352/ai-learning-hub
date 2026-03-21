@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between an AI agent and a chatbot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A chatbot produces a single response to each user message. An AI agent pursues a goal across multiple steps — calling tools, observing results, and adapting its approach — until the task is complete. The key difference is the execution loop and the ability to take actions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which framework should I use to build AI agents?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "LangChain is the most mature option with the largest ecosystem. LangGraph gives you more control over agent state and is better for complex multi-agent systems. CrewAI is the fastest to get started with for role-based multi-agent workflows. The choice depends on how much control you need versus how fast you want to ship."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I prevent an agent from looping indefinitely?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Set `max_iterations` in your executor configuration. Also set `max_execution_time` as a wall-clock limit. For production systems, add monitoring that alerts when an agent run exceeds a time or token budget threshold."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does running an AI agent cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Costs vary widely by task complexity, model choice, and number of tool calls. A simple 3-5 step task with GPT-4o typically costs $0.01–$0.10. Complex research tasks can cost $0.50–$2.00. Use smaller models (GPT-4o-mini, Claude Haiku) for sub-tasks where full reasoning capability is not required."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can AI agents take actions that are hard to reverse?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, and this is a real risk. Agents can delete files, send emails, modify databases, or make API calls with side effects. Build human-in-the-loop checkpoints for irreversible actions. Use a dry-run mode in development. Log every action before executing it so you can audit what happened."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

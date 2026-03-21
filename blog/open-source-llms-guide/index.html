@@ -152,6 +152,38 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Are open-source LLMs as good as GPT-4?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For many tasks: yes. Llama 3.1 70B is competitive with GPT-4 on coding and general reasoning. On complex multi-step reasoning and instruction following, frontier models still lead."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use these for commercial projects?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most open models (Llama 3, Mistral, Gemma, Phi) allow commercial use. Always check the specific license. Meta's Llama license has restrictions for large companies (>700M MAU)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between base and instruct models?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Base models predict the next token (raw language modeling). Instruct models are fine-tuned to follow instructions and have a conversation. Always use instruct models for chat applications."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

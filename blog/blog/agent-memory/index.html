@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between agent memory and RAG?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "RAG (Retrieval-Augmented Generation) retrieves from a static knowledge base to answer questions. Agent memory retrieves from a dynamic store that the agent itself writes to during operation. Both use semantic search, but RAG knowledge bases are maintained by humans while agent memory evolves through the agent's experience."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I prevent memory from growing indefinitely?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Add a TTL to episodic memories and delete records older than a threshold. For fact-based memories, implement a review process where low-retrieval-frequency memories are archived. Use importance scores to prioritize which memories to keep when storage limits are reached."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I use Chroma, Pinecone, or another vector store for agent memory?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For development and small-scale production, Chroma (local, no infrastructure required) is the fastest to set up. For production at scale, Pinecone or Weaviate offer better performance and managed infrastructure. The LangChain vector store interface is consistent across providers, so switching is straightforward."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many memories should I retrieve per session?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Retrieve 3-7 memories per session as a starting point. Too few misses relevant context. Too many dilutes the signal with noise. Monitor retrieval quality and adjust based on whether retrieved memories are actually useful to the agent."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can the agent decide what to remember on its own?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, by giving it `save_to_memory` and `search_memory` as tools with clear descriptions. The system prompt should instruct when to use them. The agent's judgment about what is worth remembering is imperfect, so combine agent-driven memory with explicit rules (always save user preferences, always save error patterns)."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">
@@ -559,7 +607,7 @@ Yes, by giving it <code>save_to_memory</code> and <code>search_memory</code> as 
       <div>
         <div class="bio-name">Amit K Chauhan</div>
         <div class="bio-title">Software Engineer &amp; AI Builder</div>
-        <p class="bio-text">Software engineer building practical AI systems — RAG pipelines, LLM applications, and developer AI tools. Created AI Learning Hub to provide a structured, no-fluff roadmap for developers entering AI.</p>
+        <p class="bio-text">AI Learning Hub is a practical learning resource for developers building with LLMs, RAG pipelines, and AI systems. Created by engineers, for engineers — structured, no-fluff guides to help you navigate the fast-moving world of artificial intelligence.</p>
       </div>
     </div>
 

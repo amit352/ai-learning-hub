@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Which framework is best for production use in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "LangGraph is the most production-ready option for systems that require control, observability, and complex state management. CrewAI works well in production for straightforward role-based workflows. AutoGen and AutoGPT require more scaffolding to reach production quality."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use LangGraph with CrewAI in the same project?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, but it adds complexity. A common pattern is to use LangGraph for the overall orchestration graph and CrewAI for specific crew-based sub-tasks. However, unless there is a clear reason to mix frameworks, standardizing on one is easier to maintain."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is LangGraph harder to learn than CrewAI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, significantly. CrewAI has a higher-level API that hides most of the agent machinery. LangGraph requires understanding state machines, node functions, and conditional routing. The payoff is proportionally higher control and debuggability."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does AutoGen compare to LangGraph for multi-agent systems?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "LangGraph gives you explicit control over how agents interact and what state they share. AutoGen is more conversational — agents exchange messages and respond to each other more naturally. LangGraph is better for production, AutoGen is better for research prototypes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happened to BabyAGI and similar frameworks?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Early frameworks like BabyAGI proved the concept but are not maintained at production quality. The ecosystem has consolidated around LangGraph, CrewAI, and AutoGen for serious work. Use those rather than abandoned experimental projects."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">
@@ -624,7 +672,7 @@ Early frameworks like BabyAGI proved the concept but are not maintained at produ
       <div>
         <div class="bio-name">Amit K Chauhan</div>
         <div class="bio-title">Software Engineer &amp; AI Builder</div>
-        <p class="bio-text">Software engineer building practical AI systems — RAG pipelines, LLM applications, and developer AI tools. Created AI Learning Hub to provide a structured, no-fluff roadmap for developers entering AI.</p>
+        <p class="bio-text">AI Learning Hub is a practical learning resource for developers building with LLMs, RAG pipelines, and AI systems. Created by engineers, for engineers — structured, no-fluff guides to help you navigate the fast-moving world of artificial intelligence.</p>
       </div>
     </div>
 

@@ -152,6 +152,46 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between RLHF and DPO?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "RLHF trains a separate reward model from human preference pairs, then uses PPO to optimize the LLM against that reward model. DPO bypasses both — it directly optimizes the LLM on preference pairs using a loss function derived from the optimal RLHF policy. DPO is simpler, more stable, and requires no RL training. RLHF has a higher ceiling for complex tasks where reward modeling captures nuance DPO cannot."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many preference pairs do I need for DPO?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For domain-specific alignment (style, format, tone), 500–2,000 high-quality preference pairs is sufficient. For broad alignment improvements across many topics, 10,000–100,000 pairs is more typical. Quality matters more than quantity — ambiguous pairs with unclear preference differences actively harm training."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is reward hacking and how do I prevent it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Reward hacking occurs in PPO-based RLHF when the model learns to maximize the reward model's score through shortcuts that do not reflect genuine quality — such as generating verbose responses that trigger certain patterns the reward model overvalues. Prevention: monitor generated outputs qualitatively, use a diverse reward model, apply KL divergence penalties, and run periodic human evals alongside automated reward scores."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use DPO without an SFT stage?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "DPO is designed to refine an already instruction-tuned model. Starting DPO from a raw base model produces poor results — the model has no baseline instruction-following capability for DPO to build on. Always run at least a minimal SFT stage before DPO."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

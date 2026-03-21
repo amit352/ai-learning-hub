@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I prevent an autonomous agent from taking harmful actions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Build access controls into every tool that can cause harm. Use allowlists for file paths, database tables, and API endpoints. Require explicit human confirmation for irreversible actions. Set hard limits on execution time and API cost. Treat security at the tool layer as the primary defense — not the system prompt."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the right `max_iterations` for an autonomous agent?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on the task complexity. A research and report task might need 15-20 iterations. A simple lookup task needs 3-5. Start conservative, monitor actual usage per task type, and increase limits only when you have data showing the agent uses the extra iterations productively."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I handle the case where the agent loops without making progress?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Track progress explicitly in state: record what has been completed and compare against the plan. If the agent has called the same tool with similar arguments three times without new results, that is a loop signal. Add logic that detects this pattern and either redirects or escalates."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should autonomous agents have access to the internet by default?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Network access should be granted based on the task requirements. An agent that only processes local files does not need web search tools. Minimizing tool access reduces the agent's ability to cause unintended side effects and limits the attack surface."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I evaluate whether my autonomous agent is actually completing tasks correctly?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Build a test harness with known-correct tasks and expected outputs. Run the agent on each test case and check the output against criteria (did it produce a report? Does the report contain specific required sections? Are the facts verifiable?). Never rely solely on the agent's own report of success."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">
@@ -605,7 +653,7 @@ Build a test harness with known-correct tasks and expected outputs. Run the agen
       <div>
         <div class="bio-name">Amit K Chauhan</div>
         <div class="bio-title">Software Engineer &amp; AI Builder</div>
-        <p class="bio-text">Software engineer building practical AI systems — RAG pipelines, LLM applications, and developer AI tools. Created AI Learning Hub to provide a structured, no-fluff roadmap for developers entering AI.</p>
+        <p class="bio-text">AI Learning Hub is a practical learning resource for developers building with LLMs, RAG pipelines, and AI systems. Created by engineers, for engineers — structured, no-fluff guides to help you navigate the fast-moving world of artificial intelligence.</p>
       </div>
     </div>
 

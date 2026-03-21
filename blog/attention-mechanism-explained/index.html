@@ -152,6 +152,46 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need to understand attention to build AI applications?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not deeply. But knowing that O(n²) scaling makes long contexts expensive, and that \"lost in the middle\" is a real failure mode, will make you a better system designer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between self-attention and cross-attention?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Self-attention: every token attends to every other token in the same sequence. Cross-attention: tokens in one sequence attend to tokens in a different sequence. Cross-attention is used in encoder-decoder models (translation, summarization) where the decoder attends to the encoder output."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is attention O(n²)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For a sequence of n tokens, computing attention requires an n×n matrix of scores (every token compared with every other token). At n=1000 tokens that is 1 million comparisons; at n=4000 it is 16 million. This is why flash attention and other efficient attention methods matter for long contexts."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Flash Attention?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Flash Attention is a memory-efficient algorithm for computing attention that reduces GPU memory usage without changing the mathematical output. It enables longer contexts without running out of GPU memory. vLLM and most modern inference engines use it automatically."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

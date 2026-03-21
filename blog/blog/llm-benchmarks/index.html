@@ -152,6 +152,46 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Q: Which benchmark best predicts real-world coding performance?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SWE-bench is the closest to real software engineering tasks, but it is expensive to run. For practical evaluation, HumanEval provides a reasonable proxy for basic code generation, but build your own coding eval with examples from your actual codebase."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Q: Is a model that scores 80 on MMLU twice as good as one scoring 40?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. MMLU scores are not linearly meaningful — 40% is near-random for 4-option MCQ, while 80% represents strong performance. The relevant range for comparing frontier models is 70–90%. Below 70% signals weak general knowledge; above 90% is near-ceiling."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Q: How do I know if a model has been trained on benchmark data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You often cannot verify this definitively. Red flags include suspiciously high performance on public benchmarks with weak qualitative performance, and labs that do not publish training data details. Run your own held-out evaluation as the most reliable check."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Q: What is a good internal eval set size?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "50 cases is the minimum for a meaningful signal. 100–200 cases per task type gives you reliable pass rates. More than 500 is overkill for most practical model selection decisions."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

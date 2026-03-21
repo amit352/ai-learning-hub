@@ -152,6 +152,46 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Q: What is the difference between GGUF and GGML?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GGML was the original format. GGUF replaced it in August 2023 with better metadata support, self-contained tokenizer data, and forward compatibility. All modern llama.cpp and Ollama releases use GGUF. GGML files are no longer supported in recent versions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Q: Can I convert any HuggingFace model to GGUF?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Any model with a supported architecture (Llama, Mistral, Qwen, Phi, Gemma, and many others) can be converted using llama.cpp's `convert_hf_to_gguf.py`. Architectures not supported by llama.cpp cannot be converted."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Q: Is Q4_K_M the same as INT4 quantization?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "They are similar but not identical. Q4_K_M uses 4 bits per weight with K-quant mixed-precision grouping. INT4 generally refers to straight uniform 4-bit quantization used in GPTQ/AWQ GPU formats. Q4_K_M typically produces slightly better quality than naive INT4 at equivalent size."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Q: How do I know which GGUF variant is best for my GPU?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Match the file size to your available VRAM with 20% headroom for KV cache. An 8GB VRAM GPU fits Q4_K_M of a 7B model (4.9GB) comfortably. An RTX 3090 (24GB) fits Q4_K_M of a 13B model (8.1GB) with substantial headroom, or Q5_K_M of a 13B model (9.5GB)."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">
@@ -573,7 +613,7 @@ Match the file size to your available VRAM with 20% headroom for KV cache. An 8G
       <div>
         <div class="bio-name">Amit K Chauhan</div>
         <div class="bio-title">Software Engineer &amp; AI Builder</div>
-        <p class="bio-text">Software engineer building practical AI systems — RAG pipelines, LLM applications, and developer AI tools. Created AI Learning Hub to provide a structured, no-fluff roadmap for developers entering AI.</p>
+        <p class="bio-text">AI Learning Hub is a practical learning resource for developers building with LLMs, RAG pipelines, and AI systems. Created by engineers, for engineers — structured, no-fluff guides to help you navigate the fast-moving world of artificial intelligence.</p>
       </div>
     </div>
 

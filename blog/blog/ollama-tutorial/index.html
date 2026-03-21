@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Q: Does Ollama work without a GPU?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Ollama falls back to CPU inference using llama.cpp when no compatible GPU is detected. Performance is significantly slower (2–8 tok/s vs 30–80 tok/s on GPU), but it works. Stick to 7B or smaller models for CPU-only inference."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Q: Can I use Ollama in production serving multiple users?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For low-concurrency use (up to ~5 concurrent requests), yes. For high-concurrency production, vLLM is more appropriate — it implements continuous batching and PagedAttention, which Ollama does not. Ollama is primarily optimized for single-user local inference."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Q: How do I connect LangChain to Ollama?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "LangChain has a native Ollama integration: `from langchain_ollama import ChatOllama`. Alternatively, use LangChain's OpenAI provider with `base_url=\"http://localhost:11434/v1\"`. Both work identically."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Q: What happens to the model when I close the terminal?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Ollama service runs as a background daemon, not attached to your terminal session. Models stay loaded in memory until the OLLAMA_KEEP_ALIVE timeout expires (default: 5 minutes). The service persists until you stop it explicitly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Q: Can I run Ollama on a remote server and access it from my laptop?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Set `OLLAMA_HOST=0.0.0.0:11434` on the server before starting Ollama, then point your client to `http://server-ip:11434` instead of localhost. Add firewall rules to restrict access appropriately."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

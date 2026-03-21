@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "When should I use prompt chaining vs. a single prompt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use chaining when the task has multiple distinct phases, when format needs to change between phases, or when you need to test each phase independently. For simple single-step tasks, a single prompt is faster and cheaper."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does self-critique actually improve output quality?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, measurably, for writing and code tasks. Run the critique step with a slightly higher temperature and the generation with temperature=0. The critique step introduces diversity; the rewrite step disciplines it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I debug a chain when the output is wrong?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Log every intermediate result. Then work backward from the failing step — feed that step's input in isolation and see if the output is wrong. This narrows the problem to a single prompt."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use different models for different steps in a chain?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, and often this is the right approach. Use a smaller, faster model for classification and routing steps. Reserve larger models for the generation steps that require the most capability."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do ReAct agents differ from prompt chaining?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Chains have a fixed sequence of steps defined at build time. ReAct agents determine the sequence dynamically — the model decides what to do next based on the result of the previous step. Agents are more flexible but less predictable."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

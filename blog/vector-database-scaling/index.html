@@ -152,6 +152,46 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many vectors can a single node handle?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "With HNSW and float32 vectors, a node with 64GB RAM can hold roughly 10M vectors at 1536 dims (including graph overhead). With 8-bit quantization, this extends to ~40M vectors. With PQ compression, 100M+ vectors on a single node is feasible."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Pinecone handle sharding automatically?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Pinecone's serverless tier automatically distributes data across their infrastructure. For pod-based Pinecone, you specify replicas (read concurrency) and pod type (performance tier) — sharding within a pod is internal. This is a primary reason teams choose Pinecone for production: you pay for managed scaling, not engineering time on it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I handle index updates without downtime?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The blue-green pattern: build the new index on a separate set of nodes while the old index serves traffic. Once the new index is validated (recall and latency benchmarks pass), switch the load balancer. Qdrant and Weaviate support live shard transfers that enable rolling updates without full cluster downtime."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the maximum recommended shard count for Qdrant or Weaviate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Qdrant recommends 1–3 shards per node and no more than 30 total shards per cluster for current versions. More shards increase the overhead of scatter-gather queries. The right shard count is determined by dataset size per node, not total cluster size — aim for 20–50GB of vector data per shard as a starting point."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

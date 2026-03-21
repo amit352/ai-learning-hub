@@ -106,6 +106,38 @@ function esc(s) {
   return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
+// ── FAQ Extractor ─────────────────────────────────────────────────────────────
+// Parses ## FAQ section from markdown and returns FAQPage JSON-LD string (or '')
+function extractFaqSchema(markdown, pageUrl) {
+  const faqMatch = markdown.match(/##\s+FAQ[\s\S]*?(?=\n##\s|\n---\s*$|$)/i);
+  if (!faqMatch) return '';
+
+  const faqBlock = faqMatch[0];
+  // Match patterns: ### Question or **Question** or numbered "1. Question"
+  const pairs = [];
+  const qPattern = /(?:###\s+(.+?)\n|^\*\*(.+?)\*\*\n|\d+\.\s+\*\*(.+?)\*\*\n)([\s\S]*?)(?=(?:###\s|\*\*[A-Z]|\d+\.\s\*\*)|$)/gm;
+  let m;
+  while ((m = qPattern.exec(faqBlock)) !== null) {
+    const question = (m[1] || m[2] || m[3] || '').trim();
+    const answer = (m[4] || '').replace(/\*\*/g, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/\n+/g, ' ').trim();
+    if (question && answer && answer.length > 10) {
+      pairs.push({ question, answer: answer.slice(0, 500) });
+    }
+  }
+  if (pairs.length === 0) return '';
+
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: pairs.map(({ question, answer }) => ({
+      '@type': 'Question',
+      name: question,
+      acceptedAnswer: { '@type': 'Answer', text: answer },
+    })),
+  };
+  return JSON.stringify(schema, null, 2);
+}
+
 // ── Main ─────────────────────────────────────────────────────────────────────
 
 function main() {
@@ -113,12 +145,20 @@ function main() {
   const indexTemplate = fs.readFileSync(path.join(TEMPLATES_DIR, 'blog-index.html'), 'utf8');
   const inlineCss     = fs.readFileSync(CSS_FILE, 'utf8');
 
+  // --skip-existing: only process posts whose HTML output does not yet exist
+  const skipExisting = process.argv.includes('--skip-existing');
+
   const mdFiles = fs.readdirSync(POSTS_DIR)
     .filter(f => f.endsWith('.md'))
+    .filter(f => {
+      if (!skipExisting) return true;
+      const slug = f.replace('.md', '');
+      return !fs.existsSync(path.join(BLOG_OUT, slug, 'index.html'));
+    })
     .sort();
 
   if (mdFiles.length === 0) {
-    console.log('No .md files found in', POSTS_DIR);
+    console.log(skipExisting ? 'No new posts to generate (all already exist).' : 'No .md files found in', POSTS_DIR);
     return;
   }
 
@@ -134,18 +174,15 @@ function main() {
     const date        = meta.date || '2026-03-09';
     const updatedAt   = meta.updatedAt || meta.updated_at || date;
 
-    // Auto-assign Mamta as author for weekday posts
+    // Weekday posts → Mamta Chauhan, weekend posts → Amit K Chauhan (or frontmatter override)
     const postDay = new Date(date + 'T12:00:00Z').getUTCDay(); // 0=Sun,6=Sat
     const isWeekday = postDay >= 1 && postDay <= 5;
-    const defaultAuthor = isWeekday ? 'Mamta Chauhan' : 'AI Learning Hub';
-    const defaultAuthorTitle = isWeekday ? 'Content Creator and AI Enthusiast' : 'AI Learning Hub';
     const defaultAuthorBio = isWeekday
       ? 'Mamta Chauhan is an AI enthusiast and content creator behind ailearnings.in. She writes practical guides on LLMs, RAG, and AI engineering to help developers navigate the fast-moving world of artificial intelligence. Passionate about bridging the gap between cutting-edge research and real-world application.'
       : 'Software engineer building practical AI systems — RAG pipelines, LLM applications, and developer AI tools. Created AI Learning Hub to provide a structured, no-fluff roadmap for developers entering AI.';
 
-    // Weekday rule overrides frontmatter author
-    const authorName  = isWeekday ? 'Mamta Chauhan' : (meta.author || defaultAuthor);
-    const authorTitle = isWeekday ? 'Content Creator and AI Enthusiast' : (meta.authorTitle || meta.author_title || defaultAuthorTitle);
+    const authorName  = isWeekday ? 'Mamta Chauhan' : (meta.author || 'Amit K Chauhan');
+    const authorTitle = isWeekday ? 'Content Creator and AI Enthusiast' : (meta.authorTitle || meta.author_title || 'Software Engineer & AI Builder');
     const canonical   = `https://ailearnings.in/blog/${slug}/`;
     const mins        = readTime(content);
     const htmlContent = marked.parse(content);
@@ -183,6 +220,11 @@ function main() {
       ],
     }, null, 2);
 
+    const faqSchemaJson = extractFaqSchema(content, canonical);
+    const faqSchemaBlock = faqSchemaJson
+      ? `\n  <script type="application/ld+json">\n${faqSchemaJson}\n  </script>`
+      : '';
+
     // Fill template
     let html = postTemplate
       .replace(/\{\{TITLE\}\}/g,           esc(title))
@@ -200,7 +242,7 @@ function main() {
       .replace(/\{\{CONTENT\}\}/g,          htmlContent)
       .replace(/\{\{INLINE_CSS\}\}/g,       inlineCss)
       .replace(/\{\{ARTICLE_SCHEMA\}\}/g,   articleSchema)
-      .replace(/\{\{BREADCRUMB_SCHEMA\}\}/, breadcrumbSchema);
+      .replace(/\{\{BREADCRUMB_SCHEMA\}\}/, breadcrumbSchema + faqSchemaBlock);
 
     // Restore non-blocking font (same fix as generate-static.js)
     html = html.replace(
@@ -244,19 +286,16 @@ function main() {
 
       const rgDay = new Date(date + 'T12:00:00Z').getUTCDay();
       const rgIsWeekday = rgDay >= 1 && rgDay <= 5;
-      const rgDefaultAuthor = rgIsWeekday ? 'Mamta Chauhan' : 'AI Learning Hub';
-      const rgDefaultTitle = rgIsWeekday ? 'Content Creator and AI Enthusiast' : 'AI Learning Hub';
-      const rgDefaultBio = rgIsWeekday
-        ? 'Mamta Chauhan is an AI enthusiast and content creator behind ailearnings.in. She writes practical guides on LLMs, RAG, and AI engineering to help developers navigate the fast-moving world of artificial intelligence. Passionate about bridging the gap between cutting-edge research and real-world application.'
-        : 'Software engineer building practical AI systems — RAG pipelines, LLM applications, and developer AI tools. Created AI Learning Hub to provide a structured, no-fluff roadmap for developers entering AI.';
-
-      const authorName  = rgIsWeekday ? 'Mamta Chauhan' : (meta.author || rgDefaultAuthor);
-      const authorTitle = rgIsWeekday ? 'Content Creator and AI Enthusiast' : (meta.authorTitle || meta.author_title || rgDefaultTitle);
+      const authorName  = rgIsWeekday ? 'Mamta Chauhan' : (meta.author || 'Amit K Chauhan');
+      const authorTitle = rgIsWeekday ? 'Content Creator and AI Enthusiast' : (meta.authorTitle || meta.author_title || 'Software Engineer & AI Builder');
       const canonical   = `https://ailearnings.in/blog/roadmap-guides/${slug}/`;
       const mins        = readTime(content);
       const htmlContent = marked.parse(content);
 
       const authorInitials = authorName.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+      const rgDefaultBio = rgIsWeekday
+        ? 'Mamta Chauhan is an AI enthusiast and content creator behind ailearnings.in. She writes practical guides on LLMs, RAG, and AI engineering to help developers navigate the fast-moving world of artificial intelligence. Passionate about bridging the gap between cutting-edge research and real-world application.'
+        : 'Software engineer building practical AI systems — RAG pipelines, LLM applications, and developer AI tools. Created AI Learning Hub to provide a structured, no-fluff roadmap for developers entering AI.';
       const authorBio = meta.authorBio || meta.author_bio || rgDefaultBio;
       const updatedMeta = updatedAt !== date
         ? `<span class="sep">·</span><span>Updated <time datetime="${updatedAt}">${formatDate(updatedAt)}</time></span>`
@@ -286,6 +325,11 @@ function main() {
         ],
       }, null, 2);
 
+      const rgFaqSchemaJson = extractFaqSchema(content, canonical);
+      const rgFaqSchemaBlock = rgFaqSchemaJson
+        ? `\n  <script type="application/ld+json">\n${rgFaqSchemaJson}\n  </script>`
+        : '';
+
       let html = postTemplate
         .replace(/\{\{TITLE\}\}/g,           esc(title))
         .replace(/\{\{TITLE_SHORT\}\}/g,      esc(title.length > 50 ? title.slice(0, 47) + '…' : title))
@@ -302,7 +346,7 @@ function main() {
         .replace(/\{\{CONTENT\}\}/g,          htmlContent)
         .replace(/\{\{INLINE_CSS\}\}/g,       inlineCss)
         .replace(/\{\{ARTICLE_SCHEMA\}\}/g,   articleSchema)
-        .replace(/\{\{BREADCRUMB_SCHEMA\}\}/, breadcrumbSchema);
+        .replace(/\{\{BREADCRUMB_SCHEMA\}\}/, breadcrumbSchema + rgFaqSchemaBlock);
 
       html = html.replace(
         /(<link[^>]*fonts\.bunny\.net[^>]*)\bmedia="all"([^>]*>)/,

@@ -1,18 +1,17 @@
 ---
-title: "RLHF Explained: How LLMs Learn from Human Feedback"
-description: "RLHF pipeline explained: SFT to reward model to PPO. DPO as a simpler alternative. TRL DPOTrainer code. Practical challenges of reward hacking and training instability."
-date: "2026-03-15"
-updatedAt: "2026-03-15"
-slug: "/blog/rlhf-guide"
-keywords: ["rlhf explained", "reinforcement learning from human feedback", "dpo training", "reward model llm", "trl dpotrainer"]
+title: "RLHF Explained: How Reinforcement Learning from Human Feedback Works (2026)"
+description: "Understand RLHF — the SFT to reward model to PPO pipeline, DPO as a simpler alternative, TRL DPOTrainer code, and practical challenges of reward hacking."
+date: "2026-03-22"
+updatedAt: "2026-03-22"
+slug: "rlhf-guide"
+keywords: ["RLHF explained", "reinforcement learning from human feedback", "DPO training", "reward model LLM", "TRL DPOTrainer", "RLHF vs DPO"]
 author: "Amit K Chauhan"
 authorTitle: "Software Engineer & AI Builder"
-level: "intermediate"
-time: "13 min"
-stack: ["Python", "HuggingFace", "TRL"]
 ---
 
-# RLHF Explained: How LLMs Learn from Human Feedback
+# RLHF Explained: How Reinforcement Learning from Human Feedback Works (2026)
+
+Last updated: March 2026
 
 An instruction-tuned LLM knows how to follow instructions — but it does not inherently know what "good" means to human users. A model trained only with SFT will occasionally produce outputs that are technically correct but unnecessarily verbose, unnecessarily hedged, or subtly misaligned with what the user actually wanted. It has learned the pattern of helpful responses, not the substance of helpfulness.
 
@@ -315,55 +314,18 @@ The quality of preference data is the primary driver of alignment success with e
 
 ## FAQ
 
-**What is the difference between RLHF and DPO?**
+### What is the difference between RLHF and DPO?
+
 RLHF trains a separate reward model from human preference pairs, then uses PPO to optimize the LLM against that reward model. DPO bypasses both — it directly optimizes the LLM on preference pairs using a loss function derived from the optimal RLHF policy. DPO is simpler, more stable, and requires no RL training. RLHF has a higher ceiling for complex tasks where reward modeling captures nuance DPO cannot.
 
-**How many preference pairs do I need for DPO?**
+### How many preference pairs do I need for DPO?
+
 For domain-specific alignment (style, format, tone), 500–2,000 high-quality preference pairs is sufficient. For broad alignment improvements across many topics, 10,000–100,000 pairs is more typical. Quality matters more than quantity — ambiguous pairs with unclear preference differences actively harm training.
 
-**What is reward hacking and how do I prevent it?**
+### What is reward hacking and how do I prevent it?
+
 Reward hacking occurs in PPO-based RLHF when the model learns to maximize the reward model's score through shortcuts that do not reflect genuine quality — such as generating verbose responses that trigger certain patterns the reward model overvalues. Prevention: monitor generated outputs qualitatively, use a diverse reward model, apply KL divergence penalties, and run periodic human evals alongside automated reward scores.
 
-**Can I use DPO without an SFT stage?**
-DPO is designed to refine an already instruction-tuned model. Starting DPO from a raw base model produces poor results — the model has no baseline instruction-following capability for DPO to build on. Always run at least a minimal SFT stage before DPO.
+### Can I use DPO without an SFT stage?
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the difference between RLHF and DPO?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "RLHF trains a separate reward model from human preferences, then uses PPO to optimize the LLM against it. DPO directly optimizes the LLM on preference pairs using a loss derived from the optimal RLHF policy — no RL, no separate reward model. DPO is simpler and more stable; RLHF has a higher ceiling for complex reasoning tasks."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How many preference pairs do I need for DPO?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "For domain-specific alignment, 500–2,000 high-quality preference pairs is sufficient. For broad alignment improvements, 10,000–100,000 is typical. Quality matters more than quantity — ambiguous pairs actively harm training."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is reward hacking and how do I prevent it?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Reward hacking occurs when the model learns shortcuts to maximize reward scores without genuine quality improvement — like verbosity or formulaic phrases the reward model overvalues. Prevention: monitor outputs qualitatively, use diverse reward models, apply KL divergence penalties, and run periodic human evaluations."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I use DPO without an SFT stage?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "DPO requires a baseline instruction-following model to build on. Starting from a raw base model produces poor results. Always run at least a minimal SFT stage before DPO."
-      }
-    }
-  ]
-}
-</script>
+DPO is designed to refine an already instruction-tuned model. Starting DPO from a raw base model produces poor results — the model has no baseline instruction-following capability for DPO to build on. Always run at least a minimal SFT stage before DPO.

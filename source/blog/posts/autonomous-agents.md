@@ -1,18 +1,17 @@
 ---
-title: "Autonomous Task Execution in AI Agents"
-description: "How fully autonomous AI agents handle multi-step tasks without human input. Loop architecture, error recovery, self-correction, and production safety considerations."
-date: "2026-03-15"
-updatedAt: "2026-03-15"
-slug: "/blog/autonomous-agents"
-keywords: ["autonomous ai agents", "autonomous task execution", "self-correcting ai agents"]
+title: "Autonomous AI Agents: How They Work and How to Build One (2026)"
+description: "Learn how autonomous AI agents work and how to build one in Python. Covers loop architecture, error recovery, self-correction, and production safety considerations."
+date: "2026-02-02"
+updatedAt: "2026-02-02"
+slug: "autonomous-agents"
+keywords: ["autonomous ai agents", "autonomous task execution", "self-correcting ai agents", "build autonomous agent", "agent loop architecture"]
 author: "Amit K Chauhan"
 authorTitle: "Software Engineer & AI Builder"
-level: "intermediate"
-time: "13 min"
-stack: ["Python", "LangChain"]
 ---
 
-# Autonomous Task Execution in AI Agents
+_Last updated: March 2026_
+
+# Autonomous AI Agents: How They Work and How to Build One (2026)
 
 The appeal of a fully autonomous agent is obvious: give it a goal and walk away. The reality is more complicated. Autonomous agents that take actions without human oversight introduce a category of failure mode that simply does not exist in interactive systems — the agent does something irreversible before you realize it was on the wrong track.
 

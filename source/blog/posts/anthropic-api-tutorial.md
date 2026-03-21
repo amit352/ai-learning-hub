@@ -1,18 +1,17 @@
 ---
-title: "Anthropic Claude API Tutorial for Python Developers"
-description: "Complete Anthropic Claude API tutorial — setup, Messages API, streaming, tool use, vision, and system prompts with runnable Python examples for 2026."
-date: "2026-03-15"
-updatedAt: "2026-03-15"
-slug: "/blog/anthropic-api-tutorial"
-keywords: ["anthropic api tutorial", "claude api python", "anthropic claude api"]
+title: "Anthropic Claude API Tutorial: Complete Developer Guide (2026)"
+description: "Complete guide to the Anthropic Claude API in Python. Covers Messages API, streaming, tool use, vision, and system prompts with runnable code examples."
+date: "2026-01-28"
+updatedAt: "2026-01-28"
+slug: "anthropic-api-tutorial"
+keywords: ["anthropic api tutorial", "claude api python", "anthropic claude api", "claude developer guide", "claude api examples"]
 author: "Amit K Chauhan"
 authorTitle: "Software Engineer & AI Builder"
-level: "intermediate"
-time: "14 min"
-stack: ["Python", "Anthropic"]
 ---
 
-# Anthropic Claude API Tutorial for Python Developers
+_Last updated: March 2026_
+
+# Anthropic Claude API Tutorial: Complete Developer Guide (2026)
 
 The first thing developers notice when switching from OpenAI to Claude is that the output feels different — more thorough, less likely to refuse edge cases, and notably better at following nuanced formatting instructions. The second thing they notice is that the API schema is slightly different, and a direct copy-paste of their OpenAI code does not work.
 

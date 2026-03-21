@@ -1,18 +1,17 @@
 ---
-title: "Fine-Tuning Open Source LLMs: From Llama to Production"
-description: "End-to-end guide to fine-tuning Llama 3 with Unsloth and TRL — dataset prep, LoRA training, merging adapters, exporting to GGUF, and serving with Ollama."
-date: "2026-03-15"
-updatedAt: "2026-03-15"
-slug: "/blog/fine-tune-open-source-llm"
-keywords: ["fine tune open source llm", "llama fine tuning", "lora unsloth trl", "qlora fine tuning"]
+title: "Fine-Tune Open Source LLMs: Llama 3, Mistral & Phi-4 Guide (2026)"
+description: "Step-by-step guide to fine-tuning Llama 3, Mistral, and Phi-4 using LoRA and QLoRA. Covers dataset prep, training, adapter merging, and serving with Ollama."
+date: "2026-02-07"
+updatedAt: "2026-02-07"
+slug: "fine-tune-open-source-llm"
+keywords: ["fine tune open source llm", "llama 3 fine tuning", "mistral fine tuning", "phi-4 fine tuning", "qlora fine tuning"]
 author: "Amit K Chauhan"
 authorTitle: "Software Engineer & AI Builder"
-level: "intermediate"
-time: "16 min"
-stack: ["Python", "Ollama"]
 ---
 
-# Fine-Tuning Open Source LLMs: From Llama to Production
+_Last updated: March 2026_
+
+# Fine-Tune Open Source LLMs: Llama 3, Mistral & Phi-4 Guide (2026)
 
 The promise of open source LLMs is not just that they are free — it is that you can modify them. Fine-tuning lets you take a capable base model and adapt it to your domain, your output format, and your quality standards in a way that prompt engineering alone cannot achieve. A well-fine-tuned 8B model often outperforms a prompted 70B model on a specific task while running on a fraction of the hardware.
 

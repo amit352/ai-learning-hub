@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many few-shot examples do I need for reliable classification?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For well-defined categories, 2–3 examples per category is usually sufficient. More important than quantity is coverage — make sure examples cover ambiguous cases and edge cases, not just clear-cut inputs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I use GPT-4o or a smaller model for these tasks?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start with GPT-4o to get the prompt right, then test with smaller models like GPT-4o-mini. Many classification and extraction tasks run reliably on smaller models with a well-engineered prompt. Migration is easier once you have a test set."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I handle multi-language inputs in extraction prompts?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Add an instruction like \"The input may be in any language. Always return the response in English.\" For entity extraction, specify: \"Normalize names and terms to English when possible, preserve original spelling for proper nouns.\""
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if the structured output schema changes over time?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Version your prompts and schemas together. A schema change is a prompt change. Maintain a PROMPT_VERSION constant alongside your schema definition, and validate that model outputs match your expected schema in production."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I improve accuracy without increasing prompt length?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Replace vague instructions with specific examples. Two good examples are more effective than two paragraphs of instructions and use fewer tokens. Also check whether the failure is in the prompt or in the model's capability — some tasks require a more capable model, not a longer prompt."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the ReAct pattern in AI agents?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ReAct (Reason + Act) is a planning loop where the model alternates between a reasoning step (thinking about what to do next) and an action step (calling a tool). The observation from the action feeds back into the next reasoning step. It is the most common planning pattern in production agents."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When should I use plan-and-execute instead of ReAct?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use plan-and-execute when the task has a predictable structure (same steps every time), when you need human review of the plan before execution, or when the task has many steps and you want to avoid plan drift. Use ReAct when the next step genuinely depends on what the previous step returned."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does chain-of-thought work with tool-calling agents?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. You can prompt the model to reason completely before emitting tool calls. Include explicit instructions like \"First, write out your full reasoning plan. Then take actions.\" This improves reliability for tasks where the execution path can be determined from the task description alone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is tree of thoughts and when is it practical?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tree of Thoughts generates multiple candidate next steps and evaluates each before committing to one. It is theoretically powerful but practically expensive — it requires multiple LLM calls per step. It is most useful for tasks where the search space is complex and small mistakes early have large downstream consequences."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I handle a plan that becomes invalid midway through execution?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Build explicit replanning checkpoints. After every N steps, have the agent evaluate: \"Does my original plan still make sense given what I have found so far?\" If not, generate a revised plan. This adds overhead but significantly reduces failures on tasks where early assumptions turn out to be wrong."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">
@@ -553,7 +601,7 @@ Build explicit replanning checkpoints. After every N steps, have the agent evalu
       <div>
         <div class="bio-name">Amit K Chauhan</div>
         <div class="bio-title">Software Engineer &amp; AI Builder</div>
-        <p class="bio-text">Software engineer building practical AI systems — RAG pipelines, LLM applications, and developer AI tools. Created AI Learning Hub to provide a structured, no-fluff roadmap for developers entering AI.</p>
+        <p class="bio-text">AI Learning Hub is a practical learning resource for developers building with LLMs, RAG pipelines, and AI systems. Created by engineers, for engineers — structured, no-fluff guides to help you navigate the fast-moving world of artificial intelligence.</p>
       </div>
     </div>
 

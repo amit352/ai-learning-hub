@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Should I use LangChain PromptTemplate or build my own?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If you are already using LangChain, use its PromptTemplate — it integrates with chains, agents, and observability tooling. If you are not using LangChain, a simple dataclass template avoids the dependency overhead while providing the same core benefits."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I handle templates that need different structures for different models?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Maintain model-specific variants with the same name and different target model fields. Your registry can resolve the right variant based on the configured model. This keeps calling code model-agnostic."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I serialize and store templates in a database?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The `to_dict()` method in the implementation above is a starting point. Store name, version, system, user, input_variables, and metadata. This enables dynamic prompt management and A/B testing through a UI rather than code deployments."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How should I handle secrets or PII in template variables?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Never log the rendered prompt with PII-containing variables. Log the template name and version instead. If you need to debug a specific invocation, scrub PII from the input before logging."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the best way to A/B test prompt templates?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Assign a variant to each request using a deterministic hash of the user ID (for consistent user experience) or randomly (for unbiased measurement). Log the variant with every request and measure downstream metrics — not just LLM output quality but business metrics like resolution rate or user satisfaction."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

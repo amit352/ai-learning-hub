@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can RAG and fine-tuning be combined?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, and this is increasingly common in mature systems. Use the fine-tuned model as the LLM in a RAG chain. The fine-tuned model handles style, format, and domain reasoning; RAG handles factual grounding and source attribution."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does fine-tuning reduce hallucinations?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Fine-tuning on high-quality, factually accurate examples can reduce a specific class of hallucinations — errors in domain reasoning. However, it doesn't eliminate hallucination and can introduce new failure modes if training data contains errors. RAG with a grounding prompt more reliably prevents factual hallucinations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does fine-tuning cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For OpenAI's gpt-4o-mini: approximately $0.003/1K training tokens. A fine-tuning job with 1,000 examples of ~500 tokens each runs about $1.50. The real cost is data preparation — creating high-quality training examples takes significant human time."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is RAG good enough for customer support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For most customer support applications — answering questions about products, policies, and procedures — RAG with a well-tuned retrieval pipeline is sufficient. Fine-tuning adds value when tone and brand voice consistency are critical or when you need highly specific response formats."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if my domain has very specialized vocabulary?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use fine-tuning for vocabulary adaptation. Base models handle common technical vocabulary well but struggle with proprietary acronyms, internal product names, and domain-specific jargon that doesn't appear in their training data. Fine-tuning teaches the model these terms; RAG provides the factual content they apply to."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

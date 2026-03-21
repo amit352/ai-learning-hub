@@ -1,18 +1,17 @@
 ---
-title: "Model Distillation Explained: Smaller Models, Similar Performance"
-description: "Understand knowledge distillation for LLMs — teacher-student training, response distillation, distillation vs quantization, and Python examples with Hugging Face Transformers."
-date: "2026-03-15"
-updatedAt: "2026-03-15"
-slug: "/blog/model-distillation"
-keywords: ["model distillation llm", "knowledge distillation", "teacher student model", "llm compression"]
+title: "LLM Knowledge Distillation: Create Small, Fast Models from Large Ones (2026)"
+description: "Learn how knowledge distillation creates small, fast LLMs from large teacher models — teacher-student training, response distillation, and Python implementation examples."
+date: "2026-03-16"
+updatedAt: "2026-03-16"
+slug: "model-distillation"
+keywords: ["LLM knowledge distillation", "model distillation", "teacher student LLM", "small LLM from large", "LLM compression", "distillation fine-tuning"]
 author: "Amit K Chauhan"
 authorTitle: "Software Engineer & AI Builder"
-level: "intermediate"
-time: "13 min"
-stack: ["Python", "Ollama"]
 ---
 
-# Model Distillation Explained: Smaller Models, Similar Performance
+# LLM Knowledge Distillation: Create Small, Fast Models from Large Ones (2026)
+
+Last updated: March 2026
 
 The first question engineers ask when they see a model like Phi-4 scoring near GPT-4 levels on reasoning benchmarks at 14B parameters is: how is that possible? The answer, in significant part, is distillation. Not quantization — the model is not a compressed version of a larger model. The 14B model learned from a larger teacher, inheriting reasoning patterns that were not in the raw training data.
 
@@ -372,55 +371,19 @@ Model distillation is a training technique that transfers knowledge from a large
 
 ## FAQ
 
-**Q: Is Phi-4 a distilled model?**
+### Is Phi-4 a distilled model?
+
 Phi-4 was trained on high-quality curated synthetic data generated partly by larger models — a form of response distillation. Microsoft's Phi series explicitly demonstrates that training data quality, including synthetic data from stronger models, can compensate for smaller parameter counts.
 
-**Q: How much data do I need for response distillation?**
+### How much data do I need for response distillation?
+
 For meaningful generalization in a specific domain, target 5,000–50,000 diverse examples. For a narrow, well-defined task, 1,000 high-quality examples may suffice. Below 500, expect the model to memorize rather than generalize.
 
-**Q: Can I legally use GPT-4 outputs to fine-tune an open source model?**
+### Can I legally use GPT-4 outputs to fine-tune an open source model?
+
 OpenAI's terms of service restrict using model outputs to train competing models. Using GPT-4 outputs to distill into Llama or Mistral likely violates these terms. Using Llama 70B locally as your teacher is fully permissible under Llama's license. Check the specific license terms for any model you use as a teacher.
 
-**Q: Does distillation preserve the teacher's hallucination rate?**
+### Does distillation preserve the teacher's hallucination rate?
+
 Yes, and this is a risk. If the teacher model hallucinated on certain prompts, the student will learn those hallucinations as correct outputs. Always validate distillation datasets, especially for factual domains.
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Is Phi-4 a distilled model?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Phi-4 was trained on high-quality curated synthetic data generated partly by larger models — a form of response distillation. Microsoft's Phi series demonstrates that training data quality can compensate for smaller parameter counts."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How much data do I need for response distillation?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "For meaningful generalization in a specific domain, target 5,000–50,000 diverse examples. For a narrow task, 1,000 high-quality examples may suffice. Below 500, expect memorization rather than generalization."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I legally use GPT-4 outputs to fine-tune an open source model?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "OpenAI's terms of service restrict using model outputs to train competing models. Using a local open source model like Llama 70B as your teacher is fully permissible. Always check the specific license terms."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does distillation preserve the teacher's hallucination rate?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes — if the teacher hallucinated on certain prompts, the student learns those hallucinations as correct outputs. Always validate distillation datasets, especially for factual domains."
-      }
-    }
-  ]
-}
-</script>

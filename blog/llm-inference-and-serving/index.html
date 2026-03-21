@@ -152,6 +152,30 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "vLLM vs llama.cpp — which should I use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "vLLM: production serving with high concurrency on GPU. llama.cpp: local development, CPU inference, no server needed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What GPU do I need for 8B models?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "At INT4 quantization: 8B model fits on an RTX 3080 (10GB) or RTX 4090 (24GB). For full BF16 precision: RTX 4090 (24GB) is the minimum."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

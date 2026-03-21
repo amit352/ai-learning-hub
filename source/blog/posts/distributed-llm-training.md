@@ -1,18 +1,17 @@
 ---
-title: "Distributed Training for LLMs: Scale Beyond One GPU"
-description: "Data parallelism, model parallelism, tensor and pipeline parallelism for LLMs. DeepSpeed ZeRO stages, FSDP with HuggingFace Accelerate, and config examples."
-date: "2026-03-15"
-updatedAt: "2026-03-15"
-slug: "/blog/distributed-llm-training"
-keywords: ["distributed llm training", "deepspeed zero", "fsdp training", "multi-gpu llm training", "tensor parallelism"]
+title: "Distributed LLM Training: Data Parallelism, Model Sharding & ZeRO (2026)"
+description: "Learn distributed LLM training strategies including data parallelism, model sharding, and DeepSpeed ZeRO. Includes HuggingFace Accelerate and FSDP config examples."
+date: "2026-02-04"
+updatedAt: "2026-02-04"
+slug: "distributed-llm-training"
+keywords: ["distributed llm training", "deepspeed zero", "fsdp training", "multi-gpu llm training", "tensor parallelism", "model sharding"]
 author: "Amit K Chauhan"
 authorTitle: "Software Engineer & AI Builder"
-level: "intermediate"
-time: "14 min"
-stack: ["Python", "HuggingFace", "PyTorch", "DeepSpeed"]
 ---
 
-# Distributed Training for LLMs: Scale Beyond One GPU
+_Last updated: March 2026_
+
+# Distributed LLM Training: Data Parallelism, Model Sharding & ZeRO (2026)
 
 Most practitioners encounter distributed training for the first time not because they planned for it, but because their model does not fit on a single GPU. You start with a fine-tuning job on a 7B model, discover you need a 13B model for the task, and now you need two GPUs. Or you want to scale your dataset from 1,000 to 100,000 examples without waiting a week for a single-GPU run to complete.
 

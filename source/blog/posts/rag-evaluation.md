@@ -1,6 +1,6 @@
 ---
-title: "RAG Evaluation Metrics Explained"
-description: "Learn how to evaluate RAG systems using faithfulness, answer relevancy, context precision, and recall metrics. Includes RAGAS implementation and LLM-as-judge patterns."
+title: "RAG Evaluation: Measure Faithfulness, Relevancy & Context Quality (2026)"
+description: "RAG looks good in testing but fails in production? Learn the 4 RAGAS metrics — faithfulness, relevancy, context precision, recall — with working Python examples."
 date: "2026-03-15"
 slug: "rag-evaluation"
 keywords: ["rag evaluation metrics", "ragas evaluation", "rag faithfulness", "rag answer relevancy", "llm evaluation rag", "context precision recall"]

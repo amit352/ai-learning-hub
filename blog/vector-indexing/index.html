@@ -152,6 +152,46 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I add an HNSW index to existing vectors without rebuilding from scratch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. HNSW must be built incrementally — each new vector is connected to its nearest existing neighbors during insertion. You cannot \"add HNSW\" to an already-built flat index. You must start a fresh HNSW index and re-insert all vectors."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the memory footprint of an HNSW index?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The graph overhead is approximately `N × M × 4 bytes` for the connection lists (where M is the parameter you set). For 1M vectors with M=32: 128MB overhead on top of the raw vectors. Total for 1M × 768-dim float32 vectors: ~3GB vectors + 128MB graph = ~3.1GB."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When should I choose IVF over HNSW?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When RAM is the binding constraint. IVF does not require storing the entire graph structure in memory — only centroids and the mapping of vectors to clusters. Combined with PQ, IVF allows searching datasets that would not fit in RAM at all for HNSW."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is scalar quantization in HNSW?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Scalar quantization (SQ) compresses each float32 dimension to int8, reducing vector storage from 4 bytes to 1 byte per dimension (4x compression). `IndexHNSWSQ8` in FAISS applies this inside the HNSW index. It gives meaningful memory savings with minimal recall loss compared to PQ, which is more aggressive but less accurate."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

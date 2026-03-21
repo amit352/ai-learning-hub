@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Are embeddings the same as word2vec?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Related concept, different technology. Word2vec produces one fixed vector per word, ignoring context. Transformer-based sentence embeddings produce one vector per input sequence, incorporating full context. \"Bank\" in \"river bank\" and \"bank account\" get different vectors from a transformer encoder."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many dimensions do I need?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "384 dimensions (BGE-small, MiniLM) handles most retrieval tasks well. 1536 dimensions (OpenAI 3-small) captures more nuance. 3072 dimensions (OpenAI 3-large) is overkill for most applications. More dimensions means more storage, higher compute cost, and longer ANN search time."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I reduce embedding dimensions without losing quality?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "OpenAI's `text-embedding-3` models support Matryoshka Representation Learning — you can truncate the embedding to any lower dimension and it retains most quality. Truncating to 256 dims gives you 6x memory savings with ~5% quality loss on standard benchmarks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I evaluate embedding quality for my use case?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Create a labeled test set: 50–100 queries, each paired with the documents that are correct answers. Measure recall@K — what fraction of the time does the correct document appear in the top K results? Compare models on this metric, not on generic benchmarks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the token limit for embedding models?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "`text-embedding-3-small` and `text-embedding-3-large` support up to 8191 tokens. BGE models typically support 512 tokens. Content beyond the limit is silently truncated — always chunk long documents before embedding."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

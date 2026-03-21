@@ -1,18 +1,17 @@
 ---
-title: "GGUF Models Explained: The Format Powering Local LLMs"
-description: "Understand GGUF — what it is, how llama.cpp uses it, Q4_K_M vs Q5_K_M vs Q8_0 quant levels, finding models on HuggingFace, and loading with llama-cpp-python."
-date: "2026-03-15"
-updatedAt: "2026-03-15"
-slug: "/blog/gguf-models"
-keywords: ["gguf models", "gguf format", "llama.cpp gguf", "q4_k_m quantization"]
+title: "GGUF Models Explained: Run Quantized LLMs Locally with Ollama & llama.cpp"
+description: "Learn what GGUF models are and how to run quantized LLMs locally with Ollama and llama.cpp. Covers Q4_K_M vs Q8_0 quant levels with Python loading examples."
+date: "2026-02-16"
+updatedAt: "2026-02-16"
+slug: "gguf-models"
+keywords: ["gguf models", "gguf format", "llama.cpp gguf", "q4_k_m quantization", "run llm locally gguf", "ollama gguf"]
 author: "Amit K Chauhan"
 authorTitle: "Software Engineer & AI Builder"
-level: "intermediate"
-time: "11 min"
-stack: ["Python", "Ollama"]
 ---
 
-# GGUF Models Explained: The Format Powering Local LLMs
+_Last updated: March 2026_
+
+# GGUF Models Explained: Run Quantized LLMs Locally with Ollama & llama.cpp
 
 When you run a model with Ollama, pull a quantized checkpoint from HuggingFace, or download from a source like bartowski or TheBloke's repos, you are almost certainly working with a GGUF file. It is the de facto standard format for local LLM inference, but most tutorials treat it as a black box — "download the GGUF file and run it" without explaining what the file actually contains or why the quantization suffix matters.
 

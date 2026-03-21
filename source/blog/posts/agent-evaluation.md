@@ -1,18 +1,17 @@
 ---
-title: "Agent Evaluation Metrics: How to Measure AI Agent Performance"
-description: "How to evaluate AI agents — task completion rate, tool call accuracy, planning quality, cost per task. LangSmith tracing and custom evaluation harness with Python code."
-date: "2026-03-15"
-updatedAt: "2026-03-15"
-slug: "/blog/agent-evaluation"
-keywords: ["ai agent evaluation", "agent performance metrics", "langsmith agent tracing"]
+title: "How to Evaluate AI Agents: Metrics, Frameworks & Testing Patterns (2026)"
+description: "Learn how to evaluate LLM agents using task success rate, trajectory quality, and tool use accuracy. Includes Python evaluation harness and LangSmith tracing."
+date: "2026-01-12"
+updatedAt: "2026-01-12"
+slug: "agent-evaluation"
+keywords: ["ai agent evaluation", "agent performance metrics", "langsmith agent tracing", "llm agent testing", "agent task success rate"]
 author: "Amit K Chauhan"
 authorTitle: "Software Engineer & AI Builder"
-level: "intermediate"
-time: "13 min"
-stack: ["Python", "LangChain"]
 ---
 
-# Agent Evaluation Metrics: How to Measure AI Agent Performance
+_Last updated: March 2026_
+
+# How to Evaluate AI Agents: Metrics, Frameworks & Testing Patterns (2026)
 
 Shipping an agent without evaluation is like deploying an API endpoint without monitoring. It works until it does not, and when it stops working you have no idea why, when it started breaking, or how often it was giving wrong answers before you noticed. Evaluation is not optional for production agent systems. It is what makes the difference between a system you can improve and one you can only replace.
 

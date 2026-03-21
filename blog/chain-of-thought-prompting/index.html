@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does chain-of-thought work with GPT-4o mini?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, but with reduced effect compared to the full GPT-4o. Smaller models have less latent reasoning capability to surface. For budget-sensitive applications, test CoT with your specific task on both models to see if the accuracy gap justifies the cost difference."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is CoT always worth the extra tokens?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. For simple classification, factual lookups, and extraction tasks, CoT adds cost without significant accuracy improvement. Measure first."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long should the reasoning chain be?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The model determines this based on task complexity. If chains are too verbose, add: \"Reason concisely in at most 100 words, then give your final answer.\" If chains are too short and skipping steps, add: \"Show every step — do not skip.\""
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use CoT for creative writing tasks?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is less natural there. CoT is most valuable for tasks where there is a correct answer. For creative tasks, it can help with planning (\"outline the story structure first\") but may constrain rather than help if applied too rigidly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between CoT and scratchpad prompting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Minimal in practice. Scratchpad prompting explicitly labels the working area — `<scratchpad>` or `<thinking>` — which makes it easier to parse and separate reasoning from the final answer. CoT is the general technique; scratchpad is a formatting convention for it."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

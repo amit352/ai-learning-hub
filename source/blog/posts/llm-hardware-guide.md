@@ -1,18 +1,17 @@
 ---
-title: "GPU Requirements for Running LLMs Locally"
-description: "Practical GPU and hardware guide for running LLMs locally — VRAM requirements by model size, GPU comparisons, Apple Silicon performance, and CPU-only inference options."
-date: "2026-03-15"
-updatedAt: "2026-03-15"
-slug: "/blog/llm-hardware-guide"
-keywords: ["llm gpu requirements", "gpu for llm", "vram for llm", "local llm hardware"]
+title: "LLM Hardware Guide: GPU Requirements for Running and Training LLMs (2026)"
+description: "GPU and hardware requirements for running and training LLMs — VRAM by model size, GPU tier comparisons, Apple Silicon, quantization trade-offs, and cloud vs local."
+date: "2026-03-07"
+updatedAt: "2026-03-07"
+slug: "llm-hardware-guide"
+keywords: ["LLM hardware guide", "GPU for LLM", "VRAM requirements LLM", "run LLM locally GPU", "LLM training hardware", "Apple Silicon LLM"]
 author: "Amit K Chauhan"
 authorTitle: "Software Engineer & AI Builder"
-level: "intermediate"
-time: "12 min"
-stack: ["Python", "Ollama"]
 ---
 
-# GPU Requirements for Running LLMs Locally
+# LLM Hardware Guide: GPU Requirements for Running and Training LLMs (2026)
+
+Last updated: March 2026
 
 The most common question I get from engineers setting up local LLM inference is some variant of "will my hardware work." The answer is almost always yes — it is a matter of which models you can run and at what speed. Understanding the relationship between VRAM, model size, and quantization is more useful than any specific hardware recommendation, because it gives you the framework to evaluate any hardware configuration against any model.
 
@@ -277,55 +276,18 @@ VRAM is the single most important hardware specification for LLM inference. For 
 
 ## FAQ
 
-**Q: Can I run a 70B model on a single RTX 4090?**
+### Can I run a 70B model on a single RTX 4090?
+
 No. A 70B model at Q4_K_M requires approximately 42GB VRAM. The RTX 4090 has 24GB. You can run it split across two RTX 4090s (48GB total) using llama.cpp tensor splitting, or use Q3_K_M (29.7GB) which barely fits in 32GB — but at meaningful quality cost.
 
-**Q: Is Apple Silicon worth it for LLM inference vs NVIDIA?**
+### Is Apple Silicon worth it for LLM inference vs NVIDIA?
+
 For 70B models on a single machine, yes. An M3 Ultra with 128–192GB unified memory is the most capable single-machine 70B inference setup outside of server hardware. For smaller models (7B, 13B), NVIDIA cards are more cost-efficient per token.
 
-**Q: How many VRAM do I need for a RAG application with long context?**
+### How much VRAM do I need for a RAG application with long context?
+
 For a 7B model with 32K context, budget 4.9GB (weights) + ~4GB (KV cache) = roughly 9GB VRAM. A 13B model at 32K context needs approximately 8.1GB + ~6GB = 14GB. Always measure your actual KV cache usage at your target context length.
 
-**Q: What happens when VRAM is exceeded?**
-With Ollama and llama.cpp, layers that do not fit in VRAM are offloaded to CPU RAM. Inference continues but the CPU-GPU memory transfer becomes a severe bottleneck. A model that runs at 50 tok/s fully on GPU might run at 3–5 tok/s when even a few layers are on CPU.
+### What happens when VRAM is exceeded?
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Can I run a 70B model on a single RTX 4090?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. A 70B model at Q4_K_M requires approximately 42GB VRAM. The RTX 4090 has 24GB. You can run it split across two RTX 4090s using llama.cpp tensor splitting, or use Q3_K_M quantization at some quality cost."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is Apple Silicon worth it for LLM inference vs NVIDIA?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "For 70B models on a single machine, yes. An M3 Ultra with 128–192GB unified memory is the most capable single-machine 70B inference setup outside of server hardware."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How much VRAM do I need for a RAG application with long context?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "For a 7B model with 32K context, budget approximately 9GB VRAM (4.9GB weights + 4GB KV cache). A 13B model at 32K context needs roughly 14GB. Measure your actual KV cache usage at your target context length."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What happens when VRAM is exceeded?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Layers that don't fit in VRAM are offloaded to CPU RAM. Inference continues but becomes dramatically slower — a model running at 50 tok/s on GPU might run at 3–5 tok/s with even a few layers on CPU."
-      }
-    }
-  ]
-}
-</script>
+With Ollama and llama.cpp, layers that do not fit in VRAM are offloaded to CPU RAM. Inference continues but the CPU-GPU memory transfer becomes a severe bottleneck. A model that runs at 50 tok/s fully on GPU might run at 3–5 tok/s when even a few layers are on CPU.

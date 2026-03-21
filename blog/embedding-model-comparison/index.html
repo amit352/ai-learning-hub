@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is MTEB and should I use it to choose an embedding model?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "MTEB (Massive Text Embedding Benchmark) is the standard benchmark for embedding model quality across retrieval, classification, clustering, and other tasks. It is useful as a first filter but does not replace evaluation on your own data. Domain-specific models often outperform general-purpose models on specific domains even when ranked lower on MTEB overall."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is `text-embedding-3-large` worth the 6.5x higher cost vs. `text-embedding-3-small`?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For most applications, no. `text-embedding-3-small` achieves 90–95% of `text-embedding-3-large`'s performance on standard retrieval benchmarks. The meaningful difference shows up in nuanced domain-specific queries and multi-step reasoning tasks. Benchmark both on your specific use case before committing to the larger model."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I fine-tune OpenAI embedding models?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "As of 2026, OpenAI does not support fine-tuning of their embedding models (unlike their completion models). For domain-specific fine-tuning, use open-source models (BGE, E5, MiniLM) with the sentence-transformers `fit()` API."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Matryoshka Representation Learning (MRL)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "MRL trains embedding models so that the first N dimensions of the output are themselves a meaningful lower-dimensional embedding. OpenAI's `text-embedding-3` models use MRL, allowing you to truncate to any dimension (256, 512, 1024, 1536) and still get a usable embedding. This is useful for tiered storage or when you want to trade storage cost for quality."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which embedding model works best for multilingual RAG?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "`intfloat/multilingual-e5-large` and Cohere's `embed-multilingual-v3.0` are the strongest open-source and managed options respectively as of 2026. Both support 100+ languages and maintain reasonable quality on cross-lingual retrieval (query in one language, documents in another)."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

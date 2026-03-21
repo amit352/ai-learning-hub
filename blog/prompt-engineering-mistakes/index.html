@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I know if my prompt is the problem vs. the model being incapable?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Test the same task with a more capable model (GPT-4o vs. GPT-4o-mini, or Claude 3.5 Opus vs. Haiku). If the better model also fails, the prompt is likely the issue. If the better model succeeds, you have a model capability problem — improve the prompt or switch models."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "My prompt works great in the playground but fails in production. Why?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Playground inputs are curated. Production inputs are not. The most common causes: production data has different formatting, length, or edge cases than your playground tests. Build your test set from actual production data samples."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I prioritize which mistakes to fix first?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Fix the ones that cause user-visible failures first. Missing format constraints (causing parsing errors), wrong temperature (causing inconsistency), and no uncertainty handling (causing hallucinations) typically have the highest user impact."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I A/B test prompt changes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, for any prompt serving significant traffic. A/B testing reveals whether improvements in offline evaluation translate to production. Use a small traffic percentage (5–10%) for the new prompt, measure real-user outcomes, then promote or rollback."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many prompt iterations is too many?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There is no limit, but each iteration should be driven by evidence from the test set, not intuition. If you have made 10 changes and accuracy is not improving, the issue may be model capability, task definition, or test set quality — not the prompt itself."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

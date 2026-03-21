@@ -1,18 +1,17 @@
 ---
-title: "Building AI Apps with OpenAI and LangChain"
-description: "Build AI applications with OpenAI and LangChain — ChatOpenAI, LCEL chains, memory, tools, and a complete document Q&A app. Honest comparison of raw API vs LangChain."
-date: "2026-03-15"
-updatedAt: "2026-03-15"
-slug: "/blog/openai-langchain"
-keywords: ["openai langchain tutorial", "langchain openai integration", "langchain lcel", "langchain document qa"]
+title: "OpenAI + LangChain: Build Production AI Apps with GPT-4o (2026)"
+description: "Build production AI apps with OpenAI GPT-4o and LangChain — LCEL chains, memory, RAG pipelines, and tool-using agents with real Python examples."
+date: "2026-03-21"
+updatedAt: "2026-03-21"
+slug: "openai-langchain"
+keywords: ["OpenAI LangChain", "GPT-4o LangChain", "LangChain LCEL", "build AI apps LangChain", "LangChain production", "LangChain document Q&A"]
 author: "Amit K Chauhan"
 authorTitle: "Software Engineer & AI Builder"
-level: "intermediate"
-time: "14 min"
-stack: ["Python", "OpenAI", "LangChain"]
 ---
 
-# Building AI Apps with OpenAI and LangChain
+# OpenAI + LangChain: Build Production AI Apps with GPT-4o (2026)
+
+Last updated: March 2026
 
 The most common question I get from developers starting with LangChain is: "Why use LangChain at all? I can just call the OpenAI API directly." It is a legitimate question, and the honest answer is: for simple use cases, raw API is often the right choice. LangChain adds value when your application involves multiple steps — retrieve context, inject into prompt, call LLM, parse output, store result — and you want a structured way to compose and test those steps without writing boilerplate glue code.
 
@@ -409,53 +408,18 @@ LangChain with LCEL provides a clean, composable way to build multi-step LLM app
 
 ## FAQ
 
-**Q: Is LangChain still worth using in 2026?**
+### Is LangChain still worth using in 2026?
 
 Yes, but more selectively than in 2023–2024. LCEL is solid for RAG pipelines and multi-step chains. The ecosystem has matured. The main caveat: for simple use cases, raw API calls are still simpler. Use LangChain when you need the composition, memory, or retriever abstractions.
 
-**Q: What is LCEL and how is it different from the old LangChain chains?**
+### What is LCEL and how is it different from the old LangChain chains?
 
 LCEL (LangChain Expression Language) uses the `|` operator to compose runnables. Every component — prompts, models, parsers, retrievers — implements the same `Runnable` interface with `.invoke()`, `.stream()`, `.batch()`. Old chains like `LLMChain` were class-based and did not support streaming natively. LCEL is the current recommended pattern.
 
-**Q: Can I use LangChain with Anthropic and Gemini too?**
+### Can I use LangChain with Anthropic and Gemini too?
 
 Yes. Install `langchain-anthropic` or `langchain-google-genai` and swap `ChatOpenAI` for `ChatAnthropic` or `ChatGoogleGenerativeAI`. The rest of your LCEL chain stays the same — that provider-agnostic interface is one of LangChain's primary value propositions.
 
-**Q: How do I switch from LangChain back to the raw API for a specific part of my chain?**
+### How do I switch from LangChain back to the raw API for a specific part of my chain?
 
 You can wrap any function in `RunnableLambda` to make it LCEL-compatible: `RunnableLambda(my_function)`. This lets you mix raw API calls with LangChain components in the same chain. Useful for performance-critical steps where you want direct SDK access.
-
----
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Is LangChain still worth using in 2026?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, but more selectively. LCEL is solid for RAG pipelines and multi-step chains. For simple use cases, raw API calls are simpler. Use LangChain when you need composition, memory, or retriever abstractions."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is LCEL and how is it different from the old LangChain chains?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "LCEL uses the | operator to compose runnables. Every component implements the same Runnable interface with .invoke(), .stream(), .batch(). Old chains like LLMChain were class-based and did not support streaming natively."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I use LangChain with Anthropic and Gemini too?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Install langchain-anthropic or langchain-google-genai and swap ChatOpenAI for ChatAnthropic or ChatGoogleGenerativeAI. The rest of your LCEL chain stays the same."
-      }
-    }
-  ]
-}
-</script>

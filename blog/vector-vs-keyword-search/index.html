@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is vector search always better than BM25 for RAG?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. For natural language, conversational queries, vector search usually wins. For technical documentation queries with specific identifiers and error codes, BM25 often matches or exceeds vector search. The right choice depends on your query distribution."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does vector search work well for code search?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Inconsistently. General code concepts search well semantically. Specific function names, error messages, and library APIs search better with BM25 or hybrid. For code RAG, hybrid retrieval with higher BM25 weight is usually more effective."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is BM25's main limitation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Vocabulary mismatch. If a user asks \"how do I authenticate?\" and the document says \"logging in with credentials,\" BM25 finds no match because the terms don't overlap. Vector search handles this gracefully. This is the core case for semantic retrieval."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How expensive is running BM25 alongside vector search?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "BM25 lookup is near-instant for collections up to a few hundred thousand documents. The index is a Python dictionary in memory. At over 1M documents, you'd want a dedicated search engine (Elasticsearch). For most RAG applications, BM25 adds under 5ms of latency."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I index the same documents twice — once for BM25 and once for vector search?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, conceptually — but you can share the document loading and chunking steps. The vector index (Chroma/FAISS/Pinecone) and the BM25 index (in-memory or Elasticsearch) are separate data structures that both operate on the same chunks."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

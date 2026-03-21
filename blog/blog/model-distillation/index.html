@@ -152,6 +152,46 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Q: Is Phi-4 a distilled model?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Phi-4 was trained on high-quality curated synthetic data generated partly by larger models — a form of response distillation. Microsoft's Phi series explicitly demonstrates that training data quality, including synthetic data from stronger models, can compensate for smaller parameter counts."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Q: How much data do I need for response distillation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For meaningful generalization in a specific domain, target 5,000–50,000 diverse examples. For a narrow, well-defined task, 1,000 high-quality examples may suffice. Below 500, expect the model to memorize rather than generalize."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Q: Can I legally use GPT-4 outputs to fine-tune an open source model?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "OpenAI's terms of service restrict using model outputs to train competing models. Using GPT-4 outputs to distill into Llama or Mistral likely violates these terms. Using Llama 70B locally as your teacher is fully permissible under Llama's license. Check the specific license terms for any model you use as a teacher."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Q: Does distillation preserve the teacher's hallucination rate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, and this is a risk. If the teacher model hallucinated on certain prompts, the student will learn those hallucinations as correct outputs. Always validate distillation datasets, especially for factual domains."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

@@ -152,6 +152,46 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the minimum dataset size for instruction tuning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For meaningful behavior change, plan for at least 500 high-quality examples. With 100–200 examples, training is possible but overfitting is likely and generalization is poor. For production models, 2,000–10,000 examples gives a solid foundation for most domain-specific tasks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between SFT and RLHF?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SFT (supervised fine-tuning) trains directly on human-written or human-approved responses. RLHF (reinforcement learning from human feedback) adds a second stage where a reward model learns from human preferences between response pairs, then uses that reward model to further optimize the SFT model via PPO. RLHF produces better-aligned models but is more complex to implement and requires more data."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I use the Alpaca format or the chat format?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use the model's native chat format (OpenAI messages style) and apply it with `tokenizer.apply_chat_template()`. The Alpaca format predates modern chat templates and lacks multi-turn support. Chat format is strictly better and is compatible with all modern instruction-tuned models."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I mix instruction tuning data from different sources?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, but normalize all data to a single format first. Mixing formats is one of the most common sources of poor instruction-following behavior. Also check that mixed data has roughly consistent quality — low-quality examples from one source can degrade performance learned from high-quality examples in another."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

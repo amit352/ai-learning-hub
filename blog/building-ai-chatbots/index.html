@@ -152,6 +152,30 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I build a chatbot for my website?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Options: (1) Gradio embedded in an iframe, (2) Next.js/React frontend + FastAPI backend, (3) Vercel AI SDK for Next.js with streaming support."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I prevent the bot from going off-topic?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Add explicit instructions in the system prompt: \"You are a customer support bot for [Company]. Only answer questions about [topic]. Politely decline all other requests.\""
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

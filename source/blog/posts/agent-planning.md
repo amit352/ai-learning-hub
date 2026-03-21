@@ -1,18 +1,17 @@
 ---
-title: "Planning Algorithms in AI Agents"
-description: "How AI agents plan multi-step tasks — ReAct, chain-of-thought, tree of thoughts, and plan-and-execute patterns with working Python code examples."
-date: "2026-03-15"
-updatedAt: "2026-03-15"
-slug: "/blog/agent-planning"
-keywords: ["ai agent planning", "react agent pattern", "plan and execute agent"]
+title: "LLM Agent Planning: ReAct, Tree of Thought & Hierarchical Planning (2026)"
+description: "Master LLM agent planning strategies including ReAct, Tree of Thought, and hierarchical planning. Includes runnable Python code for each planning pattern."
+date: "2026-01-19"
+updatedAt: "2026-01-19"
+slug: "agent-planning"
+keywords: ["ai agent planning", "react agent pattern", "plan and execute agent", "tree of thought", "hierarchical planning llm"]
 author: "Amit K Chauhan"
 authorTitle: "Software Engineer & AI Builder"
-level: "intermediate"
-time: "13 min"
-stack: ["Python", "LangChain"]
 ---
 
-# Planning Algorithms in AI Agents
+_Last updated: March 2026_
+
+# LLM Agent Planning: ReAct, Tree of Thought & Hierarchical Planning (2026)
 
 When an agent fails on a complex task, the failure is almost never a tool problem. The tool called correctly, returned a valid result, and the agent still ended up somewhere wrong. The real problem is usually planning — or more precisely, the lack of it. The agent executed steps without a coherent strategy, each action locally reasonable but collectively not building toward the goal.
 

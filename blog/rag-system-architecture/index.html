@@ -152,6 +152,30 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How is Advanced RAG different from a basic chatbot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Basic chatbots rely entirely on LLM training data. Advanced RAG grounds answers in your specific documents, enabling accurate, citation-backed answers on proprietary or recent information."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I use LangChain or build my own pipeline?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "LangChain for fast prototyping. Custom pipeline for production (more control, fewer dependencies, easier debugging)."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

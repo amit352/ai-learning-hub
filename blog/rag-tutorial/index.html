@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the minimum viable RAG setup?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A single Python script with LangChain, ChromaDB, and OpenAI can handle up to ~50,000 chunks effectively on a developer laptop. For production, add a persistent vector store (Pinecone or Qdrant), separate the indexing job from the query API, and add logging."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use a local LLM instead of OpenAI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Replace `ChatOpenAI` with `ChatOllama` from `langchain-ollama` and point it at a locally running Ollama instance. For embeddings, use `OllamaEmbeddings` or `sentence-transformers`. The rest of the pipeline stays identical."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How often should I re-index?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Re-index when documents change. If your documents change frequently, build an incremental ingestion pipeline that detects new or modified files and updates only those chunks. Full re-indexing every 24 hours works fine for most knowledge bases."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between `stuff`, `map_reduce`, and `refine` chain types?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "`stuff` inserts all retrieved chunks into one prompt — simplest and fastest, works within a single context window. `map_reduce` processes each chunk independently then combines results — handles more chunks but uses multiple LLM calls. `refine` iteratively updates an answer — most thorough but slowest. Start with `stuff`."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I handle multiple languages?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use a multilingual embedding model like `BAAI/bge-m3` or `multilingual-e5-large`. Store the document language in metadata. For retrieval, embed the query in its original language — multilingual models handle cross-lingual matching reasonably well."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

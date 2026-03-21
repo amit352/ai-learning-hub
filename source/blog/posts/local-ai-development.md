@@ -1,18 +1,17 @@
 ---
-title: "Local AI Development Setup: Run LLMs Without the Cloud"
-description: "Complete local AI development environment — Ollama, Python, LangChain with local models, ChromaDB for local RAG, and a fully local RAG chatbot from scratch."
-date: "2026-03-15"
-updatedAt: "2026-03-15"
-slug: "/blog/local-ai-development"
-keywords: ["local ai development setup", "local llm development", "ollama langchain", "local rag"]
+title: "Local AI Development: Run LLMs Offline with Ollama, llama.cpp & LM Studio"
+description: "Set up a complete local AI development environment — run LLMs offline with Ollama, llama.cpp, and LM Studio, no API keys or cloud required, with Python examples."
+date: "2026-03-14"
+updatedAt: "2026-03-14"
+slug: "local-ai-development"
+keywords: ["local AI development", "run LLMs offline", "Ollama", "llama.cpp", "LM Studio", "local LLM Python"]
 author: "Amit K Chauhan"
 authorTitle: "Software Engineer & AI Builder"
-level: "intermediate"
-time: "15 min"
-stack: ["Python", "Ollama"]
 ---
 
-# Local AI Development Setup: Run LLMs Without the Cloud
+# Local AI Development: Run LLMs Offline with Ollama, llama.cpp & LM Studio
+
+Last updated: March 2026
 
 Most AI development tutorials assume you have an OpenAI API key, a credit card loaded with budget, and an appetite for sending your data to third-party servers. That works for prototypes, but it creates real problems at production scale: cost, latency, data residency, and a dependency you cannot control.
 
@@ -442,55 +441,18 @@ A fully local AI development stack — Ollama, LangChain, ChromaDB — is now st
 
 ## FAQ
 
-**Q: Can this RAG setup handle large document collections?**
+### Can this RAG setup handle large document collections?
+
 ChromaDB scales to millions of vectors on a single machine. For tens of thousands of documents, local ChromaDB with `nomic-embed-text` handles the workload well. For hundreds of thousands of documents with concurrent users, consider Qdrant or Weaviate with a dedicated embedding server.
 
-**Q: What embedding model should I use with Ollama?**
+### What embedding model should I use with Ollama?
+
 `nomic-embed-text` is the default recommendation — 768-dimensional vectors, Apache 2.0 licensed, fast inference. For multilingual documents, consider `paraphrase-multilingual-mpnet-base-v2` via sentence-transformers.
 
-**Q: How do I debug poor RAG retrieval quality?**
+### How do I debug poor RAG retrieval quality?
+
 First, check your chunk size and overlap — most retrieval quality issues come from chunks that are too small or missing context. Second, inspect the retrieved chunks directly (print `docs` in the chain). Third, try a hybrid search (BM25 + semantic) if semantic-only retrieval is missing keyword-specific content.
 
-**Q: Will this setup work offline?**
-Yes, completely. After initial model pulls and document ingestion, the entire system runs offline. No network requests are made during inference or retrieval.
+### Will this setup work offline?
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Can this RAG setup handle large document collections?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "ChromaDB scales to millions of vectors on a single machine. For tens of thousands of documents, local ChromaDB with nomic-embed-text handles the workload well."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What embedding model should I use with Ollama?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "nomic-embed-text is the default recommendation — 768-dimensional vectors, Apache 2.0 licensed, and fast inference. For multilingual documents, consider paraphrase-multilingual-mpnet-base-v2."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I debug poor RAG retrieval quality?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Check your chunk size and overlap first — most retrieval issues come from chunks that are too small. Then inspect the retrieved chunks directly, and consider hybrid search if semantic-only retrieval misses keyword-specific content."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Will this setup work offline?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, completely. After initial model pulls and document ingestion, the entire system runs offline with no network requests during inference or retrieval."
-      }
-    }
-  ]
-}
-</script>
+Yes, completely. After initial model pulls and document ingestion, the entire system runs offline. No network requests are made during inference or retrieval.

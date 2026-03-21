@@ -152,6 +152,30 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What chunk size should I start with?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start with 512 chars, `RecursiveCharacterTextSplitter`. Benchmark against your test queries. Adjust based on what you find."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I always use overlap?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes for fixed/token-based chunking. Use 10–20% of chunk size. Overlap ensures that information near chunk boundaries isn't lost. Semantic chunking handles this naturally."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

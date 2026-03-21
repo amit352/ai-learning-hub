@@ -152,6 +152,38 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many parameters does a transformer have?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depends on depth and width. GPT-2: 117M–1.5B. GPT-3: 175B. Llama 3: 8B–70B. Most parameters live in the FFN and attention projection matrices."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the context window?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The maximum sequence length the model can process at once. Determined by positional encoding design and attention mask. GPT-4 supports 128K tokens."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a token?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Typically a word piece (subword unit). \"unbelievable\" might tokenize to [\"un\", \"believ\", \"able\"]. Most LLMs use BPE (Byte Pair Encoding) tokenization."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

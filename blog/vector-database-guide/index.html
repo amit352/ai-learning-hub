@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between a vector database and a vector library like FAISS?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A vector library (FAISS, hnswlib) is a pure indexing engine — it handles the ANN search math but nothing else. A vector database adds persistence, metadata storage, filtering, API access, and often replication. Use a library for embedded, single-process use cases; use a database for anything production-facing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many vectors can a vector database handle?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on the system. ChromaDB handles millions comfortably on a single machine. Pinecone and Weaviate have publicly demonstrated billion-vector scale with distributed architectures. pgvector with HNSW performs well to roughly 10–50 million vectors on a single PostgreSQL node before you need to consider sharding."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use a vector database without an LLM?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Vector databases are useful for any similarity search problem — product recommendation, image deduplication, music discovery, fraud pattern matching. LLMs are one consumer of vector search, not a requirement."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What embedding dimension should I use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Higher dimensions capture more nuance but cost more memory and compute. `text-embedding-3-small` at 1536 dims is the right default for most English text use cases. Open-source models like `BAAI/bge-small-en-v1.5` at 384 dims are a good choice when you need lower latency and cost."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to rebuild the index when I add new vectors?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For HNSW-based databases (ChromaDB, Qdrant, Weaviate, Pinecone), no — the index is updated incrementally at insert time. For IVF-based indexes, adding significantly more vectors than the original training set degrades search quality and you should periodically rebuild."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

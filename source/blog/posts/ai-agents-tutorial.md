@@ -1,18 +1,17 @@
 ---
-title: "AI Agents Tutorial: Build Autonomous AI Systems (2026)"
-description: "Step-by-step tutorial for building a working AI agent with Python and LangChain. Build a research agent with full ReAct loop in runnable code."
-date: "2026-03-15"
-updatedAt: "2026-03-15"
-slug: "/blog/ai-agents-tutorial"
-keywords: ["ai agents tutorial", "build ai agent python", "langchain agent tutorial"]
+title: "Build Your First AI Agent in Python: Step-by-Step Tutorial (2026)"
+description: "Step-by-step Python tutorial to build your first AI agent from scratch using LangChain. Covers ReAct loop, tool calling, and memory — with full runnable code."
+date: "2026-01-26"
+updatedAt: "2026-01-26"
+slug: "ai-agents-tutorial"
+keywords: ["ai agents tutorial", "build ai agent python", "langchain agent tutorial", "first ai agent", "python ai agent beginner"]
 author: "Amit K Chauhan"
 authorTitle: "Software Engineer & AI Builder"
-level: "intermediate"
-time: "15 min"
-stack: ["Python", "LangChain"]
 ---
 
-# AI Agents Tutorial: Build Autonomous AI Systems (2026)
+_Last updated: March 2026_
+
+# Build Your First AI Agent in Python: Step-by-Step Tutorial (2026)
 
 The gap between understanding how agents work conceptually and actually getting one running is wider than most tutorials admit. Documentation explains the happy path. Production shows you the edge cases — malformed tool calls, observations that exceed the context window, loops that don't terminate, and tools that return HTML when you expected JSON.
 

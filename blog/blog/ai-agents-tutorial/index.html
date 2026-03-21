@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need GPT-4o or can I use a cheaper model?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GPT-4o is recommended for multi-step research agents. GPT-4o-mini can work for simple tasks but struggles with complex planning and reliable function calling across many steps. Claude 3.5 Haiku is a good cheaper alternative with strong function-calling performance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I run this without an OpenAI API key?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Replace `ChatOpenAI` with `ChatAnthropic` from `langchain-anthropic` and use `create_openai_functions_agent` with Anthropic's tool-use format, or use the Ollama integration for local models. Local models generally produce less reliable agents for complex tasks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does my agent sometimes fail to write the report?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The most common causes are: the agent reached `max_iterations` before completing, the `write_report` tool received invalid arguments, or the output directory did not exist. Enable `verbose=True` and check the trace to identify which step failed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can the agent run indefinitely without my `max_iterations` setting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Without `max_iterations`, a confused or looping agent will run until it hits the model's context limit or your API rate limit. This can be expensive. Always set both `max_iterations` and `max_execution_time`."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I make the agent faster?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cache search results for repeated queries. Use streaming to show partial results to the user. Consider using a faster model (GPT-4o-mini) for sub-tasks that do not require deep reasoning. Parallelize independent tool calls where your framework supports it."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">
@@ -577,7 +625,7 @@ Cache search results for repeated queries. Use streaming to show partial results
       <div>
         <div class="bio-name">Amit K Chauhan</div>
         <div class="bio-title">Software Engineer &amp; AI Builder</div>
-        <p class="bio-text">Software engineer building practical AI systems — RAG pipelines, LLM applications, and developer AI tools. Created AI Learning Hub to provide a structured, no-fluff roadmap for developers entering AI.</p>
+        <p class="bio-text">AI Learning Hub is a practical learning resource for developers building with LLMs, RAG pipelines, and AI systems. Created by engineers, for engineers — structured, no-fluff guides to help you navigate the fast-moving world of artificial intelligence.</p>
       </div>
     </div>
 

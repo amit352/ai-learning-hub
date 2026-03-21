@@ -152,6 +152,30 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a good AUC score?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Context-dependent. For fraud detection: 0.95+ is expected. For some medical problems: 0.75 can be clinically meaningful. Always compare to a baseline."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I report metrics on validation or test set?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Report final metrics on the test set (held out throughout). Use the validation set only for model selection and hyperparameter tuning."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

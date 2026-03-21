@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I make my application completely immune to prompt injection?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Current LLMs cannot reliably distinguish between instructions and data. Defense in depth reduces risk significantly but cannot eliminate it entirely. Design your application so that injection attacks cause the least possible damage even when they succeed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is GPT-4o more injection-resistant than older models?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Modern frontier models have better instruction following and somewhat better injection resistance than older models. But this is a matter of degree, not kind. New injection techniques continue to emerge. Do not rely on model improvements as your primary defense."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I show users what the system prompt says?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Revealing the system prompt makes injection easier. It is generally better to be transparent about what the AI can and cannot do without revealing the specific instructions. If users need to know the rules, document them in your UI, not by exposing the system prompt."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I test my application for prompt injection vulnerabilities?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use a test set of known injection patterns (many are publicly documented) against your application. Test both direct injection (as the user) and indirect injection (by crafting documents or web pages with embedded instructions). Red-teaming — having someone try to break your application — is more thorough than pattern matching."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should I do if I detect an injection attempt in production?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Log it with full context, return a safe default response to the user, and alert your security team if the pattern is novel. Aggregate injection attempt data to identify emerging attack patterns and improve your defenses."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

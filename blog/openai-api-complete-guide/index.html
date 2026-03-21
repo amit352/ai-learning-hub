@@ -152,6 +152,38 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Which model should I start with?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start with `gpt-4o-mini` — it handles most tasks well at low cost. Upgrade to `gpt-4o` only when you need more complex reasoning."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I count tokens?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use the `tiktoken` library: `pip install tiktoken`. `len(tiktoken.encoding_for_model(\"gpt-4o\").encode(text))` gives the token count."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use the API for commercial projects?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. See OpenAI's usage policies. By default your data is not used for training (you can opt in)."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

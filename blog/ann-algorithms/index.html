@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the recall of HNSW in practice?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "With `M=32`, `ef_construction=200`, and `ef_search=100`, HNSW typically achieves 97–99% recall@10 compared to exact brute-force search. You can reach 99.5%+ recall by increasing `ef_search` to 200–500, at the cost of 2–5x higher latency."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I switch from flat (exact) search to HNSW without reindexing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. HNSW builds a graph during insertion — vectors added to a flat index cannot be converted to HNSW without rebuilding. Plan your index type before loading data."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does HNSW handle deletions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most HNSW implementations (including hnswlib and Qdrant) support soft deletes — the vector is marked deleted but the graph connections are not updated. This means deleted vectors still occupy memory and can reduce search quality over time if many deletions accumulate. Periodic index rebuilds are recommended if deletion rate is high."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between HNSW and NSW (no hierarchy)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "NSW (the original) uses a single flat graph layer. Search complexity is O(log n) on average but degrades to O(n) in worst-case \"shortcut-poor\" graphs. HNSW adds multiple layers, each with progressively fewer nodes. The top layer provides long-range shortcuts that guarantee O(log n) performance regardless of graph structure."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is ScaNN better than HNSW?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Google's ScaNN achieves better recall at the same latency than HNSW on many benchmarks by using anisotropic quantization tailored to angular distance. However, it is harder to configure, less mature in production tooling, and not integrated into most vector databases. HNSW is the better default; ScaNN is worth evaluating if you need maximum performance on large-scale cloud deployments."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

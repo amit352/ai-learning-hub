@@ -1,18 +1,17 @@
 ---
-title: "Full Fine-Tuning vs LoRA: When to Use Each"
-description: "Head-to-head comparison of full fine-tuning vs LoRA for LLMs. Compute cost, memory, quality, and speed with real numbers to guide your decision."
-date: "2026-03-15"
-updatedAt: "2026-03-15"
-slug: "/blog/full-vs-lora"
+title: "Full Fine-Tuning vs LoRA: When to Use Each for LLM Training (2026)"
+description: "Compare full fine-tuning vs LoRA for LLMs with real compute cost, memory, and quality numbers. A practical decision guide with Python training code examples."
+date: "2026-02-11"
+updatedAt: "2026-02-11"
+slug: "full-vs-lora"
 keywords: ["lora vs full fine tuning", "full fine tuning llm", "when to use lora", "parameter efficient fine tuning", "lora comparison"]
 author: "Amit K Chauhan"
 authorTitle: "Software Engineer & AI Builder"
-level: "intermediate"
-time: "11 min"
-stack: ["Python", "HuggingFace", "PyTorch"]
 ---
 
-# Full Fine-Tuning vs LoRA: When to Use Each
+_Last updated: March 2026_
+
+# Full Fine-Tuning vs LoRA: When to Use Each for LLM Training (2026)
 
 The most common question I get after someone finishes their first LoRA fine-tuning run is: "Should I have done full fine-tuning instead?" The answer depends on factors that are often not discussed clearly in tutorials — memory, iteration speed, task type, and what you're actually trying to fix in the model.
 

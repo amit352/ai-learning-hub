@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can users override the system prompt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Partially. Users cannot modify the system prompt directly, but they can send messages that attempt to change the model's behavior — \"Ignore your previous instructions.\" This is called prompt injection. Explicit system prompt instructions and output filtering reduce the risk, but no system prompt is injection-proof."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should the system prompt be visible to users?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Typically not. Most production applications treat system prompts as proprietary configuration. Exposing them reveals your behavioral rules and makes prompt injection easier. However, transparency about what the AI can and cannot do (without revealing the exact prompt) is generally good practice."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long should a system prompt be?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Long enough to cover the behaviors you need, short enough to not waste tokens. For most customer-facing applications, 300–700 tokens covers persona, scope, format, and uncertainty handling. Code-assistant and complex agent prompts may run 1,000–2,000 tokens."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do system prompts work the same across different models?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Different models follow system prompt instructions with different fidelity. GPT-4o and Claude 3.5 follow structured system prompts reliably. Smaller or older models may be less consistent. Always test your system prompt on the specific model you deploy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I handle multi-language users in a system prompt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Add an explicit language rule: \"Always respond in the same language the user writes in, unless the user requests otherwise.\" This single instruction handles multi-language support reliably in most modern models."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

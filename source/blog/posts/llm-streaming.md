@@ -1,18 +1,17 @@
 ---
-title: "Streaming Responses from LLM APIs: Complete Guide"
-description: "Learn how LLM API streaming works with SSE, implement streaming in OpenAI, Anthropic, and Gemini, and build a streaming FastAPI backend with real Python code."
-date: "2026-03-15"
-updatedAt: "2026-03-15"
-slug: "/blog/llm-streaming"
-keywords: ["llm streaming api", "openai streaming", "server-sent events llm", "streaming fastapi"]
+title: "LLM Streaming: Stream Token-by-Token Responses with OpenAI & FastAPI"
+description: "Implement LLM streaming in Python — stream token-by-token responses with OpenAI, build a FastAPI SSE backend, and handle streaming errors and backpressure."
+date: "2026-03-12"
+updatedAt: "2026-03-12"
+slug: "llm-streaming"
+keywords: ["LLM streaming", "OpenAI streaming", "stream LLM responses", "FastAPI SSE", "server-sent events LLM", "token streaming Python"]
 author: "Amit K Chauhan"
 authorTitle: "Software Engineer & AI Builder"
-level: "intermediate"
-time: "12 min"
-stack: ["Python", "FastAPI", "OpenAI"]
 ---
 
-# Streaming Responses from LLM APIs: Complete Guide
+# LLM Streaming: Stream Token-by-Token Responses with OpenAI & FastAPI
+
+Last updated: March 2026
 
 The difference between a good chatbot experience and a frustrating one often comes down to a single parameter: `stream=True`. Without streaming, a user asks a question and stares at a blank screen for three to eight seconds while the model generates the complete response. With streaming, text starts appearing in under a second. The total latency is the same — but the perceived experience is completely different.
 
@@ -389,65 +388,22 @@ Streaming LLM responses is the difference between a demo and a production-qualit
 
 ## FAQ
 
-**Q: Should I always use streaming?**
+### Should I always use streaming?
 
 For user-facing chat interfaces, yes — it makes a meaningful UX difference. For background batch processing, data extraction pipelines, or internal automation where a human is not watching, non-streaming is simpler and equally effective.
 
-**Q: How does SSE compare to WebSockets for LLM streaming?**
+### How does SSE compare to WebSockets for LLM streaming?
 
 SSE is simpler — it works over standard HTTP, reconnects automatically, and requires no handshake. WebSockets are bidirectional and lower latency, but more complex to implement. For LLM streaming (server-to-client text chunks), SSE is the better fit in almost all cases.
 
-**Q: What happens if the stream is interrupted mid-response?**
+### What happens if the stream is interrupted mid-response?
 
 The client-side SSE implementation will attempt to reconnect automatically. From the server side, the LLM API call may still be running — you need to detect the client disconnect and cancel the upstream API call to avoid wasting tokens.
 
-**Q: Can I stream from multiple LLM providers simultaneously?**
+### Can I stream from multiple LLM providers simultaneously?
 
 Yes. You can make parallel streaming calls to multiple providers and merge the streams — useful for fallback logic where you start both a primary and secondary provider and use whichever responds first. This requires async handling and careful stream merging logic.
 
-**Q: How do I measure streaming performance in production?**
+### How do I measure streaming performance in production?
 
 Track three metrics: time to first token (from request to first chunk), tokens per second (throughput), and total request latency. Instrument your streaming generator to record the timestamp of the first yielded chunk. Log all three with each request.
-
----
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Should I always use streaming?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "For user-facing chat interfaces, yes — it makes a meaningful UX difference. For background batch processing, data extraction, or internal automation where a human is not watching, non-streaming is simpler and equally effective."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How does SSE compare to WebSockets for LLM streaming?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "SSE is simpler — it works over standard HTTP, reconnects automatically, and requires no handshake. WebSockets are bidirectional and lower latency but more complex. For LLM streaming, SSE is the better fit in almost all cases."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What happens if the stream is interrupted mid-response?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The client-side SSE implementation will attempt to reconnect automatically. From the server side, the LLM API call may still be running — detect the client disconnect and cancel the upstream API call to avoid wasting tokens."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I measure streaming performance in production?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Track time to first token (from request to first chunk), tokens per second (throughput), and total request latency. Instrument your streaming generator to record the timestamp of the first yielded chunk."
-      }
-    }
-  ]
-}
-</script>

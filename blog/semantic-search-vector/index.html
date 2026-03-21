@@ -152,6 +152,46 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is reciprocal rank fusion and why use it instead of score normalization?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "RRF combines ranked lists based on document position, not raw score values. This matters because BM25 scores and cosine similarity scores are not on comparable scales — you cannot simply average them. RRF avoids the need to normalize scores across systems with different score distributions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does re-ranking slow down search?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A cross-encoder re-ranking 50 candidates on a CPU takes 50–200ms depending on document length and model size. On GPU, it is 5–20ms. For user-facing search where the total latency budget is 500ms, this is acceptable. For sub-50ms latency requirements, skip re-ranking or use a smaller cross-encoder model."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can semantic search handle multi-language queries?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, with a multilingual embedding model. Index all documents with the multilingual model. Users can query in any supported language and retrieve documents in any other language, because all languages share the same embedding space."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What chunk size works best for semantic search?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "256–512 tokens is the most common sweet spot. Shorter chunks (64–128 tokens) lose context; longer chunks (1024+ tokens) dilute the semantic signal. The optimal size depends on your document structure — technical documentation with short, focused sections does well at 128–256 tokens."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

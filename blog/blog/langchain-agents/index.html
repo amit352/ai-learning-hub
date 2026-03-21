@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between `create_react_agent` and `create_openai_functions_agent`?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "`create_react_agent` uses a text-based format where the model writes out \"Thought:\", \"Action:\", and \"Observation:\" lines. `create_openai_functions_agent` uses the provider's native function-calling feature, which returns structured JSON. Function-calling is more reliable and should be preferred for production systems."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use LangChain agents with Anthropic Claude?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Install `langchain-anthropic` and replace `ChatOpenAI` with `ChatAnthropic`. Use `create_openai_functions_agent` with `bind_tools` for Claude's tool-use feature, or use `create_react_agent` which works with any chat model."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I add memory to a LangChain agent?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pass a `chat_history` variable to the prompt via `MessagesPlaceholder` and maintain the history list in your application code. For persistent memory across sessions, use a vector store and retrieve relevant context at the start of each session."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does `handle_parsing_errors=True` actually do?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When the LLM produces a tool call that LangChain cannot parse (invalid JSON, missing required fields), instead of raising an exception it returns the parse error as an observation and lets the agent try again. This prevents hard crashes from transient model output errors."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I debug an agent that is producing wrong answers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Enable `verbose=True` and `return_intermediate_steps=True`. Read through every tool call and observation in the trace. Find the step where the agent's reasoning diverged from correct — usually either a tool returned misleading information or the agent misread the observation."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

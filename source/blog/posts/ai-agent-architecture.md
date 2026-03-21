@@ -1,18 +1,17 @@
 ---
-title: "AI Agent Architecture Explained"
-description: "Deep dive into AI agent components — perception, LLM reasoning core, memory, tool registry, and execution engine. Compare stateless vs stateful agents."
-date: "2026-03-15"
-updatedAt: "2026-03-15"
-slug: "/blog/ai-agent-architecture"
-keywords: ["ai agent architecture", "ai agent components", "stateful ai agents"]
+title: "AI Agent Architecture: Design Patterns for Production LLM Agents (2026)"
+description: "Explore AI agent architecture patterns for production LLM systems. Learn perception, memory, planning, and tool components with Python code and design diagrams."
+date: "2026-01-24"
+updatedAt: "2026-01-24"
+slug: "ai-agent-architecture"
+keywords: ["ai agent architecture", "ai agent components", "stateful ai agents", "production llm agents", "agent design patterns"]
 author: "Amit K Chauhan"
 authorTitle: "Software Engineer & AI Builder"
-level: "intermediate"
-time: "12 min"
-stack: ["Python", "LangChain"]
 ---
 
-# AI Agent Architecture Explained
+_Last updated: March 2026_
+
+# AI Agent Architecture: Design Patterns for Production LLM Agents (2026)
 
 The first agent most developers build is essentially a wrapper: put a system prompt on a model, give it some tools, run a loop. It works well enough for demos. Then something unexpected happens in production — the agent forgets context from three steps ago, calls the wrong tool with garbled parameters, or loops on a task it cannot complete — and you realize the wrapper was hiding a lot of architectural decisions you had not yet made.
 

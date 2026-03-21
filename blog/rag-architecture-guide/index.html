@@ -152,6 +152,62 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between RAG and fine-tuning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Fine-tuning updates model weights to learn new reasoning patterns or writing styles. RAG injects specific information at query time without changing model weights. For applications that need factual accuracy on specific documents that change frequently, RAG is almost always the better choice."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many chunks should I retrieve (what is the right K)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Four to six chunks is the right starting point for most setups. Too few and you miss relevant content; too many and you fill the context window with noise. Measure the precision of your retriever at different K values before tuning."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens when two documents contradict each other?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The LLM will receive both contradicting passages in context and may produce an inconsistent answer. Handling this requires either deduplication at index time, post-retrieval filtering by document authority, or prompt engineering that instructs the model to surface contradictions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does RAG work with non-text content?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Directly, no — vector search operates over embeddings of text. For images, PDFs with charts, or tables, you need a preprocessing step: extract text from tables with a structured parser, generate captions for images using a vision model, then embed the extracted text."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What embedding dimensions should I use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use the default dimensions for your chosen model. `text-embedding-3-small` outputs 1536-dimensional vectors by default. You can reduce to 256 or 512 dimensions with minimal quality loss if vector storage cost is a concern — this is a built-in feature of the v3 OpenAI embedding models."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is RAG suitable for real-time data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "RAG supports near-real-time updates as fast as you can embed and index new documents. Streaming ingestion pipelines can reduce index lag to seconds. True real-time (sub-second) is harder and typically requires dedicated infrastructure."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the best chunk size for RAG?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There is no universal answer. Start with 400–512 characters and measure retrieval quality on your actual query set. Adjust based on whether retrieved chunks are consistently too specific (increase size) or too diluted (decrease size)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I split by tokens or characters?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Characters are simpler and predictable. Tokens are more accurate if you're managing context window budgets precisely. For most use cases, character-based splitting with `RecursiveCharacterTextSplitter` is sufficient."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does overlap affect retrieval quality?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Overlap prevents information loss at chunk boundaries. A 10% overlap provides good protection. More overlap increases index size and retrieval cost; less increases boundary information loss. For most use cases, 10–15% is the right range."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use different chunk sizes for different queries?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not directly in a standard pipeline — chunk size is determined at index time, not query time. You can maintain multiple indexes with different chunk sizes and query both, then fuse results. In practice, most teams settle on one chunk size that works well for their query distribution."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is semantic chunking and when should I use it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Semantic chunking uses embedding distances between sentences to detect topic shifts and split there. It produces more coherent chunks but is slower (requires embedding every sentence) and more expensive. Use it for high-value documents where retrieval coherence is critical and indexing latency is acceptable."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

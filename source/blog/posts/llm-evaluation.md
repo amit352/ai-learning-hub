@@ -1,18 +1,17 @@
 ---
-title: "Evaluation Metrics for LLMs: How to Measure Quality"
-description: "How to evaluate LLM quality with BLEU, ROUGE, perplexity, LLM-as-judge, lm-eval-harness, and custom task-specific evals. With code for running evaluations."
-date: "2026-03-15"
-updatedAt: "2026-03-15"
-slug: "/blog/llm-evaluation"
-keywords: ["llm evaluation metrics", "how to evaluate llm", "lm eval harness", "llm as judge", "perplexity llm"]
+title: "LLM Evaluation: How to Test and Score Language Model Quality (2026)"
+description: "Systematic methods for evaluating LLM quality — perplexity, BLEU, ROUGE, LLM-as-judge, task-specific evals, and benchmark regression testing with Python code."
+date: "2026-03-04"
+updatedAt: "2026-03-04"
+slug: "llm-evaluation"
+keywords: ["LLM evaluation", "how to evaluate LLM", "LLM as judge", "LLM quality metrics", "lm-eval-harness", "perplexity LLM"]
 author: "Amit K Chauhan"
 authorTitle: "Software Engineer & AI Builder"
-level: "intermediate"
-time: "12 min"
-stack: ["Python", "HuggingFace", "OpenAI API"]
 ---
 
-# Evaluation Metrics for LLMs: How to Measure Quality
+# LLM Evaluation: How to Test and Score Language Model Quality (2026)
+
+Last updated: March 2026
 
 The most common evaluation mistake in LLM projects is measuring the wrong thing. A fine-tuned model with excellent perplexity scores can fail completely at the actual task. A model that scores high on automated BLEU metrics can produce outputs that humans find useless. Conversely, a model that looks excellent in casual testing can fail on a systematic benchmark.
 
@@ -345,55 +344,19 @@ The most common evaluation mistake is shipping based on informal testing. Invest
 
 ## FAQ
 
-**What is a good perplexity score for a fine-tuned LLM?**
+### What is a good perplexity score for a fine-tuned LLM?
+
 Perplexity is relative — it depends on the domain, sequence length, and tokenizer. What matters is the trajectory: perplexity should decrease during training and then plateau. If perplexity is decreasing on training data but increasing on eval data, you are overfitting. Compare relative to the base model's perplexity on the same eval set.
 
-**How many test examples do I need for reliable evaluation?**
+### How many test examples do I need for reliable evaluation?
+
 For LLM-as-judge evaluation, 100–200 examples gives statistically stable averages (within 2–3% margin of error). For binary metrics like format adherence, 50–100 examples is often enough. For benchmark suites like MMLU, each task has hundreds of multiple-choice questions built in.
 
-**How do I detect if my LLM judge has systematic bias?**
+### How do I detect if my LLM judge has systematic bias?
+
 Create a "position bias test": run the same pair with chosen and rejected responses swapped. If the judge consistently scores the first-presented response higher regardless of content, you have position bias. Mitigate by averaging scores from both orderings.
 
-**Can I use the fine-tuned model as its own judge?**
+### Can I use the fine-tuned model as its own judge?
+
 Only if it is substantially more capable than the model being evaluated. Typically, you want a more capable model (GPT-4o, Claude 3.5 Sonnet) judging a smaller fine-tuned model. Using the same model as judge creates a self-serving bias where the model favors its own style.
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is a good perplexity score for a fine-tuned LLM?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Perplexity is relative to the domain and tokenizer. What matters is the trajectory: it should decrease during training and plateau. If training perplexity decreases while eval perplexity increases, you are overfitting. Compare relative to the base model on the same eval set."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How many test examples do I need for reliable evaluation?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "For LLM-as-judge evaluation, 100–200 examples gives stable averages within 2–3% margin of error. For binary metrics like format adherence, 50–100 examples is often enough."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I detect if my LLM judge has systematic bias?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Create a position bias test: run the same pair with chosen and rejected responses swapped. If the judge consistently scores the first-presented response higher regardless of content, you have position bias. Mitigate by averaging scores from both orderings."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I use the fine-tuned model as its own judge?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Only if it is substantially more capable than the model being evaluated. Typically use a more capable model (GPT-4o, Claude 3.5 Sonnet) as judge. Using the same model creates a self-serving bias favoring its own style."
-      }
-    }
-  ]
-}
-</script>

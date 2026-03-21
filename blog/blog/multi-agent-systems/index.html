@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "When should I use multi-agent instead of a single agent?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use multi-agent when the task requires genuinely different capabilities (research vs. coding vs. analysis), when the context window of a single agent is insufficient, or when sub-tasks can be parallelized for speed. If your task fits in one agent's context window and does not require specialization, a single agent is simpler and cheaper."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do agents in a multi-agent system communicate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Agents communicate through shared state. In CrewAI, task outputs are passed as context to dependent tasks. In LangGraph, all agents read from and write to a shared state object. Direct agent-to-agent messaging is possible but less common."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can multi-agent systems run agents in parallel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. CrewAI supports `Process.hierarchical` for parallel execution. LangGraph supports parallel node execution with explicit branching. Parallel execution reduces latency but increases cost and API rate limit risk."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I debug a multi-agent system when it produces wrong output?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Enable verbose logging for every agent and inspect the output of each stage independently. Start from the final output and work backwards — if the report is wrong, check the writing agent's input. If the analysis is wrong, check the research output. Isolate each agent and test it with expected inputs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is multi-agent more expensive than single agent?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, typically. The coordination overhead — supervisor reasoning, inter-agent communication — adds tokens. However, specialized agents often produce better results with fewer iterations than a single general agent struggling with a complex task. The cost-quality trade-off depends on task complexity."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

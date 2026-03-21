@@ -152,6 +152,46 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Should I use LangChain or build from scratch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "LangChain for rapid prototyping. Custom for production when you need a simpler dependency tree, easier debugging, and full control. Many teams start with LangChain and gradually replace components as they understand the requirements better."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I prevent prompt injection attacks?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Separate system prompts from user input clearly. Sanitize user input. Use structured outputs instead of free-form responses where possible. Never execute code from LLM output without sandboxing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How should I handle very long documents?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Chunk and retrieve with RAG rather than stuffing the entire document into context. This produces better results and costs less. See RAG explained for the architecture."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What observability tools work for LLM applications?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "LangSmith for LangChain applications. Helicone or Langfuse as API proxies for any provider. Weights & Biases for tracking prompt experiments systematically."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

@@ -152,6 +152,46 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Q: At what request volume does self-hosting become cheaper than the API?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For GPT-4o with average-length requests, the crossover is roughly 5,000–10,000 requests per day, assuming you run a self-hosted 70B model on cloud GPUs. With owned hardware, the crossover is lower. Calculate your specific numbers with the cost framework above."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Q: Can I use GPT-4 outputs to build a training dataset for open source models?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "OpenAI's terms of service prohibit using their model outputs to train competing AI models. You can use outputs for your own products, but training competing models violates the ToS. Anthropic has similar restrictions. Using Llama 70B locally as a teacher for distillation is fully permissible."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Q: Is the quality gap between GPT-4o and Llama 3.3 70B closing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, meaningfully. On practical task benchmarks (coding, extraction, summarization), the gap is now 5–15% depending on the task. On complex reasoning and long-context synthesis, GPT-4o maintains a clearer lead. The gap continues to narrow with each model generation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Q: What is the minimum team size to justify self-hosting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is less about team size and more about having someone who can manage GPU infrastructure and model updates. A single ML engineer can manage a small Ollama/vLLM deployment. The real minimum is having at least one engineer who understands the stack, plus the hardware budget."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

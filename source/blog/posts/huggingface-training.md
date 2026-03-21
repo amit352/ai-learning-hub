@@ -1,18 +1,17 @@
 ---
-title: "Training LLMs with HuggingFace: Complete Guide"
-description: "Complete guide to HuggingFace LLM training: Trainer, TRL SFTTrainer, DPOTrainer, Accelerate for multi-GPU, and PEFT for parameter-efficient fine-tuning."
-date: "2026-03-15"
-updatedAt: "2026-03-15"
-slug: "/blog/huggingface-training"
-keywords: ["huggingface training tutorial", "trl sfttrainer", "huggingface trainer llm", "peft training", "accelerate multi-gpu"]
+title: "Fine-Tuning LLMs with HuggingFace Transformers: Complete Guide (2026)"
+description: "Complete guide to fine-tuning LLMs with HuggingFace Transformers. Covers Trainer, TRL SFTTrainer, PEFT, and Accelerate for multi-GPU training with Python code."
+date: "2026-02-18"
+updatedAt: "2026-02-18"
+slug: "huggingface-training"
+keywords: ["huggingface training tutorial", "trl sfttrainer", "huggingface trainer llm", "peft training", "accelerate multi-gpu", "fine-tuning huggingface"]
 author: "Amit K Chauhan"
 authorTitle: "Software Engineer & AI Builder"
-level: "intermediate"
-time: "14 min"
-stack: ["Python", "HuggingFace", "PyTorch"]
 ---
 
-# Training LLMs with HuggingFace: Complete Guide
+_Last updated: March 2026_
+
+# Fine-Tuning LLMs with HuggingFace Transformers: Complete Guide (2026)
 
 The HuggingFace ecosystem is the de facto standard for open-source LLM training. When a new model architecture is released, the HuggingFace implementations appear within days. When a new training technique becomes popular, TRL adds a trainer for it within weeks. For practitioners, this means you spend time on your specific problem rather than reimplementing standard training loops.
 

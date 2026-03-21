@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is FAISS a vector database?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — FAISS is a vector indexing library. It has no persistence, no metadata storage, and no query API. It is a building block that vector databases use internally. If you need a database, use ChromaDB, Qdrant, or Pinecone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the cheapest vector database option?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ChromaDB, Qdrant, and Weaviate are all open-source and free to self-host. The only cost is your infrastructure. Pinecone's serverless tier has a free quota sufficient for prototyping. pgvector adds no cost if you already run PostgreSQL."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I switch vector databases later without rebuilding my pipeline?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You will need to re-embed your documents if you switch embedding models (not databases). Switching databases requires re-ingesting vectors but not re-embedding, assuming you kept the raw vectors. The main integration cost is the client library and API shape."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does Weaviate's hybrid search work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Weaviate runs BM25 keyword scoring and vector similarity scoring in parallel, then combines them with a weighted reciprocal rank fusion (RRF). The `alpha` parameter controls the balance: `alpha=0` is pure BM25, `alpha=1` is pure vector, `alpha=0.5` blends both equally."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which vector database has the lowest query latency?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For local workloads, hnswlib and FAISS have the lowest latency because there is no network overhead. For cloud services, Pinecone's latency at p99 is typically under 50ms for indexes under 10M vectors. Qdrant self-hosted on a local GPU machine can achieve sub-millisecond p50 latency."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

@@ -152,6 +152,46 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Q: Can this RAG setup handle large document collections?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ChromaDB scales to millions of vectors on a single machine. For tens of thousands of documents, local ChromaDB with `nomic-embed-text` handles the workload well. For hundreds of thousands of documents with concurrent users, consider Qdrant or Weaviate with a dedicated embedding server."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Q: What embedding model should I use with Ollama?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "`nomic-embed-text` is the default recommendation — 768-dimensional vectors, Apache 2.0 licensed, fast inference. For multilingual documents, consider `paraphrase-multilingual-mpnet-base-v2` via sentence-transformers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Q: How do I debug poor RAG retrieval quality?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "First, check your chunk size and overlap — most retrieval quality issues come from chunks that are too small or missing context. Second, inspect the retrieved chunks directly (print `docs` in the chain). Third, try a hybrid search (BM25 + semantic) if semantic-only retrieval is missing keyword-specific content."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Q: Will this setup work offline?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, completely. After initial model pulls and document ingestion, the entire system runs offline. No network requests are made during inference or retrieval."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

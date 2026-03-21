@@ -152,6 +152,46 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can LoRA match full fine-tuning quality?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For task adaptation — teaching a specific output format, style, or narrow task — yes, LoRA at r=32 or r=64 consistently matches full fine-tuning quality. For major domain shifts requiring deep knowledge restructuring, full fine-tuning has an edge, though the gap is often smaller than expected."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much VRAM does full fine-tuning really need?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The rule of thumb: full fine-tuning requires roughly 14-20 bytes per parameter. For a 7B model (7 × 10^9 parameters), that is 98–140 GB VRAM. At bf16 (2 bytes/param) for weights + gradients + 8 bytes for Adam optimizer states: 2 + 2 + 8 = 12 bytes/param = 84 GB minimum. In practice, activations push this to ~100 GB."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a middle ground between LoRA and full fine-tuning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — increasing LoRA rank and the number of target modules gradually approaches full fine-tuning in capacity. At r=256 targeting all layers, LoRA is nearly equivalent to full fine-tuning but still memory-efficient. For most practical purposes, LoRA at r=64–128 across all layers covers the middle ground well."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which is better for deployment?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "LoRA adapters are lighter (50–500MB vs 15GB for a merged 7B model), portable, and can be swapped at runtime. Full fine-tuning produces a single deployable model. For production at scale, the merged LoRA model (adapter merged into base weights) is often the best compromise — small adapter training, standard deployment."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">
@@ -448,7 +488,7 @@ LoRA adapters are lighter (50–500MB vs 15GB for a merged 7B model), portable, 
       <div>
         <div class="bio-name">Amit K Chauhan</div>
         <div class="bio-title">Software Engineer &amp; AI Builder</div>
-        <p class="bio-text">Software engineer building practical AI systems — RAG pipelines, LLM applications, and developer AI tools. Created AI Learning Hub to provide a structured, no-fluff roadmap for developers entering AI.</p>
+        <p class="bio-text">AI Learning Hub is a practical learning resource for developers building with LLMs, RAG pipelines, and AI systems. Created by engineers, for engineers — structured, no-fluff guides to help you navigate the fast-moving world of artificial intelligence.</p>
       </div>
     </div>
 

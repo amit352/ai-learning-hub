@@ -1,18 +1,17 @@
 ---
-title: "Instruction Tuning Explained: How LLMs Learn to Follow Instructions"
-description: "Instruction tuning teaches LLMs to follow natural language instructions via supervised fine-tuning. Covers Alpaca format, chat templates, multi-turn data, and TRL SFTTrainer."
-date: "2026-03-15"
-updatedAt: "2026-03-15"
-slug: "/blog/instruction-tuning"
-keywords: ["instruction tuning", "supervised fine tuning llm", "sft trainer", "alpaca format", "chat template fine tuning"]
+title: "Instruction Tuning: How to Train LLMs to Follow Instructions (2026)"
+description: "Learn how instruction tuning trains LLMs to follow natural language instructions. Covers Alpaca format, chat templates, multi-turn data, and TRL SFTTrainer with Python."
+date: "2026-02-21"
+updatedAt: "2026-02-21"
+slug: "instruction-tuning"
+keywords: ["instruction tuning", "supervised fine tuning llm", "sft trainer", "alpaca format", "chat template fine tuning", "train llm instructions"]
 author: "Amit K Chauhan"
 authorTitle: "Software Engineer & AI Builder"
-level: "intermediate"
-time: "12 min"
-stack: ["Python", "HuggingFace", "TRL"]
 ---
 
-# Instruction Tuning Explained: How LLMs Learn to Follow Instructions
+_Last updated: March 2026_
+
+# Instruction Tuning: How to Train LLMs to Follow Instructions (2026)
 
 A base language model — the raw output of pre-training — is a next-token predictor. It is very good at completing text that looks like the internet. Ask it a question, and it might complete the question rather than answer it, or answer in a style more typical of a web document than a conversational response. Base models are powerful but raw.
 

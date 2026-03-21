@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I handle multiple users simultaneously?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Each user session needs its own `ConversationMemory` instance. In a FastAPI application, store memories in a dictionary keyed by session token, or use Redis with session-scoped TTL for persistence across server restarts."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if the query rewriter changes the meaning of a question?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Log both the original and rewritten queries in production. When you spot rewriting errors, add examples to the rewrite prompt showing the correct behavior. Few-shot prompting in the rewriter is highly effective."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use this with a local LLM?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Replace `ChatOpenAI` with `ChatOllama` pointing at a local Ollama instance. For the rewriter, a 7B model works fine. For final generation, use at least a 13B model for acceptable quality. The rest of the code is unchanged."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many turns of history should I include?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Six to eight turns covers the vast majority of conversational reference patterns. Beyond that, including more history increases token costs without improving quality — most users don't reference things said 15 turns ago."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I use LangChain's built-in ConversationalRetrievalChain?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "LangChain's `ConversationalRetrievalChain` handles the same pattern and is a reasonable starting point. The custom implementation above gives you more control over memory management, rewriting strategy, and streaming behavior — which matters in production."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

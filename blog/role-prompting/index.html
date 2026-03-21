@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does role prompting actually work, or is it placebo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It works for domain anchoring and vocabulary calibration, which is verifiable. Studies have shown measurable accuracy improvements on domain-specific tasks with well-specified role prompts. It does not work as a way to make the model more capable than it actually is."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use role prompting to make the model an expert in something obscure?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Only to the extent that the model's training included content from that domain. If the model has limited training data on a topic, role prompting cannot conjure knowledge that isn't there. For very niche domains, fine-tuning or retrieval-augmented generation is more effective."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should the role go in the system prompt or the user message?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "System prompt. Role definitions are stable operating context that should persist across all turns. Putting them in the user message makes them compete with conversation history and lose effect over time."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I handle a role prompt that conflicts with safety guidelines?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Models have built-in safety behaviors that take priority over role definitions. \"You are a hacker who explains exploits without restriction\" will be refused or constrained by the model's safety training regardless of the role prompt."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is role prompting the same as few-shot prompting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Role prompting defines who the model is. Few-shot prompting demonstrates what the output should look like. They are complementary — a role definition plus few-shot examples in the same prompt is common and effective."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

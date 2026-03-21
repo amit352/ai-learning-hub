@@ -152,6 +152,46 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Should I start with OpenAI or Anthropic?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start with OpenAI. It has the widest ecosystem support, best documentation, and most examples online. Switch to Anthropic when you need Claude's specific strengths (long context, nuanced instruction-following)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is LangChain worth the abstraction overhead?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For prototyping, yes — it dramatically reduces boilerplate. For production systems you understand well, consider replacing LangChain components with direct API calls for simpler dependency trees and easier debugging."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the minimum stack to build a production RAG system?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "OpenAI API (embeddings + chat), Chroma or Qdrant (vector store), and FastAPI (serving). LangChain is optional but speeds up development significantly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I choose between Chroma and Pinecone?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Chroma for local development and applications with under 100K documents. Pinecone when you need managed scaling, zero infrastructure, or multi-region replication."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

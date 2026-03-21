@@ -152,6 +152,46 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Which LLM works best for agents?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GPT-4o or Claude Sonnet for production — they follow tool-calling instructions reliably. GPT-4o-mini and Claude Haiku are good for development and cost-sensitive use cases. Smaller open-source models (7B–13B) often struggle with consistent tool selection."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When should I use LangGraph instead of AgentExecutor?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use LangGraph when you need: explicit state that persists across steps, human-in-the-loop pauses, conditional branching based on tool results, or sub-agents within a larger workflow. Use AgentExecutor for simple single-agent prototypes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I prevent agents from going off-task?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Add explicit constraints to the system prompt (\"Only answer questions related to X. If asked about Y, decline and explain.\"). Add a tool that signals task completion with a structured output. Set `max_iterations` conservatively."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I handle tool failures gracefully?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Return an error string (not raise an exception) from the tool function. The agent will observe the error, adapt its approach, and try an alternative. Raising an exception bypasses the reasoning loop."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

@@ -152,6 +152,30 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "When should I do feature selection?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "After basic preprocessing. Use feature importance from a quick baseline model to identify candidates for removal. Always validate that removing a feature doesn't hurt performance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does feature engineering matter for deep learning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Less so for raw data like images and text (deep learning learns features automatically). For tabular data, yes — good feature engineering still matters even with deep learning."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

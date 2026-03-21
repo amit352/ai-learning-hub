@@ -152,6 +152,46 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How is vector-based recommendation different from collaborative filtering?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Traditional collaborative filtering (matrix factorization, ALS) produces user and item latent factors as output. Vector-based recommendation is the same idea but treated as a retrieval problem — the latent factors are embeddings, and nearest-neighbor search finds the top recommendations efficiently at scale. Modern two-tower models are collaborative filtering implemented with deep learning + ANN retrieval."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the \"cold start problem\" in recommendations?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "New items with no interaction history cannot be embedded using behavioral data — there are no interactions to learn from. Content-based embeddings solve this: embed the item's text/metadata immediately, making it recommendable before anyone has interacted with it. Collaborative embeddings are then blended in as interactions accumulate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many items can a vector recommendation system serve?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "With HNSW indexing, single-node systems handle 10–50M item vectors at sub-10ms latency. Distributed setups (multiple Qdrant or Pinecone nodes) serve hundreds of millions of items. Netflix and Spotify operate at the billion-item scale using custom distributed ANN infrastructure."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I use a separate embedding model for recommendation vs. search?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Often yes. Search embeddings are trained for asymmetric query-document retrieval. Recommendation embeddings are trained on behavioral similarity (users who interacted with A also interacted with B). For content-based recommendations that need to align with search results (e.g., \"items similar to your search\"), using the same embedding model simplifies the system. For pure behavioral recommendation, specialized collaborative embedding models perform better."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

@@ -1,18 +1,17 @@
 ---
-title: "Rate Limiting Strategies for LLM APIs"
-description: "Handle LLM API rate limits in production — TPM/RPM limits by tier, exponential backoff with jitter, token bucket implementation, queue-based throttling, and Azure PTU vs PAYG."
-date: "2026-03-15"
-updatedAt: "2026-03-15"
-slug: "/blog/llm-rate-limits"
-keywords: ["llm api rate limits", "openai rate limit", "exponential backoff llm", "tpm rpm limits"]
+title: "LLM Rate Limits: Handle Token Limits and API Throttling in Python (2026)"
+description: "Handle LLM API rate limits in production — TPM and RPM limits, exponential backoff with jitter, token bucket rate limiting, and queue-based throttling in Python."
+date: "2026-03-11"
+updatedAt: "2026-03-11"
+slug: "llm-rate-limits"
+keywords: ["LLM rate limits", "OpenAI rate limit", "API throttling Python", "TPM RPM limits", "exponential backoff LLM", "token bucket rate limiting"]
 author: "Amit K Chauhan"
 authorTitle: "Software Engineer & AI Builder"
-level: "intermediate"
-time: "13 min"
-stack: ["Python", "OpenAI"]
 ---
 
-# Rate Limiting Strategies for LLM APIs
+# LLM Rate Limits: Handle Token Limits and API Throttling in Python (2026)
+
+Last updated: March 2026
 
 Rate limit errors are one of the most common production issues in LLM-powered applications. Not because they are hard to handle, but because most developers handle them in development (where traffic is low) and are surprised when the same code fails at scale.
 
@@ -396,61 +395,18 @@ Rate limiting is a solved problem, but it requires deliberate implementation. Un
 
 ## FAQ
 
-**Q: How do I know which limit I am hitting — RPM or TPM?**
+### How do I know which limit I am hitting — RPM or TPM?
 
 The 429 response body includes a message like "Rate limit reached for requests" (RPM) or "Rate limit reached for tokens" (TPM). You can also inspect the `x-ratelimit-remaining-requests` and `x-ratelimit-remaining-tokens` headers on any response to see which is closer to exhaustion.
 
-**Q: My application is small but I keep hitting rate limits. Why?**
+### My application is small but I keep hitting rate limits. Why?
 
 Common cause: large context windows. If your system prompt plus conversation history is 20K tokens, and you handle 5 concurrent users each making a request per minute, that is 100K TPM — which exceeds Tier 1 limits for GPT-4o. Audit your actual token counts per request.
 
-**Q: Is Azure OpenAI PTU worth it?**
+### Is Azure OpenAI PTU worth it?
 
 PTU makes sense when you have predictable, sustained high throughput and the utilization exceeds about 50–60% of the provisioned capacity. Below that, PAYG is almost always cheaper. PTU pricing is hourly, so idle capacity is wasted. Do the math against your actual p95 TPM before committing.
 
-**Q: How do I handle rate limits in background batch jobs?**
+### How do I handle rate limits in background batch jobs?
 
 For batch jobs, add a generous sleep between requests (calculate based on TPM budget / average tokens per request). OpenAI's Batch API is a better alternative — it processes requests asynchronously and returns results within 24 hours at 50% lower cost, with separate (higher) rate limits.
-
----
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How do I know which limit I am hitting — RPM or TPM?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The 429 response body includes a message indicating RPM or TPM. You can also inspect x-ratelimit-remaining-requests and x-ratelimit-remaining-tokens headers on any response to see which is closer to exhaustion."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "My application is small but I keep hitting rate limits. Why?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Common cause: large context windows. If your system prompt plus conversation history is 20K tokens and you handle 5 concurrent users, that is 100K TPM — which can exceed Tier 1 limits for GPT-4o. Audit your actual token counts per request."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is Azure OpenAI PTU worth it?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "PTU makes sense with predictable, sustained high throughput above 50-60% utilization. Below that, PAYG is almost always cheaper. PTU pricing is hourly, so idle capacity is wasted."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I handle rate limits in background batch jobs?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Add generous sleep between requests based on TPM budget. OpenAI's Batch API is a better alternative — processes requests asynchronously within 24 hours at 50% lower cost with separate higher rate limits."
-      }
-    }
-  ]
-}
-</script>

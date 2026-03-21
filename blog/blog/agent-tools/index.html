@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does the agent know which tool to call?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The model reads the name and description of every available tool in the context. Based on the current task and reasoning step, it selects the most appropriate tool and generates arguments. Tool selection quality depends directly on how clear and specific the descriptions are."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can an agent call multiple tools in parallel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Standard LangChain AgentExecutor calls tools sequentially. For parallel tool calls, LangGraph supports concurrent node execution, and some frameworks expose parallel function calling. Parallel calls improve speed but require careful handling of concurrent state."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens when a tool returns an error?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The error becomes an observation in the agent's context. The agent can then decide to retry with different arguments, try an alternative tool, or report the failure to the user. `handle_parsing_errors=True` in AgentExecutor handles malformed tool calls specifically."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I use the `@tool` decorator or `StructuredTool.from_function()`?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The `@tool` decorator is simpler for quick implementations. `StructuredTool.from_function()` gives you more control over the tool name, description, and schema separately from the function definition. For production tools where you want maximum clarity, `StructuredTool` with a separate Pydantic schema is more explicit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I prevent an agent from calling a dangerous tool accidentally?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Implement access controls inside the tool function (not in the description alone). The model cannot be relied upon to never call a tool — it will sometimes call tools unexpectedly. Use allowlists, input validation, and permission checks inside the function body as the true safety layer."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">
@@ -636,7 +684,7 @@ Implement access controls inside the tool function (not in the description alone
       <div>
         <div class="bio-name">Amit K Chauhan</div>
         <div class="bio-title">Software Engineer &amp; AI Builder</div>
-        <p class="bio-text">Software engineer building practical AI systems — RAG pipelines, LLM applications, and developer AI tools. Created AI Learning Hub to provide a structured, no-fluff roadmap for developers entering AI.</p>
+        <p class="bio-text">AI Learning Hub is a practical learning resource for developers building with LLMs, RAG pipelines, and AI systems. Created by engineers, for engineers — structured, no-fluff guides to help you navigate the fast-moving world of artificial intelligence.</p>
       </div>
     </div>
 

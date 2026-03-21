@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the best LoRA rank to start with?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start at r=16 for most fine-tuning tasks. If eval loss is high and the model is clearly underfitting, increase to r=32 or r=64. If you have a simple, narrow task (e.g., enforcing a specific output format), r=8 is often sufficient and trains faster."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use LoRA with models larger than 13B?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. LoRA works at any model size. For 30B+ models, you'll want QLoRA (4-bit quantization) to keep VRAM manageable. A 70B model with QLoRA + LoRA fits on an A100 80GB. Unsloth has pre-quantized versions of most popular models ready to fine-tune."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I know if my LoRA fine-tuning is working?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Track both training and eval loss curves. Training loss should decrease smoothly. Eval loss should also decrease and then level off. If eval loss rises while training loss falls, you're overfitting. Beyond metrics, generate test examples every 100 steps and evaluate output quality manually."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the merged model exactly equivalent to loading base + adapter separately?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Mathematically yes — merging computes `W_new = W_base + B×A` per layer, which produces identical outputs to applying the adapter at inference time. The difference is inference speed: a merged model has no adapter overhead, while a loaded adapter adds computation at each forward pass."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I fine-tune on MacBook with Apple Silicon?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, with limitations. Using MPS backend (`device_map=\"mps\"`), you can fine-tune models up to ~7B on a 32GB M-series Mac. Unsloth does not support MPS — use standard HuggingFace PEFT. Training is slower than GPU, but feasible for experimentation."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

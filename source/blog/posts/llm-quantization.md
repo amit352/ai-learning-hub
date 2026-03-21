@@ -1,18 +1,17 @@
 ---
-title: "LLM Quantization Explained: Run Bigger Models on Less Hardware"
-description: "Understand LLM quantization — INT8, INT4, GGUF formats, quality vs size trade-offs, BitsAndBytes, and how to choose the right quantization level for production."
-date: "2026-03-15"
-updatedAt: "2026-03-15"
-slug: "/blog/llm-quantization"
-keywords: ["llm quantization", "gguf quantization", "int4 quantization", "bitsandbytes"]
+title: "LLM Quantization: Run 70B Models on Consumer GPUs with GGUF & GPTQ"
+description: "Master LLM quantization — INT4, INT8, GGUF, and GPTQ formats — to run 70B models on consumer GPUs with minimal quality loss, with Python examples."
+date: "2026-03-09"
+updatedAt: "2026-03-09"
+slug: "llm-quantization"
+keywords: ["LLM quantization", "GGUF quantization", "GPTQ", "INT4 quantization", "run 70B model consumer GPU", "BitsAndBytes"]
 author: "Amit K Chauhan"
 authorTitle: "Software Engineer & AI Builder"
-level: "intermediate"
-time: "12 min"
-stack: ["Python", "Ollama"]
 ---
 
-# LLM Quantization Explained: Run Bigger Models on Less Hardware
+# LLM Quantization: Run 70B Models on Consumer GPUs with GGUF & GPTQ
+
+Last updated: March 2026
 
 A 70-billion-parameter model stored in 16-bit floating point occupies roughly 140GB of VRAM. For the vast majority of developers, that is simply not runnable. An A100 80GB GPU maxes out at 40B parameters in FP16, and consumer hardware stops meaningfully at 13B. If quantization did not exist, the open source LLM ecosystem would be largely inaccessible outside hyperscaler infrastructure.
 
@@ -243,55 +242,18 @@ Quantization is what makes the open source LLM ecosystem practical on accessible
 
 ## FAQ
 
-**Q: Does quantization permanently reduce model quality?**
+### Does quantization permanently reduce model quality?
+
 The quantized model file has reduced precision, but the loss is largely irreversible. You cannot "re-quantize" to higher precision from a Q4 model — you need the original FP16 weights. This is why it is important to keep or pin access to the original model checkpoint.
 
-**Q: Which is better for CPU inference — GGUF Q4 or BitsAndBytes INT8?**
+### Which is better for CPU inference — GGUF Q4 or BitsAndBytes INT8?
+
 GGUF Q4 via llama.cpp is significantly better for CPU inference. BitsAndBytes requires CUDA and does not work on CPU. For CPU-only deployments, GGUF is the only practical choice.
 
-**Q: Can I fine-tune a quantized model?**
+### Can I fine-tune a quantized model?
+
 You can fine-tune using QLoRA (LoRA adapters on a NF4 quantized base model). The base model weights stay frozen and quantized; only the LoRA adapter weights are trained in full precision. This is how most low-cost fine-tuning is done.
 
-**Q: How much quality is lost with Q4_K_M vs full precision?**
-On standard benchmarks (MMLU, HumanEval), Q4_K_M models typically score 1–4% lower than FP16. In production applications, the difference is often imperceptible. Tasks involving precise numerical calculations or rare knowledge are most affected.
+### How much quality is lost with Q4_K_M vs full precision?
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Does quantization permanently reduce model quality?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The quantized model file has reduced precision and you cannot reverse it — you need the original FP16 weights to re-quantize. The quality loss is permanent in the quantized file."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Which is better for CPU inference — GGUF Q4 or BitsAndBytes INT8?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "GGUF Q4 via llama.cpp is significantly better for CPU inference. BitsAndBytes requires CUDA and does not work on CPU. For CPU-only deployments, GGUF is the only practical choice."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I fine-tune a quantized model?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "You can fine-tune using QLoRA — LoRA adapters on a NF4 quantized base model. The base model weights stay frozen and quantized; only the LoRA adapter weights are trained in full precision."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How much quality is lost with Q4_K_M vs full precision?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "On standard benchmarks, Q4_K_M models typically score 1–4% lower than FP16. In production applications, the difference is often imperceptible. Tasks involving precise numerical calculations are most affected."
-      }
-    }
-  ]
-}
-</script>
+On standard benchmarks (MMLU, HumanEval), Q4_K_M models typically score 1–4% lower than FP16. In production applications, the difference is often imperceptible. Tasks involving precise numerical calculations or rare knowledge are most affected.

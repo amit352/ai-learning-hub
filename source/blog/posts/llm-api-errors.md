@@ -1,18 +1,17 @@
 ---
-title: "LLM API Error Handling Best Practices"
-description: "Handle LLM API errors in production — 429 rate limits, 500 server errors, context length exceeded, content filters, circuit breaker pattern, and fallback providers."
-date: "2026-03-15"
-updatedAt: "2026-03-15"
-slug: "/blog/llm-api-errors"
-keywords: ["llm api error handling", "openai error handling", "llm 429 error", "circuit breaker llm"]
+title: "LLM API Error Handling: Retries, Rate Limits & Fallbacks in Python (2026)"
+description: "Learn how to handle LLM API errors robustly in Python — retries, exponential backoff, rate limits, and multi-provider fallbacks for production apps."
+date: "2026-02-25"
+updatedAt: "2026-02-25"
+slug: "llm-api-errors"
+keywords: ["LLM API errors", "OpenAI error handling", "API retry Python", "rate limit handling", "LLM fallback", "exponential backoff LLM"]
 author: "Amit K Chauhan"
 authorTitle: "Software Engineer & AI Builder"
-level: "intermediate"
-time: "12 min"
-stack: ["Python", "OpenAI"]
 ---
 
-# LLM API Error Handling Best Practices
+# LLM API Error Handling: Retries, Rate Limits & Fallbacks in Python (2026)
+
+Last updated: March 2026
 
 LLM API errors fall into two categories: the ones developers handle in their first week (rate limits, auth failures) and the ones that bite them in production three months later (context length exceeded with user data, content filter triggering on legitimate business queries, cascade failures during provider outages).
 
@@ -538,65 +537,22 @@ LLM API errors divide into four categories: client errors (fix the request), aut
 
 ## FAQ
 
-**Q: What is the difference between a 429 and a 503?**
+### What is the difference between a 429 and a 503?
 
 A 429 (Too Many Requests) means you exceeded your rate limit — the provider's service is up, but you have consumed your allowed quota. A 503 (Service Unavailable) means the provider's service itself is temporarily unavailable. Both are retryable, but 503 indicates a provider-side issue and warrants activating your circuit breaker if it persists.
 
-**Q: How do I tell if a content filter blocked the request vs the model refusing to answer?**
+### How do I tell if a content filter blocked the request vs the model refusing to answer?
 
 A content filter block on the input returns a 400 error with `content_filter` in the error body before any generation occurs. A model refusal (e.g., "I can't help with that") returns a 200 status with a generated text response — the model decided to decline. Check `finish_reason == "content_filter"` for output-side filtering.
 
-**Q: How long should I wait before retrying a rate-limited request?**
+### How long should I wait before retrying a rate-limited request?
 
 Minimum: honor the `Retry-After` response header if present. Without it, use exponential backoff starting at 1 second. For TPM limits (most common), the limit resets every 60 seconds — so a maximum wait of 70 seconds covers the full reset window. Add jitter to prevent synchronized retries.
 
-**Q: Should I implement fallback providers for all applications?**
+### Should I implement fallback providers for all applications?
 
 Not necessarily. Fallback providers add complexity — maintaining API keys and client code for multiple providers, normalizing their response formats, and testing both paths. It is worth the investment for revenue-critical, user-facing applications with SLA commitments. For internal tools or low-stakes applications, a clear error message is often sufficient.
 
-**Q: How do I monitor error rates in production?**
+### How do I monitor error rates in production?
 
 Emit structured log events with error type, provider, model, and status code on every error. Set up alerts when: error rate exceeds 5% over a 5-minute window, or a specific error type (like 429) exceeds a threshold. Most observability platforms (Datadog, Grafana, Sentry) can build these dashboards from structured logs.
-
----
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the difference between a 429 and a 503?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "A 429 (Too Many Requests) means you exceeded your rate limit — the provider is up but you consumed your quota. A 503 (Service Unavailable) means the provider's service is temporarily unavailable. Both are retryable, but 503 warrants activating circuit breaking."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I tell if a content filter blocked the request vs the model refusing to answer?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "A content filter block on input returns a 400 error with 'content_filter' in the error body. A model refusal returns a 200 status with generated text. Check finish_reason == 'content_filter' for output-side filtering."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long should I wait before retrying a rate-limited request?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Honor the Retry-After header if present. Without it, use exponential backoff starting at 1 second. For TPM limits, the limit resets every 60 seconds — so a maximum wait of 70 seconds covers the full reset window. Add jitter to prevent synchronized retries."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Should I implement fallback providers for all applications?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Not necessarily. Fallback providers add complexity. It is worth the investment for revenue-critical user-facing applications with SLA commitments. For internal tools or low-stakes applications, a clear error message is often sufficient."
-      }
-    }
-  ]
-}
-</script>

@@ -1,18 +1,17 @@
 ---
-title: "Running LLMs Locally with Ollama: Complete Guide"
-description: "Complete Ollama tutorial — install, pull models, Python integration, custom Modelfiles, GPU vs CPU inference, and building a local chatbot with streaming."
-date: "2026-03-15"
-updatedAt: "2026-03-15"
-slug: "/blog/ollama-tutorial"
-keywords: ["ollama tutorial", "run llm locally", "ollama python", "local llm inference"]
+title: "Ollama Tutorial: Run Llama 3, Mistral & Gemma Locally in 10 Minutes (2026)"
+description: "Get started with Ollama in 10 minutes — install, pull models like Llama 3 and Mistral, integrate with Python, build a local chatbot, and use custom Modelfiles."
+date: "2026-03-17"
+updatedAt: "2026-03-17"
+slug: "ollama-tutorial"
+keywords: ["Ollama tutorial", "run Llama 3 locally", "Ollama Python", "local LLM Ollama", "Mistral Ollama", "Gemma local inference"]
 author: "Amit K Chauhan"
 authorTitle: "Software Engineer & AI Builder"
-level: "intermediate"
-time: "13 min"
-stack: ["Python", "Ollama"]
 ---
 
-# Running LLMs Locally with Ollama: Complete Guide
+# Ollama Tutorial: Run Llama 3, Mistral & Gemma Locally in 10 Minutes (2026)
+
+Last updated: March 2026
 
 The first time you run a large language model locally and see tokens streaming into your terminal without a network request, without an API key, without billing — something shifts in how you think about AI infrastructure. The model is just software. It runs on your hardware. You own the inference.
 
@@ -400,58 +399,22 @@ Ollama makes local LLM inference accessible without sacrificing flexibility. The
 
 ## FAQ
 
-**Q: Does Ollama work without a GPU?**
+### Does Ollama work without a GPU?
+
 Yes. Ollama falls back to CPU inference using llama.cpp when no compatible GPU is detected. Performance is significantly slower (2–8 tok/s vs 30–80 tok/s on GPU), but it works. Stick to 7B or smaller models for CPU-only inference.
 
-**Q: Can I use Ollama in production serving multiple users?**
+### Can I use Ollama in production serving multiple users?
+
 For low-concurrency use (up to ~5 concurrent requests), yes. For high-concurrency production, vLLM is more appropriate — it implements continuous batching and PagedAttention, which Ollama does not. Ollama is primarily optimized for single-user local inference.
 
-**Q: How do I connect LangChain to Ollama?**
+### How do I connect LangChain to Ollama?
+
 LangChain has a native Ollama integration: `from langchain_ollama import ChatOllama`. Alternatively, use LangChain's OpenAI provider with `base_url="http://localhost:11434/v1"`. Both work identically.
 
-**Q: What happens to the model when I close the terminal?**
+### What happens to the model when I close the terminal?
+
 The Ollama service runs as a background daemon, not attached to your terminal session. Models stay loaded in memory until the OLLAMA_KEEP_ALIVE timeout expires (default: 5 minutes). The service persists until you stop it explicitly.
 
-**Q: Can I run Ollama on a remote server and access it from my laptop?**
-Yes. Set `OLLAMA_HOST=0.0.0.0:11434` on the server before starting Ollama, then point your client to `http://server-ip:11434` instead of localhost. Add firewall rules to restrict access appropriately.
+### Can I run Ollama on a remote server and access it from my laptop?
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Does Ollama work without a GPU?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Ollama falls back to CPU inference using llama.cpp when no compatible GPU is detected. Performance is slower (2–8 tok/s vs 30–80 tok/s on GPU). Stick to 7B or smaller models for CPU-only inference."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I use Ollama in production serving multiple users?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "For low-concurrency use up to about 5 concurrent requests, yes. For high-concurrency production, vLLM is more appropriate as it implements continuous batching and PagedAttention."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I connect LangChain to Ollama?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "LangChain has a native Ollama integration via langchain_ollama.ChatOllama. Alternatively, use LangChain's OpenAI provider with base_url set to http://localhost:11434/v1."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I run Ollama on a remote server and access it from my laptop?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Set OLLAMA_HOST=0.0.0.0:11434 on the server before starting Ollama, then point your client to http://server-ip:11434 instead of localhost."
-      }
-    }
-  ]
-}
-</script>
+Yes. Set `OLLAMA_HOST=0.0.0.0:11434` on the server before starting Ollama, then point your client to `http://server-ip:11434` instead of localhost. Add firewall rules to restrict access appropriately.

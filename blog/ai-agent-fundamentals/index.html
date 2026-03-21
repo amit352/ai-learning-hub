@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between an AI agent and a chatbot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A chatbot responds once per user message. An agent acts in a loop across multiple steps, using tools to gather information and take actions autonomously."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When should I use agents vs standard RAG?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use RAG when you need to answer questions about documents. Use agents when you need to take actions, use multiple tools in flexible combinations, or complete tasks requiring multi-step planning."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are agents reliable enough for production?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on task complexity and how narrowly scoped the tools are. Well-defined tasks (look up a record, draft an email) can be production-ready. Open-ended tasks have higher failure rates and need human oversight or fallback mechanisms."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I prevent an agent from looping forever?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Set a `max_iterations` limit. Add a \"finish\" tool the agent must call when done. Use LangGraph's recursion limit for graph-based agents. Always set a wall-clock timeout as a final backstop."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What models work best for agents?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GPT-4o and GPT-4o-mini for OpenAI. Claude 3.5 Sonnet for Anthropic. For local models, Llama 3.1 70B performs well on tool selection. Smaller models under 7B often struggle with correct tool use."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What vector database should I use in production?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For self-hosted: Qdrant. It offers excellent performance, filtering, and Rust-based reliability. For managed: Pinecone for simplicity, Weaviate for complex filtering needs. ChromaDB is excellent for development but not recommended for high-traffic production."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I handle RAG system downtime for document updates?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Maintain two vector stores (blue/green). Index updates to the inactive store while the active store serves traffic. Swap the pointer when indexing is complete. This provides zero-downtime document updates."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's a realistic latency target for production RAG?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "P50 under 1.5 seconds, P95 under 3 seconds is achievable for most setups. The main contributors to latency are: query embedding (~50ms), vector search (~100ms), LLM generation (600ms–2s). Reranking adds ~100ms. Caching common queries to Redis cuts p50 to under 10ms."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I handle PII in the knowledge base?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Run PII detection (spaCy, AWS Comprehend, Azure PII detection) on documents before indexing. Redact or pseudonymize sensitive fields. Store PII-related metadata (classification level, data owner) in chunk metadata for access control enforcement at retrieval time."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I expose the RAG API directly to end users?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not without rate limiting and authentication. Add a rate limiter (token bucket per user), API key authentication, and input validation. A raw RAG API exposed to the internet will be scraped, prompt-injected, and abused."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

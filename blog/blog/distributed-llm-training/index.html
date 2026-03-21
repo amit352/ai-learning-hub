@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need distributed training for LoRA fine-tuning of a 7B model?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. With QLoRA, a 7B model fine-tunes on a single 16GB GPU. Distributed training is necessary when the model does not fit on one GPU for your training mode (full fine-tuning), or when you want to scale throughput significantly (process 4x more data per hour). For most LoRA fine-tuning projects, single-GPU with Unsloth is sufficient."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the practical difference between ZeRO-2 and ZeRO-3?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ZeRO-2 shards optimizer states and gradients, keeping the full model parameters on each GPU. ZeRO-3 shards everything including model parameters — each GPU holds only a fraction of the weights. ZeRO-3 has higher communication overhead (all-gather operations every forward pass) but enables training models that are larger than your per-GPU VRAM."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I know if my distributed training is bottlenecked by communication?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Run `nvidia-smi dmon` during training and check GPU compute utilization. If GPUs are at 70–80% utilization with frequent drops to 0%, communication is the bottleneck. Increasing `per_device_train_batch_size` (to amortize communication overhead) or enabling `overlap_comm: true` in DeepSpeed reduces the communication fraction of wall time."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use LoRA with FSDP?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, with the caveat of setting `fsdp_use_orig_params: true` in your Accelerate config. Without it, FSDP's parameter sharding conflicts with LoRA's parameter wrapping. Unsloth does not currently support FSDP — use standard PEFT with Accelerate for multi-GPU LoRA training."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the fastest path to train a 70B model?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If fitting in memory: 4×A100 80GB with FSDP ZeRO-3 or DeepSpeed ZeRO-3, using QLoRA + LoRA for memory efficiency. If not fitting: add CPU offloading with DeepSpeed ZeRO-3 (slower due to PCIe transfer) or use tensor parallelism with Megatron-LM (more complex setup but highest throughput)."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">
@@ -580,7 +628,7 @@ If fitting in memory: 4×A100 80GB with FSDP ZeRO-3 or DeepSpeed ZeRO-3, using Q
       <div>
         <div class="bio-name">Amit K Chauhan</div>
         <div class="bio-title">Software Engineer &amp; AI Builder</div>
-        <p class="bio-text">Software engineer building practical AI systems — RAG pipelines, LLM applications, and developer AI tools. Created AI Learning Hub to provide a structured, no-fluff roadmap for developers entering AI.</p>
+        <p class="bio-text">AI Learning Hub is a practical learning resource for developers building with LLMs, RAG pipelines, and AI systems. Created by engineers, for engineers — structured, no-fluff guides to help you navigate the fast-moving world of artificial intelligence.</p>
       </div>
     </div>
 

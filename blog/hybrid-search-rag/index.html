@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does hybrid search always improve RAG quality?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not always. For general-purpose document Q&A with natural language queries, pure semantic retrieval often matches hybrid performance. Hybrid search provides the most improvement when queries contain specific terms, identifiers, or acronyms that may not appear in semantically similar chunks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between BM25 and TF-IDF?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both are bag-of-words models. BM25 improves on TF-IDF with term frequency saturation (diminishing returns on repeated term counts) and document length normalization. BM25 consistently outperforms TF-IDF in modern retrieval benchmarks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use hybrid search with local embeddings?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The dense component can use any embedding model — `sentence-transformers`, Ollama embeddings, or any HuggingFace model. The BM25 component is independent of the embedding model entirely."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Reciprocal Rank Fusion vs weighted sum?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "RRF combines document ranks rather than raw scores, making it robust to score scale differences. Weighted sum requires normalized scores and a tuned alpha parameter but gives more control. Start with RRF; switch to weighted sum if you have enough labeled data to tune alpha."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I handle queries that are purely semantic vs purely lexical?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The same hybrid retriever handles both well. When a query has no exact-match terms, BM25 returns low-confidence results that get downranked in fusion. When a query is all exact terms, the semantic results supplement BM25's precision with related context. You don't need to route queries to different retrievers."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

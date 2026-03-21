@@ -1,18 +1,17 @@
 ---
-title: "Memory Systems in AI Agents"
-description: "Short-term, long-term, episodic, and semantic memory in AI agents. LangChain memory implementations and trade-offs between memory types for production systems."
-date: "2026-03-15"
-updatedAt: "2026-03-15"
-slug: "/blog/agent-memory"
-keywords: ["ai agent memory", "langchain memory", "vector store agent memory"]
+title: "Agent Memory Systems: Short-Term, Long-Term & Episodic Memory for LLM Agents"
+description: "Understand short-term, long-term, and episodic memory in LLM agents. Learn how to implement each memory type in Python with LangChain and vector stores."
+date: "2026-01-17"
+updatedAt: "2026-01-17"
+slug: "agent-memory"
+keywords: ["ai agent memory", "langchain memory", "vector store agent memory", "episodic memory llm", "long-term agent memory"]
 author: "Amit K Chauhan"
 authorTitle: "Software Engineer & AI Builder"
-level: "intermediate"
-time: "13 min"
-stack: ["Python", "LangChain"]
 ---
 
-# Memory Systems in AI Agents
+_Last updated: March 2026_
+
+# Agent Memory Systems: Short-Term, Long-Term & Episodic Memory for LLM Agents
 
 A stateless agent is like a developer who loses all their context every time they context-switch. They can follow instructions on the current task, but they have no idea what they decided yesterday, what approach they already tried, or why they made a particular architectural choice last week. Functional for isolated tasks. Frustrating for anything that spans multiple interactions.
 

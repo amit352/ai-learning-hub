@@ -152,6 +152,38 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Python 2 or Python 3?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Python 3 only. Python 2 reached end-of-life in 2020 and is unsupported by all major ML libraries."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I use Jupyter notebooks or Python scripts?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Notebooks for exploration and EDA. Scripts for reusable pipeline code. Production code should always be in `.py` files."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What about GPU acceleration?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For classical ML, CPU is fine. For deep learning use PyTorch or TensorFlow with CUDA. For large-scale tabular data consider RAPIDS (cuML)."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

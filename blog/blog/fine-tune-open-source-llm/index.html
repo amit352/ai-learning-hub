@@ -152,6 +152,46 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Q: How much GPU memory do I need for QLoRA fine-tuning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "With Unsloth, a Llama 3.1 8B QLoRA fine-tuning run fits in 14–16GB VRAM. An RTX 3080 (10GB) can handle it with gradient checkpointing and a batch size of 1. An RTX 3090 or 4090 (24GB) is comfortable."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Q: How long does fine-tuning take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For a 500-example dataset, 3 epochs on an RTX 4090 takes roughly 15–30 minutes with Unsloth. Larger datasets scale roughly linearly. Cloud GPU costs run $1–3 for a typical small fine-tuning run on Lambda Labs or RunPod."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Q: Can I fine-tune on my MacBook with Apple Silicon?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, but slowly. Unsloth does not support MPS (Metal) currently — use the standard PEFT/TRL stack with `device_map=\"mps\"`. Training speed is roughly 5–10× slower than an equivalent NVIDIA GPU. For small datasets (< 500 examples), this is feasible."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Q: Should I merge adapters before deployment?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For Ollama serving, yes — you need a merged model for GGUF export. For vLLM serving, you can serve the merged FP16 model directly. Keep the unmerged adapter weights so you can re-merge at different quantization levels or continue fine-tuning from the adapter checkpoint."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">
@@ -630,7 +670,7 @@ For Ollama serving, yes — you need a merged model for GGUF export. For vLLM se
       <div>
         <div class="bio-name">Amit K Chauhan</div>
         <div class="bio-title">Software Engineer &amp; AI Builder</div>
-        <p class="bio-text">Software engineer building practical AI systems — RAG pipelines, LLM applications, and developer AI tools. Created AI Learning Hub to provide a structured, no-fluff roadmap for developers entering AI.</p>
+        <p class="bio-text">AI Learning Hub is a practical learning resource for developers building with LLMs, RAG pipelines, and AI systems. Created by engineers, for engineers — structured, no-fluff guides to help you navigate the fast-moving world of artificial intelligence.</p>
       </div>
     </div>
 

@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between an agent's memory and its context window?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The context window is the immediate input the model processes on a single call — it is short-term and ephemeral. Memory is a design pattern that persists information across calls, either by including relevant history in the context window or by storing it externally in a vector store or database."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I use LangChain's built-in memory or build my own?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "LangChain's built-in memory (ConversationBufferMemory, ConversationSummaryMemory) works well for simple cases. For production systems with multiple users, session management, and persistence requirements, a custom memory implementation backed by a real database gives you more control."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I handle the case where a tool returns an error?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Include error handling in every tool function and return descriptive error messages rather than raising exceptions. The error message becomes an observation that the agent reads. A clear message like \"Error: API rate limit exceeded, retry in 60 seconds\" lets the agent decide whether to retry, use an alternative, or report the limitation to the user."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the maximum number of tools an agent should have?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There is no hard limit, but more tools means more tokens spent on tool schemas and a higher chance of the model selecting the wrong tool. In practice, agents with more than 15-20 tools become harder to manage. If you need many tools, consider routing between specialized sub-agents rather than loading everything into one tool registry."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do stateful agents scale across multiple users?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Store state externally (Redis for sessions, PostgreSQL for long-term memory) rather than in-process. Use a unique session ID per user per conversation. Load state at the start of each request and flush writes at the end. This allows horizontal scaling without sticky sessions."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">
@@ -571,7 +619,7 @@ Store state externally (Redis for sessions, PostgreSQL for long-term memory) rat
       <div>
         <div class="bio-name">Amit K Chauhan</div>
         <div class="bio-title">Software Engineer &amp; AI Builder</div>
-        <p class="bio-text">Software engineer building practical AI systems — RAG pipelines, LLM applications, and developer AI tools. Created AI Learning Hub to provide a structured, no-fluff roadmap for developers entering AI.</p>
+        <p class="bio-text">AI Learning Hub is a practical learning resource for developers building with LLMs, RAG pipelines, and AI systems. Created by engineers, for engineers — structured, no-fluff guides to help you navigate the fast-moving world of artificial intelligence.</p>
       </div>
     </div>
 

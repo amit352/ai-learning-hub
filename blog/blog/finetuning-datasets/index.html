@@ -152,6 +152,46 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Should I use a public dataset or collect my own data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start with your own data for domain-specific tasks — it will always be more relevant. Public datasets (Dolly, OpenHermes, Capybara) are useful for augmenting general instruction-following capability but may dilute domain-specific performance. The best approach is usually a base of real examples augmented with synthetic data."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I handle imbalanced datasets?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If some categories have many more examples than others, either oversample the underrepresented categories or cap the overrepresented ones. Weighted sampling during training (via a custom data sampler) is also an option but adds complexity. Simple truncation of dominant categories is often sufficient."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does it cost to generate 1,000 synthetic examples with GPT-4?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Using GPT-4o at roughly 500 input tokens and 300 output tokens per example: 1,000 × 800 tokens ÷ 1M × $5 = $4 for output, plus $2.50 for input. Budget roughly $5–15 for 1,000 examples with GPT-4o, depending on prompt length and response length."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the best way to check if my data is high quality?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Train on a small subset (200–300 examples) first and generate test outputs. If the model already produces reasonable outputs from 200 examples, the data format and quality are correct. If the outputs are clearly wrong or incoherent with 200 examples, the data has quality issues that more data will not fix."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">
@@ -696,7 +736,7 @@ Train on a small subset (200–300 examples) first and generate test outputs. If
       <div>
         <div class="bio-name">Amit K Chauhan</div>
         <div class="bio-title">Software Engineer &amp; AI Builder</div>
-        <p class="bio-text">Software engineer building practical AI systems — RAG pipelines, LLM applications, and developer AI tools. Created AI Learning Hub to provide a structured, no-fluff roadmap for developers entering AI.</p>
+        <p class="bio-text">AI Learning Hub is a practical learning resource for developers building with LLMs, RAG pipelines, and AI systems. Created by engineers, for engineers — structured, no-fluff guides to help you navigate the fast-moving world of artificial intelligence.</p>
       </div>
     </div>
 

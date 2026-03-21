@@ -152,6 +152,54 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much data do I need to fine-tune an LLM?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For task adaptation (teaching a specific output format or style), 500–2,000 high-quality examples is a good starting range. For domain adaptation with new vocabulary and concepts, 5,000–50,000 examples is more appropriate. Quality matters far more than quantity — 500 excellent examples outperform 5,000 mediocre ones consistently."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between LoRA rank and LoRA alpha?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Rank (`r`) controls the size of the adapter matrices — higher rank means more trainable parameters and more capacity to learn. Alpha (`lora_alpha`) is a scaling factor that controls the magnitude of the LoRA updates. The effective contribution of LoRA is scaled by `alpha / r`. Keeping `alpha == r` normalizes this to 1.0, making the LoRA contribution equivalent to full weight updates at the given learning rate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I fine-tune on a single GPU?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. With QLoRA, a 7B model trains on a single 16GB GPU (RTX 3090, RTX 4090, or free Colab T4). A 13B model needs ~24GB (A100 or RTX 3090 with QLoRA). A 70B model with QLoRA needs ~48GB, requiring an A100 80GB. Unsloth further reduces memory requirements by 30–50% compared to standard PEFT."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does fine-tuning make models forget their general capabilities?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — this is called catastrophic forgetting and is a real risk, especially with full fine-tuning on small datasets. LoRA is more resistant to forgetting because the base model weights remain frozen. To mitigate it: use a diverse training set, keep epochs low (1–3), and always test the fine-tuned model on general benchmarks alongside your task-specific eval."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When should I use Unsloth vs. standard HuggingFace PEFT?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use Unsloth when training on a single GPU — it provides 2–5x speed improvement and significant memory savings through optimized CUDA kernels. Use standard PEFT/Accelerate when training across multiple GPUs, as Unsloth does not currently support multi-GPU distributed training."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">

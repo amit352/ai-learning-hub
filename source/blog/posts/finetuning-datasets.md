@@ -1,18 +1,17 @@
 ---
-title: "Dataset Preparation for LLM Fine-Tuning"
-description: "How to prepare high-quality datasets for LLM fine-tuning: Alpaca format, ShareGPT, deduplication, quality filtering, synthetic data with GPT-4, and HuggingFace datasets."
-date: "2026-03-15"
-updatedAt: "2026-03-15"
-slug: "/blog/finetuning-datasets"
+title: "How to Build Fine-Tuning Datasets for LLMs: Format, Quality & Scale"
+description: "Learn how to build high-quality fine-tuning datasets for LLMs. Covers Alpaca format, ShareGPT, deduplication, quality filtering, and synthetic data generation."
+date: "2026-02-09"
+updatedAt: "2026-02-09"
+slug: "finetuning-datasets"
 keywords: ["llm finetuning dataset", "fine tuning dataset preparation", "instruction dataset", "synthetic data generation", "huggingface datasets"]
 author: "Amit K Chauhan"
 authorTitle: "Software Engineer & AI Builder"
-level: "intermediate"
-time: "13 min"
-stack: ["Python", "HuggingFace", "OpenAI API"]
 ---
 
-# Dataset Preparation for LLM Fine-Tuning
+_Last updated: March 2026_
+
+# How to Build Fine-Tuning Datasets for LLMs: Format, Quality & Scale
 
 Most fine-tuning failures are dataset failures. The training code is almost never the problem — SFTTrainer, Unsloth, and standard PEFT pipelines are well-tested and work reliably. The model and the training config matter, but within a reasonable range, quality differences from hyperparameter tuning are modest. Dataset quality, on the other hand, is the primary variable that separates fine-tuned models that work in production from ones that don't.
 
