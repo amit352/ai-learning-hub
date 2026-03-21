@@ -299,6 +299,7 @@
 
       <div class="prose">
         <h1>Multi-Document Retrieval in RAG Pipelines</h1>
+<p><em>Last updated: March 2026</em></p>
 <p>The jump from &quot;RAG over one PDF&quot; to &quot;RAG over 200 documents from five different sources&quot; is where most early RAG systems hit a wall. The naive approach — dump everything into a single flat vector store and retrieve globally — works until it doesn&#39;t. At some point, a user asks a question that spans two regulatory documents, and the retriever surfaces chunks from the wrong one. Or a question about Product A returns chunks that mention Product A only in a comparison table for Product B.</p>
 <p>Multi-document RAG is a family of techniques that bring structure to this problem. Instead of treating your knowledge base as one undifferentiated blob of vectors, you add routing logic, per-document namespaces, metadata filtering, and cross-document synthesis. The result is a system that can answer &quot;Compare the privacy policies of our EU and US products&quot; — a question that requires content from two different documents, understood in relation to each other.</p>
 <p>This guide covers the practical patterns for building RAG pipelines that operate across multiple document sources. For the foundational RAG concepts, see the <a href="/blog/rag-architecture-guide">RAG Architecture Guide</a>.</p>

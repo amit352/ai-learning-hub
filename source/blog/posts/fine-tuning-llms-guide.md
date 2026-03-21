@@ -11,6 +11,8 @@ updatedAt: "2026-03-13"
 
 # Fine-Tuning LLMs: Complete Guide to Instruction Tuning and LoRA
 
+_Last updated: March 2026_
+
 Fine-tuning is not the first thing you should try when an LLM underperforms on your task — it is the last thing. Improve your prompt first, add few-shot examples, try RAG if you need domain knowledge. Fine-tuning is powerful but expensive, slow to iterate, and genuinely necessary for a narrower set of problems than developers typically assume. When it is the right tool, though, it produces results that no amount of prompt engineering can match: consistent output format, deep domain adaptation, dramatic latency reductions by distilling large model behavior into smaller models. This guide covers when to fine-tune, how to prepare data correctly, and how to train efficiently with LoRA and QLoRA.
 
 ---
@@ -324,6 +326,22 @@ Track these as a percentage — your fine-tuned model should score significantly
 **Skipping gradient checkpointing** — `gradient_checkpointing=True` reduces peak GPU memory usage by recomputing activations during the backward pass. Enable it when training large models with limited memory, at the cost of ~20% slower training.
 
 **Merging before validating** — Run your evaluation on the LoRA adapter before merging. Once merged, reverting requires keeping both checkpoints.
+
+---
+
+## FAQ
+
+### How much data do I need to fine-tune an LLM?
+For instruction-following tasks, 100–500 high-quality examples is a realistic minimum and often sufficient. Quality matters far more than quantity: 200 carefully curated and reviewed examples consistently outperforms 5,000 scraped examples with noisy labels. If you have fewer than 50 examples, use few-shot prompting instead — fine-tuning on this little data reliably produces poor results.
+
+### Can I fine-tune GPT-4o or Claude?
+OpenAI offers fine-tuning for GPT-4o-mini and GPT-3.5-turbo via their API, but not GPT-4o as of early 2026. Anthropic does not offer fine-tuning for Claude through a public API. For frontier model customization, OpenAI's fine-tuning API is the most practical route; for full control, fine-tune an open-source model like Llama 3 or Mistral on your own infrastructure.
+
+### How long does fine-tuning take on a single GPU?
+A QLoRA run on a 7B model with 500 examples takes roughly 15–30 minutes on an A100 (80GB). A 13B model with the same data takes about 45–60 minutes. Training time scales with dataset size, number of epochs, and model size — not linearly, but predictably. Cloud GPU rentals (Lambda, RunPod, Modal) typically cost $1–3 per training run for a small dataset.
+
+### How do I know if fine-tuning actually improved my model?
+Track validation loss during training to detect overfitting, then evaluate on a held-out test set of 50–100 examples that were never seen during training. Score the base model and fine-tuned model on the same examples side by side and measure the delta on your task-specific metric (format compliance, factual accuracy, output length). Without a before/after comparison on a fixed test set, you cannot reliably assess whether fine-tuning helped.
 
 ---
 

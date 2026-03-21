@@ -93,19 +93,25 @@ async function main() {
   const args   = process.argv.slice(2);
   const dryRun = args.includes('--dry-run');
   const blogOnly = args.includes('--blog');
+  const urlsArg = args.find(a => a.startsWith('--urls='));
 
   // ── Collect URLs ───────────────────────────────────────────────────────
-  const sitemaps = blogOnly ? BLOG_SITEMAPS : SITEMAPS;
-  const allUrls  = [];
+  let urls;
 
-  for (const sitemap of sitemaps) {
-    const urls = parseUrlsFromSitemap(sitemap);
-    console.log(`  📄 ${path.basename(sitemap)} → ${urls.length} URLs`);
-    allUrls.push(...urls);
+  if (urlsArg) {
+    // --urls=https://...,https://... submit specific URLs directly
+    urls = urlsArg.replace('--urls=', '').split(',').map(u => u.trim()).filter(Boolean);
+    console.log(`  🎯 Submitting ${urls.length} specific URLs`);
+  } else {
+    const sitemaps = blogOnly ? BLOG_SITEMAPS : SITEMAPS;
+    const allUrls  = [];
+    for (const sitemap of sitemaps) {
+      const sitemapUrls = parseUrlsFromSitemap(sitemap);
+      console.log(`  📄 ${path.basename(sitemap)} → ${sitemapUrls.length} URLs`);
+      allUrls.push(...sitemapUrls);
+    }
+    urls = [...new Set(allUrls)];
   }
-
-  // Deduplicate
-  const urls = [...new Set(allUrls)];
   console.log(`\nTotal unique URLs: ${urls.length}`);
 
   if (dryRun) {

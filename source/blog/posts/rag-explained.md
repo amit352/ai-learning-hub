@@ -8,6 +8,8 @@ keywords: ["RAG explained", "retrieval augmented generation", "RAG system", "how
 
 # RAG Explained – How Retrieval-Augmented Generation Works
 
+_Last updated: March 2026_
+
 Language models know what they were trained on. They do not know what happened after training, they do not know your company's internal documents, and they hallucinate when asked to recall specific facts. Retrieval-Augmented Generation (RAG) solves this by giving the model access to external knowledge at query time. It is one of the most important patterns in production AI development.
 
 ---
@@ -199,6 +201,22 @@ RAG is the primary pattern for connecting LLMs to external knowledge. It solves 
 The architecture is straightforward: index your documents as embedded chunks, retrieve the most relevant chunks at query time, inject them as context, and ask the model to answer based only on that context.
 
 To build a complete RAG application end-to-end, see [how to build a RAG app](/blog/build-rag-app/). For the vector database infrastructure that powers retrieval, see [vector databases explained](/blog/vector-database-explained/). For the embedding models that make semantic search possible, see [embeddings explained](/blog/embeddings-explained/).
+
+---
+
+## FAQ
+
+### What is the difference between RAG and fine-tuning?
+RAG retrieves external knowledge at query time and injects it into the prompt, so the model's weights never change. Fine-tuning updates the model's weights on new training data, baking knowledge into the model itself. Use RAG when your data changes frequently or when you need source attribution; use fine-tuning when you need to change the model's behavior or style in ways that prompting cannot achieve.
+
+### How many documents can a RAG system handle?
+The practical limit depends on your vector database, not on RAG as a technique. ChromaDB handles millions of vectors on a single machine. Managed databases like Pinecone and Qdrant scale to hundreds of millions. A 10,000-document knowledge base with 100 chunks per document — 1 million vectors total — is well within the range of any production vector store.
+
+### What embedding model should I use for RAG?
+`text-embedding-3-small` from OpenAI is the best default: it balances cost, speed, and quality for most English-language retrieval tasks. For multilingual corpora, use `text-embedding-3-large` or a multilingual model like `multilingual-e5-large`. If you need a fully local setup, `nomic-embed-text` via Ollama performs well at zero API cost.
+
+### When does RAG fail and how do I fix it?
+RAG fails in two ways: retrieval failure (the right chunks are not returned) and generation failure (the right chunks are returned but the model ignores or misrepresents them). For retrieval failures, check your chunk size, increase `k`, add a re-ranker, or improve your embedding model. For generation failures, strengthen the grounding instruction in your prompt ("answer ONLY from the provided context") and evaluate with RAGAS faithfulness scores to confirm the fix worked.
 
 ---
 

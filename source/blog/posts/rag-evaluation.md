@@ -11,6 +11,8 @@ updatedAt: "2026-03-15"
 
 # RAG Evaluation Metrics Explained
 
+_Last updated: March 2026_
+
 The most common RAG evaluation strategy is: ask a few questions, read the answers, decide they look good, and ship. This works until something breaks in production — wrong answers, answers that ignore retrieved context, retrieved context that misses the relevant documents — and you have no measurement infrastructure to diagnose which component failed.
 
 A RAG system has two failure surfaces: retrieval and generation. Retrieval failures mean the right chunks aren't in the context. Generation failures mean the LLM ignores or misrepresents the chunks it was given. Treating the system as a black box and only measuring end-to-end quality makes it nearly impossible to identify which layer is the problem.

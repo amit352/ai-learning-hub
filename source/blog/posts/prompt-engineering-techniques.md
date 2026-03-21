@@ -11,6 +11,8 @@ updatedAt: "2026-03-15"
 
 # 26 Prompt Engineering Techniques Every AI Developer Should Know (2026 Guide)
 
+_Last updated: March 2026_
+
 Most teams spend more time on model selection than on prompt design — then ship inconsistent AI features and blame the model. The real culprit is almost always the prompt.
 
 When you switch from GPT-4o to Claude 3.5, you might gain 3–5% accuracy on benchmarks. When you switch from a vague instruction prompt to a structured few-shot prompt with explicit format constraints, you can gain 20–40% consistency on the same task. The leverage in prompting is enormous and underutilized.

@@ -299,6 +299,7 @@
 
       <div class="prose">
         <h1>RAG Evaluation Metrics Explained</h1>
+<p><em>Last updated: March 2026</em></p>
 <p>The most common RAG evaluation strategy is: ask a few questions, read the answers, decide they look good, and ship. This works until something breaks in production — wrong answers, answers that ignore retrieved context, retrieved context that misses the relevant documents — and you have no measurement infrastructure to diagnose which component failed.</p>
 <p>A RAG system has two failure surfaces: retrieval and generation. Retrieval failures mean the right chunks aren&#39;t in the context. Generation failures mean the LLM ignores or misrepresents the chunks it was given. Treating the system as a black box and only measuring end-to-end quality makes it nearly impossible to identify which layer is the problem.</p>
 <p>Good RAG evaluation is not optional — it&#39;s the feedback loop that makes iterative improvement possible. This guide covers the standard evaluation framework (RAGAS), how to implement it, and how to interpret the results to drive concrete improvements.</p>

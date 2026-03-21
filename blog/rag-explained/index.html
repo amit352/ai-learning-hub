@@ -152,6 +152,46 @@
     }
   ]
 }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between RAG and fine-tuning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "RAG retrieves external knowledge at query time and injects it into the prompt, so the model's weights never change. Fine-tuning updates the model's weights on new training data, baking knowledge into the model itself. Use RAG when your data changes frequently or when you need source attribution; use fine-tuning when you need to change the model's behavior or style in ways that prompting cannot achieve."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many documents can a RAG system handle?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The practical limit depends on your vector database, not on RAG as a technique. ChromaDB handles millions of vectors on a single machine. Managed databases like Pinecone and Qdrant scale to hundreds of millions. A 10,000-document knowledge base with 100 chunks per document — 1 million vectors total — is well within the range of any production vector store."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What embedding model should I use for RAG?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "`text-embedding-3-small` from OpenAI is the best default: it balances cost, speed, and quality for most English-language retrieval tasks. For multilingual corpora, use `text-embedding-3-large` or a multilingual model like `multilingual-e5-large`. If you need a fully local setup, `nomic-embed-text` via Ollama performs well at zero API cost."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When does RAG fail and how do I fix it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "RAG fails in two ways: retrieval failure (the right chunks are not returned) and generation failure (the right chunks are returned but the model ignores or misrepresents them). For retrieval failures, check your chunk size, increase `k`, add a re-ranker, or improve your embedding model. For generation failures, strengthen the grounding instruction in your prompt (\"answer ONLY from the provided context\") and evaluate with RAGAS faithfulness scores to confirm the fix worked."
+      }
+    }
+  ]
+}
+  </script>
   </script>
 </head>
 <body class="text-gray-100" style="background-color:#030712;min-height:100vh;font-family:'Mona Sans',system-ui,sans-serif;">
@@ -243,7 +283,7 @@
               <span>Published <time datetime="2026-03-13">March 13, 2026</time></span>
               
               <span class="sep">·</span>
-              <span>5 min read</span>
+              <span>6 min read</span>
             </div>
           </div>
         </div>
@@ -251,6 +291,7 @@
 
       <div class="prose">
         <h1>RAG Explained – How Retrieval-Augmented Generation Works</h1>
+<p><em>Last updated: March 2026</em></p>
 <p>Language models know what they were trained on. They do not know what happened after training, they do not know your company&#39;s internal documents, and they hallucinate when asked to recall specific facts. Retrieval-Augmented Generation (RAG) solves this by giving the model access to external knowledge at query time. It is one of the most important patterns in production AI development.</p>
 <hr>
 <h2>What is Retrieval-Augmented Generation</h2>
@@ -376,6 +417,16 @@ answer = qa.invoke({<span class="hljs-string">&quot;query&quot;</span>: <span cl
 <p>RAG is the primary pattern for connecting LLMs to external knowledge. It solves the knowledge cutoff problem, enables private data integration, and reduces hallucinations by grounding answers in retrieved documents.</p>
 <p>The architecture is straightforward: index your documents as embedded chunks, retrieve the most relevant chunks at query time, inject them as context, and ask the model to answer based only on that context.</p>
 <p>To build a complete RAG application end-to-end, see <a href="/blog/build-rag-app/">how to build a RAG app</a>. For the vector database infrastructure that powers retrieval, see <a href="/blog/vector-database-explained/">vector databases explained</a>. For the embedding models that make semantic search possible, see <a href="/blog/embeddings-explained/">embeddings explained</a>.</p>
+<hr>
+<h2>FAQ</h2>
+<h3>What is the difference between RAG and fine-tuning?</h3>
+<p>RAG retrieves external knowledge at query time and injects it into the prompt, so the model&#39;s weights never change. Fine-tuning updates the model&#39;s weights on new training data, baking knowledge into the model itself. Use RAG when your data changes frequently or when you need source attribution; use fine-tuning when you need to change the model&#39;s behavior or style in ways that prompting cannot achieve.</p>
+<h3>How many documents can a RAG system handle?</h3>
+<p>The practical limit depends on your vector database, not on RAG as a technique. ChromaDB handles millions of vectors on a single machine. Managed databases like Pinecone and Qdrant scale to hundreds of millions. A 10,000-document knowledge base with 100 chunks per document — 1 million vectors total — is well within the range of any production vector store.</p>
+<h3>What embedding model should I use for RAG?</h3>
+<p><code>text-embedding-3-small</code> from OpenAI is the best default: it balances cost, speed, and quality for most English-language retrieval tasks. For multilingual corpora, use <code>text-embedding-3-large</code> or a multilingual model like <code>multilingual-e5-large</code>. If you need a fully local setup, <code>nomic-embed-text</code> via Ollama performs well at zero API cost.</p>
+<h3>When does RAG fail and how do I fix it?</h3>
+<p>RAG fails in two ways: retrieval failure (the right chunks are not returned) and generation failure (the right chunks are returned but the model ignores or misrepresents them). For retrieval failures, check your chunk size, increase <code>k</code>, add a re-ranker, or improve your embedding model. For generation failures, strengthen the grounding instruction in your prompt (&quot;answer ONLY from the provided context&quot;) and evaluate with RAGAS faithfulness scores to confirm the fix worked.</p>
 <hr>
 <h2>What to Learn Next</h2>
 <ul>

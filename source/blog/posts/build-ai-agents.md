@@ -11,6 +11,8 @@ keywords: ["build AI agents", "AI agent tutorial", "how to build AI agent", "Lan
 
 # How to Build AI Agents Step-by-Step
 
+_Last updated: March 2026_
+
 A chatbot answers a question and stops. An agent answers a question, runs a calculation, searches for current information, and then synthesizes everything into a final answer — all without you specifying each step. The difference is not just a matter of architecture; it changes what problems you can solve. This guide shows you exactly how to build a production-ready agent from tool definitions through state management.
 
 ---
