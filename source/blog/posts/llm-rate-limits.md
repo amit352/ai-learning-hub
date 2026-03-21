@@ -386,10 +386,9 @@ Rate limiting is a solved problem, but it requires deliberate implementation. Un
 
 ## Related Articles
 
-- [LLM APIs Guide for Developers](/blog/llm-api-guide/)
-- [LLM API Cost Optimization: Reduce Costs by 60%+](/blog/llm-api-cost-optimization/)
-- [LLM API Error Handling Best Practices](/blog/llm-api-errors/)
-- [OpenAI API Tutorial for Developers](/blog/openai-api-tutorial/)
+- [LLM API Error Handling: Retries, Rate Limits & Fallbacks](/blog/llm-api-errors/)
+- [LLM API Cost Optimization: Cut Your OpenAI Bills by 60–80%](/blog/llm-api-cost-optimization/)
+- [LLM API Guide: Choosing Between OpenAI, Anthropic & Gemini](/blog/llm-api-guide/)
 
 ---
 

@@ -321,12 +321,10 @@ The patterns here — ReAct loop, function-calling, tool design, memory for foll
 
 ## Related Articles
 
-- [AI Agents Guide: Architecture and Design Patterns](/blog/ai-agents-guide)
-- [Building Agents with LangChain: Complete Tutorial](/blog/langchain-agents)
-- [Tool Use in AI Agents](/blog/agent-tools)
-- [Memory Systems in AI Agents](/blog/agent-memory)
-- [Autonomous Task Execution in AI Agents](/blog/autonomous-agents)
-- [LangChain Tutorial for Beginners](/blog/langchain-tutorial)
+- [AI Agent Architecture: Design Patterns for Production](/blog/ai-agent-architecture/)
+- [LangGraph vs AutoGen vs CrewAI: Agent Framework Comparison](/blog/agent-framework-comparison/)
+- [LLM Function Calling: Build Tool-Using AI Apps](/blog/llm-function-calling/)
+- [Build AI Agents](/blog/build-ai-agents/)
 
 ---
 

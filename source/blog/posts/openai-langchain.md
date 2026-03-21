@@ -399,10 +399,10 @@ LangChain with LCEL provides a clean, composable way to build multi-step LLM app
 
 ## Related Articles
 
-- [LLM APIs Guide for Developers](/blog/llm-api-guide/)
-- [RAG Architecture Guide](/blog/rag-architecture-guide/)
-- [OpenAI API Tutorial for Developers](/blog/openai-api-tutorial/)
-- [How LLMs Work](/blog/how-llms-work/)
+- [LangChain Tutorial](/blog/langchain-tutorial/)
+- [LLM Function Calling: Build Tool-Using AI Apps](/blog/llm-function-calling/)
+- [OpenAI API Complete Guide](/blog/openai-api-complete-guide/)
+- [Build RAG App with LangChain](/blog/build-rag-app/)
 
 ---
 

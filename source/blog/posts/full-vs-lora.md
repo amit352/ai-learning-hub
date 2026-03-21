@@ -181,11 +181,11 @@ The default should be LoRA. The threshold for switching to full fine-tuning is a
 
 ## Related Articles
 
-- [LLM Fine-Tuning Guide: LoRA, QLoRA, and Full Fine-Tuning](/blog/llm-fine-tuning-guide/) — Complete decision framework for all fine-tuning methods
-- [LoRA Fine-Tuning Tutorial for LLMs](/blog/lora-fine-tuning-tutorial/) — Step-by-step LoRA implementation with full runnable code
-- [Dataset Preparation for LLM Fine-Tuning](/blog/finetuning-datasets/) — Data quality and quantity requirements by method
-- [Distributed Training for LLMs](/blog/distributed-llm-training/) — How to scale full fine-tuning across multiple GPUs
-- [LLM Evaluation Metrics](/blog/llm-evaluation/) — How to measure fine-tuning quality objectively
+- [LoRA Fine-Tuning Tutorial: Train Custom LLMs on a Single GPU](/blog/lora-fine-tuning-tutorial/)
+- [How to Build Fine-Tuning Datasets for LLMs](/blog/finetuning-datasets/)
+- [RLHF Explained: How Reinforcement Learning from Human Feedback Works](/blog/rlhf-guide/)
+- [LLM Knowledge Distillation: Create Small, Fast Models](/blog/model-distillation/)
+- [Fine-Tuning LLMs: Complete Guide](/blog/fine-tuning-llms-guide/)
 
 ## FAQ
 

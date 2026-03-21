@@ -374,11 +374,10 @@ The key to reliable training is understanding which layer of the stack handles w
 
 ## Related Articles
 
-- [LLM Fine-Tuning Guide: LoRA, QLoRA, and Full Fine-Tuning](/blog/llm-fine-tuning-guide/) — Complete fine-tuning decision framework
-- [LoRA Fine-Tuning Tutorial for LLMs](/blog/lora-fine-tuning-tutorial/) — Step-by-step LoRA implementation
-- [RLHF Explained: How LLMs Learn from Human Feedback](/blog/rlhf-guide/) — PPO and DPO alignment training
-- [Distributed Training for LLMs](/blog/distributed-llm-training/) — DeepSpeed ZeRO and FSDP for scaling
-- [LLM Evaluation Metrics](/blog/llm-evaluation/) — Evaluating fine-tuned model quality
+- [LoRA Fine-Tuning Tutorial: Train Custom LLMs on a Single GPU](/blog/lora-fine-tuning-tutorial/)
+- [How to Build Fine-Tuning Datasets for LLMs](/blog/finetuning-datasets/)
+- [Instruction Tuning: How to Train LLMs to Follow Instructions](/blog/instruction-tuning/)
+- [Fine-Tuning LLMs: Complete Guide](/blog/fine-tuning-llms-guide/)
 
 ## FAQ
 

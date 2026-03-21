@@ -461,10 +461,10 @@ Function calling is the mechanism that turns an LLM from a text generator into a
 
 ## Related Articles
 
-- [LLM APIs Guide for Developers](/blog/llm-api-guide/)
-- [AI Agents Guide — Building Autonomous AI Systems](/blog/ai-agents-guide/)
-- [Streaming Responses from LLM APIs](/blog/llm-streaming/)
-- [OpenAI API Tutorial for Developers](/blog/openai-api-tutorial/)
+- [LLM API Guide: Choosing Between OpenAI, Anthropic & Gemini](/blog/llm-api-guide/)
+- [AI Agent Tool Use: How to Give LLMs Access to APIs & Search](/blog/agent-tools/)
+- [OpenAI + LangChain: Build Production AI Apps](/blog/openai-langchain/)
+- [OpenAI API Complete Guide](/blog/openai-api-complete-guide/)
 
 ---
 

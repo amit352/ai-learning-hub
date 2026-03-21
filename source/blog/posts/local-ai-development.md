@@ -432,10 +432,10 @@ A fully local AI development stack — Ollama, LangChain, ChromaDB — is now st
 
 ## Related Articles
 
-- [Open Source LLMs Guide: Complete Ecosystem Overview](/blog/open-source-llm-guide)
-- [Running LLMs Locally with Ollama: Complete Guide](/blog/ollama-tutorial)
-- [RAG Architecture Guide](/blog/rag-architecture-guide)
-- [LangChain Tutorial](/blog/langchain-tutorial)
+- [Ollama Tutorial: Run Llama 3 & Mistral Locally](/blog/ollama-tutorial/)
+- [GGUF Models Explained](/blog/gguf-models/)
+- [LLM Quantization: Run 70B Models on Consumer GPUs](/blog/llm-quantization/)
+- [API vs Local LLM: Cost, Latency & Privacy Trade-offs](/blog/api-vs-local-llm/)
 
 ---
 

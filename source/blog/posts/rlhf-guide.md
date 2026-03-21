@@ -306,11 +306,11 @@ The quality of preference data is the primary driver of alignment success with e
 
 ## Related Articles
 
-- [LLM Fine-Tuning Guide: LoRA, QLoRA, and Full Fine-Tuning](/blog/llm-fine-tuning-guide/) — Complete fine-tuning pipeline including alignment
-- [Instruction Tuning Explained](/blog/instruction-tuning/) — SFT: the foundation RLHF builds on
-- [Training LLMs with HuggingFace](/blog/huggingface-training/) — TRL DPOTrainer and PPOTrainer in practice
-- [Synthetic Data for LLM Training](/blog/synthetic-data-llm/) — Generating preference pairs with strong models
-- [LLM Evaluation Metrics](/blog/llm-evaluation/) — Measuring alignment quality
+- [Instruction Tuning: How to Train LLMs to Follow Instructions](/blog/instruction-tuning/)
+- [Full Fine-Tuning vs LoRA: When to Use Each](/blog/full-vs-lora/)
+- [LLM Knowledge Distillation: Create Small, Fast Models](/blog/model-distillation/)
+- [How to Build Fine-Tuning Datasets for LLMs](/blog/finetuning-datasets/)
+- [Fine-Tuning LLMs: Complete Guide](/blog/fine-tuning-llms-guide/)
 
 ## FAQ
 

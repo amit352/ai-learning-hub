@@ -389,11 +389,10 @@ Claude's API follows the same fundamental pattern as OpenAI — chat messages, t
 
 ## Related Articles
 
-- [LLM APIs Guide for Developers](/blog/llm-api-guide/)
-- [OpenAI API Tutorial for Developers](/blog/openai-api-tutorial/)
-- [Function Calling with LLM APIs: Practical Guide](/blog/llm-function-calling/)
-- [Streaming Responses from LLM APIs](/blog/llm-streaming/)
-- [LLM API Cost Optimization](/blog/llm-api-cost-optimization/)
+- [LLM API Guide: Choosing Between OpenAI, Anthropic & Gemini](/blog/llm-api-guide/)
+- [LLM Function Calling: Build Tool-Using AI Apps](/blog/llm-function-calling/)
+- [OpenAI API Complete Guide](/blog/openai-api-complete-guide/)
+- [Open Source vs Closed LLMs: Which to Use in Production?](/blog/open-vs-closed-llm/)
 
 ---
 

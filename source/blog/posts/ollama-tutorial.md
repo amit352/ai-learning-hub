@@ -390,10 +390,11 @@ Ollama makes local LLM inference accessible without sacrificing flexibility. The
 
 ## Related Articles
 
-- [Open Source LLMs Guide: Complete Ecosystem Overview](/blog/open-source-llm-guide)
-- [Local AI Development Setup: Run LLMs Without the Cloud](/blog/local-ai-development)
-- [LLM Quantization Explained: Run Bigger Models on Less Hardware](/blog/llm-quantization)
-- [How LLMs Work](/blog/how-llms-work)
+- [Open Source LLM Comparison: Llama 3 vs Mistral vs Phi-4](/blog/open-source-llm-comparison/)
+- [GGUF Models Explained: Run Quantized LLMs Locally](/blog/gguf-models/)
+- [LLM Quantization: Run 70B Models on Consumer GPUs](/blog/llm-quantization/)
+- [Local AI Development: Run LLMs Offline](/blog/local-ai-development/)
+- [Open Source LLMs Guide](/blog/open-source-llms-guide/)
 
 ---
 

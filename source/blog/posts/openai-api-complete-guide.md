@@ -371,3 +371,10 @@ Yes. See OpenAI's usage policies. By default your data is not used for training 
 - **Function calling advanced patterns** → ai-agent-frameworks-comparison
 - **RAG with OpenAI embeddings** → [RAG Tutorial](/blog/rag-tutorial-step-by-step/)
 - **LangChain with OpenAI** → langchain-tutorial-complete
+- [LLM API Guide: Choosing Between OpenAI, Anthropic & Gemini](/blog/llm-api-guide/)
+- [LLM API Error Handling: Retries, Rate Limits & Fallbacks](/blog/llm-api-errors/)
+- [LLM API Cost Optimization: Cut Your OpenAI Bills by 60–80%](/blog/llm-api-cost-optimization/)
+- [LLM Function Calling: Build Tool-Using AI Apps](/blog/llm-function-calling/)
+- [LLM Streaming: Stream Token-by-Token Responses](/blog/llm-streaming/)
+- [Anthropic Claude API Tutorial: Complete Developer Guide](/blog/anthropic-api-tutorial/)
+- [Google Gemini API Tutorial: Build AI Apps with Python](/blog/gemini-api-tutorial/)

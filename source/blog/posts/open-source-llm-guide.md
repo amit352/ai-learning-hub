@@ -341,11 +341,11 @@ The decision framework is straightforward: if your data cannot leave your infras
 
 ## Related Articles
 
-- [Running LLMs Locally with Ollama: Complete Guide](/blog/ollama-tutorial)
-- [Best Open Source LLMs Compared: Llama vs Mistral vs Qwen](/blog/open-source-llm-comparison)
-- [LLM Quantization Explained: Run Bigger Models on Less Hardware](/blog/llm-quantization)
-- [How LLMs Work](/blog/how-llms-work)
-- [LLM Fine-Tuning Guide](/blog/llm-fine-tuning-guide)
+- [Ollama Tutorial: Run Llama 3 & Mistral Locally](/blog/ollama-tutorial/)
+- [Open Source LLM Comparison](/blog/open-source-llm-comparison/)
+- [GGUF Models Explained](/blog/gguf-models/)
+- [LLM Quantization: Run 70B Models on Consumer GPUs](/blog/llm-quantization/)
+- [Open Source vs Closed LLMs](/blog/open-vs-closed-llm/)
 
 ---
 

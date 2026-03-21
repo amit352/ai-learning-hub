@@ -146,14 +146,18 @@ function main() {
   const inlineCss     = fs.readFileSync(CSS_FILE, 'utf8');
 
   // --skip-existing: only process posts whose HTML output does not yet exist
+  // --slugs=slug1,slug2: only process specific slugs
   const skipExisting = process.argv.includes('--skip-existing');
+  const slugsArg = process.argv.find(a => a.startsWith('--slugs='));
+  const onlySlugs = slugsArg ? new Set(slugsArg.replace('--slugs=', '').split(',')) : null;
 
   const mdFiles = fs.readdirSync(POSTS_DIR)
     .filter(f => f.endsWith('.md'))
     .filter(f => {
-      if (!skipExisting) return true;
       const slug = f.replace('.md', '');
-      return !fs.existsSync(path.join(BLOG_OUT, slug, 'index.html'));
+      if (onlySlugs) return onlySlugs.has(slug);
+      if (skipExisting) return !fs.existsSync(path.join(BLOG_OUT, slug, 'index.html'));
+      return true;
     })
     .sort();
 

@@ -368,11 +368,10 @@ The Gemini API brings three standout capabilities to the LLM API landscape: a 1M
 
 ## Related Articles
 
-- [LLM APIs Guide for Developers](/blog/llm-api-guide/)
-- [Streaming Responses from LLM APIs](/blog/llm-streaming/)
-- [Function Calling with LLM APIs: Practical Guide](/blog/llm-function-calling/)
-- [LLM API Cost Optimization: Reduce Costs by 60%+](/blog/llm-api-cost-optimization/)
-- [How LLMs Work](/blog/how-llms-work/)
+- [LLM API Guide: Choosing Between OpenAI, Anthropic & Gemini](/blog/llm-api-guide/)
+- [LLM Function Calling: Build Tool-Using AI Apps](/blog/llm-function-calling/)
+- [Anthropic Claude API Tutorial](/blog/anthropic-api-tutorial/)
+- [OpenAI API Complete Guide](/blog/openai-api-complete-guide/)
 
 ---
 

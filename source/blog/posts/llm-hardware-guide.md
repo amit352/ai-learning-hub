@@ -267,10 +267,10 @@ VRAM is the single most important hardware specification for LLM inference. For 
 
 ## Related Articles
 
-- [Open Source LLMs Guide: Complete Ecosystem Overview](/blog/open-source-llm-guide)
-- [LLM Quantization Explained: Run Bigger Models on Less Hardware](/blog/llm-quantization)
-- [GGUF Models Explained: The Format Powering Local LLMs](/blog/gguf-models)
-- [Running LLMs Locally with Ollama: Complete Guide](/blog/ollama-tutorial)
+- [LLM Quantization: Run 70B Models on Consumer GPUs](/blog/llm-quantization/)
+- [Open Source LLM Comparison](/blog/open-source-llm-comparison/)
+- [Distributed LLM Training: Data Parallelism & ZeRO](/blog/distributed-llm-training/)
+- [Local AI Development: Run LLMs Offline](/blog/local-ai-development/)
 
 ---
 

@@ -320,11 +320,11 @@ The stateless vs. stateful decision cuts across all five components. Start state
 
 ## Related Articles
 
-- [AI Agents Guide: Architecture and Design Patterns](/blog/ai-agents-guide)
-- [Memory Systems in AI Agents](/blog/agent-memory)
-- [Tool Use in AI Agents](/blog/agent-tools)
-- [Planning Algorithms in AI Agents](/blog/agent-planning)
-- [Autonomous Task Execution in AI Agents](/blog/autonomous-agents)
+- [LangGraph vs AutoGen vs CrewAI: Agent Framework Comparison](/blog/agent-framework-comparison/)
+- [Agent Memory Systems](/blog/agent-memory/)
+- [Agent Planning](/blog/agent-planning/)
+- [How to Evaluate AI Agents](/blog/agent-evaluation/)
+- [Build AI Agents](/blog/build-ai-agents/)
 
 ---
 

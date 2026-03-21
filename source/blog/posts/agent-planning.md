@@ -289,10 +289,10 @@ Planning is the layer that separates agents that work reliably from agents that 
 
 ## Related Articles
 
-- [AI Agents Guide: Architecture and Design Patterns](/blog/ai-agents-guide)
-- [Memory Systems in AI Agents](/blog/agent-memory)
-- [Autonomous Task Execution in AI Agents](/blog/autonomous-agents)
-- [Multi-Agent Systems Explained](/blog/multi-agent-systems)
+- [Agent Memory Systems](/blog/agent-memory/)
+- [AI Agent Tool Use: How to Give LLMs Access to APIs](/blog/agent-tools/)
+- [Autonomous AI Agents: How They Work](/blog/autonomous-agents/)
+- [Build AI Agents](/blog/build-ai-agents/)
 
 ---
 

@@ -320,11 +320,11 @@ The practical workflow is: load the model with PEFT/Unsloth, apply a LoRA config
 
 ## Related Articles
 
-- [LLM Fine-Tuning Guide: LoRA, QLoRA, and Full Fine-Tuning](/blog/llm-fine-tuning-guide/) — Complete decision framework and pipeline overview
-- [QLoRA Explained: Efficient Fine-Tuning on Consumer Hardware](/blog/qlora-explained/) — How 4-bit quantization enables 13B+ fine-tuning on one GPU
-- [Dataset Preparation for LLM Fine-Tuning](/blog/finetuning-datasets/) — How to format, clean, and generate training data
-- [Training LLMs with HuggingFace](/blog/huggingface-training/) — Deep dive into TRL, Accelerate, and the full HF training ecosystem
-- [How LLMs Work](/blog/how-llms-work/) — Transformer architecture explained for practitioners
+- [Full Fine-Tuning vs LoRA: When to Use Each](/blog/full-vs-lora/)
+- [How to Build Fine-Tuning Datasets for LLMs](/blog/finetuning-datasets/)
+- [Fine-Tuning LLMs with HuggingFace Transformers](/blog/huggingface-training/)
+- [Instruction Tuning: How to Train LLMs to Follow Instructions](/blog/instruction-tuning/)
+- [Fine-Tuning LLMs: Complete Guide](/blog/fine-tuning-llms-guide/)
 
 ## FAQ
 

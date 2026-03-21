@@ -294,3 +294,9 @@ Base models predict the next token (raw language modeling). Instruct models are 
 - **Fine-tuning these models** → [Fine-Tuning LLMs Guide](/blog/fine-tuning-llms-guide/)
 - **RAG with local LLMs** → [RAG Tutorial](/blog/rag-tutorial-step-by-step/)
 - **Deploying AI apps** → deploying-ai-applications
+- [Ollama Tutorial: Run Llama 3 & Mistral Locally in 10 Minutes](/blog/ollama-tutorial/)
+- [Open Source LLM Comparison: Llama 3 vs Mistral vs Phi-4](/blog/open-source-llm-comparison/)
+- [GGUF Models Explained: Run Quantized LLMs Locally](/blog/gguf-models/)
+- [LLM Quantization: Run 70B Models on Consumer GPUs](/blog/llm-quantization/)
+- [Open Source vs Closed LLMs: Which to Use in Production?](/blog/open-vs-closed-llm/)
+- [Local AI Development: Run LLMs Offline with Ollama](/blog/local-ai-development/)

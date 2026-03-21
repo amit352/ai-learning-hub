@@ -398,11 +398,10 @@ The quality controls are the critical piece. Raw generation without filtering pr
 
 ## Related Articles
 
-- [LLM Fine-Tuning Guide: LoRA, QLoRA, and Full Fine-Tuning](/blog/llm-fine-tuning-guide/) — Using synthetic data in the full fine-tuning pipeline
-- [Dataset Preparation for LLM Fine-Tuning](/blog/finetuning-datasets/) — Format normalization, deduplication, and quality filtering
-- [RLHF Explained](/blog/rlhf-guide/) — Using AI to generate preference pairs for alignment
-- [Instruction Tuning Explained](/blog/instruction-tuning/) — How instruction format affects model behavior
-- [Open Source LLM Guide](/blog/open-source-llm-guide/) — Choosing base models to fine-tune
+- [How to Build Fine-Tuning Datasets for LLMs](/blog/finetuning-datasets/)
+- [Instruction Tuning: How to Train LLMs to Follow Instructions](/blog/instruction-tuning/)
+- [LoRA Fine-Tuning Tutorial: Train Custom LLMs on a Single GPU](/blog/lora-fine-tuning-tutorial/)
+- [Fine-Tuning LLMs: Complete Guide](/blog/fine-tuning-llms-guide/)
 
 ## FAQ
 

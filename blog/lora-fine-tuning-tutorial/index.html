@@ -504,11 +504,11 @@ tokenizer = AutoTokenizer.from_pretrained(<span class="hljs-string">&quot;./lora
 <p>The practical workflow is: load the model with PEFT/Unsloth, apply a LoRA config, format your data with the model&#39;s chat template, run SFTTrainer, validate outputs, and merge the adapter for production. The full workflow takes under two hours on a single GPU for most fine-tuning tasks.</p>
 <h2>Related Articles</h2>
 <ul>
-<li><a href="/blog/llm-fine-tuning-guide/">LLM Fine-Tuning Guide: LoRA, QLoRA, and Full Fine-Tuning</a> — Complete decision framework and pipeline overview</li>
-<li><a href="/blog/qlora-explained/">QLoRA Explained: Efficient Fine-Tuning on Consumer Hardware</a> — How 4-bit quantization enables 13B+ fine-tuning on one GPU</li>
-<li><a href="/blog/finetuning-datasets/">Dataset Preparation for LLM Fine-Tuning</a> — How to format, clean, and generate training data</li>
-<li><a href="/blog/huggingface-training/">Training LLMs with HuggingFace</a> — Deep dive into TRL, Accelerate, and the full HF training ecosystem</li>
-<li><a href="/blog/how-llms-work/">How LLMs Work</a> — Transformer architecture explained for practitioners</li>
+<li><a href="/blog/full-vs-lora/">Full Fine-Tuning vs LoRA: When to Use Each</a></li>
+<li><a href="/blog/finetuning-datasets/">How to Build Fine-Tuning Datasets for LLMs</a></li>
+<li><a href="/blog/huggingface-training/">Fine-Tuning LLMs with HuggingFace Transformers</a></li>
+<li><a href="/blog/instruction-tuning/">Instruction Tuning: How to Train LLMs to Follow Instructions</a></li>
+<li><a href="/blog/fine-tuning-llms-guide/">Fine-Tuning LLMs: Complete Guide</a></li>
 </ul>
 <h2>FAQ</h2>
 <h3>What is the best LoRA rank to start with?</h3>

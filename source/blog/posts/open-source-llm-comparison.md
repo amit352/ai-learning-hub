@@ -295,10 +295,11 @@ None of these recommendations is permanent — this ecosystem moves fast. Re-eva
 
 ## Related Articles
 
-- [Open Source LLMs Guide: Complete Ecosystem Overview](/blog/open-source-llm-guide)
-- [LLM Quantization Explained: Run Bigger Models on Less Hardware](/blog/llm-quantization)
-- [Running LLMs Locally with Ollama: Complete Guide](/blog/ollama-tutorial)
-- [LLM Benchmarks Explained](/blog/llm-benchmarks)
+- [Ollama Tutorial: Run Llama 3 & Mistral Locally](/blog/ollama-tutorial/)
+- [GGUF Models Explained: Run Quantized LLMs Locally](/blog/gguf-models/)
+- [Open Source vs Closed LLMs: Which to Use in Production?](/blog/open-vs-closed-llm/)
+- [LLM Hardware Guide: GPU Requirements](/blog/llm-hardware-guide/)
+- [Open Source LLMs Guide](/blog/open-source-llms-guide/)
 
 ---
 

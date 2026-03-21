@@ -376,10 +376,10 @@ Agent evaluation requires measuring outcomes, process quality, resource usage, a
 
 ## Related Articles
 
-- [AI Agents Guide: Architecture and Design Patterns](/blog/ai-agents-guide)
-- [RAG Evaluation Guide](/blog/rag-evaluation)
-- [Building Agents with LangChain: Complete Tutorial](/blog/langchain-agents)
-- [Autonomous Task Execution in AI Agents](/blog/autonomous-agents)
+- [AI Agent Architecture: Design Patterns for Production](/blog/ai-agent-architecture/)
+- [LangGraph vs AutoGen vs CrewAI: Agent Framework Comparison](/blog/agent-framework-comparison/)
+- [LLM Evaluation: How to Test and Score Language Model Quality](/blog/llm-evaluation/)
+- [Build AI Agents](/blog/build-ai-agents/)
 
 ---
 

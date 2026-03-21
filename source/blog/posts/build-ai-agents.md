@@ -233,3 +233,9 @@ Return an error string (not raise an exception) from the tool function. The agen
 - [AI Agents Guide](/blog/ai-agents-guide/) — the conceptual foundation for agent architectures
 - [LangChain Agents](/blog/langchain-agents/) — LangChain-specific agent patterns and tooling
 - [Multi-Agent Systems](/blog/multi-agent-systems/) — coordinating multiple specialized agents in a pipeline
+- [How to Evaluate AI Agents: Metrics, Frameworks & Testing](/blog/agent-evaluation/)
+- [LangGraph vs AutoGen vs CrewAI: Agent Framework Comparison](/blog/agent-framework-comparison/)
+- [Agent Memory Systems: Short-Term, Long-Term & Episodic Memory](/blog/agent-memory/)
+- [LLM Agent Planning: ReAct, Tree of Thought & Hierarchical Planning](/blog/agent-planning/)
+- [AI Agent Tool Use: How to Give LLMs Access to APIs & Search](/blog/agent-tools/)
+- [AI Agent Architecture: Design Patterns for Production](/blog/ai-agent-architecture/)

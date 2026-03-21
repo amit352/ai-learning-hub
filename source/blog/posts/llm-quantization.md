@@ -233,10 +233,10 @@ Quantization is what makes the open source LLM ecosystem practical on accessible
 
 ## Related Articles
 
-- [Open Source LLMs Guide: Complete Ecosystem Overview](/blog/open-source-llm-guide)
-- [GGUF Models Explained: The Format Powering Local LLMs](/blog/gguf-models)
-- [GPU Requirements for Running LLMs Locally](/blog/llm-hardware-guide)
-- [Fine-Tuning Open Source LLMs: From Llama to Production](/blog/fine-tune-open-source-llm)
+- [GGUF Models Explained](/blog/gguf-models/)
+- [LLM Hardware Guide: GPU Requirements](/blog/llm-hardware-guide/)
+- [Local AI Development: Run LLMs Offline](/blog/local-ai-development/)
+- [Open Source LLMs Guide](/blog/open-source-llms-guide/)
 
 ---
 

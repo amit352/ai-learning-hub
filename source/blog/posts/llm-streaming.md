@@ -379,10 +379,9 @@ Streaming LLM responses is the difference between a demo and a production-qualit
 
 ## Related Articles
 
-- [LLM APIs Guide for Developers](/blog/llm-api-guide/)
-- [OpenAI API Tutorial for Developers](/blog/openai-api-tutorial/)
-- [Function Calling with LLM APIs: Practical Guide](/blog/llm-function-calling/)
-- [LLM API Error Handling Best Practices](/blog/llm-api-errors/)
+- [LLM API Guide: Choosing Between OpenAI, Anthropic & Gemini](/blog/llm-api-guide/)
+- [LLM API Cost Optimization: Cut Your OpenAI Bills by 60–80%](/blog/llm-api-cost-optimization/)
+- [OpenAI API Complete Guide](/blog/openai-api-complete-guide/)
 
 ---
 

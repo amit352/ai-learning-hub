@@ -303,10 +303,11 @@ LangGraph is the right choice for production systems that require fine-grained c
 
 ## Related Articles
 
-- [AI Agents Guide: Architecture and Design Patterns](/blog/ai-agents-guide)
-- [Building Agents with LangChain: Complete Tutorial](/blog/langchain-agents)
-- [Multi-Agent Systems Explained](/blog/multi-agent-systems)
-- [Autonomous Task Execution in AI Agents](/blog/autonomous-agents)
+- [How to Evaluate AI Agents](/blog/agent-evaluation/)
+- [AI Agent Architecture: Design Patterns for Production](/blog/ai-agent-architecture/)
+- [Agent Memory Systems](/blog/agent-memory/)
+- [LLM Agent Planning](/blog/agent-planning/)
+- [Build AI Agents](/blog/build-ai-agents/)
 
 ---
 

@@ -276,11 +276,11 @@ For most fine-tuning projects, instruction tuning with SFTTrainer is the right s
 
 ## Related Articles
 
-- [LLM Fine-Tuning Guide: LoRA, QLoRA, and Full Fine-Tuning](/blog/llm-fine-tuning-guide/) — Complete fine-tuning pipeline and method selection
-- [Dataset Preparation for LLM Fine-Tuning](/blog/finetuning-datasets/) — How to source, format, and clean instruction datasets
-- [RLHF Explained: How LLMs Learn from Human Feedback](/blog/rlhf-guide/) — Next step after SFT: reward models and PPO
-- [Synthetic Data for LLM Training](/blog/synthetic-data-llm/) — Generate instruction datasets with GPT-4 and Claude
-- [Prompt Engineering Guide](/blog/prompt-engineering-guide/) — When prompting is enough instead of fine-tuning
+- [RLHF Explained: How Reinforcement Learning from Human Feedback Works](/blog/rlhf-guide/)
+- [How to Build Fine-Tuning Datasets for LLMs](/blog/finetuning-datasets/)
+- [Synthetic Data for LLM Fine-Tuning](/blog/synthetic-data-llm/)
+- [Fine-Tuning LLMs with HuggingFace Transformers](/blog/huggingface-training/)
+- [Fine-Tuning LLMs: Complete Guide](/blog/fine-tuning-llms-guide/)
 
 ## FAQ
 

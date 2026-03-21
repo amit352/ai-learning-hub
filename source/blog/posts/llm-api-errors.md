@@ -528,10 +528,10 @@ LLM API errors divide into four categories: client errors (fix the request), aut
 
 ## Related Articles
 
-- [LLM APIs Guide for Developers](/blog/llm-api-guide/)
-- [Rate Limiting Strategies for LLM APIs](/blog/llm-rate-limits/)
-- [LLM API Cost Optimization: Reduce Costs by 60%+](/blog/llm-api-cost-optimization/)
-- [OpenAI API Tutorial for Developers](/blog/openai-api-tutorial/)
+- [LLM Rate Limits: Handle Token Limits and API Throttling](/blog/llm-rate-limits/)
+- [LLM API Cost Optimization: Cut Your OpenAI Bills by 60–80%](/blog/llm-api-cost-optimization/)
+- [LLM API Guide: Choosing Between OpenAI, Anthropic & Gemini](/blog/llm-api-guide/)
+- [OpenAI API Complete Guide](/blog/openai-api-complete-guide/)
 
 ---
 

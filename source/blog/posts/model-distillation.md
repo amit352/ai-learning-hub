@@ -363,9 +363,10 @@ Model distillation is a training technique that transfers knowledge from a large
 
 ## Related Articles
 
-- [Open Source LLMs Guide: Complete Ecosystem Overview](/blog/open-source-llm-guide)
-- [LLM Fine-Tuning Guide](/blog/llm-fine-tuning-guide)
-- [Fine-Tuning Open Source LLMs: From Llama to Production](/blog/fine-tune-open-source-llm)
+- [LLM Quantization: Run 70B Models on Consumer GPUs](/blog/llm-quantization/)
+- [Full Fine-Tuning vs LoRA: When to Use Each](/blog/full-vs-lora/)
+- [RLHF Explained: How Reinforcement Learning from Human Feedback Works](/blog/rlhf-guide/)
+- [Fine-Tuning LLMs: Complete Guide](/blog/fine-tuning-llms-guide/)
 
 ---
 

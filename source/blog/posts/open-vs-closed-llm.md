@@ -315,9 +315,10 @@ The open vs closed LLM decision is a cost-quality-compliance trade-off that shou
 
 ## Related Articles
 
-- [Open Source LLMs Guide: Complete Ecosystem Overview](/blog/open-source-llm-guide)
-- [Running LLMs Locally with Ollama: Complete Guide](/blog/ollama-tutorial)
-- [OpenAI API Tutorial](/blog/openai-api-tutorial)
+- [Open Source LLM Comparison](/blog/open-source-llm-comparison/)
+- [LLM API Guide: Choosing Between OpenAI, Anthropic & Gemini](/blog/llm-api-guide/)
+- [API vs Local LLM: Cost, Latency & Privacy Trade-offs](/blog/api-vs-local-llm/)
+- [Open Source LLMs Guide](/blog/open-source-llms-guide/)
 
 ---
 

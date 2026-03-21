@@ -358,10 +358,10 @@ Tools are the interface between an AI agent and the outside world. Their names, 
 
 ## Related Articles
 
-- [AI Agents Guide: Architecture and Design Patterns](/blog/ai-agents-guide)
-- [Building Agents with LangChain: Complete Tutorial](/blog/langchain-agents)
-- [Multi-Agent Systems Explained](/blog/multi-agent-systems)
-- [Autonomous Task Execution in AI Agents](/blog/autonomous-agents)
+- [LLM Function Calling: Build Tool-Using AI Apps](/blog/llm-function-calling/)
+- [LLM Agent Planning: ReAct, Tree of Thought](/blog/agent-planning/)
+- [AI Agent Architecture: Design Patterns for Production](/blog/ai-agent-architecture/)
+- [Build AI Agents](/blog/build-ai-agents/)
 
 ---
 

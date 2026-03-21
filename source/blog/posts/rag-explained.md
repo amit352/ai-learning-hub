@@ -199,3 +199,12 @@ RAG is the primary pattern for connecting LLMs to external knowledge. It solves 
 The architecture is straightforward: index your documents as embedded chunks, retrieve the most relevant chunks at query time, inject them as context, and ask the model to answer based only on that context.
 
 To build a complete RAG application end-to-end, see [how to build a RAG app](/blog/build-rag-app/). For the vector database infrastructure that powers retrieval, see [vector databases explained](/blog/vector-database-explained/). For the embedding models that make semantic search possible, see [embeddings explained](/blog/embeddings-explained/).
+
+---
+
+## What to Learn Next
+
+- [RAG Evaluation: Measure Faithfulness, Relevancy & Context Quality](/blog/rag-evaluation/)
+- [Multi-Document RAG: Search Across 100+ Sources](/blog/multi-document-rag/)
+- [Instruction Tuning: How to Train LLMs to Follow Instructions](/blog/instruction-tuning/)
+- [LLM Evaluation: How to Test and Score Language Model Quality](/blog/llm-evaluation/)

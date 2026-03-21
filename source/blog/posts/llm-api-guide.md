@@ -318,12 +318,11 @@ The most impactful optimizations are model routing (use cheaper models for simpl
 
 ## Related Articles
 
-- [OpenAI API Tutorial for Developers](/blog/openai-api-tutorial/)
-- [Anthropic Claude API Tutorial for Python Developers](/blog/anthropic-api-tutorial/)
-- [Function Calling with LLM APIs: Practical Guide](/blog/llm-function-calling/)
-- [LLM API Cost Optimization: Reduce Costs by 60%+](/blog/llm-api-cost-optimization/)
-- [Streaming Responses from LLM APIs: Complete Guide](/blog/llm-streaming/)
-- [How LLMs Work](/blog/how-llms-work/)
+- [LLM API Error Handling: Retries, Rate Limits & Fallbacks](/blog/llm-api-errors/)
+- [LLM API Cost Optimization: Cut Your OpenAI Bills by 60–80%](/blog/llm-api-cost-optimization/)
+- [LLM Rate Limits: Handle Token Limits and API Throttling](/blog/llm-rate-limits/)
+- [LLM Streaming: Stream Token-by-Token Responses](/blog/llm-streaming/)
+- [OpenAI API Complete Guide](/blog/openai-api-complete-guide/)
 
 ---
 

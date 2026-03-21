@@ -298,10 +298,10 @@ Agent memory has four types, each solving a different problem. Short-term memory
 
 ## Related Articles
 
-- [AI Agents Guide: Architecture and Design Patterns](/blog/ai-agents-guide)
-- [Vector Database Guide](/blog/vector-database-guide)
-- [RAG Architecture Guide](/blog/rag-architecture-guide)
-- [Planning Algorithms in AI Agents](/blog/agent-planning)
+- [AI Agent Architecture: Design Patterns for Production](/blog/ai-agent-architecture/)
+- [LLM Agent Planning: ReAct, Tree of Thought](/blog/agent-planning/)
+- [Autonomous AI Agents: How They Work](/blog/autonomous-agents/)
+- [Build AI Agents](/blog/build-ai-agents/)
 
 ---
 

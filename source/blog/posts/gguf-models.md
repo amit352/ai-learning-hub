@@ -258,10 +258,10 @@ GGUF is the standard format for local LLM inference — self-contained, portable
 
 ## Related Articles
 
-- [Open Source LLMs Guide: Complete Ecosystem Overview](/blog/open-source-llm-guide)
-- [LLM Quantization Explained: Run Bigger Models on Less Hardware](/blog/llm-quantization)
-- [GPU Requirements for Running LLMs Locally](/blog/llm-hardware-guide)
-- [Running LLMs Locally with Ollama: Complete Guide](/blog/ollama-tutorial)
+- [Ollama Tutorial: Run Llama 3 & Mistral Locally](/blog/ollama-tutorial/)
+- [LLM Quantization: Run 70B Models on Consumer GPUs](/blog/llm-quantization/)
+- [Local AI Development: Run LLMs Offline](/blog/local-ai-development/)
+- [Open Source LLMs Guide](/blog/open-source-llms-guide/)
 
 ---
 

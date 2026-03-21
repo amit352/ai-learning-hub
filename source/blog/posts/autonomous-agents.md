@@ -334,10 +334,10 @@ Autonomous task execution is powerful but requires careful architecture. The loo
 
 ## Related Articles
 
-- [AI Agents Guide: Architecture and Design Patterns](/blog/ai-agents-guide)
-- [Planning Algorithms in AI Agents](/blog/agent-planning)
-- [Memory Systems in AI Agents](/blog/agent-memory)
-- [Agent Evaluation Metrics](/blog/agent-evaluation)
+- [AI Agent Architecture: Design Patterns for Production](/blog/ai-agent-architecture/)
+- [Agent Memory Systems](/blog/agent-memory/)
+- [LangGraph vs AutoGen vs CrewAI: Agent Framework Comparison](/blog/agent-framework-comparison/)
+- [Build AI Agents](/blog/build-ai-agents/)
 
 ---
 

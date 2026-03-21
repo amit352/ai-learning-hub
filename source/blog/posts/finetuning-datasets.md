@@ -417,11 +417,11 @@ For most fine-tuning projects, 500–2,000 high-quality examples is enough to pr
 
 ## Related Articles
 
-- [LLM Fine-Tuning Guide: LoRA, QLoRA, and Full Fine-Tuning](/blog/llm-fine-tuning-guide/) — Complete pipeline from data to deployed model
-- [Instruction Tuning Explained](/blog/instruction-tuning/) — How data format affects instruction-following behavior
-- [Synthetic Data for LLM Training](/blog/synthetic-data-llm/) — Full synthetic generation pipeline with quality filtering
-- [LLM Evaluation Metrics](/blog/llm-evaluation/) — How to measure whether your fine-tuned model improved
-- [RAG Architecture Guide](/blog/rag-architecture-guide/) — Alternative to fine-tuning for knowledge-intensive tasks
+- [LoRA Fine-Tuning Tutorial: Train Custom LLMs on a Single GPU](/blog/lora-fine-tuning-tutorial/)
+- [Synthetic Data for LLM Fine-Tuning](/blog/synthetic-data-llm/)
+- [Instruction Tuning: How to Train LLMs to Follow Instructions](/blog/instruction-tuning/)
+- [Fine-Tuning LLMs with HuggingFace Transformers](/blog/huggingface-training/)
+- [Fine-Tuning LLMs: Complete Guide](/blog/fine-tuning-llms-guide/)
 
 ## FAQ
 

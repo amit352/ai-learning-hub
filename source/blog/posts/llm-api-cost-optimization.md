@@ -561,10 +561,11 @@ LLM API cost optimization follows a clear hierarchy: instrument costs first, the
 
 ## Related Articles
 
-- [LLM APIs Guide for Developers](/blog/llm-api-guide/)
-- [Rate Limiting Strategies for LLM APIs](/blog/llm-rate-limits/)
-- [LLM API Error Handling Best Practices](/blog/llm-api-errors/)
-- [Prompt Engineering Guide](/blog/prompt-engineering-guide/)
+- [LLM API Error Handling: Retries, Rate Limits & Fallbacks](/blog/llm-api-errors/)
+- [LLM Rate Limits: Handle Token Limits and API Throttling](/blog/llm-rate-limits/)
+- [LLM Streaming: Stream Token-by-Token Responses](/blog/llm-streaming/)
+- [LLM Function Calling: Build Tool-Using AI Apps](/blog/llm-function-calling/)
+- [OpenAI API Complete Guide](/blog/openai-api-complete-guide/)
 
 ---
 
